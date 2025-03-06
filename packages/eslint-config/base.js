@@ -3,6 +3,7 @@ import eslintConfigPrettier from "eslint-config-prettier";
 import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
 import onlyWarn from "eslint-plugin-only-warn";
+import prettierPlugin from "eslint-plugin-prettier";
 
 export const config = [
   js.configs.recommended,
@@ -11,9 +12,11 @@ export const config = [
   {
     plugins: {
       turbo: turboPlugin,
+      prettier: prettierPlugin,
     },
     rules: {
       "turbo/no-undeclared-env-vars": "warn",
+      "prettier/prettier": "warn",
     },
   },
   {
