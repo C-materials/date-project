@@ -2,11 +2,13 @@
   "extends": "@repo/typescript-config/nextjs.json",
   "noEmit": true,
   "incremental": true,
-  "plugins": [
-    {
-      "name": "next"
-    }
-  ],
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
   "paths": {
     "@/*": ["./src/*"]
   },
