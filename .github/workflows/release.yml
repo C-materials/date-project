@@ -1,0 +1,35 @@
+name: Release Packages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    timeout-minutes: 10
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9.10.0
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: "pnpm"
+          cache-dependency-path: "pnpm-lock.yaml"
+          node-version-file: ".nvmrc"
+
+      - name: install dependencies
+        run: pnpm install
+
+      - name: Create Changesets Pull Request or Publish to NPM
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          title: "release: packages"
+          commit: "release: packages"
+          version: pnpm version 
+          publish: pnpm publish
