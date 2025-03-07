@@ -8,7 +8,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "changeset:version": "changeset version && changeset tag && pnpm i --lockfile-only",
-    "changeset:publish": "pnpm prepack && turbo run changeset publish",
+    "changeset:publish": "changeset publish",
     "changelog": "turbo run changeset changelog",
     "prepare": "husky",
     "lint-staged": "lint-staged",
