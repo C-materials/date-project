@@ -5,8 +5,8 @@ on:
     branches:
       - set/storybook
       # - main # 메인 브랜치에 푸시될 때 실행
-    paths:
-      - 'apps/storybook/**'
+    # paths:
+    #   - 'apps/storybook/**'
 
 jobs:
   storybook-deploy:
