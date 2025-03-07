@@ -8,20 +8,35 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "version": "turbo run changeset version",
-    "changelog": "turbo run changeset changelog"
+    "changelog": "turbo run changeset changelog",
+    "prepare": "husky",
+    "lint-staged": "lint-staged",
+    "storybook": "pnpm --filter storybook dev"
   },
   "devDependencies": {
     "@changesets/cli": "^2.28.1",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@storybook/react": "8.6.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^5.2.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "prettier": "^3.5.3",
     "turbo": "^2.4.4",
-    "typescript": "5.8.2"
+    "typescript": "4.9.5"
   },
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@9.10.0",
   "engines": {
-    "node": ">=18"
+    "node": ">=20.16.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
   }
 }

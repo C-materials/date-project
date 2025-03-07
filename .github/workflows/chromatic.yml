@@ -1,0 +1,46 @@
+name: 'storybook Chromatic 배포'
+
+on:
+  push:
+    branches:
+      - set/storybook
+      # - main # 메인 브랜치에 푸시될 때 실행
+    # paths:
+    #   - 'apps/storybook/**'
+
+jobs:
+  storybook-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9.10.0
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: "pnpm"
+          cache-dependency-path: "pnpm-lock.yaml"
+          node-version-file: ".nvmrc"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Storybook
+        run: pnpm --filter storybook build-storybook
+
+      - name: publish to chromatic
+        id: chromatic
+        continue-on-error: true
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
+          onlyChanged: true
+          externals: apps/**
+          workingDir: apps/storybook
