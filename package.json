@@ -7,7 +7,8 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "version": "turbo run changeset version",
+    "version": "changeset version && changeset tag && pnpm i --lockfile-only",
+    "publish": "pnpm prepack && turbo run changeset publish",
     "changelog": "turbo run changeset changelog",
     "prepare": "husky",
     "lint-staged": "lint-staged",
@@ -24,7 +25,7 @@
     "lint-staged": "^15.4.3",
     "prettier": "^3.5.3",
     "turbo": "^2.4.4",
-    "typescript": "4.9.5"
+    "typescript": "^5.8.2"
   },
   "packageManager": "pnpm@9.10.0",
   "engines": {
