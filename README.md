@@ -30,6 +30,22 @@ corepack을 활성화하면 package.json의 `packageManager` 필드에 지정된
 corepack prepare pnpm@9.10.0 --activate
 ```
 
+### Git 훅 설정
+
+이 프로젝트는 husky를 사용하여 Git 훅을 관리하고, lint-staged를 통해 커밋 전 코드 품질 검사를 수행합니다.
+
+- **pre-commit**: 커밋 전에 변경된 파일에 대해 린트 및 포맷 검사를 수행합니다.
+
+```bash
+# Git 훅이 설정되지 않은 경우 실행
+pnpm prepare
+```
+
+lint-staged 설정은 다음과 같습니다:
+
+- JavaScript/TypeScript 파일: ESLint 및 Prettier 적용
+- JSON/CSS/MD 파일: Prettier 적용
+
 ### 프로젝트 설정
 
 의존성 설치:

@@ -1,0 +1,5 @@
+# lockfile check
+(git add **/package.json pnpm-lock.yaml && pnpm install --frozen-lockfile > /dev/null) || (echo "\nMFE - lockfile 이 최신이 아닙니다. 'pnpm install'로 lockfile 을 업데이트 해주세요\n" && exit 1)
+
+# lint check
+npx lint-staged || (echo "\n MFE - lint에 맞게 코드를 수정해주세요.\n" && exit 1)
