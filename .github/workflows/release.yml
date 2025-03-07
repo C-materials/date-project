@@ -25,13 +25,12 @@ jobs:
       - name: install dependencies
         run: pnpm install
 
-      - name: Create Changesets Pull Request or Publish to NPM
+      - name: Create Changesets Pull Request
         id: changesets
         uses: changesets/action@v1
         with:
-          title: "release: packages"
-          commit: "release: packages"
-          version: pnpm version 
-          publish: pnpm publish
+          title: 'chore: version packages'
+          commit: 'chore: version packages'
+          version: pnpm version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
