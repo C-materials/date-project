@@ -33,3 +33,5 @@ jobs:
           commit: "release: packages"
           version: pnpm version 
           publish: pnpm publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
