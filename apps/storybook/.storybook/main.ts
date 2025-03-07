@@ -1,31 +1,23 @@
-import type { StorybookConfig } from '@storybook/nextjs';
+import type { StorybookConfig } from "@storybook/react-vite";
 
-import { join, dirname } from "path"
-
-/**
-* This function is used to resolve the absolute path of a package.
-* It is needed in projects that use Yarn PnP or are set up within a monorepo.
-*/
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')))
-}
 const config: StorybookConfig = {
-  "stories": [
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  stories: ["../../../packages/ui/src/**/*.stories.@(js|jsx|ts|tsx)"],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
   ],
-  "addons": [
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-onboarding'),
-    getAbsolutePath('@chromatic-com/storybook'),
-    getAbsolutePath("@storybook/experimental-addon-test")
-  ],
-  "framework": {
-    "name": getAbsolutePath('@storybook/nextjs'),
-    "options": {}
+  framework: {
+    name: "@storybook/react-vite",
+    options: {},
   },
-  "staticDirs": [
-    "..\\public"
-  ]
+  typescript: {
+    reactDocgen: "react-docgen",
+    skipCompiler: true,
+  },
+  docs: {
+    autodocs: true,
+  },
 };
+
 export default config;
