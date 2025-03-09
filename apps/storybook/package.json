@@ -1,6 +1,6 @@
 {
   "name": "storybook",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
@@ -28,7 +28,7 @@
     "@vitejs/plugin-react-swc": "^3.8.0",
     "chromatic": "^11.27.0",
     "postcss": "^8",
-    "storybook": "8.6.4",
+    "storybook": "0.2.0",
     "typescript": "^5",
     "vite": "^6.2.1"
   }
