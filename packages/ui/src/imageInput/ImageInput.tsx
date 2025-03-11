@@ -1,5 +1,5 @@
 import InputWrapper from "../inputWrapper/InputWrapper";
-import addImage from "./Add_image.png";
+import addImage from "../../assets/Add_Image.png";
 const ImageInput = () => {
   return (
     <InputWrapper>
