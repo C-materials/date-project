@@ -3,22 +3,15 @@ import {
   createGlobalTheme,
 } from "@vanilla-extract/css";
 
-// 토큰
+// 커스텀 유틸리티 타입
+type FlattenObjectKeys<T, Prefix extends string = ""> = {
+  [K in keyof T]: T[K] extends object
+    ? FlattenObjectKeys<T[K], `${Prefix}${K & string}.`> // 재귀적으로 탐색
+    : `${Prefix}${K & string}`;
+}[keyof T];
 
-export const vars = createGlobalThemeContract({
-  color: {
-    bg: "",
-    primaryDefault: "",
-    primaryHover: "",
-    actionButtonBorderMobile: "",
-    actionButtonSecondaryBackground: "",
-  },
-  font: {
-    body: "",
-  },
-});
-
-export const globalVars = createGlobalTheme(":root", {
+// 색상 토큰
+const globalVars = createGlobalTheme(":root", {
   color: {
     bg: "#111115",
     primary: {
@@ -47,3 +40,5 @@ export const globalVars = createGlobalTheme(":root", {
     },
   },
 });
+
+export type Colors = FlattenObjectKeys<typeof globalVars>;
