@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import * as style from "./style.css";
 
 const InputWrapper = ({ children }: { children: ReactNode }) => {
-  return <div className={style.wrapper}>{children}</div>;
+  return <div className={style.wrapper({ size: "mobile" })}>{children}</div>;
 };
 
 export default InputWrapper;

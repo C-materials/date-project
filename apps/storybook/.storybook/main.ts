@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 const config: StorybookConfig = {
   stories: ["../../../packages/ui/src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -17,6 +18,15 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: true,
+  },
+  async viteFinal(config) {
+    config.plugins = config.plugins || [];
+    config.plugins.push(
+      vanillaExtractPlugin({
+        identifiers: ({ hash }) => `_${hash}`,
+      }),
+    );
+    return config;
   },
 };
 
