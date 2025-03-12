@@ -29,6 +29,7 @@
     "@types/react-dom": "^19",
     "@vanilla-extract/vite-plugin": "^5.0.1",
     "@vitejs/plugin-react-swc": "^3.8.0",
+    "@repo/ui": "workspace:*",
     "chromatic": "^11.27.0",
     "postcss": "^8",
     "storybook": "8.6.4",
