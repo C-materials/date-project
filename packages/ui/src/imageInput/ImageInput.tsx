@@ -8,7 +8,7 @@ const ImageInput = () => {
 
   const handleSelectFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files || [];
-    if (urlList.length >= 4) {
+    if (urlList.length + files.length > 4) {
       alert("사진은 최대 4장 등록 가능합니다.");
     } else {
       const newUrlList = [...urlList];
@@ -23,6 +23,8 @@ const ImageInput = () => {
         setUrlList(newUrlList); // file -> url 변환하면서 하나씩 추가
       }
     }
+    console.log(files);
+    console.log("전역 urlList:", urlList);
   };
   return (
     <InputWrapper>
