@@ -11,7 +11,7 @@ on:
       - "apps/storybook/**"
 
 jobs:
-  storybook-deploy:
+  storybook-preview:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -44,21 +44,29 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_TOKEN }}
           onlyChanged: true
+          autoAcceptChanges: true
           externals: apps/**
           workingDir: apps/storybook
 
-jobs:
-  storybook:
-    runs-on: ubuntu-20.04
-    outputs:
-      status: ${{ job.status }}
-    steps:
-    
-     ...
-     
-      - name: comment PR
-        uses: thollander/actions-comment-pull-request@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 현재 시간 가져오기
+        uses: josStorer/get-current-time@v2
+        id: current-time
         with:
-          message: "🚀storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
+          format: "YYYY년 MM월 DD일 HH시 mm분 ss초"
+          utcOffset: "+09:00"
+
+    outputs:
+      storybook_url: ${{ steps.chromatic.outputs.storybookUrl }}
+      current_time: ${{ steps.current-time.outputs.formattedTime }}
+
+  github-bot-storybook:
+    runs-on: ubuntu-latest
+    needs: [storybook-preview]
+    steps:
+      - name: PR 코멘트 남기기
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          comment_tag: ${{github.event.number}}-storybook
+          message: |
+            💄 Storybook: ${{ needs.storybook-preview.outputs.storybook_url }}
+            🕖 Update: ${{ needs.storybook-preview.outputs.current_time }}
