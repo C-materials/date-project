@@ -8,14 +8,16 @@ import { UrlType } from "../types/imageUrlType";
 const ImageUploader = () => {
   const { urlList, setUrlList } = useImageUrlStore();
   const [selectItem, setSelectItem] = useState<UrlType>();
+
   const handleDrag = (e: React.DragEvent, urlItem: UrlType) => {
     //드래그 시작할때
+    e.stopPropagation();
     setSelectItem(urlItem);
   };
   const handleDrop = (e: React.DragEvent, targetItem: UrlType) => {
     // 드롭 시, urlList에서 순서를 바꿔주기
     e.preventDefault();
-
+    e.stopPropagation();
     if (selectItem) {
       const prevList = [...urlList];
       // 드래그한 항목의 인덱스 찾기
@@ -33,6 +35,7 @@ const ImageUploader = () => {
   };
   const hadleDragEnter = (e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
   };
 
   return (
@@ -45,10 +48,9 @@ const ImageUploader = () => {
             draggable
             onDrop={(e) => handleDrop(e, urlItem)}
             onDragOver={hadleDragEnter}
+            onDragStart={(e) => handleDrag(e, urlItem)}
           >
-            <div onDragStart={(e) => handleDrag(e, urlItem)}>
-              <ImagePreview url={urlItem} />
-            </div>
+            <ImagePreview url={urlItem} />
           </li>
         ))}
       </ul>

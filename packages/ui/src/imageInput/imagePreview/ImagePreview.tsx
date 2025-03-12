@@ -11,13 +11,7 @@ const ImagePreview = ({ url }: { url: UrlType }) => {
 
   return (
     <InputWrapper>
-      <img
-        src={url.url}
-        alt="미리보기"
-        width={50}
-        height={50}
-        draggable={false}
-      />
+      <img src={url.url} alt="미리보기" width={50} height={50} />
       <button
         type="button"
         onClick={handleDeleteImageFile}

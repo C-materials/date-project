@@ -9,4 +9,5 @@ export const wrapper = style({
   padding: 8,
   display: "flex",
   backgroundColor: Color.primary.default,
+  cursor: "pointer",
 });

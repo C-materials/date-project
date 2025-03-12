@@ -4,6 +4,7 @@ export const previewList = style({
   display: "flex",
   gap: 8,
   justifyContent: "start",
+  position: "relative",
 });
 
 export const wrapper = style({

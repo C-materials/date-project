@@ -2,12 +2,11 @@ import InputWrapper from "../inputWrapper/InputWrapper";
 import addImage from "../../assets/Add_Image.png";
 import * as style from "./style.css";
 import useImageUrlStore from "../store/useImageUrlStore";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 const ImageInput = () => {
   const { setUrlList, urlList } = useImageUrlStore();
-
-  const handleSelectFile = (e: ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files || [];
+  const [isActive, setIsActive] = useState(false);
+  const uploadFiles = (files: FileList) => {
     if (urlList.length + files.length > 4) {
       alert("사진은 최대 4장 등록 가능합니다.");
     } else {
@@ -20,15 +19,47 @@ const ImageInput = () => {
           url,
         };
         newUrlList.push(urlObj);
-        setUrlList(newUrlList); // file -> url 변환하면서 하나씩 추가
+        setUrlList(newUrlList);
       }
     }
   };
+  const handleSelectFile = (e: ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files || [];
+    uploadFiles(files as FileList);
+  };
+  const handleDragStart = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsActive(true);
+  };
+  const handleDragEnd = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsActive(false);
+  };
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    uploadFiles(files);
+    setIsActive(false);
+  };
+
   return (
     <InputWrapper>
-      <label className={style.label} htmlFor="image">
+      <label
+        className={isActive ? `${style.label.active}` : `${style.label.none}`}
+        htmlFor="image"
+        onDragEnter={handleDragStart}
+        onDragLeave={handleDragEnd}
+        onDragOver={handleDragOver}
+        onDrop={(e) => handleDrop(e)}
+      >
         <img src={addImage} width={34} height={34} alt="Add Image" />
-        <p>이미지 첨부하기</p>
+        <div>
+          <p>클릭하여 이미지 첨부하기</p>
+          <p>또는 파일을 여기로 드래그하세요</p>
+        </div>
       </label>
       <input
         className={style.basicInput}
@@ -36,7 +67,7 @@ const ImageInput = () => {
         name="image"
         type="file"
         multiple
-        accept="image/png, image/jpeg"
+        accept="image/png, image/jpeg, image/jpg"
         onChange={(e) => handleSelectFile(e)}
       ></input>
     </InputWrapper>
