@@ -10,4 +10,5 @@ export const wrapper = style({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+  backgroundColor: Color.primary.default,
 });
