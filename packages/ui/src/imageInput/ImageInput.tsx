@@ -23,8 +23,6 @@ const ImageInput = () => {
         setUrlList(newUrlList); // file -> url 변환하면서 하나씩 추가
       }
     }
-    console.log(files);
-    console.log("전역 urlList:", urlList);
   };
   return (
     <InputWrapper>
