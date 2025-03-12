@@ -1,11 +1,14 @@
-name: 'storybook Chromatic 배포'
+name: "storybook Chromatic 배포"
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main # 메인 브랜치에 푸시될 때 실행
     paths:
-      - 'apps/storybook/**'
+      - "apps/storybook/**"
 
 jobs:
   storybook-deploy:
