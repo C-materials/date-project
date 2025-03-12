@@ -4,19 +4,24 @@ import * as style from "./style.css";
 import useImageUrlStore from "../store/useImageUrlStore";
 import { ChangeEvent } from "react";
 const ImageInput = () => {
-  const { setUrlList } = useImageUrlStore();
+  const { setUrlList, urlList } = useImageUrlStore();
 
   const handleSelectFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files || [];
-    console.log(files);
-    for (let file of files) {
-      const url = URL.createObjectURL(file);
-      const uuid = crypto.randomUUID();
-      const urlObj = {
-        id: uuid,
-        url,
-      };
-      setUrlList(urlObj); // file -> url 변환하면서 하나씩 추가
+    if (urlList.length >= 4) {
+      alert("사진은 최대 4장 등록 가능합니다.");
+    } else {
+      const newUrlList = [...urlList];
+      for (let file of files) {
+        const url = URL.createObjectURL(file);
+        const uuid = crypto.randomUUID();
+        const urlObj = {
+          id: uuid,
+          url,
+        };
+        newUrlList.push(urlObj);
+        setUrlList(newUrlList); // file -> url 변환하면서 하나씩 추가
+      }
     }
   };
   return (

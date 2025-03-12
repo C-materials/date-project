@@ -3,14 +3,14 @@ import { UrlType } from "../types/imageUrlType";
 
 interface ImageUrlStoreType {
   urlList: UrlType[];
-  setUrlList: (newUrl: UrlType) => void;
+  setUrlList: (newUrl: UrlType[]) => void;
   deleteUrl: (id: UrlType["id"]) => void;
 }
 const useImageUrlStore = create<ImageUrlStoreType>((set) => ({
   urlList: [],
   setUrlList: (newUrl) =>
-    set((state) => ({
-      urlList: [...state.urlList, newUrl],
+    set(() => ({
+      urlList: [...newUrl],
     })),
   deleteUrl: (targetId) =>
     set((state) => ({
