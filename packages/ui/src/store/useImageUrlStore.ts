@@ -1,9 +1,6 @@
 import { create } from "zustand";
+import { UrlType } from "../types/imageUrlType";
 
-interface UrlType {
-  id: string;
-  url: string;
-}
 interface ImageUrlStoreType {
   urlList: UrlType[];
   setUrlList: (newUrl: UrlType) => void;
