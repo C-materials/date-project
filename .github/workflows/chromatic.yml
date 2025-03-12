@@ -46,18 +46,19 @@ jobs:
           onlyChanged: true
           externals: apps/**
           workingDir: apps/storybook
-outputs:
-  storybook_url: ${{ steps.chromatic.outputs.storybookUrl }}
 
-github-bot-storybook:
-  runs-on: ubuntu-latest
-  needs: [storybook-preview] # storybook-preview 완료 후 실행
-
-  steps:
-    - name: PR 코멘트 남기기
-      uses: thollander/actions-comment-pull-request@v2
-      with:
-        comment_tag: ${{ github.event.number }}-storybook # 댓글 중복 방지
-        message: |
-          💄 Storybook 미리보기: [여기에서 확인하세요](${{ needs.storybook-preview.outputs.storybook_url }})
-          🕖 업데이트 시간: ${{ needs.storybook-preview.outputs.currnent_time }}
+jobs:
+  storybook:
+    runs-on: ubuntu-20.04
+    outputs:
+      status: ${{ job.status }}
+    steps:
+    
+     ...
+     
+      - name: comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: "🚀storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
