@@ -1,6 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-import "@packages/ui/src/global.css";
 
 const config: StorybookConfig = {
   stories: ["../../../packages/ui/src/**/*.stories.@(js|jsx|ts|tsx)"],
