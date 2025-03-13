@@ -1,6 +1,6 @@
 import InputWrapper from "../../inputWrapper/InputWrapper";
 import useImageUrlStore from "../../store/useImageUrlStore";
-import { UrlType } from "../../types/imageUrlType";
+import type { UrlType } from "../../types/imageUrlType";
 import { GoXCircleFill } from "react-icons/go";
 import * as style from "./style.css";
 const ImagePreview = ({ url }: { url: UrlType }) => {
