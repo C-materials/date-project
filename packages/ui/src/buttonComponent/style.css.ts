@@ -1,18 +1,17 @@
 import { style, styleVariants } from "@vanilla-extract/css";
-import { sprinkles } from "../globalStyle/sprinkles.css";
+import { spacingSprinkles } from "../globalStyle/sprinkles.css";
 import { Color } from "../globalStyle/theme.css";
 
 const base = style([
-  sprinkles({
+  spacingSprinkles({
     paddingX: 12,
     paddingY: 8,
-    placeItems: "center",
+    placeItems: "flexCenter",
   }),
   {
     height: 40,
     borderRadius: 8,
     gap: 4,
-    display: "flex",
   },
 ]);
 

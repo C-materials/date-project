@@ -1,34 +1,41 @@
 import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 
-//축약어 설정
 /**
- * @note paddingX, paddingY, marginX, marginY
- * @note placeItems : ["justifyContent", "alignItems"],
- *
- *
+ * 축약어 설정
+ * @note paddingX, paddingY, marginX, marginY : number | "auto"
+ * @note placeItems : "flexCenter"
  */
-const positionSprinkles = defineProperties({
+const spacingValues = [
+  ...Array(51)
+    .fill(0)
+    .map((_, i) => 0 + i * 4),
+  "auto",
+];
+
+const sprinkles = defineProperties({
   properties: {
-    paddingTop: [8, 12],
-    paddingBottom: [8, 12],
-    paddingLeft: [8, 12],
-    paddingRight: [8, 12],
-    marginTop: [],
-    marginBottom: [],
-    marginLeft: [8, 12],
-    marginRight: [8, 12],
-    justifyContent: ["flex-start", "center", "flex-end"],
-    alignItems: ["flex-start", "center", "flex-end"],
+    paddingTop: spacingValues,
+    paddingBottom: spacingValues,
+    paddingLeft: spacingValues,
+    paddingRight: spacingValues,
+    marginTop: spacingValues,
+    marginBottom: spacingValues,
+    marginLeft: spacingValues,
+    marginRight: spacingValues,
+    placeItems: {
+      flexCenter: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      },
+    },
   },
   shorthands: {
-    padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
-    margin: ["marginTop", "marginBottom", "marginLeft", "marginRight"],
     paddingX: ["paddingLeft", "paddingRight"],
     paddingY: ["paddingTop", "paddingBottom"],
     marginX: ["marginLeft", "marginRight"],
     marginY: ["marginTop", "marginBottom"],
-    placeItems: ["justifyContent", "alignItems"],
   },
 });
 
-export const sprinkles = createSprinkles(positionSprinkles);
+export const spacingSprinkles = createSprinkles(sprinkles);
