@@ -3,13 +3,14 @@ import ButtonComponent from "./ButtonComponent";
 import { story, block } from "./storyStyle.css";
 const meta: Meta<typeof ButtonComponent> = {
   component: ButtonComponent,
-  title: "UI/Button/Primary",
+  title: "UI/Button",
+  tags: ["!autodocs"],
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary_Button: Story = {
+export const Button: Story = {
   render: () => {
     return (
       <div className={story}>
