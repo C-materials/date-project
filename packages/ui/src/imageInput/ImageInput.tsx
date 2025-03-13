@@ -1,8 +1,9 @@
 import InputWrapper from "../inputWrapper/InputWrapper";
-import addImage from "../../assets/Add_Image.png";
+import addImage from "../../assets/addImage.png";
 import * as style from "./style.css";
 import useImageUrlStore from "../store/useImageUrlStore";
-import { ChangeEvent, useState } from "react";
+import type { ChangeEvent } from "react";
+import { useState } from "react";
 const ImageInput = () => {
   const { setUrlList, urlList } = useImageUrlStore();
   const [isActive, setIsActive] = useState(false);

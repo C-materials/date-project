@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { UrlType } from "../types/imageUrlType";
+import type { UrlType } from "../types/imageUrlType";
 
 interface ImageUrlStoreType {
   urlList: UrlType[];
