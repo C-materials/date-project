@@ -1,6 +1,6 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 import { sprinkles } from "../globalStyle/sprinkles.css";
-import { Color, ColorVar } from "../globalStyle/theme.css";
+import { Color } from "../globalStyle/theme.css";
 
 const base = style([
   sprinkles({

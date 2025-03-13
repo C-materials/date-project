@@ -1,18 +1,18 @@
-import * as style from "./style.css";
+import { buttonVariant } from "./style.css";
 interface ButtonProps {
   children: React.ReactNode;
   type: "button" | "submit" | "reset";
+  variant: "primary" | "secondary" | "outline" | "accent";
   onClick?: any;
   disabled?: boolean;
   icon?: any;
-  variant: "primary" | "secondary" | "outline" | "accent";
 }
 
-const BaseButton = ({ ...args }: ButtonProps) => {
+const ButtonComponent = ({ ...args }: ButtonProps) => {
   return (
     <button
-      className={""}
-      type={args.type}
+      type={args.type || "button"}
+      className={buttonVariant[args.variant]}
       disabled={args.disabled || false}
       onClick={args.onClick}
     >
@@ -22,4 +22,4 @@ const BaseButton = ({ ...args }: ButtonProps) => {
   );
 };
 
-export default BaseButton;
+export default ButtonComponent;
