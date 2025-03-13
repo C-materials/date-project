@@ -10,10 +10,11 @@ type FlattenObjectKeys<T, Prefix extends string = ""> = {
 // 색상 토큰
 export const ColorVar = createGlobalTheme(":root", {
   white: "#fff",
+  transparent: "tranparent",
   green: "#00CD0E",
   yellow: "#FFD000",
   red: "#D90000",
-  gray: {
+  grey: {
     1: "#EBEBEB",
     2: "#DADADA",
     3: "#C1C1C1",
@@ -25,7 +26,7 @@ export const ColorVar = createGlobalTheme(":root", {
     9: "#2C2C2C",
     10: "#121212",
   },
-  grayBlue: {
+  greyBlue: {
     1: "#EBEBEB",
     2: "#D2D5D6",
     3: "#B1B5B8",
@@ -65,19 +66,19 @@ export const ColorVar = createGlobalTheme(":root", {
   },
 });
 export const Color = createGlobalTheme(":root", {
-  bg: ColorVar.gray[10],
+  bg: ColorVar.grey[10],
   success: ColorVar.green,
   warning: ColorVar.yellow,
   criticcal: ColorVar.red,
   primary: {
     default: ColorVar.white,
-    hover: ColorVar.gray[1],
-    active: ColorVar.grayBlue[2],
+    hover: ColorVar.grey[1],
+    active: ColorVar.greyBlue[2],
   },
   secondary: {
-    default: ColorVar.grayBlue[9],
-    hover: ColorVar.grayBlue[8],
-    active: ColorVar.gray[6],
+    default: ColorVar.greyBlue[9],
+    hover: ColorVar.greyBlue[8],
+    active: ColorVar.grey[6],
   },
   accent: {
     default: ColorVar.blue.dark[2],
@@ -85,13 +86,29 @@ export const Color = createGlobalTheme(":root", {
     active: ColorVar.blue.dark[7],
     disabled: ColorVar.blue.dark[8],
   },
+  outline: {
+    default: ColorVar.transparent,
+    hover: ColorVar.greyBlue[4],
+    active: ColorVar.greyBlue[2],
+    disabled: ColorVar.greyBlue[8],
+  },
   text: {
     default: ColorVar.white,
-    sub: ColorVar.gray[6],
-    light: ColorVar.grayBlue[3],
-    inverse: ColorVar.gray[10],
+    sub: ColorVar.grey[6],
+    light: ColorVar.greyBlue[3],
+    inverse: ColorVar.grey[10],
   },
-  border: ColorVar.gray[6],
+  border: ColorVar.grey[6],
 });
 
 export type Colors = FlattenObjectKeys<typeof Color>;
+
+//반응형 미디어쿼리
+export const Media = createGlobalTheme(":root", {
+  SCREEN_SM: "screen and (min-width: 480px)",
+  SCREEN_MD: "screen and (min-width: 768px)",
+  SCREEN_LG: "screen and (min-width: 1024px)",
+  SCREEN_XL: "screen and (min-width: 1280px)",
+});
+
+export type MEDIA = typeof Media;

@@ -1,14 +1,34 @@
 import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 
-// 반응형 break point 에 맞게 변경 + 세부 설정 안(못)했음
-const responsiveProperties = defineProperties({
-  conditions: {
-    mobile: { "@media": "screen and (min-width : 480px)" },
-    tablet: { "@media": "screen and (min-width : 768px)" },
-    desktop: { "@media": "screen and (min-width : 1024px)" },
+//축약어 설정
+/**
+ * @note paddingX, paddingY, marginX, marginY
+ * @note placeItems : ["justifyContent", "alignItems"],
+ *
+ *
+ */
+const positionSprinkles = defineProperties({
+  properties: {
+    paddingTop: [],
+    paddingBottom: [],
+    paddingLeft: [],
+    paddingRight: [],
+    marginTop: [],
+    marginBottom: [],
+    marginLeft: [],
+    marginRight: [],
+    justifyContent: ["flex-start", "center", "flex-end"],
+    alignItems: ["flex-start", "center", "flex-end"],
   },
-  defaultCondition: "desktop",
-  properties: {},
+  shorthands: {
+    padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
+    margin: ["marginTop", "marginBottom", "marginLeft", "marginRight"],
+    paddingX: ["paddingLeft", "paddingRight"],
+    paddingY: ["paddingTop", "paddingBottom"],
+    marginX: ["marginLeft", "marginRight"],
+    marginY: ["marginTop", "marginBottom"],
+    placeItems: ["justifyContent", "alignItems"],
+  },
 });
 
-export const sprinkles = createSprinkles(responsiveProperties);
+export const sprinkles = createSprinkles(positionSprinkles);
