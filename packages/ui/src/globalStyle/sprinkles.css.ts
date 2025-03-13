@@ -9,14 +9,14 @@ import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
  */
 const positionSprinkles = defineProperties({
   properties: {
-    paddingTop: [],
-    paddingBottom: [],
-    paddingLeft: [],
-    paddingRight: [],
+    paddingTop: [8, 12],
+    paddingBottom: [8, 12],
+    paddingLeft: [8, 12],
+    paddingRight: [8, 12],
     marginTop: [],
     marginBottom: [],
-    marginLeft: [],
-    marginRight: [],
+    marginLeft: [8, 12],
+    marginRight: [8, 12],
     justifyContent: ["flex-start", "center", "flex-end"],
     alignItems: ["flex-start", "center", "flex-end"],
   },
