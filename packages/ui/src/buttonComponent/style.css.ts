@@ -11,10 +11,12 @@ const base = style([
   {
     height: 40,
     borderRadius: 8,
+    gap: 4,
+    display: "flex",
   },
 ]);
 
-export const buttonVariant = styleVariants({
+export const buttonStyle = styleVariants({
   primary: [
     base,
     {

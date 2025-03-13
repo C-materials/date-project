@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ButtonComponent from "./ButtonComponent";
 import type { MouseEvent } from "react";
+import { FiUserPlus } from "react-icons/fi";
+
 const meta: Meta<typeof ButtonComponent> = {
   component: ButtonComponent,
   title: "UI/Button/Variant",
@@ -52,5 +54,14 @@ export const Outline_Button: Story = {
     variant: "outline",
     disabled: false,
     children: "버튼입니다",
+  },
+};
+
+export const Icon_Button: Story = {
+  args: {
+    variant: "outline",
+    disabled: false,
+    children: "버튼입니다",
+    icon: <FiUserPlus />,
   },
 };

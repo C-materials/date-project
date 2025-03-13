@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ButtonComponent from "./ButtonComponent";
 import { story, block } from "./storyStyle.css";
+import { FiUserPlus } from "react-icons/fi";
+
 const meta: Meta<typeof ButtonComponent> = {
   component: ButtonComponent,
   title: "UI/Button",
@@ -47,6 +49,20 @@ export const Button: Story = {
             DEFAULT
           </ButtonComponent>
           <ButtonComponent type="button" variant="accent" disabled>
+            DISABLED
+          </ButtonComponent>
+        </div>
+        <h3>with Icon</h3>
+        <div className={block}>
+          <ButtonComponent type="button" variant="accent" icon={<FiUserPlus />}>
+            DEFAULT
+          </ButtonComponent>
+          <ButtonComponent
+            type="button"
+            variant="accent"
+            icon={<FiUserPlus />}
+            disabled
+          >
             DISABLED
           </ButtonComponent>
         </div>

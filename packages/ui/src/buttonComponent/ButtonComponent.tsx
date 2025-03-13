@@ -1,4 +1,4 @@
-import { buttonVariant } from "./style.css";
+import { buttonStyle } from "./style.css";
 interface ButtonProps {
   children: React.ReactNode;
   type: "button" | "submit" | "reset";
@@ -12,7 +12,7 @@ const ButtonComponent = ({ ...args }: ButtonProps) => {
   return (
     <button
       type={args.type || "button"}
-      className={buttonVariant[args.variant]}
+      className={buttonStyle[args.variant]}
       disabled={args.disabled || false}
       onClick={args.onClick}
     >
