@@ -69,7 +69,7 @@ export const Color = createGlobalTheme(":root", {
   bg: ColorVar.grey[10],
   success: ColorVar.green,
   warning: ColorVar.yellow,
-  criticcal: ColorVar.red,
+  critical: ColorVar.red,
   primary: {
     default: ColorVar.white,
     hover: ColorVar.grey[1],

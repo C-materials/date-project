@@ -1,0 +1,133 @@
+import { Meta, ColorPalette, ColorItem } from "@storybook/blocks";
+
+<Meta title="Colors" />;<h1>주요 색상 </h1>
+<h2>Color.name 으로 사용</h2>
+<ColorPalette>
+  <ColorItem
+    title="Color.primary"
+    colors={{
+      default: "#FFFFFF",
+      hover: "#EBEBEB",
+      active: "#D2D5D6",
+    }}
+  />
+  <ColorItem
+    title="Color.secondary"
+    colors={{
+      default: "#1F242A",
+      hover: "#333A41",
+      active: "#767676",
+    }}
+  />
+  <ColorItem
+    title="Color.accent"
+    colors={{
+      "default.dark": "#0062D2",
+      "hover.dark": "#0053B2",
+      "active.dark": "#003775",
+      "disabled.dark": "#002249",
+    }}
+  />
+  <ColorItem
+    title="Color.outline"
+    colors={{
+      default: "transparent",
+      hover: "#929AA1",
+      active: "#B1B5B8",
+      disabled: "#1F242A",
+    }}
+  />
+  <ColorItem
+    title="Color.text"
+    colors={{
+      default: "#FFFFFF",
+      sub: "#767676",
+      light: "#B1B5B8",
+      inverse: "#121212",
+    }}
+  />
+  <ColorItem
+    title="Color"
+    colors={{
+      "Color.bg": "#121212",
+      "Color.success": "#00CD0E",
+      "Color.warning": "#FFD000",
+      "Color.critical": "#D90000",
+    }}
+  />
+</ColorPalette>
+
+<h1>전체 색상 </h1>
+<h2>ColorVar.name 으로 사용</h2>
+<ColorPalette>
+  <ColorItem
+    title="ColorVar.grey"
+    colors={{
+      1: "#EBEBEB",
+      2: "#DADADA",
+      3: "#C1C1C1",
+      4: "#AEAEAE",
+      5: "#929292",
+      6: "#767676",
+      7: "#5D5D5D",
+      8: "#484848",
+      9: "#2C2C2C",
+      10: "#121212",
+    }}
+  />
+  <ColorItem
+    title="ColorVar.greyBlue"
+    colors={{
+      1: "#EBEBEB",
+      2: "#D2D5D6",
+      3: "#B1B5B8",
+      4: "#929AA1",
+      5: "#6C767F",
+      6: "#545F6A",
+      7: "#434E59",
+      8: "#333A41",
+      9: "#1F242A",
+      10: "#111115",
+    }}
+  />
+  <ColorItem
+    title="ColorVar.blue.light"
+    colors={{
+      1: "#F0F7FF",
+      2: "#DCECFF",
+      3: "#C0DDFF",
+      4: "#A3CDFF",
+      5: "#86BDFE",
+      6: "#73B3FF",
+      7: "#5AA5FF",
+      8: "#3792FF",
+      9: "#1F85FF",
+      10: "#0074FF",
+    }}
+  />
+  <ColorItem
+    title="ColorVar.blue.dark"
+    colors={{
+      1: "#006DEF",
+      2: "#0062D2",
+      3: "#005CC4",
+      4: "#0053B2",
+      5: "#004A9E",
+      6: "#004390",
+      7: "#003775",
+      8: "#002C5E",
+      9: "#002249",
+      10: "#001732",
+    }}
+  />
+  <ColorItem
+    title="ColorVar"
+    colors={{
+      "ColorVar.white": "#FFFFFF",
+      "ColorVar.transparent": "transparent",
+      "ColorVar.green": "#00CD0E",
+      "ColorVar.yellow": "#FFD000",
+      "ColorVar.red": "#D90000",
+    }}
+  />
+</ColorPalette>

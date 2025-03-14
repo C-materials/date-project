@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ImageInput from "../imageInput/ImageInput";
 import ImagePreview from "../imageInput/imagePreview/ImagePreview";
-import useImageUrlStore from "../store/useImageUrlStore";
+import useImageUrlStore from "../../store/useImageUrlStore";
 import * as style from "./style.css";
 import type { UrlType } from "../types/imageUrlType";
 

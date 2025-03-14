@@ -1,5 +1,5 @@
 import InputWrapper from "../../inputWrapper/InputWrapper";
-import useImageUrlStore from "../../store/useImageUrlStore";
+import useImageUrlStore from "../../../store/useImageUrlStore";
 import type { UrlType } from "../../types/imageUrlType";
 import { GoXCircleFill } from "react-icons/go";
 import * as style from "./style.css";
