@@ -1,14 +1,17 @@
-name: 'storybook Chromatic 배포'
+name: "storybook Chromatic 배포"
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main # 메인 브랜치에 푸시될 때 실행
     paths:
-      - 'apps/storybook/**'
+      - "apps/storybook/**"
 
 jobs:
-  storybook-deploy:
+  storybook-preview:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -41,5 +44,29 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_TOKEN }}
           onlyChanged: true
+          autoAcceptChanges: true
           externals: apps/**
           workingDir: apps/storybook
+
+      - name: 현재 시간 가져오기
+        uses: josStorer/get-current-time@v2
+        id: current-time
+        with:
+          format: "YYYY년 MM월 DD일 HH시 mm분 ss초"
+          utcOffset: "+09:00"
+
+    outputs:
+      storybook_url: ${{ steps.chromatic.outputs.storybookUrl }}
+      current_time: ${{ steps.current-time.outputs.formattedTime }}
+
+  github-bot-storybook:
+    runs-on: ubuntu-latest
+    needs: [storybook-preview]
+    steps:
+      - name: PR 코멘트 남기기
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          comment_tag: ${{github.event.number}}-storybook
+          message: |
+            💄 Storybook: ${{ needs.storybook-preview.outputs.storybook_url }}
+            🕖 Update: ${{ needs.storybook-preview.outputs.current_time }}

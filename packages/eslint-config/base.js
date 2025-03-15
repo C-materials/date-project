@@ -18,6 +18,8 @@ export const config = [
       "turbo/no-undeclared-env-vars": "warn",
       "prettier/prettier": "warn",
       "react/button-has-type": "error",
+      "prefer-const": "off",
+      "@typescript-eslint/consistent-type-imports": "error",
     },
   },
   {

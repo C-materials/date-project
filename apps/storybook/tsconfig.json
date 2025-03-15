@@ -12,8 +12,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".", // alias 기준 설정
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@repo/ui/*": ["../../../packages/ui/*"] // alias  설정
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
