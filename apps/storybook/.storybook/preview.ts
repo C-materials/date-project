@@ -1,5 +1,5 @@
+import "@repo/ui/global.css"; // alias 설정해도 안됨
 import type { Preview } from "@storybook/react";
-import "../../../packages/ui/src/globalStyle/global.css"; // alias 설정해도 안됨
 
 const preview: Preview = {
   parameters: {

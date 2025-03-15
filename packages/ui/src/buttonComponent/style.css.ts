@@ -15,13 +15,14 @@ const base = style([
   },
 ]);
 
+// recipe로 바꿔보기
 export const buttonStyle = styleVariants({
   primary: [
     base,
     {
       backgroundColor: Color.primary.default,
       color: Color.text.inverse,
-      ":hover": { backgroundColor: Color.primary.hover },
+      ":hover:not(:disabled)": { backgroundColor: Color.primary.hover },
       ":active": { backgroundColor: Color.primary.active },
       ":disabled": { color: Color.text.light },
     },

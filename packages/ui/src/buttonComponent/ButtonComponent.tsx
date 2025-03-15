@@ -1,20 +1,18 @@
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { buttonStyle } from "./style.css";
-interface ButtonProps {
+
+interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   children: React.ReactNode;
-  type: "button" | "submit" | "reset";
   variant: "primary" | "secondary" | "outline" | "accent";
-  onClick?: any;
-  disabled?: boolean;
-  icon?: any;
+  icon?: ReactNode;
 }
 
-const ButtonComponent = ({ ...args }: ButtonProps) => {
+const ButtonComponent = ({ type, ...args }: ButtonProps) => {
   return (
     <button
-      type={args.type || "button"}
-      className={buttonStyle[args.variant]}
-      disabled={args.disabled || false}
-      onClick={args.onClick}
+      type={type || "button"}
+      className={`${buttonStyle[args.variant]} ${args.className}`}
+      {...args}
     >
       {args.icon}
       {args.children}
