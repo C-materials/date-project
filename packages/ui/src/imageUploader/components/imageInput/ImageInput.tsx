@@ -13,20 +13,19 @@ const ImageInput = () => {
     if (urlList.length + files.length > 4) {
       alert("사진은 최대 4장 등록 가능합니다.");
     } else {
-      const newUrlList = [...urlList];
-      for (let file of files) {
-        if (file.size > LIMIT_SIZE) {
-          alert("3MB 이하의 파일만 업로드 가능합니다.");
-        }
-        const url = URL.createObjectURL(file);
-        const uuid = crypto.randomUUID();
-        const urlObj = {
-          id: uuid,
-          url,
-        };
-        newUrlList.push(urlObj);
-        setUrlList(newUrlList);
+      const filteredFiles = Array.from(files).filter(
+        (file) => file.size < LIMIT_SIZE,
+      );
+      if (filteredFiles.length <= 0) {
+        alert("3MB 이하의 파일만 업로드 가능합니다");
       }
+      setUrlList([
+        ...urlList,
+        ...filteredFiles.map((file) => ({
+          id: crypto.randomUUID(),
+          url: URL.createObjectURL(file),
+        })),
+      ]);
     }
   };
   const handleSelectFile = (e: ChangeEvent<HTMLInputElement>) => {
