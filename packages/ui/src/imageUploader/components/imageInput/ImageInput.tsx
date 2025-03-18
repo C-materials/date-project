@@ -2,7 +2,6 @@ import type { ChangeEvent } from "react";
 import { useState } from "react";
 import addImage from "../../../../assets/addImage.png";
 import useImageUrlStore from "../../../../store/useImageUrlStore";
-import InputWrapper from "../InputWrapper/InputWrapper";
 import * as style from "./style.css";
 
 const ImageInput = () => {
@@ -49,7 +48,7 @@ const ImageInput = () => {
   };
 
   return (
-    <InputWrapper>
+    <div className={style.wrapper}>
       <label
         className={isActive ? `${style.label.active}` : `${style.label.none}`}
         htmlFor="image"
@@ -72,7 +71,7 @@ const ImageInput = () => {
         accept="image/png, image/jpeg, image/jpg"
         onChange={(e) => handleSelectFile(e)}
       ></input>
-    </InputWrapper>
+    </div>
   );
 };
 
