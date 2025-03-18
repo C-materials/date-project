@@ -10,7 +10,7 @@ type FlattenObjectKeys<T, Prefix extends string = ""> = {
 // 색상 토큰
 export const ColorVar = createGlobalTheme(":root", {
   white: "#fff",
-  transparent: "tranparent",
+  transparent: "transparent",
   green: "#00CD0E",
   yellow: "#FFD000",
   red: "#D90000",

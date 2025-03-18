@@ -1,5 +1,5 @@
 import { style, styleVariants } from "@vanilla-extract/css";
-import { Color } from "../globalStyle/theme.css";
+import { Color } from "../../../globalStyle/theme.css";
 
 export const basicInput = style({
   display: "none",
