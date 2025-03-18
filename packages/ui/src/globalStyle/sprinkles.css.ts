@@ -1,4 +1,4 @@
-import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
+import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 
 /**
  * 축약어 설정
