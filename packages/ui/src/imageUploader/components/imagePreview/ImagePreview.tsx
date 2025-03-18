@@ -1,8 +1,9 @@
 import { GoXCircleFill } from "react-icons/go";
 import useImageUrlStore from "../../../../store/useImageUrlStore";
+import { wrapper } from "../../../globalStyle/InputWrapper.css";
 import type { UrlType } from "../../types/imageUrlType";
-import InputWrapper from "../InputWrapper/InputWrapper";
 import * as style from "./style.css";
+
 const ImagePreview = ({ url }: { url: UrlType }) => {
   const { deleteUrl } = useImageUrlStore();
   const handleDeleteImageFile = () => {
@@ -10,7 +11,7 @@ const ImagePreview = ({ url }: { url: UrlType }) => {
   };
 
   return (
-    <InputWrapper>
+    <div className={wrapper}>
       <img src={url.url} alt="미리보기" width={50} height={50} />
       <button
         type="button"
@@ -19,7 +20,7 @@ const ImagePreview = ({ url }: { url: UrlType }) => {
       >
         <GoXCircleFill />
       </button>
-    </InputWrapper>
+    </div>
   );
 };
 

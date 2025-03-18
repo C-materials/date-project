@@ -2,6 +2,7 @@ import type { ChangeEvent } from "react";
 import { useState } from "react";
 import addImage from "../../../../assets/addImage.png";
 import useImageUrlStore from "../../../../store/useImageUrlStore";
+import { wrapper } from "../../../globalStyle/InputWrapper.css";
 import * as style from "./style.css";
 
 const ImageInput = () => {
@@ -48,9 +49,11 @@ const ImageInput = () => {
   };
 
   return (
-    <div className={style.wrapper}>
+    <div className={wrapper}>
       <label
-        className={isActive ? `${style.label.active}` : `${style.label.none}`}
+        className={style.labelStyle({
+          border: isActive ? "active" : "none",
+        })}
         htmlFor="image"
         onDragEnter={handleDragStart}
         onDragOver={handleDragOver}
