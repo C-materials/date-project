@@ -21,20 +21,26 @@ export const buttonStyle = styleVariants({
     {
       backgroundColor: Color.primary.default,
       color: Color.text.inverse,
-      ":hover:not(:disabled)": {
-        backgroundColor: Color.primary.hover,
-      },
       ":active": { backgroundColor: Color.primary.active },
       ":disabled": { color: Color.text.light },
+      selectors: {
+        "&:not(:disabled):hover": {
+          backgroundColor: Color.primary.hover,
+        },
+      },
     },
   ],
   secondary: [
     base,
     {
       backgroundColor: Color.secondary.default,
-      ":hover:not(:disabled)": { backgroundColor: Color.secondary.hover },
       ":active": { backgroundColor: Color.secondary.active },
       ":disabled": { color: Color.text.sub },
+      selectors: {
+        "&:not(:disabled):hover": {
+          backgroundColor: Color.secondary.hover,
+        },
+      },
     },
   ],
   outline: [
@@ -43,11 +49,15 @@ export const buttonStyle = styleVariants({
       border: "1px solid",
       borderColor: Color.border,
       backgroundColor: "transparent",
-      ":hover:not(:disabled)": { borderColor: Color.outline.hover },
       ":active": { borderColor: Color.outline.active },
       ":disabled": {
         borderColor: Color.outline.disabled,
         color: Color.text.sub,
+      },
+      selectors: {
+        "&:not(:disabled):hover": {
+          backgroundColor: Color.outline.hover,
+        },
       },
     },
   ],
@@ -55,11 +65,15 @@ export const buttonStyle = styleVariants({
     base,
     {
       backgroundColor: Color.accent.default,
-      ":hover:not(:disabled)": { backgroundColor: Color.accent.hover },
       ":active": { backgroundColor: Color.accent.active },
       ":disabled": {
         backgroundColor: Color.accent.disabled,
         color: Color.text.sub,
+      },
+      selectors: {
+        "&:not(:disabled):hover": {
+          backgroundColor: Color.accent.hover,
+        },
       },
     },
   ],
