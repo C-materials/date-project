@@ -11,10 +11,10 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
  * @param type, variant : "primary" | "secondary" | "outline" | "accent"
  * @returns
  */
-const ButtonComponent = ({ type, ...args }: ButtonProps) => {
+const ButtonComponent = ({ type = "button", ...args }: ButtonProps) => {
   return (
     <button
-      type={type || "button"}
+      type={type}
       className={`${buttonStyle[args.variant]} ${args.className}`}
       {...args}
     >
