@@ -2,7 +2,7 @@ import type { ChangeEvent } from "react";
 import { useState } from "react";
 import addImage from "../../../../assets/addImage.png";
 import useImageUrlStore from "../../../../store/useImageUrlStore";
-import InputWrapper from "../inputWrapper/InputWrapper";
+import InputWrapper from "../InputWrapper/InputWrapper";
 import * as style from "./style.css";
 
 const ImageInput = () => {
