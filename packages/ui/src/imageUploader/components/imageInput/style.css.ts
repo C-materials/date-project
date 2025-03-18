@@ -11,13 +11,13 @@ export const base = style({
   justifyContent: "center",
   alignItems: "center",
   cursor: "pointer",
-  gap: 10,
+  gap: "10px",
   width: "100%",
   color: Color.text.inverse,
-  fontSize: 10,
+  fontSize: "10px",
   border: "2px dashed",
   borderColor: "transparent",
-  borderRadius: 8,
+  borderRadius: "8px",
 });
 
 export const label = styleVariants({

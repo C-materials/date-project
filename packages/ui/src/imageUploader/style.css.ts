@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 
 export const previewList = style({
   display: "flex",
-  gap: 8,
+  gap: "8px",
   justifyContent: "start",
   position: "relative",
 });
@@ -10,5 +10,5 @@ export const previewList = style({
 export const wrapper = style({
   display: "flex",
   flexDirection: "column",
-  gap: 16,
+  gap: "16px",
 });
