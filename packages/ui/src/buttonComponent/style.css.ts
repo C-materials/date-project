@@ -14,7 +14,6 @@ const base = style([
     gap: 4,
   },
 ]);
-
 // recipe로 바꿔보기
 export const buttonStyle = styleVariants({
   primary: [
@@ -22,7 +21,9 @@ export const buttonStyle = styleVariants({
     {
       backgroundColor: Color.primary.default,
       color: Color.text.inverse,
-      ":hover:not(:disabled)": { backgroundColor: Color.primary.hover },
+      ":hover:not(:disabled)": {
+        backgroundColor: Color.primary.hover,
+      },
       ":active": { backgroundColor: Color.primary.active },
       ":disabled": { color: Color.text.light },
     },
@@ -31,7 +32,7 @@ export const buttonStyle = styleVariants({
     base,
     {
       backgroundColor: Color.secondary.default,
-      ":hover": { backgroundColor: Color.secondary.hover },
+      ":hover:not(:disabled)": { backgroundColor: Color.secondary.hover },
       ":active": { backgroundColor: Color.secondary.active },
       ":disabled": { color: Color.text.sub },
     },
@@ -42,7 +43,7 @@ export const buttonStyle = styleVariants({
       border: "1px solid",
       borderColor: Color.border,
       backgroundColor: "transparent",
-      ":hover": { borderColor: Color.outline.hover },
+      ":hover:not(:disabled)": { borderColor: Color.outline.hover },
       ":active": { borderColor: Color.outline.active },
       ":disabled": {
         borderColor: Color.outline.disabled,
@@ -54,7 +55,7 @@ export const buttonStyle = styleVariants({
     base,
     {
       backgroundColor: Color.accent.default,
-      ":hover": { backgroundColor: Color.accent.hover },
+      ":hover:not(:disabled)": { backgroundColor: Color.accent.hover },
       ":active": { backgroundColor: Color.accent.active },
       ":disabled": {
         backgroundColor: Color.accent.disabled,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef } from "react";
 import useImageUrlStore from "../../store/useImageUrlStore";
 import ImageInput from "./components/ImageInput/ImageInput";
 import ImagePreview from "./components/ImagePreview/ImagePreview";
@@ -7,17 +7,19 @@ import type { UrlType } from "./types/imageUrlType";
 
 const ImageUploader = () => {
   const { urlList, setUrlList } = useImageUrlStore();
-  const [selectItem, setSelectItem] = useState<UrlType>();
+  const selectRef = useRef<UrlType | null>(null);
 
   const handleDrag = (e: React.DragEvent, urlItem: UrlType) => {
     //프리뷰 아이템 드래그 시작할때
     e.stopPropagation();
-    setSelectItem(urlItem);
+    selectRef.current = urlItem;
   };
+
   const handleDrop = (e: React.DragEvent, targetIndex: number) => {
     // 드롭 시, urlList에서 순서를 바꿔주기
     e.preventDefault();
     e.stopPropagation();
+    const selectItem = selectRef.current;
     if (!selectItem) return;
 
     const prevList = [...urlList];
