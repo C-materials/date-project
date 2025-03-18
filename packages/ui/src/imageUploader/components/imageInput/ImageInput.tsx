@@ -29,8 +29,9 @@ const ImageInput = () => {
     }
   };
   const handleSelectFile = (e: ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files || [];
-    uploadFiles(files as FileList);
+    const files = e.target.files;
+    if (!files) return;
+    uploadFiles(files);
   };
   const handleDragStart = (e: React.DragEvent) => {
     e.preventDefault();

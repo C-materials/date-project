@@ -3,7 +3,7 @@ import { style } from "@vanilla-extract/css";
 export const previewList = style({
   display: "flex",
   gap: "8px",
-  justifyContent: "start",
+  justifyContent: "flex-start",
   position: "relative",
 });
 
