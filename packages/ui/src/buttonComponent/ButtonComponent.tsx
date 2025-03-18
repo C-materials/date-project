@@ -6,7 +6,11 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   variant: "primary" | "secondary" | "outline" | "accent";
   icon?: ReactNode;
 }
-
+/**
+ *
+ * @param type, variant : "primary" | "secondary" | "outline" | "accent"
+ * @returns
+ */
 const ButtonComponent = ({ type, ...args }: ButtonProps) => {
   return (
     <button
