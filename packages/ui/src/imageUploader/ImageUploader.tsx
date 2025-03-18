@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useImageUrlStore from "../../store/useImageUrlStore";
-import ImageInput from "../imageInput/ImageInput";
-import ImagePreview from "../imageInput/imagePreview/ImagePreview";
+import ImageInput from "./components/imageInput/ImageInput";
+import ImagePreview from "./components/imagePreview/ImagePreview";
 import * as style from "./style.css";
 import type { UrlType } from "./types/imageUrlType";
 
@@ -33,7 +33,7 @@ const ImageUploader = () => {
       }
     }
   };
-  const hadleDragEnter = (e: React.DragEvent) => {
+  const handleDragEnter = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
   };
@@ -47,7 +47,7 @@ const ImageUploader = () => {
             key={urlItem.id}
             draggable
             onDrop={(e) => handleDrop(e, urlItem)}
-            onDragOver={hadleDragEnter}
+            onDragOver={handleDragEnter}
             onDragStart={(e) => handleDrag(e, urlItem)}
           >
             <ImagePreview url={urlItem} />
