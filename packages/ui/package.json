@@ -9,7 +9,7 @@
     },
     "./global.css": {
       "types": "./src/globalStyle/global.css.ts",
-      "default": "./dist/globalStyle/global.css.js"
+      "default": "./dist/src/globalStyle/global.css.js"
     }
   },
   "scripts": {
