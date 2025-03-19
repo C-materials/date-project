@@ -72,13 +72,13 @@ export const Color = createGlobalTheme(":root", {
   critical: ColorVar.red,
   primary: {
     default: ColorVar.white,
-    hover: ColorVar.grey[1],
+    hover: ColorVar.greyBlue[1],
     active: ColorVar.greyBlue[2],
   },
   secondary: {
     default: ColorVar.greyBlue[9],
     hover: ColorVar.greyBlue[8],
-    active: ColorVar.grey[6],
+    active: ColorVar.greyBlue[6],
   },
   accent: {
     default: ColorVar.blue.dark[2],
@@ -95,10 +95,10 @@ export const Color = createGlobalTheme(":root", {
   text: {
     default: ColorVar.white,
     sub: ColorVar.grey[6],
-    light: ColorVar.greyBlue[3],
+    light: ColorVar.grey[3],
     inverse: ColorVar.grey[10],
   },
-  border: ColorVar.grey[6],
+  border: ColorVar.greyBlue[6],
 });
 
 export type Colors = FlattenObjectKeys<typeof Color>;
