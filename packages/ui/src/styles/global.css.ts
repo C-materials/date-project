@@ -8,7 +8,3 @@ globalStyle("body", {
   color: Color.text.default,
   // font 설정 추가
 });
-
-export const globalStyles = {
-  applied: true,
-};

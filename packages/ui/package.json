@@ -8,11 +8,7 @@
       "import": "./dist/*.mjs",
       "default": "./dist/*.js"
     },
-    "./global.css": {
-      "types": "./dist/styles/global.css.d.ts",
-      "import": "./dist/styles.mjs",
-      "default": "./dist/styles.mjs"
-    }
+    "./global.css": "./dist/global.css"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

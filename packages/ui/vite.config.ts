@@ -1,4 +1,6 @@
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+import fs from "fs";
+import path from "path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import pkg from "./package.json";
@@ -10,6 +12,7 @@ export default defineConfig({
       entry: {
         ui: "src/components/index.ts",
         styles: "src/styles/index.ts",
+        "global.css": "src/styles/global.css.ts",
       },
       formats: ["es"],
       fileName: (format, entryName) => `${entryName}.mjs`,
@@ -22,9 +25,33 @@ export default defineConfig({
     },
   },
   plugins: [
-    vanillaExtractPlugin({
-      identifiers: ({ hash }) => `_${hash}`,
-    }),
+    vanillaExtractPlugin({}) as any,
     dts(),
+    {
+      name: "copy-vanilla-css-to-global-css",
+      closeBundle() {
+        try {
+          const distDir = path.resolve(__dirname, "dist");
+
+          const files = fs.readdirSync(distDir);
+          const cssFile = files.find((file) => file.endsWith(".css"));
+
+          if (cssFile) {
+            const cssContent = fs.readFileSync(
+              path.join(distDir, cssFile),
+              "utf8",
+            );
+            fs.writeFileSync(path.join(distDir, "global.css"), cssContent);
+            console.log(
+              "Successfully created global.css from Vanilla Extract output",
+            );
+          } else {
+            console.warn("No CSS file found to copy as global.css");
+          }
+        } catch (error) {
+          console.error("Error creating global.css:", error);
+        }
+      },
+    },
   ],
 });
