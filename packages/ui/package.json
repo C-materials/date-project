@@ -6,6 +6,10 @@
     "./*": {
       "types": "./src/*.ts",
       "default": "./dist/*.js"
+    },
+    "./global.css": {
+      "types": "./src/globalStyle/global.css.ts",
+      "default": "./dist/src/globalStyle/global.css.js"
     }
   },
   "scripts": {

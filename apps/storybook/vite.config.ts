@@ -8,7 +8,7 @@ export default defineConfig({
   // alias 설정 추가
   resolve: {
     alias: {
-      "@repo/ui": path.resolve(__dirname, "../../../packages/ui"),
+      "@repo/ui": path.resolve(__dirname, "../../packages/ui/src"),
     },
   },
 });
