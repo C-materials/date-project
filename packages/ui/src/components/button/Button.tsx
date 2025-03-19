@@ -11,7 +11,7 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
  * @param type, variant : "primary" | "secondary" | "outline" | "accent"
  * @returns
  */
-const ButtonComponent = ({ type = "button", ...args }: ButtonProps) => {
+const Button = ({ type = "button", ...args }: ButtonProps) => {
   return (
     <button
       type={type}
@@ -24,4 +24,4 @@ const ButtonComponent = ({ type = "button", ...args }: ButtonProps) => {
   );
 };
 
-export default ButtonComponent;
+export default Button;

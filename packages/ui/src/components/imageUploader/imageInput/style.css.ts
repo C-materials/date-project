@@ -1,6 +1,6 @@
+import { Color } from "@styles/theme.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
-import { Color } from "../../../globalStyle/theme.css";
 
 export const basicInput = style({
   display: "none",

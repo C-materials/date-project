@@ -1,5 +1,5 @@
+import { Color } from "@styles/theme.css";
 import { style } from "@vanilla-extract/css";
-import { Color } from "../../../globalStyle/theme.css";
 
 export const deleteButton = style({
   position: "absolute",
