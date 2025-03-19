@@ -1,6 +1,6 @@
-import useImageUrlStore from "@store/useImageUrlStore";
-import { wrapper } from "@styles/inputComponentWrapper.css";
 import { GoXCircleFill } from "react-icons/go";
+import useImageUrlStore from "../../../store/useImageUrlStore";
+import { wrapper } from "../../../styles/inputComponentWrapper.css";
 import type { UrlType } from "../ImageUploader.types";
 import * as style from "./style.css";
 

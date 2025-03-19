@@ -1,5 +1,5 @@
-import useImageUrlStore from "@store/useImageUrlStore";
 import { useRef } from "react";
+import useImageUrlStore from "../../store/useImageUrlStore";
 import ImageInput from "./imageInput/ImageInput";
 import ImagePreview from "./imagePreview/ImagePreview";
 import type { UrlType } from "./ImageUploader.types";

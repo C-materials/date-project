@@ -1,6 +1,6 @@
-import { spacingSprinkles } from "@styles/sprinkles.css";
-import { Color } from "@styles/theme.css";
 import { style, styleVariants } from "@vanilla-extract/css";
+import { spacingSprinkles } from "../../styles/sprinkles.css";
+import { Color } from "../../styles/theme.css";
 
 const base = style([
   spacingSprinkles({

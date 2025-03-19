@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { buttonStyle } from "./style.css";
 
-interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
+export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   children: React.ReactNode;
   variant: "primary" | "secondary" | "outline" | "accent";
   icon?: ReactNode;
