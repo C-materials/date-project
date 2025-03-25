@@ -9,13 +9,13 @@ const base = style([
     placeItems: "flexCenter",
   }),
   {
-    height: "40px",
+    minHeight: "40px",
     borderRadius: "8px",
-    border: "1px transparent",
     gap: "4px",
     ":disabled": { cursor: "not-allowed" },
-    transition: "background-color 0.1s ease, outline-color 0.1s ease",
-
+    transition: "background-color 0.1s ease, border-color 0.1s ease",
+    border: "1px solid",
+    borderColor: "transparent",
     fontSize: "14px",
     fontWeight: "600",
     lineHeight: "17px",
@@ -57,7 +57,6 @@ export const buttonStyle = styleVariants({
   outline: [
     base,
     {
-      border: "1px solid",
       borderColor: Color.border,
       backgroundColor: "transparent",
       ":disabled": {
