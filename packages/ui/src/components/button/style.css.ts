@@ -4,14 +4,15 @@ import { Color } from "../../styles/theme.css";
 
 const base = style([
   spacingSprinkles({
-    paddingX: 12,
-    paddingY: 8,
+    paddingX: "12px",
+    paddingY: "8px",
     placeItems: "flexCenter",
   }),
   {
-    height: 40,
-    borderRadius: 8,
-    gap: 4,
+    height: "40px",
+    borderRadius: "8px",
+    gap: "4px",
+    ":disabled": { cursor: "not-allowed" },
   },
 ]);
 // recipe로 바꿔보기
@@ -21,11 +22,13 @@ export const buttonStyle = styleVariants({
     {
       backgroundColor: Color.primary.default,
       color: Color.text.inverse,
-      ":active": { backgroundColor: Color.primary.active },
       ":disabled": { color: Color.text.light },
       selectors: {
         "&:not(:disabled):hover": {
           backgroundColor: Color.primary.hover,
+        },
+        "&:not(:disabled):active": {
+          backgroundColor: Color.primary.active,
         },
       },
     },
@@ -34,11 +37,13 @@ export const buttonStyle = styleVariants({
     base,
     {
       backgroundColor: Color.secondary.default,
-      ":active": { backgroundColor: Color.secondary.active },
       ":disabled": { color: Color.text.sub },
       selectors: {
         "&:not(:disabled):hover": {
           backgroundColor: Color.secondary.hover,
+        },
+        "&:not(:disabled):active": {
+          backgroundColor: Color.secondary.active,
         },
       },
     },
@@ -49,7 +54,6 @@ export const buttonStyle = styleVariants({
       border: "1px solid",
       borderColor: Color.border,
       backgroundColor: "transparent",
-      ":active": { borderColor: Color.outline.active },
       ":disabled": {
         borderColor: Color.outline.disabled,
         color: Color.text.sub,
@@ -58,6 +62,9 @@ export const buttonStyle = styleVariants({
         "&:not(:disabled):hover": {
           backgroundColor: Color.outline.hover,
         },
+        "&:not(:disabled):active": {
+          backgroundColor: Color.outline.active,
+        },
       },
     },
   ],
@@ -65,7 +72,6 @@ export const buttonStyle = styleVariants({
     base,
     {
       backgroundColor: Color.accent.default,
-      ":active": { backgroundColor: Color.accent.active },
       ":disabled": {
         backgroundColor: Color.accent.disabled,
         color: Color.text.sub,
@@ -73,6 +79,9 @@ export const buttonStyle = styleVariants({
       selectors: {
         "&:not(:disabled):hover": {
           backgroundColor: Color.accent.hover,
+        },
+        "&:not(:disabled):active": {
+          backgroundColor: Color.accent.active,
         },
       },
     },

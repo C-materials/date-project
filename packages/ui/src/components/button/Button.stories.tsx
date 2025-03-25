@@ -6,7 +6,7 @@ import { block, story } from "./storyStyle.css";
 const meta: Meta<typeof Button> = {
   component: Button,
   title: "UI/Button",
-  tags: ["!autodocs"],
+  // tags: ["!autodocs"],
 };
 
 export default meta;

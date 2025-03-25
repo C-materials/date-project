@@ -8,7 +8,7 @@ import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 const spacingValues = [
   ...Array(51)
     .fill(0)
-    .map((_, i) => 0 + i * 4),
+    .map((_, i) => `${0 + i * 4}px`),
   "auto",
 ];
 

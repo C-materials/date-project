@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { buttonStyle } from "./style.css";
 
 export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
-  children: React.ReactNode;
+  children: ReactNode;
   variant: "primary" | "secondary" | "outline" | "accent";
   icon?: ReactNode;
 }
@@ -15,7 +15,7 @@ const Button = ({ type = "button", ...args }: ButtonProps) => {
   return (
     <button
       type={type}
-      className={`${buttonStyle[args.variant]} ${args.className}`}
+      className={`${buttonStyle[args.variant]} ${args.className || ""}`}
       {...args}
     >
       {args.icon}
