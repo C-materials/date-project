@@ -18,7 +18,7 @@ const TextArea = ({
         {...props}
         placeholder={placeholder}
       />
-      {invalid && <span className={error}>{errorMessage}</span>}
+      <span className={error}>{errorMessage}</span>
     </div>
   );
 };

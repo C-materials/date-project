@@ -23,7 +23,7 @@ const TextInput = ({
         {...props}
         placeholder={placeholder}
       />
-      {invalid && <span className={error}>{errorMessage}</span>}
+      <span className={error}>{errorMessage}</span>
     </div>
   );
 };

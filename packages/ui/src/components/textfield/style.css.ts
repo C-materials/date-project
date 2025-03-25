@@ -21,16 +21,13 @@ export const common = recipe({
       outline: "1px solid",
       outlineColor: Color.primary.active,
     },
-    selectors: {
-      "&:not(:active):hover": {
-        outlineColor: Color.border,
-      },
+    ":disabled": {
+      cursor: "not-allowed",
     },
   },
   variants: {
     disabled: {
       true: {
-        cursor: "not-allowed",
         backgroundColor: ColorVar.greyBlue[8],
         color: Color.text.sub,
       },
@@ -39,33 +36,32 @@ export const common = recipe({
       true: {
         outline: "1px solid",
         outlineColor: Color.critical,
-        // ":focus": {
-        //   outlineColor: Color.primary.active,
-        // },
-        // ":hover": {
-        //   outlineColor: Color.border,
-        // },
       },
     },
   },
   compoundVariants: [
     {
-      variants: { disabled: false },
+      variants: { disabled: false, invalid: false },
       style: {
-        // hover, focus
+        ":hover": {
+          outlineColor: Color.border,
+        },
       },
+    },
+    {
+      variants: { disabled: true, invalid: false },
+      style: {},
     },
   ],
 });
 
 export const error = style({
-  display: "block",
   color: Color.critical,
   lineHeight: "12px",
   fontSize: "10px",
   fontWeight: 400,
-  width: "200px",
-  // marginTop: "4px",
+  maxWidth: "160px",
+  minHeight: "12px",
 });
 
 export const textarea = style({
