@@ -4,7 +4,6 @@ import ImageUploader from "./ImageUploader";
 const meta: Meta<typeof ImageUploader> = {
   component: ImageUploader,
   title: "UI/ImageUploader",
-  decorators: [],
 };
 
 export default meta;
