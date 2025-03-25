@@ -11,8 +11,14 @@ const base = style([
   {
     height: "40px",
     borderRadius: "8px",
+    border: "1px transparent",
     gap: "4px",
     ":disabled": { cursor: "not-allowed" },
+    transition: "background-color 0.1s ease, outline-color 0.1s ease",
+
+    fontSize: "14px",
+    fontWeight: "600",
+    lineHeight: "17px",
   },
 ]);
 // recipe로 바꿔보기

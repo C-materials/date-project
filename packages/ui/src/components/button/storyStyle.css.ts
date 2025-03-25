@@ -1,12 +1,9 @@
 import { style } from "@vanilla-extract/css";
+import { Color } from "../../styles";
 
 export const story = style({
+  backgroundColor: Color.bg,
   display: "flex",
-  flexDirection: "column",
-  gap: 8,
-});
-
-export const block = style({
-  display: "flex",
-  gap: 8,
+  gap: "8px",
+  padding: "12px",
 });
