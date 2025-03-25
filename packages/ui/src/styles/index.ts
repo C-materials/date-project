@@ -1,5 +1,4 @@
 export * from "./global.css";
-export * from "./inputComponentWrapper.css";
 export * from "./layers.css";
 export * from "./mediaQuery.css";
 export * from "./reset.css";
