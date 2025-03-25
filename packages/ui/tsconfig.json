@@ -2,8 +2,8 @@
   "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "typeRoots": ["./node_modules/@types", "src/ImageUploader/types"]
   },
-  "include": ["src"],
+  "include": ["src", "store"],
   "exclude": ["node_modules", "dist"]
 }

@@ -15,7 +15,8 @@
     "baseUrl": ".", // alias 기준 설정
     "paths": {
       "@/*": ["./src/*"],
-      "@repo/ui/*": ["../../../packages/ui/*"] // alias  설정
+      "@components/*": ["../../packages/ui/src/components/*"],
+      "@store/*": ["../../packages/ui/src/store/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

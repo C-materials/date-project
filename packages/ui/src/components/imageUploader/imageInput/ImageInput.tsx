@@ -1,41 +1,43 @@
-import InputWrapper from "../inputWrapper/InputWrapper";
-import addImage from "../../assets/addImage.png";
-import * as style from "./style.css";
-import useImageUrlStore from "../store/useImageUrlStore";
 import type { ChangeEvent } from "react";
 import { useState } from "react";
+import addImage from "../../../../assets/addImage.png";
+import useImageUrlStore from "../../../store/useImageUrlStore";
+import { wrapper } from "../../../styles/inputComponentWrapper.css";
+import * as style from "./style.css";
+
 const ImageInput = () => {
   const { setUrlList, urlList } = useImageUrlStore();
   const [isActive, setIsActive] = useState(false);
+  const LIMIT_SIZE = 3 * 1024 * 1024;
   const uploadFiles = (files: FileList) => {
     if (urlList.length + files.length > 4) {
       alert("사진은 최대 4장 등록 가능합니다.");
     } else {
-      const newUrlList = [...urlList];
-      for (let file of files) {
-        const url = URL.createObjectURL(file);
-        const uuid = crypto.randomUUID();
-        const urlObj = {
-          id: uuid,
-          url,
-        };
-        newUrlList.push(urlObj);
-        setUrlList(newUrlList);
+      const filteredFiles = Array.from(files).filter(
+        (file) => file.size < LIMIT_SIZE,
+      );
+      if (filteredFiles.length <= 0) {
+        alert("3MB 이하의 파일만 업로드 가능합니다");
       }
+      setUrlList([
+        ...urlList,
+        ...filteredFiles.map((file) => ({
+          id: crypto.randomUUID(),
+          url: URL.createObjectURL(file),
+        })),
+      ]);
     }
   };
   const handleSelectFile = (e: ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files || [];
-    uploadFiles(files as FileList);
+    const files = e.target.files;
+    if (!files) return;
+    uploadFiles(files);
   };
   const handleDragStart = (e: React.DragEvent) => {
     e.preventDefault();
     setIsActive(true);
   };
-  const handleDragEnd = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsActive(false);
-  };
+
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
   };
@@ -47,12 +49,13 @@ const ImageInput = () => {
   };
 
   return (
-    <InputWrapper>
+    <div className={wrapper}>
       <label
-        className={isActive ? `${style.label.active}` : `${style.label.none}`}
+        className={style.labelStyle({
+          border: isActive ? "active" : "none",
+        })}
         htmlFor="image"
         onDragEnter={handleDragStart}
-        onDragLeave={handleDragEnd}
         onDragOver={handleDragOver}
         onDrop={(e) => handleDrop(e)}
       >
@@ -71,7 +74,7 @@ const ImageInput = () => {
         accept="image/png, image/jpeg, image/jpg"
         onChange={(e) => handleSelectFile(e)}
       ></input>
-    </InputWrapper>
+    </div>
   );
 };
 
