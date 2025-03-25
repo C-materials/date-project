@@ -14,20 +14,15 @@ export const common = recipe({
     fontSize: "14px",
     lineHeight: "17px",
     fontWeight: 400,
+    outline: "1px solid transparent",
     "::placeholder": {
       color: Color.text.sub,
-    },
-    ":focus": {
-      outline: "1px solid",
-      outlineColor: Color.primary.active,
-    },
-    ":disabled": {
-      cursor: "not-allowed",
     },
   },
   variants: {
     disabled: {
       true: {
+        cursor: "not-allowed",
         backgroundColor: ColorVar.greyBlue[8],
         color: Color.text.sub,
       },
@@ -36,20 +31,31 @@ export const common = recipe({
       true: {
         outline: "1px solid",
         outlineColor: Color.critical,
+        ":focus": {
+          outlineColor: Color.primary.active,
+        },
+      },
+      false: {
+        ":hover": {
+          outlineColor: Color.border,
+        },
+        ":focus": {
+          outlineColor: Color.primary.active,
+        },
       },
     },
   },
   compoundVariants: [
     {
       variants: { disabled: false, invalid: false },
-      style: {
-        ":hover": {
-          outlineColor: Color.border,
-        },
-      },
+      style: {},
     },
     {
-      variants: { disabled: true, invalid: false },
+      variants: { disabled: false, invalid: true },
+      style: {},
+    },
+    {
+      variants: { disabled: true, invalid: true },
       style: {},
     },
   ],
