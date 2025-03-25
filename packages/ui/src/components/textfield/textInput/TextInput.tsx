@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
+import { common, error, input, textfieldWrapper } from "../style.css";
 
 type InputProps = ComponentPropsWithoutRef<"input"> & {
   errorMessage?: string;
@@ -7,13 +8,23 @@ type InputProps = ComponentPropsWithoutRef<"input"> & {
 const TextInput = ({
   errorMessage,
   disabled = false,
+  placeholder = "텍스트를 입력해주세요.",
+
   ...props
 }: InputProps) => {
+  let invalid = !!errorMessage;
+
   return (
-    <>
-      <input disabled={disabled} {...props} />
-      {errorMessage && <span>{errorMessage}</span>}
-    </>
+    <div className={textfieldWrapper}>
+      <input
+        disabled={disabled}
+        {...props}
+        className={`${common({ disabled, invalid })}, ${input}`}
+        {...props}
+        placeholder={placeholder}
+      />
+      {invalid && <span className={error}>{errorMessage}</span>}
+    </div>
   );
 };
 
