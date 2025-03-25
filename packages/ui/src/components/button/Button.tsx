@@ -12,16 +12,24 @@ export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
  * @param type, variant : "primary" | "secondary" | "outline" | "accent"
  * @returns
  */
-const Button = ({ type = "button", iconPosition, ...args }: ButtonProps) => {
+const Button = ({
+  variant = "primary",
+  type = "button",
+  iconPosition = "left",
+  className,
+  icon,
+  children,
+  ...args
+}: ButtonProps) => {
   return (
     <button
       type={type}
-      className={`${buttonStyle[args.variant]} ${args.className || ""}`}
+      className={`${buttonStyle[variant]} ${className || ""}`}
       {...args}
     >
-      {iconPosition === "left" && args.icon}
-      {args.children}
-      {iconPosition === "right" && args.icon}
+      {iconPosition === "left" && icon}
+      {children}
+      {iconPosition === "right" && icon}
     </button>
   );
 };
