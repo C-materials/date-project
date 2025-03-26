@@ -18,9 +18,12 @@ const meta: Meta<typeof TextInput> = {
       control: { type: "text" },
     },
     isSelect: {
-      table: {
-        disable: true,
-      },
+      description: "select 컴포넌트로 활용 시 사용하는 prop입니다",
+      control: false,
+    },
+    show: {
+      description: "select 컴포넌트로 활용 시 사용하는 prop입니다",
+      control: false,
     },
   },
 };

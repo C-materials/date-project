@@ -7,7 +7,7 @@ const meta: Meta<typeof Select> = {
   title: "UI/Select",
   argTypes: {
     disabled: {
-      description: "텍스트 필드를 비활성화",
+      description: "옵션 선택을 비활성화합니다.",
     },
     errorMessage: {
       description: "에러 메시지 표시 및 테두리 색상 적용",
@@ -16,6 +16,9 @@ const meta: Meta<typeof Select> = {
     placeholder: {
       description: "텍스트 입력 전 메시지 표시",
       control: { type: "text" },
+    },
+    optionList: {
+      description: "옵션 6개 초과 시 스크롤하여 옵션 탐색",
     },
   },
 };
@@ -26,7 +29,17 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     disabled: false,
-    optionList: ["option1", "option2", "option3"],
+    optionList: [
+      "option1",
+      "option2",
+      "option3",
+      "option4",
+      "option5",
+      "option6",
+      "option7",
+      "option8",
+      "option9",
+    ],
   },
   render: (args) => {
     return (
@@ -41,7 +54,17 @@ export const Invalid: Story = {
   args: {
     disabled: false,
     errorMessage: "에러메시지",
-    optionList: ["option1", "option2", "option3"],
+    optionList: [
+      "option1",
+      "option2",
+      "option3",
+      "option4",
+      "option5",
+      "option6",
+      "option7",
+      "option8",
+      "option9",
+    ],
   },
   render: (args) => {
     return (
