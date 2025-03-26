@@ -3,7 +3,7 @@ import { common, error, textarea, textfieldWrapper } from "../style.css";
 type TextareaProps = ComponentPropsWithoutRef<"textarea"> & {
   errorMessage?: string;
 };
-const TextArea = ({
+const Textarea = ({
   disabled = false,
   errorMessage,
   placeholder = "텍스트를 입력해주세요.",
@@ -23,4 +23,4 @@ const TextArea = ({
   );
 };
 
-export default TextArea;
+export default Textarea;

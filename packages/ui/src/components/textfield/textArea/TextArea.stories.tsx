@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Color } from "../../../styles";
-import TextArea from "./TextArea";
+import Textarea from "./Textarea";
 
-const meta: Meta<typeof TextArea> = {
-  component: TextArea,
+const meta: Meta<typeof Textarea> = {
+  component: Textarea,
   title: "UI/TextArea",
   argTypes: {
     disabled: {
@@ -31,7 +31,7 @@ export const Default: Story = {
   render: (args) => {
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <TextArea {...args} />
+        <Textarea {...args} />
       </div>
     );
   },
@@ -46,7 +46,7 @@ export const Invalid: Story = {
   render: (args) => {
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <TextArea {...args} />
+        <Textarea {...args} />
       </div>
     );
   },
