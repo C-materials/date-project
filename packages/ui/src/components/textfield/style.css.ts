@@ -68,6 +68,8 @@ export const error = style({
   fontWeight: 400,
   maxWidth: "160px",
   minHeight: "12px",
+  marginLeft: "2px",
+  cursor: "default",
 });
 
 export const textarea = style({
@@ -81,7 +83,29 @@ export const input = style({
 });
 
 export const textfieldWrapper = style({
+  position: "relative",
   display: "flex",
   flexDirection: "column",
   gap: "4px",
+  width: "fit-content",
+});
+
+// show true이면 뒤집기
+export const icon = recipe({
+  base: {
+    position: "absolute",
+    top: "14px",
+    right: "12px",
+    transition: "transform 0.3s ease",
+  },
+  variants: {
+    show: {
+      true: {
+        transform: "rotate(180deg)",
+      },
+      false: {
+        transform: "rotate(0deg)",
+      },
+    },
+  },
 });

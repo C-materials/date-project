@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Color } from "../../../styles";
-import TextInput from "./TextInput";
+import { Color } from "../../styles";
+import Select from "./Select";
 
-const meta: Meta<typeof TextInput> = {
-  component: TextInput,
-  title: "UI/TextInput",
+const meta: Meta<typeof Select> = {
+  component: Select,
+  title: "UI/Select",
   argTypes: {
     disabled: {
       description: "텍스트 필드를 비활성화",
@@ -17,11 +17,6 @@ const meta: Meta<typeof TextInput> = {
       description: "텍스트 입력 전 메시지 표시",
       control: { type: "text" },
     },
-    isSelect: {
-      table: {
-        disable: true,
-      },
-    },
   },
 };
 
@@ -31,12 +26,12 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     disabled: false,
-    placeholder: "텍스트를 입력해주세요",
+    optionList: ["option1", "option2", "option3"],
   },
   render: (args) => {
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <TextInput {...args} />
+        <Select {...args} />
       </div>
     );
   },
@@ -45,13 +40,13 @@ export const Default: Story = {
 export const Invalid: Story = {
   args: {
     disabled: false,
-    placeholder: "텍스트를 입력해주세요",
-    errorMessage: "에러 메시지",
+    errorMessage: "에러메시지",
+    optionList: ["option1", "option2", "option3"],
   },
   render: (args) => {
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <TextInput {...args} />
+        <Select {...args} />
       </div>
     );
   },
