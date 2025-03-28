@@ -1,10 +1,11 @@
+import type { ReactNode } from "react";
 import { type ComponentPropsWithoutRef } from "react";
-import arrow from "../../../../assets/chevronDown.png";
-import { common, error, icon, input, textfieldWrapper } from "../style.css";
+import { common, error, input, textfieldWrapper } from "../style.css";
 type InputProps = ComponentPropsWithoutRef<"input"> & {
   errorMessage?: string;
   isSelect?: boolean;
   show?: boolean;
+  suffix?: ReactNode;
 };
 
 const TextInput = ({
@@ -13,6 +14,7 @@ const TextInput = ({
   placeholder = "텍스트를 입력해주세요.",
   isSelect = false,
   show = false,
+  suffix,
   ...props
 }: InputProps) => {
   let invalid = !!errorMessage;
@@ -25,15 +27,7 @@ const TextInput = ({
         {...props}
         placeholder={placeholder}
       />
-      {isSelect && (
-        <img
-          className={icon({ show })}
-          src={arrow}
-          alt="arrow"
-          width={12}
-          height={12}
-        />
-      )}
+      {suffix && suffix}
       <span className={error}>{errorMessage}</span>
     </div>
   );

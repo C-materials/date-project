@@ -99,7 +99,7 @@ export const icon = recipe({
     transition: "transform 0.3s ease",
   },
   variants: {
-    show: {
+    isOpen: {
       true: {
         transform: "rotate(180deg)",
       },
