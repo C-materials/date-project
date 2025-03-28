@@ -26,7 +26,7 @@ const Select = ({
   };
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
+      if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
         setIsShow(false);
       }
     };
@@ -61,7 +61,7 @@ const Select = ({
             alt="arrow"
             width={12}
             height={12}
-            className={icon({ isOpen })}
+            className={icon({ isOpen, disabled })}
           />
         }
         {...props}

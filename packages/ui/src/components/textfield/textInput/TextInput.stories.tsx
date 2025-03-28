@@ -25,6 +25,10 @@ const meta: Meta<typeof TextInput> = {
       description: "select 컴포넌트로 활용 시 사용하는 prop입니다",
       control: false,
     },
+    suffix: {
+      description: "select 컴포넌트로 활용 시 사용하는 prop입니다",
+      control: false,
+    },
   },
 };
 

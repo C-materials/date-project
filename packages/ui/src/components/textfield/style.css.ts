@@ -66,20 +66,20 @@ export const error = style({
   lineHeight: "12px",
   fontSize: "10px",
   fontWeight: 400,
-  maxWidth: "160px",
   minHeight: "12px",
   marginLeft: "2px",
   cursor: "default",
+  display: "block",
+  width: "fit-content",
 });
 
 export const textarea = style({
-  width: "200px",
   height: "100px",
 });
 
 export const input = style({
-  width: "160px",
   height: "40px",
+  width: "fit-content",
 });
 
 export const textfieldWrapper = style({
@@ -90,7 +90,7 @@ export const textfieldWrapper = style({
   width: "fit-content",
 });
 
-// show true이면 뒤집기
+// isOpen true이면 뒤집기
 export const icon = recipe({
   base: {
     position: "absolute",
@@ -106,6 +106,14 @@ export const icon = recipe({
       false: {
         transform: "rotate(0deg)",
       },
+    },
+    disabled: {
+      true: {
+        ":hover": {
+          cursor: "not-allowed",
+        },
+      },
+      false: {},
     },
   },
 });

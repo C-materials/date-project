@@ -23,7 +23,7 @@ const TextInput = ({
       <input
         readOnly={isSelect}
         disabled={disabled}
-        className={`${common({ disabled, invalid })}, ${input}`}
+        className={`${common({ disabled, invalid })} ${input}`}
         {...props}
         placeholder={placeholder}
       />

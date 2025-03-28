@@ -13,7 +13,7 @@ const Textarea = ({
   return (
     <div className={textfieldWrapper}>
       <textarea
-        className={`${common({ disabled, invalid })}, ${textarea}`}
+        className={`${common({ disabled, invalid })} ${textarea}`}
         disabled={disabled}
         {...props}
         placeholder={placeholder}
