@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { useEffect, useRef, useState } from "react";
-import arrow from "../../../assets/chevronDown.png";
+import arrow from "../../../assets/downArrow.svg";
 import { icon } from "../textfield/style.css";
 import TextInput from "../textfield/textInput/TextInput";
 import OptionList from "./OptionList";
