@@ -2,7 +2,7 @@ import type { ChangeEvent } from "react";
 import { useState } from "react";
 import addImage from "../../../../assets/addImage.png";
 import useImageUrlStore from "../../../store/useImageUrlStore";
-import { wrapper } from "../../../styles/inputComponentWrapper.css";
+import { itemWrapper } from "../style.css";
 import * as style from "./style.css";
 
 const ImageInput = () => {
@@ -49,7 +49,7 @@ const ImageInput = () => {
   };
 
   return (
-    <div className={wrapper}>
+    <div className={itemWrapper}>
       <label
         className={style.labelStyle({
           border: isActive ? "active" : "none",

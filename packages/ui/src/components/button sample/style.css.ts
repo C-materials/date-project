@@ -14,7 +14,6 @@ export const button = recipe({
 
     fontSize: "14px",
     fontWeight: "600",
-    fontFamily: "Pretendard",
     lineHeight: "17px",
 
     outlineOffset: "-1px",

@@ -1,7 +1,7 @@
 import { GoXCircleFill } from "react-icons/go";
 import useImageUrlStore from "../../../store/useImageUrlStore";
-import { wrapper } from "../../../styles/inputComponentWrapper.css";
 import type { UrlType } from "../ImageUploader.types";
+import { itemWrapper } from "../style.css";
 import * as style from "./style.css";
 
 const ImagePreview = ({ url }: { url: UrlType }) => {
@@ -11,7 +11,7 @@ const ImagePreview = ({ url }: { url: UrlType }) => {
   };
 
   return (
-    <div className={wrapper}>
+    <div className={itemWrapper}>
       <img src={url.url} alt="미리보기" width={50} height={50} />
       <button
         type="button"
