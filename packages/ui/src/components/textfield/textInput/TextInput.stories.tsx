@@ -39,6 +39,7 @@ export const Default: Story = {
   args: {
     disabled: false,
     placeholder: "텍스트를 입력해주세요",
+    value: "안녕하세요",
   },
   render: (args) => {
     return (

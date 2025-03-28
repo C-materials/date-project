@@ -40,6 +40,7 @@ export const Default: Story = {
       "option8",
       "option9",
     ],
+    value: "안녕하세요",
   },
   render: (args) => {
     return (
