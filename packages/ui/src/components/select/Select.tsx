@@ -8,22 +8,25 @@ import { selectWrapper } from "./style.css";
 type InputProps = ComponentPropsWithoutRef<"input"> & {
   errorMessage?: string;
   optionList: string[];
+  initialValue?: string;
 };
 const Select = ({
   errorMessage,
   disabled = false,
   placeholder = "placeholder",
   optionList,
+  initialValue,
   ...props
 }: InputProps) => {
   const [isOpen, setIsShow] = useState<boolean>(false);
-  const [option, setOption] = useState("");
+  const [option, setOption] = useState(initialValue);
   const ref = useRef<HTMLDivElement | null>(null);
 
   const handleClick = (value: string) => {
     setOption(value);
     setIsShow(false);
   };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
@@ -45,6 +48,7 @@ const Select = ({
   const handleClickInput = () => {
     setIsShow((prev) => !prev);
   };
+
   return (
     <div ref={ref} className={selectWrapper}>
       <TextInput

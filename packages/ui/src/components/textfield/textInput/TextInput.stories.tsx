@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import type { ChangeEvent } from "react";
+import { useState } from "react";
 import { Color } from "../../../styles";
 import TextInput from "./TextInput";
 
@@ -39,12 +41,16 @@ export const Default: Story = {
   args: {
     disabled: false,
     placeholder: "텍스트를 입력해주세요",
-    value: "안녕하세요",
   },
   render: (args) => {
+    const [initialValue, setInitialValue] = useState("기본 입력값");
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setInitialValue(e.target.value);
+    };
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <TextInput {...args} />
+        <p>input 입력하면 value 콘솔에 출력</p>
+        <TextInput value={initialValue} onChange={handleChange} {...args} />
       </div>
     );
   },

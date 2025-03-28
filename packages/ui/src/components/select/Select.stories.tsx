@@ -20,6 +20,9 @@ const meta: Meta<typeof Select> = {
     optionList: {
       description: "옵션 6개 초과 시 스크롤하여 옵션 탐색",
     },
+    initialValue: {
+      description: "초기 값 전달",
+    },
   },
 };
 
@@ -40,7 +43,7 @@ export const Default: Story = {
       "option8",
       "option9",
     ],
-    value: "안녕하세요",
+    initialValue: "초기 입력값",
   },
   render: (args) => {
     return (
