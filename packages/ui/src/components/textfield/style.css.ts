@@ -4,6 +4,10 @@ import { Color, ColorVar } from "../../styles";
 
 export const common = recipe({
   base: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+
     borderRadius: "8px",
     padding: "8px 12px",
     transition: "background-color 0.1s ease, outline-color 0.1s ease",
@@ -45,20 +49,6 @@ export const common = recipe({
       },
     },
   },
-  compoundVariants: [
-    {
-      variants: { disabled: false, invalid: false },
-      style: {},
-    },
-    {
-      variants: { disabled: false, invalid: true },
-      style: {},
-    },
-    {
-      variants: { disabled: true, invalid: true },
-      style: {},
-    },
-  ],
 });
 
 export const error = style({
@@ -90,7 +80,9 @@ export const textfieldWrapper = style({
   width: "fit-content",
 });
 
-// isOpen true이면 뒤집기
+/**
+ * 아이콘 클릭 안됨
+ */
 export const icon = recipe({
   base: {
     position: "absolute",
@@ -117,3 +109,5 @@ export const icon = recipe({
     },
   },
 });
+
+export const innerInput = style({});

@@ -19,16 +19,8 @@ const meta: Meta<typeof TextInput> = {
       description: "텍스트 입력 전 메시지 표시",
       control: { type: "text" },
     },
-    isSelect: {
-      description: "select 컴포넌트로 활용 시 사용하는 prop입니다",
-      control: false,
-    },
-    show: {
-      description: "select 컴포넌트로 활용 시 사용하는 prop입니다",
-      control: false,
-    },
     suffix: {
-      description: "select 컴포넌트로 활용 시 사용하는 prop입니다",
+      description: "input 내부 우축에 추가하는 요소",
       control: false,
     },
   },

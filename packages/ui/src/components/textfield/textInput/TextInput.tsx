@@ -1,19 +1,10 @@
-import type { ReactNode } from "react";
-import { type ComponentPropsWithoutRef } from "react";
 import { common, error, input, textfieldWrapper } from "../style.css";
-type InputProps = ComponentPropsWithoutRef<"input"> & {
-  errorMessage?: string;
-  isSelect?: boolean;
-  show?: boolean;
-  suffix?: ReactNode;
-};
+import type { InputProps } from "./type";
 
 const TextInput = ({
   errorMessage,
   disabled = false,
   placeholder = "텍스트를 입력해주세요.",
-  isSelect = false,
-  show = false,
   suffix,
   ...props
 }: InputProps) => {
@@ -23,7 +14,6 @@ const TextInput = ({
     <div className={textfieldWrapper}>
       <input
         type="text"
-        readOnly={isSelect}
         disabled={disabled}
         className={`${common({ disabled, invalid })} ${input}`}
         {...props}

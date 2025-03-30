@@ -1,15 +1,11 @@
-import type { ComponentPropsWithoutRef } from "react";
 import { useEffect, useRef, useState } from "react";
 import arrow from "../../../assets/downArrow.svg";
 import { icon } from "../textfield/style.css";
 import TextInput from "../textfield/textInput/TextInput";
 import OptionList from "./OptionList";
 import { selectWrapper } from "./style.css";
-type InputProps = ComponentPropsWithoutRef<"input"> & {
-  errorMessage?: string;
-  optionList: string[];
-  initialValue?: string;
-};
+import type { SelectProps } from "./type";
+
 const Select = ({
   errorMessage,
   disabled = false,
@@ -17,9 +13,9 @@ const Select = ({
   optionList,
   initialValue,
   ...props
-}: InputProps) => {
+}: SelectProps) => {
   const [isOpen, setIsShow] = useState<boolean>(false);
-  const [option, setOption] = useState(initialValue);
+  const [option, setOption] = useState<string | undefined>(initialValue);
   const ref = useRef<HTMLDivElement | null>(null);
 
   const handleClick = (value: string) => {
@@ -48,12 +44,10 @@ const Select = ({
   const handleClickInput = () => {
     setIsShow((prev) => !prev);
   };
-
   return (
     <div ref={ref} className={selectWrapper}>
       <TextInput
-        isSelect
-        show={isOpen}
+        readOnly
         disabled={disabled}
         errorMessage={errorMessage}
         value={option}
@@ -65,6 +59,7 @@ const Select = ({
             alt="arrow"
             width={12}
             height={12}
+            onClick={(e) => e.stopPropagation()}
             className={icon({ isOpen, disabled })}
           />
         }
