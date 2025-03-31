@@ -68,9 +68,14 @@ export const Invalid: Story = {
     optionList: ["option1", "option2", "option3", "option4"],
   },
   render: (args) => {
+    const [value, setValue] = useState<string>("초기 입력값");
+    const handleChange = (value: string) => {
+      setValue(value);
+      console.log(value);
+    };
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <Select {...args} />
+        <Select {...args} value={value} onChangeValue={handleChange} />
       </div>
     );
   },

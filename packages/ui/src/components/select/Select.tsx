@@ -16,11 +16,9 @@ const Select = ({
   ...props
 }: SelectProps) => {
   const [isOpen, setIsShow] = useState<boolean>(false);
-  const [option, setOption] = useState<string>();
   const ref = useRef<HTMLDivElement | null>(null);
 
   const handleClickOption = (value: string) => {
-    setOption(value);
     onChangeValue(value);
     setIsShow(false);
   };
@@ -69,7 +67,7 @@ const Select = ({
         <OptionList
           list={optionList}
           onClick={handleClickOption}
-          selected={option}
+          selected={value as string}
         />
       )}
     </div>

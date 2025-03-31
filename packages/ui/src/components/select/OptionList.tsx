@@ -1,27 +1,20 @@
 import Check from "../../../assets/check.svg";
 import { listItem, listWrapper } from "./style.css";
-
-// type OptionListProps = {
-//   list: Pick<SelectProps, "optionList">;
-//   selected: Pick<SelectProps, "initialValue">;
-//   onClick: (item: string) => void;
-// };
+import type { SelectProps } from "./type";
 
 type OptionListProps = {
-  list: string[];
+  list: SelectProps["optionList"];
+  selected: SelectProps["value"];
   onClick: (item: string) => void;
-  selected: string | undefined;
 };
 
 const OptionList = ({
-  // list = { optionList: ["option", "option", "option"] },
   list = ["option", "option", "option"],
   onClick,
   selected,
 }: OptionListProps) => {
   return (
     <ul className={listWrapper}>
-      {/* {list.optionList.map((item, index) => ( */}
       {list.map((item, index) => (
         <li
           className={listItem}

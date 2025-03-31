@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { ColorVar } from "../../styles";
+import { Zindex } from "../../styles/zIndex.css";
 
 export const selectWrapper = style({
   position: "relative",
@@ -16,7 +17,7 @@ export const listWrapper = style({
   padding: "4px",
   position: "absolute",
   top: "44px",
-  zIndex: 10,
+  zIndex: Zindex.dropdown,
   overflow: "scroll",
 });
 
