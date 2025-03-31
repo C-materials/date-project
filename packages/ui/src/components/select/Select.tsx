@@ -11,15 +11,17 @@ const Select = ({
   disabled = false,
   placeholder = "placeholder",
   optionList,
-  initialValue,
+  value,
+  onChangeValue,
   ...props
 }: SelectProps) => {
   const [isOpen, setIsShow] = useState<boolean>(false);
-  const [option, setOption] = useState<string | undefined>(initialValue);
+  const [option, setOption] = useState<string>();
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const handleClick = (value: string) => {
+  const handleClickOption = (value: string) => {
     setOption(value);
+    onChangeValue(value);
     setIsShow(false);
   };
 
@@ -42,6 +44,7 @@ const Select = ({
   }, [isOpen]);
 
   const handleClickInput = () => {
+    // 토글 역할만 수행
     setIsShow((prev) => !prev);
   };
   return (
@@ -50,7 +53,7 @@ const Select = ({
         readOnly
         disabled={disabled}
         errorMessage={errorMessage}
-        value={option}
+        value={value}
         placeholder={placeholder}
         onClick={handleClickInput}
         suffix={
@@ -66,7 +69,11 @@ const Select = ({
         {...props}
       />
       {isOpen && !disabled && (
-        <OptionList list={optionList} onClick={handleClick} selected={option} />
+        <OptionList
+          list={optionList}
+          onClick={handleClickOption}
+          selected={option}
+        />
       )}
     </div>
   );

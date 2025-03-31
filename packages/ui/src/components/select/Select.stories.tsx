@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 import { Color } from "../../styles";
 import Select from "./Select";
 
@@ -19,9 +20,6 @@ const meta: Meta<typeof Select> = {
     },
     optionList: {
       description: "옵션 6개 초과 시 스크롤하여 옵션 탐색",
-    },
-    initialValue: {
-      description: "초기 값 전달",
     },
     width: {
       description: "컴포넌트 너비",
@@ -47,13 +45,17 @@ export const Default: Story = {
       "option8",
       "option9",
     ],
-    initialValue: "초기 입력값",
     width: 160,
   },
   render: (args) => {
+    const [value, setValue] = useState<string>("초기 입력값");
+    const handleChange = (value: string) => {
+      setValue(value);
+      console.log(value);
+    };
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <Select {...args} />
+        <Select {...args} value={value} onChangeValue={handleChange} />
       </div>
     );
   },
