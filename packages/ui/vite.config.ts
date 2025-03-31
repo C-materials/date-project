@@ -29,7 +29,7 @@ export default defineConfig({
     vanillaExtractPlugin({}) as any,
     dts(),
     svgr({
-      include: "**/*.svg?react, **/*.svg",
+      include: "**/*.svg",
       exclude: "",
     }),
     {
