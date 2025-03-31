@@ -10,7 +10,7 @@ export const selectWrapper = style({
 export const listWrapper = style({
   width: "100%",
   maxHeight: "200px",
-  backgroundColor: ColorVar.greyBlue[9],
+  backgroundColor: ColorVar.greyBlue[8],
   color: ColorVar.white,
   borderRadius: "8px",
   padding: "4px",
@@ -27,7 +27,7 @@ export const listItem = style({
   width: "100%",
   height: "32px",
   ":hover": {
-    backgroundColor: ColorVar.greyBlue[8],
+    backgroundColor: ColorVar.greyBlue[7],
   },
   display: "flex",
   alignItems: "center",

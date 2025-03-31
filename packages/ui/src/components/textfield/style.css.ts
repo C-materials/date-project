@@ -12,7 +12,7 @@ export const common = recipe({
     transition: "background-color 0.1s ease, outline-color 0.1s ease",
     outlineOffset: "-1px",
 
-    backgroundColor: ColorVar.greyBlue[9],
+    backgroundColor: ColorVar.greyBlue[8],
     color: Color.text.default,
     fontSize: "14px",
     lineHeight: "17px",
@@ -26,7 +26,7 @@ export const common = recipe({
     disabled: {
       true: {
         cursor: "not-allowed",
-        backgroundColor: ColorVar.greyBlue[8],
+        backgroundColor: ColorVar.greyBlue[7],
         color: Color.text.sub,
       },
     },
