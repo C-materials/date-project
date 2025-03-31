@@ -5,7 +5,6 @@ import { Color, ColorVar } from "../../styles";
 export const common = recipe({
   base: {
     display: "flex",
-    justifyContent: "space-between",
     alignItems: "center",
 
     borderRadius: "8px",
@@ -33,13 +32,41 @@ export const common = recipe({
     },
     invalid: {
       true: {
-        outline: "1px solid",
         outlineColor: Color.critical,
+      },
+    },
+  },
+  compoundVariants: [
+    {
+      variants: { disabled: true, invalid: false },
+      style: {
+        ":hover": {
+          outlineColor: "transparent",
+        },
+      },
+    },
+    {
+      variants: { disabled: true, invalid: true },
+      style: {
+        ":hover": {
+          outlineColor: Color.critical,
+        },
+      },
+    },
+    {
+      variants: { disabled: false, invalid: true },
+      style: {
+        ":hover": {
+          outlineColor: Color.critical,
+        },
         ":focus": {
           outlineColor: Color.primary.active,
         },
       },
-      false: {
+    },
+    {
+      variants: { disabled: false, invalid: false },
+      style: {
         ":hover": {
           outlineColor: Color.border,
         },
@@ -48,7 +75,7 @@ export const common = recipe({
         },
       },
     },
-  },
+  ],
 });
 
 export const error = style({

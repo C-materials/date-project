@@ -12,7 +12,7 @@ const meta: Meta<typeof TextInput> = {
       description: "텍스트 필드를 비활성화",
     },
     errorMessage: {
-      description: "에러 메시지 표시 및 테두리 색상 적용",
+      description: "에러 메시지 있을때만 invalid 스타일 적용",
       control: { type: "text" },
     },
     placeholder: {
@@ -37,6 +37,7 @@ export const Default: Story = {
   args: {
     disabled: false,
     placeholder: "텍스트를 입력해주세요",
+    errorMessage: "",
   },
   render: (args) => {
     const [initialValue, setInitialValue] = useState("기본 입력값");
