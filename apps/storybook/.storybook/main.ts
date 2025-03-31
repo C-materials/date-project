@@ -1,5 +1,6 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+import svgr from "vite-plugin-svgr";
 
 const config: StorybookConfig = {
   stories: [
@@ -25,7 +26,13 @@ const config: StorybookConfig = {
     autodocs: true,
   },
   async viteFinal(config) {
-    config.plugins = config.plugins || [];
+    config.plugins = [
+      ...(config.plugins || []),
+      svgr({
+        svgrOptions: { icon: true },
+        include: "**/*.svg",
+      }),
+    ];
     config.plugins.push(
       vanillaExtractPlugin({
         identifiers: ({ hash }) => `_${hash}`,

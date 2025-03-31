@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import arrow from "../../../assets/downArrow.svg";
+import Arrow from "../../../assets/downArrow.svg";
 import { icon } from "../textfield/style.css";
 import TextInput from "../textfield/textInput/TextInput";
 import OptionList from "./OptionList";
@@ -57,13 +57,10 @@ const Select = ({
         placeholder={placeholder}
         onClick={handleClickInput}
         suffix={
-          <img
-            src={arrow}
-            alt="arrow"
+          <Arrow
+            className={icon({ isOpen, disabled })}
             width={12}
             height={12}
-            onClick={(e) => e.stopPropagation()}
-            className={icon({ isOpen, disabled })}
           />
         }
         {...props}
