@@ -69,7 +69,7 @@ export const textarea = style({
 
 export const input = style({
   height: "40px",
-  width: "fit-content",
+  width: "100%",
 });
 
 export const textfieldWrapper = style({
@@ -77,7 +77,7 @@ export const textfieldWrapper = style({
   display: "flex",
   flexDirection: "column",
   gap: "4px",
-  width: "fit-content",
+  minWidth: "160px",
 });
 
 /**

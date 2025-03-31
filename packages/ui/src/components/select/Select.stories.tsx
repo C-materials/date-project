@@ -23,6 +23,10 @@ const meta: Meta<typeof Select> = {
     initialValue: {
       description: "초기 값 전달",
     },
+    width: {
+      description: "컴포넌트 너비",
+      control: { type: "range", min: 160, max: 500 },
+    },
   },
 };
 
@@ -44,6 +48,7 @@ export const Default: Story = {
       "option9",
     ],
     initialValue: "초기 입력값",
+    width: 160,
   },
   render: (args) => {
     return (

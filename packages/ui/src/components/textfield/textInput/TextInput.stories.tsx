@@ -23,6 +23,10 @@ const meta: Meta<typeof TextInput> = {
       description: "input 내부 우축에 추가하는 요소",
       control: false,
     },
+    width: {
+      description: "컴포넌트 너비",
+      control: { type: "range", min: 160, max: 500 },
+    },
   },
 };
 
@@ -41,7 +45,6 @@ export const Default: Story = {
     };
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <p>input 입력하면 value 콘솔에 출력</p>
         <TextInput value={initialValue} onChange={handleChange} {...args} />
       </div>
     );

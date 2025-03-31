@@ -6,12 +6,13 @@ const TextInput = ({
   disabled = false,
   placeholder = "텍스트를 입력해주세요.",
   suffix,
+  width = 160,
   ...props
 }: InputProps) => {
   let invalid = !!errorMessage;
 
   return (
-    <div className={textfieldWrapper}>
+    <div className={textfieldWrapper} style={{ width: width }}>
       <input
         type="text"
         disabled={disabled}

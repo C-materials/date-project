@@ -1,6 +1,6 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { InputProps } from "../textfield/textInput/type";
 
-export type SelectProps = ComponentPropsWithoutRef<"input"> & {
+export type SelectProps = InputProps & {
   errorMessage?: string;
   optionList: string[];
   initialValue?: string;
