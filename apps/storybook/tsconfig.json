@@ -17,8 +17,9 @@
       "@/*": ["./src/*"],
       "@components/*": ["../../packages/ui/src/components/*"],
       "@store/*": ["../../packages/ui/src/store/*"]
-    }
+    },
+    "types": ["vite-plugin-svgr/client"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "svg.d.ts"],
   "exclude": ["node_modules"]
 }

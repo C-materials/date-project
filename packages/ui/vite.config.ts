@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import svgr from "vite-plugin-svgr";
 import pkg from "./package.json";
 
 export default defineConfig({
@@ -27,6 +28,10 @@ export default defineConfig({
   plugins: [
     vanillaExtractPlugin({}) as any,
     dts(),
+    svgr({
+      include: "**/*.svg",
+      exclude: "",
+    }),
     {
       name: "copy-vanilla-css-to-global-css",
       closeBundle() {
