@@ -10,6 +10,9 @@ const meta: Meta<typeof FileUpload> = {
       description: "체크박스 체크 여부",
       control: "boolean",
     },
+    onChange: {
+      description: "change 이벤트 핸들러 (컴포넌트 내부에서 전역 상태 사용)",
+    },
   },
 };
 
