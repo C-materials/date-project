@@ -57,7 +57,12 @@ export const checkboxInput = recipe({
     {
       variants: { disabled: false, checked: false },
       style: {
-        outlineColor: ColorVar.greyBlue[5],
+        ":hover": { outlineColor: ColorVar.greyBlue[5] },
+        selectors: {
+          [`${checkboxWrapper()}:hover &`]: {
+            outlineColor: ColorVar.greyBlue[5], // 부모가 hover되었을 때 변경됨
+          },
+        },
       },
     },
     {
