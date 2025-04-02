@@ -9,6 +9,7 @@ type RadioProps = ComponentPropsWithoutRef<"input"> & {
 const Radio = ({
   checked = false,
   name,
+  id,
   label,
   disabled,
   onClick,
@@ -19,7 +20,7 @@ const Radio = ({
     <div className={checkboxWrapper({ disabled })} onClick={onClick}>
       <label
         className={`${checkboxInput({ disabled, checked })} ${radioInput}`}
-        htmlFor={name}
+        htmlFor={id}
       >
         {!disabled && <span className={icon}></span>}
       </label>
@@ -27,7 +28,7 @@ const Radio = ({
       <input
         type="radio"
         name={name}
-        id={name}
+        id={id}
         disabled={disabled}
         checked={checked}
         onClick={(e) => e.stopPropagation()}
