@@ -75,6 +75,7 @@ export const checkboxLabel = recipe({
   base: {
     fontSize: "14px",
     lineHeight: "17px",
+    fontWeight: 500,
   },
   variants: {
     disabled: {
