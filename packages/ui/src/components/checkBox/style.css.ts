@@ -16,12 +16,6 @@ export const checkboxWrapper = recipe({
         cursor: "pointer",
       },
     },
-    checked: {
-      true: {},
-      false: {
-        // 체크박스 hover 스타일
-      },
-    },
   },
 });
 export const checkboxInput = recipe({

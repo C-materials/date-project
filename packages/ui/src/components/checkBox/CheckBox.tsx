@@ -5,7 +5,7 @@ import { checkboxInput, checkboxLabel, checkboxWrapper } from "./style.css";
 type CheckBoxProps = ComponentPropsWithoutRef<"input"> & {
   label: string;
 };
-
+// 여러개 배치하는 경우 생각해보기
 const CheckBox = ({
   checked = false,
   name,
@@ -15,7 +15,7 @@ const CheckBox = ({
   ...props
 }: CheckBoxProps) => {
   return (
-    <div className={checkboxWrapper({ disabled, checked })} onClick={onClick}>
+    <div className={checkboxWrapper({ disabled })} onClick={onClick}>
       <label className={checkboxInput({ disabled, checked })} htmlFor={name}>
         {!disabled && <Check width={12} height={12} fill={Color.bg} />}
       </label>
