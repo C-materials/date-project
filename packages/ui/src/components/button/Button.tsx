@@ -7,11 +7,6 @@ export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   icon?: ReactNode;
   iconPosition?: "left" | "right";
 }
-/**
- *
- * @param type, variant : "primary" | "secondary" | "outline" | "accent"
- * @returns
- */
 const Button = ({
   variant = "primary",
   type = "button",

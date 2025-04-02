@@ -1,13 +1,13 @@
 import type { ChangeEvent } from "react";
 import { useState } from "react";
-import addImage from "../../../../assets/addImage.png";
-import useImageUrlStore from "../../../store/useImageUrlStore";
-import { itemWrapper } from "../style.css";
-import * as style from "./style.css";
+import Upload from "../../../assets/upload.svg";
+import useImageUrlStore from "../../store/useImageUrlStore";
+import Button from "../button/Button";
+import { basicInput, labelStyle } from "./style.css";
 
-const ImageInput = () => {
+const FileUpload = ({ disabled }: { disabled: boolean }) => {
   const { setUrlList, urlList } = useImageUrlStore();
-  const [isActive, setIsActive] = useState(false);
+  const [isDropActive, setIsDropActive] = useState(false);
   const LIMIT_SIZE = 3 * 1024 * 1024;
   const uploadFiles = (files: FileList) => {
     if (urlList.length + files.length > 4) {
@@ -35,7 +35,7 @@ const ImageInput = () => {
   };
   const handleDragStart = (e: React.DragEvent) => {
     e.preventDefault();
-    setIsActive(true);
+    setIsDropActive(true);
   };
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -45,28 +45,27 @@ const ImageInput = () => {
     e.preventDefault();
     const files = e.dataTransfer.files;
     uploadFiles(files);
-    setIsActive(false);
+    setIsDropActive(false);
   };
 
   return (
-    <div className={itemWrapper}>
+    <div>
       <label
-        className={style.labelStyle({
-          border: isActive ? "active" : "none",
+        className={labelStyle({
+          border: isDropActive ? "active" : "none",
+          disabled,
         })}
         htmlFor="image"
         onDragEnter={handleDragStart}
         onDragOver={handleDragOver}
         onDrop={(e) => handleDrop(e)}
       >
-        <img src={addImage} width={34} height={34} alt="Add Image" />
-        <div>
-          <p>클릭하여 이미지 첨부하기</p>
-          <p>또는 파일을 여기로 드래그하세요</p>
-        </div>
+        <Upload width={20} height={20} />
+        <p>드래그하여 파일 업로드</p>
+        <Button variant="accent">파일 업로드</Button>
       </label>
       <input
-        className={style.basicInput}
+        className={basicInput}
         id="image"
         name="image"
         type="file"
@@ -78,4 +77,4 @@ const ImageInput = () => {
   );
 };
 
-export default ImageInput;
+export default FileUpload;

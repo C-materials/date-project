@@ -1,9 +1,7 @@
 import { style } from "@vanilla-extract/css";
-import { Color } from "../../styles";
+import { Color } from ".";
 
 export const story = style({
   backgroundColor: Color.bg,
-  display: "flex",
-  gap: "8px",
-  padding: "12px",
+  padding: "40px",
 });

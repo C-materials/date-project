@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { Color } from "../../styles/theme.css";
+import { story } from "../../styles/storyStyle.css";
 import Tag from "./Tag";
 
 const meta: Meta<typeof Tag> = {
@@ -43,7 +43,7 @@ export const Default: Story = {
     };
 
     return (
-      <div style={{ padding: "40px", background: Color.bg }}>
+      <div className={story}>
         <Tag {...args} checked={isChecked} onClick={handleClick} />
       </div>
     );
