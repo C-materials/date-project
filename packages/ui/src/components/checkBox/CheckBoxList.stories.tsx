@@ -29,7 +29,7 @@ export const MultiList: Story = {
       { name: "name1", label: "label1" },
       { name: "name2", label: "label2" },
       { name: "name3", label: "label3" },
-      { name: "name4", label: "label4", checked: true }, // 반영이 안됨
+      { name: "name4", label: "label4", checked: true },
       { name: "name5", label: "label5", disabled: true },
     ],
   },

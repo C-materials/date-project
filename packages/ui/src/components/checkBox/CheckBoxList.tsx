@@ -13,7 +13,7 @@ const CheckBoxList = ({
   // list 각각의 아이템 value 를 상태로 관리
   const [isChecked, setIsChecked] = useState<Record<string, boolean>>(
     checkList.reduce(
-      (acc, item) => ({ ...acc, [item.name as string]: false }),
+      (acc, item) => ({ ...acc, [item.name as string]: item.checked }),
       {},
     ),
   );
