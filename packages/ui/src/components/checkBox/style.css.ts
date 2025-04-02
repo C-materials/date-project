@@ -6,6 +6,8 @@ export const checkboxWrapper = recipe({
     display: "flex",
     alignItems: "center", // 텍스트랑 체크박스 높이가 안맞음
     gap: "8px",
+
+    width: "fit-content",
   },
   variants: {
     disabled: {

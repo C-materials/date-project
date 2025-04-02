@@ -1,10 +1,6 @@
-import type { ComponentPropsWithoutRef } from "react";
 import { checkboxInput, checkboxWrapper } from "../checkBox/style.css";
+import type { CheckBoxProps } from "../checkBox/type";
 import { icon, radioInput } from "./style.css";
-
-type RadioProps = ComponentPropsWithoutRef<"input"> & {
-  label: string;
-};
 
 const Radio = ({
   checked = false,
@@ -13,7 +9,7 @@ const Radio = ({
   disabled,
   onClick,
   ...props
-}: RadioProps) => {
+}: CheckBoxProps) => {
   return (
     <div className={checkboxWrapper({ disabled })} onClick={onClick}>
       <label
@@ -27,7 +23,6 @@ const Radio = ({
         type="radio"
         name={name}
         id={name}
-        value={name}
         disabled={disabled}
         checked={checked}
         onClick={(e) => e.stopPropagation()}
