@@ -6,7 +6,7 @@ import CheckBox from "./CheckBox";
 
 const meta: Meta<typeof CheckBox> = {
   component: CheckBox,
-  title: "UI/CheckBox",
+  title: "UI/CheckBox/Single",
   argTypes: {
     disabled: {
       description: "체크박스 체크 여부",

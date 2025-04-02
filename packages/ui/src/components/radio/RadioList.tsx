@@ -1,16 +1,15 @@
 import type { ChangeEvent } from "react";
 import { useState } from "react";
-import CheckBox from "./CheckBox";
-import type { CheckBoxProps } from "./type";
+import type { CheckBoxProps } from "../checkBox/type";
+import Radio from "./Radio";
 
-const CheckBoxList = ({
+const RadioList = ({
   checkList,
   style: className,
 }: {
   checkList: CheckBoxProps[];
   style?: React.CSSProperties;
 }) => {
-  // list 각각의 아이템 value 를 상태로 관리
   const [isChecked, setIsChecked] = useState<Record<string, boolean>>(
     checkList.reduce(
       (acc, item) => ({ ...acc, [item.name as string]: item.checked }),
@@ -37,7 +36,7 @@ const CheckBoxList = ({
   return (
     <fieldset style={className}>
       {checkList.map((item) => (
-        <CheckBox
+        <Radio
           key={crypto.randomUUID()}
           name={item.name}
           checked={isChecked[item.name as string] || false}
@@ -51,4 +50,4 @@ const CheckBoxList = ({
   );
 };
 
-export default CheckBoxList;
+export default RadioList;

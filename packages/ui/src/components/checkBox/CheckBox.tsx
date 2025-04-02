@@ -7,6 +7,7 @@ import type { CheckBoxProps } from "./type";
 const CheckBox = ({
   checked = false,
   name,
+  id,
   label,
   disabled,
   onClick,
@@ -17,7 +18,7 @@ const CheckBox = ({
     <div className={checkboxWrapper({ disabled })} onClick={onClick}>
       <label
         className={checkboxInput({ disabled, checked })}
-        htmlFor={name}
+        htmlFor={id}
         onClick={(e) => e.stopPropagation()}
       >
         {!disabled && <Check width={12} height={12} fill={Color.bg} />}
@@ -26,10 +27,11 @@ const CheckBox = ({
       <input
         type="checkbox"
         name={name}
-        id={name}
+        id={id}
         disabled={disabled}
         checked={checked}
         onChange={onChange}
+        value={name}
         {...props}
       />
     </div>
