@@ -2,8 +2,9 @@ import type { ChangeEvent } from "react";
 import { useState } from "react";
 import Upload from "../../../assets/upload.svg";
 import useImageUrlStore from "../../store/useImageUrlStore";
+import { Color } from "../../styles";
 import Button from "../button/Button";
-import { basicInput, labelStyle } from "./style.css";
+import { basicInput, button, labelStyle, wrapper } from "./style.css";
 
 const FileUpload = ({ disabled }: { disabled: boolean }) => {
   const { setUrlList, urlList } = useImageUrlStore();
@@ -52,17 +53,25 @@ const FileUpload = ({ disabled }: { disabled: boolean }) => {
     <div>
       <label
         className={labelStyle({
-          border: isDropActive ? "active" : "none",
           disabled,
+          isDropActive,
         })}
         htmlFor="image"
         onDragEnter={handleDragStart}
         onDragOver={handleDragOver}
         onDrop={(e) => handleDrop(e)}
       >
-        <Upload width={20} height={20} />
-        <p>드래그하여 파일 업로드</p>
-        <Button variant="accent">파일 업로드</Button>
+        <div className={wrapper}>
+          <Upload
+            width={20}
+            height={20}
+            fill={disabled ? Color.text.sub : Color.primary.default}
+          />
+          <p>드래그하여 파일 업로드</p>
+        </div>
+        <Button variant="accent" className={button({ disabled })}>
+          파일 업로드
+        </Button>
       </label>
       <input
         className={basicInput}
