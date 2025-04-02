@@ -1,22 +1,25 @@
+import type { ComponentPropsWithoutRef } from "react";
 import { checkboxInput, checkboxWrapper } from "../checkBox/style.css";
-import type { CheckBoxProps } from "../checkBox/type";
 import { icon, radioInput } from "./style.css";
+
+type RadioProps = ComponentPropsWithoutRef<"input"> & {
+  label: string;
+};
 
 const Radio = ({
   checked = false,
   name,
-  id,
   label,
   disabled,
   onClick,
   onChange,
   ...props
-}: CheckBoxProps) => {
+}: RadioProps) => {
   return (
     <div className={checkboxWrapper({ disabled })} onClick={onClick}>
       <label
         className={`${checkboxInput({ disabled, checked })} ${radioInput}`}
-        htmlFor={id}
+        htmlFor={name}
       >
         {!disabled && <span className={icon}></span>}
       </label>
@@ -24,10 +27,9 @@ const Radio = ({
       <input
         type="radio"
         name={name}
-        id={id}
+        id={name}
         disabled={disabled}
         checked={checked}
-        value={name}
         onClick={(e) => e.stopPropagation()}
         onChange={onChange}
         {...props}

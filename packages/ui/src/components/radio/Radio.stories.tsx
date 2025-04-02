@@ -5,7 +5,7 @@ import Radio from "./Radio";
 
 const meta: Meta<typeof Radio> = {
   component: Radio,
-  title: "UI/Radio/Single",
+  title: "UI/Input/Radio",
   argTypes: {
     disabled: {
       description: "체크박스 체크 여부",
