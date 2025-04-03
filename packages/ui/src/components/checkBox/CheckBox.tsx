@@ -25,6 +25,7 @@ const CheckBox = ({
         id={id}
         disabled={disabled}
         checked={checked}
+        onChange={onChange}
         {...props}
       />
     </div>
