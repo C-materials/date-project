@@ -23,7 +23,7 @@ export const switchStyle = recipe({
         cursor: "pointer",
       },
     },
-    isChecked: {
+    checked: {
       true: {
         backgroundColor: Color.accent.default,
         justifyContent: "flex-end",
@@ -33,7 +33,7 @@ export const switchStyle = recipe({
   },
   compoundVariants: [
     {
-      variants: { disabled: false, isChecked: false },
+      variants: { disabled: false, checked: false },
       style: {
         ":hover": {
           backgroundColor: ColorVar.greyBlue[5],
@@ -41,13 +41,13 @@ export const switchStyle = recipe({
       },
     },
     {
-      variants: { disabled: true, isChecked: false },
+      variants: { disabled: true, checked: false },
       style: {
         backgroundColor: ColorVar.greyBlue[8],
       },
     },
     {
-      variants: { disabled: true, isChecked: true },
+      variants: { disabled: true, checked: true },
       style: {
         backgroundColor: ColorVar.blue.dark[7],
       },
@@ -71,11 +71,11 @@ export const toggle = recipe({
         backgroundColor: ColorVar.greyBlue[5],
       },
     },
-    isChecked: { true: {} },
+    checked: { true: {} },
   },
   compoundVariants: [
     {
-      variants: { disabled: false, isChecked: false },
+      variants: { disabled: false, checked: false },
       style: {
         ":hover": {
           backgroundColor: Color.primary.active,
@@ -83,7 +83,7 @@ export const toggle = recipe({
       },
     },
     {
-      variants: { disabled: false, isChecked: true },
+      variants: { disabled: false, checked: true },
       style: {
         backgroundColor: Color.primary.default,
       },

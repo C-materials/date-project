@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { CheckBoxProps } from "../checkBox/type";
 import { switchStyle, toggle } from "./style.css";
 
@@ -12,24 +11,21 @@ const Switch = ({
   onClick,
   ...props
 }: CheckBoxProps) => {
-  const [isChecked, setIsChecked] = useState(checked);
-  const handleClickSwitch = () => {
-    setIsChecked((prev) => !prev);
-  };
   return (
-    <div onClick={handleClickSwitch}>
-      <label htmlFor={id} className={switchStyle({ disabled, isChecked })}>
-        <span className={toggle({ disabled, isChecked })}></span>
+    <div onClick={onClick}>
+      <label htmlFor={id} className={switchStyle({ disabled, checked })}>
+        <span className={toggle({ disabled, checked })}></span>
+
+        <input
+          type="checkbox"
+          checked={checked}
+          value={name}
+          id={id}
+          disabled={disabled}
+          onChange={onChange}
+          {...props}
+        />
       </label>
-      <input
-        type="checkbox"
-        checked={isChecked}
-        value={name}
-        id={id}
-        disabled={disabled}
-        onChange={onChange}
-        {...props}
-      />
     </div>
   );
 };
