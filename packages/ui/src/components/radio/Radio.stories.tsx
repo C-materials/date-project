@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import type { ChangeEvent } from "react";
 import { useState } from "react";
 import { Color } from "../../styles/theme.css";
 import Radio from "./Radio";
@@ -29,18 +30,18 @@ type Story = StoryObj<typeof Radio>;
 export const Default: Story = {
   args: {
     disabled: false,
+    checked: false,
     name: "default",
     label: "Radio",
   },
   render: (args) => {
     const [isChecked, setIsChecked] = useState(false);
-    const handleClickRadio = () => {
-      if (args.disabled) return;
-      setIsChecked((prev) => !prev);
+    const handleChangeRadio = (e: ChangeEvent<HTMLInputElement>) => {
+      setIsChecked(e.target.checked);
     };
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <Radio {...args} checked={isChecked} onClick={handleClickRadio} />
+        <Radio {...args} checked={isChecked} onChange={handleChangeRadio} />
       </div>
     );
   },

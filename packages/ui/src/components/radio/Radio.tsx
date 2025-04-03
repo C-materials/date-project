@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
-import { checkboxInput } from "../checkBox/style.css";
+import { checkboxInput, checkboxWrapper } from "../checkBox/style.css";
 import { icon, radioInput } from "./style.css";
 
 type RadioProps = ComponentPropsWithoutRef<"input"> & {
@@ -12,16 +12,14 @@ const Radio = ({
   id,
   label,
   disabled,
-  onClick,
   onChange,
   ...props
 }: RadioProps) => {
   return (
-    <label
-      className={`${checkboxInput({ disabled, checked })} ${radioInput}`}
-      htmlFor={id}
-    >
-      {!disabled && <span className={icon}></span>}
+    <label className={checkboxWrapper({ disabled })} htmlFor={id}>
+      <div className={`${checkboxInput({ disabled, checked })} ${radioInput}`}>
+        {!disabled && <span className={icon}></span>}
+      </div>
       <div>{label}</div>
       <input
         type="radio"
@@ -29,7 +27,6 @@ const Radio = ({
         id={id}
         disabled={disabled}
         checked={checked}
-        onClick={(e) => e.stopPropagation()}
         onChange={onChange}
         {...props}
       />
