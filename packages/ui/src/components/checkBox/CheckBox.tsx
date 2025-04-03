@@ -14,10 +14,10 @@ const CheckBox = ({
   ...props
 }: CheckBoxProps) => {
   return (
-    <div className={checkboxWrapper({ disabled })} onClick={onClick}>
-      <label className={checkboxInput({ disabled, checked })} htmlFor={id}>
+    <label className={checkboxWrapper({ disabled })} htmlFor={id}>
+      <div className={checkboxInput({ disabled, checked })}>
         {!disabled && <Check width={12} height={12} fill={Color.bg} />}
-      </label>
+      </div>
       <div className={checkboxLabel({ disabled })}>{label}</div>
       <input
         type="checkbox"
@@ -28,7 +28,7 @@ const CheckBox = ({
         onChange={onChange}
         {...props}
       />
-    </div>
+    </label>
   );
 };
 

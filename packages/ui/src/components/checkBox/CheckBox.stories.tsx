@@ -41,22 +41,13 @@ export const Default: Story = {
   },
   render: (args) => {
     const [isChecked, setIsChecked] = useState(false);
-    const handleClickCheckBox = () => {
-      if (args.disabled) return;
-      setIsChecked((prev) => !prev);
-    };
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       setIsChecked(e.target.checked);
     };
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <CheckBox
-          {...args}
-          checked={isChecked}
-          onClick={handleClickCheckBox}
-          onChange={handleChange}
-        />
+        <CheckBox {...args} checked={isChecked} onChange={handleChange} />
       </div>
     );
   },
