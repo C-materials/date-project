@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 import { story } from "../../styles/storyStyle.css";
 import Switch from "./Switch";
 
@@ -25,9 +26,14 @@ export const Default: Story = {
     checked: false,
   },
   render: (args) => {
+    const [isActive, setIsActive] = useState(args.checked);
+    const handleChange = () => {
+      setIsActive((prev) => !prev);
+    };
+
     return (
       <div className={story}>
-        <Switch {...args} />
+        <Switch {...args} onChange={handleChange} checked={isActive} />
       </div>
     );
   },
