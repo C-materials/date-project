@@ -4,7 +4,6 @@ import { Color, ColorVar } from "../../styles";
 export const checkboxWrapper = recipe({
   base: {
     display: "flex",
-    alignItems: "center", // 텍스트랑 체크박스 높이가 안맞음
     gap: "8px",
 
     width: "fit-content",

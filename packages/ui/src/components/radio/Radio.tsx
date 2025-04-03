@@ -1,5 +1,9 @@
 import type { ComponentPropsWithoutRef } from "react";
-import { checkboxInput, checkboxWrapper } from "../checkBox/style.css";
+import {
+  checkboxInput,
+  checkboxLabel,
+  checkboxWrapper,
+} from "../checkBox/style.css";
 import { icon, radioInput } from "./style.css";
 
 type RadioProps = ComponentPropsWithoutRef<"input"> & {
@@ -20,11 +24,12 @@ const Radio = ({
       <div className={`${checkboxInput({ disabled, checked })} ${radioInput}`}>
         {!disabled && <span className={icon}></span>}
       </div>
-      <div>{label}</div>
+      <div className={checkboxLabel({ disabled })}>{label}</div>
       <input
         type="radio"
         name={name}
         id={id}
+        value={label}
         disabled={disabled}
         checked={checked}
         onChange={onChange}

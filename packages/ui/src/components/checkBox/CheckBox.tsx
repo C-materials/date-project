@@ -23,6 +23,7 @@ const CheckBox = ({
         type="checkbox"
         name={name}
         id={id}
+        value={label}
         disabled={disabled}
         checked={checked}
         onChange={onChange}
