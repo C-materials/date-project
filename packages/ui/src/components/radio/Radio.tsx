@@ -3,32 +3,30 @@ import {
   checkboxInput,
   checkboxLabel,
   checkboxWrapper,
+  notDisplay,
 } from "../checkBox/style.css";
 import { icon, radioInput } from "./style.css";
 
 type RadioProps = ComponentPropsWithoutRef<"input"> & {
-  label: string;
+  label?: string;
 };
 
 const Radio = ({
   checked = false,
-  name,
-  id,
   label,
   disabled,
   onChange,
   ...props
 }: RadioProps) => {
   return (
-    <label className={checkboxWrapper({ disabled })} htmlFor={id}>
+    <label className={checkboxWrapper({ disabled })}>
       <div className={`${checkboxInput({ disabled, checked })} ${radioInput}`}>
         {!disabled && <span className={icon}></span>}
       </div>
-      <div className={checkboxLabel({ disabled })}>{label}</div>
+      {label && <div className={checkboxLabel({ disabled })}>{label}</div>}
       <input
         type="radio"
-        name={name}
-        id={id}
+        className={notDisplay}
         value={label}
         disabled={disabled}
         checked={checked}

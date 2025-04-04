@@ -1,12 +1,15 @@
 import Check from "../../../assets/done.svg?react";
 import { Color } from "../../styles";
-import { checkboxInput, checkboxLabel, checkboxWrapper } from "./style.css";
+import {
+  checkboxInput,
+  checkboxLabel,
+  checkboxWrapper,
+  notDisplay,
+} from "./style.css";
 import type { CheckBoxProps } from "./type";
 
 const CheckBox = ({
   checked = false,
-  name,
-  id,
   label,
   disabled,
   onClick,
@@ -14,15 +17,14 @@ const CheckBox = ({
   ...props
 }: CheckBoxProps) => {
   return (
-    <label className={checkboxWrapper({ disabled })} htmlFor={id}>
+    <label className={checkboxWrapper({ disabled })}>
       <div className={checkboxInput({ disabled, checked })}>
         {!disabled && <Check width={12} height={12} fill={Color.bg} />}
       </div>
-      <div className={checkboxLabel({ disabled })}>{label}</div>
+      {label && <div className={checkboxLabel({ disabled })}>{label}</div>}
       <input
+        className={notDisplay}
         type="checkbox"
-        name={name}
-        id={id}
         value={label}
         disabled={disabled}
         checked={checked}

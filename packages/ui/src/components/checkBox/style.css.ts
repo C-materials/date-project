@@ -1,3 +1,4 @@
+import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { Color, ColorVar } from "../../styles";
 
@@ -86,4 +87,8 @@ export const checkboxLabel = recipe({
       },
     },
   },
+});
+
+export const notDisplay = style({
+  display: "none",
 });

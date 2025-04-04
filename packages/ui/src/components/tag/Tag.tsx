@@ -9,14 +9,15 @@ const Tag = ({
   accent,
 }: {
   content: string;
-  disabled: boolean;
-  checked: boolean;
-  onClick: () => void;
+  disabled?: boolean;
+  checked?: boolean;
+  onClick?: () => void;
   accent?: boolean;
 }) => {
   const [isChecked, setIsChecked] = useState(checked);
   const handleClick = () => {
     setIsChecked((prev) => !prev);
+    if (!onClick) return;
     onClick();
   };
   return (

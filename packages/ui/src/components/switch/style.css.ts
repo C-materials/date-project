@@ -12,7 +12,7 @@ export const switchStyle = recipe({
 
     backgroundColor: ColorVar.greyBlue[6],
 
-    transition: "0.1s ease",
+    transition: "0.3s ease",
   },
   variants: {
     disabled: {
@@ -63,7 +63,7 @@ export const toggle = recipe({
     borderRadius: "50%",
 
     backgroundColor: Color.primary.active,
-    transition: "0.1s ease",
+    transition: "1s ease",
   },
   variants: {
     disabled: {
