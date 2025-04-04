@@ -16,12 +16,6 @@ globalStyle(`${rangeSlider} .range-slider__range`, {
   backgroundColor: Color.primary.default,
 });
 
-// 구간 disabled
-globalStyle(`${rangeSlider} .range-slider__range[data-disabled]`, {
-  backgroundColor: ColorVar.greyBlue[5],
-  opacity: 1,
-});
-
 //thumb 일괄 스타일
 globalStyle(`${rangeSlider} .range-slider__thumb`, {
   width: "11px",
@@ -29,19 +23,6 @@ globalStyle(`${rangeSlider} .range-slider__thumb`, {
   borderRadius: "50%",
   backgroundColor: Color.primary.default,
   transition: "width 0.1s ease, height 0.1s ease",
-});
-//thumbs hover
-
-globalStyle(
-  `${rangeSlider} .range-slider__thumb[data-active]:not(:disabled), ${rangeSlider}.range-slider__thumb:hover:not(:disabled)`,
-  {
-    width: "13px",
-    height: "13px",
-  },
-);
-//thumbs disabled
-globalStyle(`${rangeSlider} ${rangeSlider}.range-slider__thumb:disabled`, {
-  backgroundColor: ColorVar.greyBlue[5],
 });
 
 //thumb 개별 스타일
@@ -51,6 +32,30 @@ globalStyle(`${rangeSlider} .range-slider__thumb[data-lower]`, {
 
 globalStyle(`${rangeSlider} .range-slider__thumb[data-upper]`, {
   boxShadow: "-2px 4px 4px 0 rgba(0,0,0,0.25)",
+});
+
+//thumbs hover
+globalStyle(
+  `${rangeSlider} .range-slider__thumb[data-active]:not(:disabled), ${rangeSlider}.range-slider__thumb:hover:not(:disabled)`,
+  {
+    width: "13px",
+    height: "13px",
+  },
+);
+
+//DISABLED 스타일
+//배경
+globalStyle(`${rangeSlider}[data-disabled]`, {
+  opacity: 1,
+});
+// 구간 disabled
+globalStyle(`${rangeSlider}[data-disabled] .range-slider__range`, {
+  backgroundColor: ColorVar.greyBlue[5],
+});
+
+//thumbs disabled
+globalStyle(`${rangeSlider}[data-disabled] .range-slider__thumb`, {
+  backgroundColor: ColorVar.greyBlue[5],
 });
 
 // Slider 외 스타일
