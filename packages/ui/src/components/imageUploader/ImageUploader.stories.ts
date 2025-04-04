@@ -4,9 +4,14 @@ import ImageUploader from "./ImageUploader";
 const meta: Meta<typeof ImageUploader> = {
   component: ImageUploader,
   title: "UI/ImageUploader",
+  argTypes: {
+    disabled: {
+      description: "체크박스 체크 여부",
+      control: "boolean",
+    },
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const ImageFileInput: Story = {};
+type Story = StoryObj<typeof ImageUploader>;

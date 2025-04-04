@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FiUserPlus } from "react-icons/fi";
+import { story } from "../../styles/storyStyle.css";
 import Button from "./Button";
-import { story } from "./storyStyle.css";
 
 const meta: Meta<typeof Button> = {
   component: Button,
