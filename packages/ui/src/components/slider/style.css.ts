@@ -45,16 +45,16 @@ globalStyle(
 
 //DISABLED 스타일
 //배경
-globalStyle(`${rangeSlider}:disabled`, {
+globalStyle(`${rangeSlider}[data-disabled]`, {
   opacity: 1,
 });
 // 구간 disabled
-globalStyle(`${rangeSlider}:disabled .range-slider__range`, {
+globalStyle(`${rangeSlider}[data-disabled] .range-slider__range`, {
   backgroundColor: ColorVar.greyBlue[5],
 });
 
 //thumbs disabled
-globalStyle(`${rangeSlider}:disabled .range-slider__thumb`, {
+globalStyle(`${rangeSlider}[data-disabled] .range-slider__thumb`, {
   backgroundColor: ColorVar.greyBlue[5],
 });
 
