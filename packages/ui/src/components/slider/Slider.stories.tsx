@@ -21,8 +21,8 @@ export const Default: Story = {
   },
   render: (args) => {
     const [value, setValue] = useState<[number, number]>([0, 100]);
-    const handleChange = () => {
-      // setValue()
+    const handleChange = (value: [number, number]) => {
+      setValue(value);
     };
     return (
       <div className={story}>

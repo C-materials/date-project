@@ -31,23 +31,18 @@ globalStyle(`${rangeSlider} .range-slider__thumb`, {
   transition: "width 0.1s ease, height 0.1s ease",
 });
 //thumbs hover
-/**
- * @Todo disabled일때는 호버시 스타일 적용하지 않기
- *  */
+
 globalStyle(
-  `${rangeSlider} .range-slider__thumb[data-active], ${rangeSlider} .range-slider__thumb:hover`,
+  `${rangeSlider} .range-slider__thumb[data-active]:not(:disabled), ${rangeSlider}.range-slider__thumb:hover:not(:disabled)`,
   {
     width: "13px",
     height: "13px",
   },
 );
 //thumbs disabled
-globalStyle(
-  `${rangeSlider} .range-slider__thumb[data-active], ${rangeSlider} .range-slider__thumb:disabled`,
-  {
-    backgroundColor: ColorVar.greyBlue[5],
-  },
-);
+globalStyle(`${rangeSlider} ${rangeSlider}.range-slider__thumb:disabled`, {
+  backgroundColor: ColorVar.greyBlue[5],
+});
 
 //thumb 개별 스타일
 globalStyle(`${rangeSlider} .range-slider__thumb[data-lower]`, {
@@ -58,6 +53,7 @@ globalStyle(`${rangeSlider} .range-slider__thumb[data-upper]`, {
   boxShadow: "-2px 4px 4px 0 rgba(0,0,0,0.25)",
 });
 
+// Slider 외 스타일
 export const wrapper = style({
   display: "flex",
   flexDirection: "column",
