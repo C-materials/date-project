@@ -4,6 +4,7 @@ import Upload from "../../../assets/upload.svg";
 import useImageUrlStore from "../../store/useImageUrlStore";
 import { Color } from "../../styles";
 import Button from "../button/Button";
+import { notDisplay } from "../checkBox/style.css";
 import { basicInput, button, labelStyle, wrapper } from "./style.css";
 
 type fileProps = ComponentPropsWithoutRef<"input">;
@@ -72,7 +73,6 @@ const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
           disabled,
           isDropActive,
         })}
-        htmlFor="image"
         onDragEnter={handleDragStart}
         onDragOver={handleDragOver}
         onDrop={(e) => handleDrop(e)}
@@ -88,17 +88,15 @@ const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
         <Button variant="accent" className={button({ disabled })}>
           파일 업로드
         </Button>
+        <input
+          type="file"
+          multiple
+          className={`${basicInput} ${notDisplay}`}
+          accept="image/png, image/jpeg, image/jpg"
+          onChange={(e) => handleSelectFile(e)}
+          {...props}
+        />
       </label>
-      <input
-        className={basicInput}
-        id="image"
-        name="image"
-        type="file"
-        multiple
-        accept="image/png, image/jpeg, image/jpg"
-        onChange={(e) => handleSelectFile(e)}
-        {...props}
-      ></input>
     </div>
   );
 };
