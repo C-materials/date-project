@@ -67,6 +67,7 @@ const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const handleClickButton = () => {
+    if (disabled) return;
     inputRef.current?.click();
   };
   return (
