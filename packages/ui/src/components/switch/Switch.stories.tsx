@@ -11,6 +11,7 @@ const meta: Meta<typeof Switch> = {
       control: "boolean",
     },
     checked: {
+      description: "컴포넌트 체크 상태 초기값",
       control: "boolean",
     },
     onChange: {

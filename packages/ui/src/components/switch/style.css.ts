@@ -26,7 +26,6 @@ export const switchStyle = recipe({
     checked: {
       true: {
         backgroundColor: Color.accent.default,
-        justifyContent: "flex-end",
       },
       false: {},
     },
@@ -63,7 +62,7 @@ export const toggle = recipe({
     borderRadius: "50%",
 
     backgroundColor: Color.primary.active,
-    transition: "1s ease",
+    transition: "background 1s ease, transform 1s ease",
   },
   variants: {
     disabled: {
@@ -71,7 +70,14 @@ export const toggle = recipe({
         backgroundColor: ColorVar.greyBlue[5],
       },
     },
-    checked: { true: {} },
+    checked: {
+      true: {
+        transform: "translate(20px,0)",
+      },
+      false: {
+        transform: "translate(0,0)",
+      },
+    },
   },
   compoundVariants: [
     {
