@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Arrow from "../../../assets/downArrow.svg";
-import { icon } from "../textfield/style.css";
 import TextInput from "../textfield/textInput/TextInput";
 import OptionList from "./OptionList";
-import { selectWrapper } from "./style.css";
+import { icon, selectWrapper } from "./style.css";
 import type { SelectProps } from "./type";
 
 const Select = ({
@@ -54,13 +53,7 @@ const Select = ({
         value={value}
         placeholder={placeholder}
         onClick={handleClickInput}
-        suffix={
-          <Arrow
-            className={icon({ isOpen, disabled })}
-            width={12}
-            height={12}
-          />
-        }
+        suffix={<Arrow className={icon({ isOpen, disabled })} />}
         {...props}
       />
       {isOpen && !disabled && (

@@ -41,7 +41,7 @@ export const Default: Story = {
     min: 0,
     max: 300,
     unit: "unit",
-    width: 500,
+    width: 200,
     step: 10,
   },
   render: (args) => {

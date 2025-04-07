@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 import { ColorVar } from "../../styles";
 import { Zindex } from "../../styles/zIndex.css";
 
@@ -35,4 +36,35 @@ export const listItem = style({
   justifyContent: "space-between",
   fontSize: "14px",
   lineHeight: "17px",
+});
+
+export const icon = recipe({
+  base: {
+    position: "absolute",
+    top: "14px",
+    right: "12px",
+    transition: "transform 0.3s ease",
+
+    width: "12px",
+    height: "12px",
+
+    color: ColorVar.grey[4],
+  },
+  variants: {
+    isOpen: {
+      true: {
+        transform: "rotate(180deg)",
+      },
+      false: {
+        transform: "rotate(0deg)",
+      },
+    },
+    disabled: {
+      true: {
+        ":hover": {
+          cursor: "not-allowed",
+        },
+      },
+    },
+  },
 });

@@ -1,11 +1,10 @@
 import type { ChangeEvent, ComponentPropsWithoutRef } from "react";
 import { useRef, useState } from "react";
-import Upload from "../../../assets/upload.svg?react";
+import Upload from "../../../assets/uploadIcon.svg";
 import useImageUrlStore from "../../store/useImageUrlStore";
-import { Color } from "../../styles";
 import Button from "../button/Button";
 import { notDisplay } from "../checkBox/style.css";
-import { button, labelStyle, wrapper } from "./style.css";
+import { button, icon, labelStyle, wrapper } from "./style.css";
 
 type fileProps = ComponentPropsWithoutRef<"input">;
 const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
@@ -81,11 +80,7 @@ const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
       onDrop={(e) => handleDrop(e)}
     >
       <div className={wrapper}>
-        <Upload
-          width={20}
-          height={20}
-          fill={disabled ? Color.text.sub : Color.primary.default}
-        />
+        <Upload className={icon({ disabled })} />
         <p>드래그하여 파일 업로드</p>
       </div>
       <label>

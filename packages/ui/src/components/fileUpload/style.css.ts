@@ -85,3 +85,20 @@ export const button = recipe({
     },
   },
 });
+
+export const icon = recipe({
+  base: {
+    width: "20px",
+    height: "20px",
+  },
+  variants: {
+    disabled: {
+      true: {
+        color: Color.text.sub,
+      },
+      false: {
+        color: Color.text.light,
+      },
+    },
+  },
+});
