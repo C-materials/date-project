@@ -78,6 +78,7 @@ const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
       onDragEnter={handleDragStart}
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e)}
+      onClick={handleClickButton}
     >
       <div className={wrapper}>
         <Upload className={icon({ disabled })} />
@@ -93,12 +94,7 @@ const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
           onChange={(e) => handleSelectFile(e)}
           {...props}
         />
-        <Button
-          variant="accent"
-          type="button"
-          className={button({ disabled })}
-          onClick={handleClickButton}
-        >
+        <Button variant="accent" type="button" className={button({ disabled })}>
           파일 업로드
         </Button>
       </label>
