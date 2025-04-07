@@ -3,11 +3,23 @@ import { Color, ColorVar } from "../../styles";
 
 // track (배경)
 export const rangeSlider = style({
-  position: "relative",
   width: "100%",
   height: "4px",
   borderRadius: "1000px",
   backgroundColor: Color.secondary.default,
+
+  selectors: {
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: "-8px",
+      bottom: "-8px",
+      left: 0,
+      right: 0,
+      zIndex: 0,
+      pointerEvents: "auto",
+    },
+  },
 });
 
 // 선택된 구간
@@ -59,10 +71,12 @@ globalStyle(`${rangeSlider}[data-disabled] .range-slider__thumb`, {
 });
 
 // Slider 외 스타일
-export const wrapper = style({
+export const rangeWrapper = style({
   display: "flex",
   flexDirection: "column",
   gap: "12px",
+  padding: "8px 0",
+  position: "relative",
 });
 
 export const description = style({

@@ -1,7 +1,7 @@
 import type { ReactRangeSliderInputProps } from "react-range-slider-input";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
-import { description, rangeSlider, wrapper } from "./style.css";
+import { description, rangeSlider, rangeWrapper } from "./style.css";
 type SliderType = ReactRangeSliderInputProps & {
   unit?: string;
   width?: number;
@@ -15,14 +15,14 @@ const Slider = ({
   ...props
 }: SliderType) => {
   return (
-    <div className={wrapper} style={{ width: width }}>
+    <div className={rangeWrapper} style={{ width: width }}>
       <RangeSlider
-        {...props}
         disabled={disabled}
         rangeSlideDisabled={disabled}
         className={rangeSlider}
         value={value}
         onInput={onInput}
+        {...props}
       />
       <p className={description}>
         {value?.[0]}
