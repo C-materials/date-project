@@ -92,3 +92,19 @@ export const checkboxLabel = recipe({
 export const notDisplay = style({
   display: "none",
 });
+
+export const icon = recipe({
+  base: {
+    width: "12px",
+    height: "12px",
+    color: Color.bg,
+    transition: "0.1s ease",
+  },
+  variants: {
+    checked: {
+      true: {
+        opacity: 1,
+      },
+    },
+  },
+});

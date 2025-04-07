@@ -1,6 +1,6 @@
 import type { ChangeEvent, ComponentPropsWithoutRef } from "react";
 import { useRef, useState } from "react";
-import Upload from "../../../assets/upload.svg";
+import Upload from "../../../assets/upload.svg?react";
 import useImageUrlStore from "../../store/useImageUrlStore";
 import { Color } from "../../styles";
 import Button from "../button/Button";
