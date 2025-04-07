@@ -94,7 +94,12 @@ const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
           onChange={(e) => handleSelectFile(e)}
           {...props}
         />
-        <Button variant="accent" type="button" className={button({ disabled })}>
+        <Button
+          variant="accent"
+          type="button"
+          disabled={disabled}
+          className={button({ disabled })}
+        >
           파일 업로드
         </Button>
       </label>

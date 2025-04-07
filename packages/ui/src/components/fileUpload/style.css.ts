@@ -80,7 +80,7 @@ export const button = recipe({
   variants: {
     disabled: {
       true: {
-        backgroundColor: Color.secondary.default,
+        backgroundColor: `${Color.secondary.default} !important`,
       },
     },
   },
