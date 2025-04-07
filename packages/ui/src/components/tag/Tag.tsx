@@ -16,6 +16,7 @@ const Tag = ({
 }) => {
   const [isChecked, setIsChecked] = useState(checked);
   const handleClick = () => {
+    if (disabled) return;
     setIsChecked((prev) => !prev);
     if (!onClick) return;
     onClick();
