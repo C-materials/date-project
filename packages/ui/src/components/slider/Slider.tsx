@@ -14,15 +14,10 @@ const Slider = ({
   width = 200,
   ...props
 }: SliderType) => {
-  const handleThumbDragStart = () => {
-    console.log("pointerdown 이벤트");
-  };
-
   return (
     <div className={wrapper} style={{ width: width }}>
       <RangeSlider
         {...props}
-        onThumbDragStart={handleThumbDragStart}
         disabled={disabled}
         rangeSlideDisabled={disabled}
         className={rangeSlider}

@@ -5,10 +5,6 @@ import { Color, ColorVar } from "../../styles";
 //imageInput
 export const itemWrapper = style({});
 
-export const basicInput = style({
-  display: "none",
-});
-
 export const labelStyle = recipe({
   base: {
     position: "relative",

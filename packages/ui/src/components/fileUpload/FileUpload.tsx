@@ -1,11 +1,11 @@
 import type { ChangeEvent, ComponentPropsWithoutRef } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Upload from "../../../assets/upload.svg";
 import useImageUrlStore from "../../store/useImageUrlStore";
 import { Color } from "../../styles";
 import Button from "../button/Button";
 import { notDisplay } from "../checkBox/style.css";
-import { basicInput, button, labelStyle, wrapper } from "./style.css";
+import { button, labelStyle, wrapper } from "./style.css";
 
 type fileProps = ComponentPropsWithoutRef<"input">;
 const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
@@ -66,36 +66,46 @@ const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
     }
   };
 
+  const inputRef = useRef<HTMLInputElement>(null);
+  const handleClickButton = () => {
+    inputRef.current?.click();
+  };
   return (
-    <div>
-      <label
-        className={labelStyle({
-          disabled,
-          isDropActive,
-        })}
-        onDragEnter={handleDragStart}
-        onDragOver={handleDragOver}
-        onDrop={(e) => handleDrop(e)}
-      >
-        <div className={wrapper}>
-          <Upload
-            width={20}
-            height={20}
-            fill={disabled ? Color.text.sub : Color.primary.default}
-          />
-          <p>드래그하여 파일 업로드</p>
-        </div>
-        <Button variant="accent" className={button({ disabled })}>
-          파일 업로드
-        </Button>
+    <div
+      className={labelStyle({
+        disabled,
+        isDropActive,
+      })}
+      onDragEnter={handleDragStart}
+      onDragOver={handleDragOver}
+      onDrop={(e) => handleDrop(e)}
+    >
+      <div className={wrapper}>
+        <Upload
+          width={20}
+          height={20}
+          fill={disabled ? Color.text.sub : Color.primary.default}
+        />
+        <p>드래그하여 파일 업로드</p>
+      </div>
+      <label>
         <input
           type="file"
+          ref={inputRef}
           multiple
-          className={`${basicInput} ${notDisplay}`}
+          className={notDisplay}
           accept="image/png, image/jpeg, image/jpg"
           onChange={(e) => handleSelectFile(e)}
           {...props}
         />
+        <Button
+          variant="accent"
+          type="button"
+          className={button({ disabled })}
+          onClick={handleClickButton}
+        >
+          파일 업로드
+        </Button>
       </label>
     </div>
   );
