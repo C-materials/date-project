@@ -36,7 +36,7 @@ globalStyle(`${rangeSlider} .range-slider__thumb[data-upper]`, {
 
 //thumbs hover
 globalStyle(
-  `${rangeSlider} .range-slider__thumb[data-active]:not(:disabled), ${rangeSlider}.range-slider__thumb:hover:not(:disabled)`,
+  `${rangeSlider} .range-slider__thumb[data-active]:not([data-disabled]), ${rangeSlider} .range-slider__thumb:hover:not([data-disabled])`,
   {
     width: "13px",
     height: "13px",

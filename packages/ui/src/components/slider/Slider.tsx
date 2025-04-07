@@ -3,15 +3,15 @@ import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import { description, rangeSlider, wrapper } from "./style.css";
 type SliderType = ReactRangeSliderInputProps & {
-  unit: string;
-  width: number;
+  unit?: string;
+  width?: number;
 };
 const Slider = ({
   value,
   disabled,
   onInput,
   unit = "unit",
-  width,
+  width = 200,
   ...props
 }: SliderType) => {
   const handleThumbDragStart = () => {
@@ -25,7 +25,6 @@ const Slider = ({
         onThumbDragStart={handleThumbDragStart}
         disabled={disabled}
         rangeSlideDisabled={disabled}
-        // thumbsDisabled={} //[boolean, boolean]
         className={rangeSlider}
         value={value}
         onInput={onInput}

@@ -1,14 +1,7 @@
 import type { CheckBoxProps } from "../checkBox/type";
 import { switchStyle, toggle } from "./style.css";
 
-const Switch = ({
-  checked,
-  disabled,
-  label,
-  onChange,
-  onClick,
-  ...props
-}: CheckBoxProps) => {
+const Switch = ({ checked, disabled, onChange, ...props }: CheckBoxProps) => {
   return (
     <label className={switchStyle({ disabled, checked })}>
       <span className={toggle({ disabled, checked })}></span>

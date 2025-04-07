@@ -7,6 +7,10 @@ const meta: Meta<typeof Tag> = {
   component: Tag,
   title: "UI/Tag",
   argTypes: {
+    content: {
+      description: "태그 내부에 들어갈 값",
+      control: "text",
+    },
     disabled: {
       description: "체크박스 체크 여부",
       control: "boolean",
@@ -20,7 +24,7 @@ const meta: Meta<typeof Tag> = {
       control: "boolean",
     },
     onClick: {
-      description: "클릭 ",
+      description: "클릭 시 활성화 토글",
     },
   },
 };

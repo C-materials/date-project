@@ -13,6 +13,9 @@ const meta: Meta<typeof Switch> = {
     checked: {
       control: "boolean",
     },
+    onChange: {
+      description: "컴포넌트 상위에서 value 상태 관리",
+    },
   },
 };
 
