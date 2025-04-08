@@ -1,10 +1,11 @@
 {
   "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
+    "target": "ESNext",
     "outDir": "dist",
     "noEmit": false,
     "typeRoots": ["./node_modules/@types", "src/ImageUploader/types"]
   },
-  "include": ["src", "store"],
+  "include": ["src/**/*.tsx", "store/**/*.ts", "./src/declarations.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
