@@ -9,7 +9,6 @@ const base = style([
     placeItems: "flexCenter",
   }),
   {
-    minHeight: "40px",
     borderRadius: "8px",
     gap: "4px",
     ":disabled": { cursor: "not-allowed" },

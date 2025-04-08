@@ -6,7 +6,7 @@ import TextInput from "./TextInput";
 
 const meta: Meta<typeof TextInput> = {
   component: TextInput,
-  title: "UI/TextInput",
+  title: "UI/Input/TextInput",
   argTypes: {
     disabled: {
       description: "텍스트 필드를 비활성화",

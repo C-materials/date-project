@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import useImageUrlStore from "../../store/useImageUrlStore";
-import ImageInput from "./imageInput/ImageInput";
+import FileUpload from "../fileUpload/FileUpload";
 import ImagePreview from "./imagePreview/ImagePreview";
-import type { UrlType } from "./ImageUploader.types";
 import * as style from "./style.css";
+import type { UrlType } from "./type";
 
 const ImageUploader = () => {
   const { urlList, setUrlList } = useImageUrlStore();
@@ -41,7 +41,7 @@ const ImageUploader = () => {
 
   return (
     <div className={style.wrapper}>
-      <ImageInput />
+      <FileUpload disabled />
       <ul className={style.previewList}>
         {urlList.map((urlItem, index) => (
           <li

@@ -107,34 +107,4 @@ export const textfieldWrapper = style({
   minWidth: "160px",
 });
 
-/**
- * 아이콘 클릭 안됨
- */
-export const icon = recipe({
-  base: {
-    position: "absolute",
-    top: "14px",
-    right: "12px",
-    transition: "transform 0.3s ease",
-  },
-  variants: {
-    isOpen: {
-      true: {
-        transform: "rotate(180deg)",
-      },
-      false: {
-        transform: "rotate(0deg)",
-      },
-    },
-    disabled: {
-      true: {
-        ":hover": {
-          cursor: "not-allowed",
-        },
-      },
-      false: {},
-    },
-  },
-});
-
 export const innerInput = style({});

@@ -1,7 +1,7 @@
 import { GoXCircleFill } from "react-icons/go";
 import useImageUrlStore from "../../../store/useImageUrlStore";
-import type { UrlType } from "../ImageUploader.types";
-import { itemWrapper } from "../style.css";
+import { itemWrapper } from "../../fileUpload/style.css";
+import type { UrlType } from "../type";
 import * as style from "./style.css";
 
 const ImagePreview = ({ url }: { url: UrlType }) => {

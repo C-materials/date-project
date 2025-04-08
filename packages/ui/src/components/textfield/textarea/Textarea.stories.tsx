@@ -4,7 +4,7 @@ import Textarea from "./Textarea";
 
 const meta: Meta<typeof Textarea> = {
   component: Textarea,
-  title: "UI/TextArea",
+  title: "UI/Input/TextArea",
   argTypes: {
     disabled: {
       description: "텍스트 필드를 비활성화",
