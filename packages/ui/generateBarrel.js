@@ -13,7 +13,17 @@ const extension = isJavaScript ? "js" : "ts";
 const targetFolderList = ["components"];
 
 // (직접 수정) 예외 파일 목록
-const exceptionFileList = ["style.css.ts", "type.ts", "stories"];
+const exceptionFileList = [
+  "style.css.ts",
+  "type.ts",
+  "stories",
+  "ImageUploader",
+  "ImageInput",
+  "ImagePreview",
+  "ButtonSample",
+  "sample",
+  "OptionList",
+];
 
 targetFolderList.forEach((folder) => {
   const folderPath = path.join(srcFolderPath, folder); // 대상 폴더의 전체 경로 생성

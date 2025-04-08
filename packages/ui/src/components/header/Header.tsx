@@ -1,18 +1,17 @@
 import logo from "../../../assets/logo.png";
 import Button from "../button/Button";
-import ItemGroup from "./ItemGroup";
-import { header, logoWrapper } from "./style.css";
+import { header, itemWrapper, logoWrapper } from "./style.css";
 const Header = ({ selectedMenu }: { selectedMenu?: string }) => {
   return (
     <header className={header}>
       <div className={logoWrapper}>
         <img src={logo} width={81} height={26} alt="&DEAR" />
-        <ItemGroup>
+        <ul className={itemWrapper}>
           <li>menu</li>
           <li>menu</li>
-        </ItemGroup>
+        </ul>
       </div>
-      <ItemGroup>
+      <div className={itemWrapper}>
         <button type="button">Action</button>
         <Button type="button" variant="outline">
           Button
@@ -20,7 +19,7 @@ const Header = ({ selectedMenu }: { selectedMenu?: string }) => {
         <Button type="button" variant="primary">
           Button
         </Button>
-      </ItemGroup>
+      </div>
     </header>
   );
 };
