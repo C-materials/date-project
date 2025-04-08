@@ -15,7 +15,7 @@ export const tag = recipe({
     listStyle: "none",
   },
   variants: {
-    variant: {
+    tagStyle: {
       default: {
         backgroundColor: Color.secondary.default,
         color: Color.text.default,
@@ -40,7 +40,7 @@ export const tag = recipe({
   },
   compoundVariants: [
     {
-      variants: { variant: "default", disabled: false },
+      variants: { tagStyle: "default", disabled: false },
       style: {
         ":hover": {
           backgroundColor: Color.secondary.hover,
@@ -48,7 +48,7 @@ export const tag = recipe({
       },
     },
     {
-      variants: { variant: "active", disabled: false },
+      variants: { tagStyle: "active", disabled: false },
       style: {
         ":hover": {
           backgroundColor: Color.primary.hover,
@@ -56,7 +56,7 @@ export const tag = recipe({
       },
     },
     {
-      variants: { variant: "accent", disabled: false },
+      variants: { tagStyle: "accent", disabled: false },
       style: {
         ":hover": {
           backgroundColor: Color.accent.hover,
@@ -64,19 +64,19 @@ export const tag = recipe({
       },
     },
     {
-      variants: { variant: "default", disabled: true },
+      variants: { tagStyle: "default", disabled: true },
       style: {
         color: Color.text.sub,
       },
     },
     {
-      variants: { variant: "active", disabled: true },
+      variants: { tagStyle: "active", disabled: true },
       style: {
         color: Color.text.light,
       },
     },
     {
-      variants: { variant: "accent", disabled: true },
+      variants: { tagStyle: "accent", disabled: true },
       style: {
         color: Color.text.sub,
         backgroundColor: Color.accent.disabled,

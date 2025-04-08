@@ -1,35 +1,33 @@
-import { useState } from "react";
 import { tag } from "./style.css";
 
 const Tag = ({
   content,
   disabled,
+  variant = "active",
   checked,
   onClick,
-  accent,
+  as,
 }: {
   content: string;
   disabled?: boolean;
+  variant: "active" | "accent";
   checked?: boolean;
   onClick?: () => void;
-  accent?: boolean;
+  as?: "li" | "div";
 }) => {
-  const [isChecked, setIsChecked] = useState(checked);
-  const handleClick = () => {
-    if (disabled) return;
-    setIsChecked((prev) => !prev);
-    onClick?.();
-  };
+  const TagComponent = as || "div";
+  let tagStyle: "active" | "accent" | "default" = checked ? variant : "default";
+
   return (
-    <li
-      onClick={handleClick}
+    <TagComponent
+      onClick={onClick}
       className={tag({
-        variant: accent ? "accent" : isChecked ? "active" : "default",
+        tagStyle,
         disabled,
       })}
     >
       {content}
-    </li>
+    </TagComponent>
   );
 };
 

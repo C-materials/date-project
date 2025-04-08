@@ -15,13 +15,10 @@ const meta: Meta<typeof Tag> = {
       description: "체크박스 체크 여부",
       control: "boolean",
     },
-    checked: {
-      description: "클릭 시 checked 토글",
-      control: "boolean",
-    },
-    accent: {
-      description: "true 설정 시 accent 색상 적용",
-      control: "boolean",
+    variant: {
+      description: "active 또는 accent 스타일 적용",
+      options: ["active", "accent"],
+      control: "radio",
     },
     onClick: {
       description: "클릭 시 활성화 토글",
@@ -36,16 +33,15 @@ type Story = StoryObj<typeof Tag>;
 export const Default: Story = {
   args: {
     disabled: false,
-    checked: false,
-    accent: false,
     content: "Tag",
+    variant: "active",
+    checked: false,
   },
   render: (args) => {
     const [isChecked, setIsChecked] = useState(args.checked);
     const handleClick = () => {
       setIsChecked((prev) => !prev);
     };
-
     return (
       <div className={story}>
         <Tag {...args} checked={isChecked} onClick={handleClick} />
