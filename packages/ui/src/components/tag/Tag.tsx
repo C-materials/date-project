@@ -18,8 +18,7 @@ const Tag = ({
   const handleClick = () => {
     if (disabled) return;
     setIsChecked((prev) => !prev);
-    if (!onClick) return;
-    onClick();
+    onClick?.();
   };
   return (
     <li

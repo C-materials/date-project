@@ -14,6 +14,8 @@ const Slider = ({
   width = 200,
   ...props
 }: SliderType) => {
+  const startValue = value?.[0] + unit;
+  const endValue = value?.[1] + unit;
   return (
     <div className={rangeWrapper} style={{ width: width }}>
       <RangeSlider
@@ -25,9 +27,7 @@ const Slider = ({
         {...props}
       />
       <p className={description}>
-        {value?.[0]}
-        {unit} ~ {value?.[1]}
-        {unit}
+        {startValue} ~ {endValue}
       </p>
     </div>
   );
