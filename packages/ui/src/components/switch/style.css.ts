@@ -62,7 +62,7 @@ export const toggle = recipe({
     borderRadius: "50%",
 
     backgroundColor: Color.primary.active,
-    transition: "background 1s ease, transform 1s ease",
+    transition: "background 1s ease, transform 0.3s ease",
   },
   variants: {
     disabled: {
