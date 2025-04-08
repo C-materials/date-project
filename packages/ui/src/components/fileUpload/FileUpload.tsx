@@ -6,8 +6,8 @@ import Button from "../button/Button";
 import { notDisplay } from "../checkBox/style.css";
 import { button, icon, labelStyle, wrapper } from "./style.css";
 
-type fileProps = ComponentPropsWithoutRef<"input">;
-const FileUpload = ({ disabled, onChange, ...props }: fileProps) => {
+type FileProps = ComponentPropsWithoutRef<"input">;
+const FileUpload = ({ disabled, onChange, ...props }: FileProps) => {
   const { setUrlList, urlList } = useImageUrlStore();
 
   const [isDropActive, setIsDropActive] = useState(false);
