@@ -37,6 +37,7 @@ export const Default: Story = {
   args: {
     disabled: false,
     checked: false,
+    accent: false,
     content: "Tag",
   },
   render: (args) => {
