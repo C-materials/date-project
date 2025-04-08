@@ -19,9 +19,12 @@ const Tag = ({
   const TagComponent = as || "div";
   let tagStyle: VariantType | "default" = checked ? variant : "default";
 
+  const handleClick = () => {
+    if (!disabled) onClick?.();
+  };
   return (
     <TagComponent
-      onClick={onClick}
+      onClick={handleClick}
       className={tag({
         tagStyle,
         disabled,
