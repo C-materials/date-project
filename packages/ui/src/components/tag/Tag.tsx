@@ -1,4 +1,5 @@
 import { tag } from "./style.css";
+import type { VariantType } from "./type";
 
 const Tag = ({
   content,
@@ -10,13 +11,13 @@ const Tag = ({
 }: {
   content: string;
   disabled?: boolean;
-  variant: "active" | "accent";
+  variant: VariantType;
   checked?: boolean;
   onClick?: () => void;
   as?: "li" | "div";
 }) => {
   const TagComponent = as || "div";
-  let tagStyle: "active" | "accent" | "default" = checked ? variant : "default";
+  let tagStyle: VariantType | "default" = checked ? variant : "default";
 
   return (
     <TagComponent

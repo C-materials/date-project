@@ -42,6 +42,7 @@ export const Default: Story = {
     const handleClick = () => {
       setIsChecked((prev) => !prev);
     };
+
     return (
       <div className={story}>
         <Tag {...args} checked={isChecked} onClick={handleClick} />
