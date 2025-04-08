@@ -1,5 +1,4 @@
 import { style } from "@vanilla-extract/css";
-import { recipe } from "@vanilla-extract/recipes";
 import { Color } from "../../styles";
 
 export const header = style({
@@ -9,16 +8,22 @@ export const header = style({
 
   display: "flex",
   justifyContent: "space-between",
+  alignItems: "center",
 
   background: Color.bg,
   color: Color.text.default,
+  borderBottom: "1px solid",
+  borderColor: Color.border,
 });
 
-export const menuItem = recipe({
-  base: {},
-  variants: {
-    selected: {
-      true: {},
-    },
-  },
+export const itemWrapper = style({
+  display: "flex",
+  gap: "12px",
+});
+
+export const logoWrapper = style({
+  display: "flex",
+  gap: "40px",
+  justifyContent: "space-between",
+  alignItems: "center",
 });

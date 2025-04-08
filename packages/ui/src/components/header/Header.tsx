@@ -1,19 +1,26 @@
 import logo from "../../../assets/logo.png";
-import ButtonGroup from "./ButtonGroup";
-import MenuGroup from "./MenuGroup";
-import { header } from "./style.css";
-const Header = ({ selectedMenu }: { selectedMenu: string }) => {
+import Button from "../button/Button";
+import ItemGroup from "./ItemGroup";
+import { header, logoWrapper } from "./style.css";
+const Header = ({ selectedMenu }: { selectedMenu?: string }) => {
   return (
     <header className={header}>
-      <div>
+      <div className={logoWrapper}>
         <img src={logo} width={81} height={26} alt="&DEAR" />
-        <MenuGroup list={[]}>
-          <div></div>
-        </MenuGroup>
+        <ItemGroup>
+          <li>menu</li>
+          <li>menu</li>
+        </ItemGroup>
       </div>
-      <ButtonGroup>
-        <div></div>
-      </ButtonGroup>
+      <ItemGroup>
+        <button type="button">Action</button>
+        <Button type="button" variant="outline">
+          Button
+        </Button>
+        <Button type="button" variant="primary">
+          Button
+        </Button>
+      </ItemGroup>
     </header>
   );
 };
