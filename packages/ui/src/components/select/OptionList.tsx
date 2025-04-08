@@ -1,5 +1,5 @@
 import Check from "../../../assets/check.svg";
-import { icon, listItem, listWrapper } from "./style.css";
+import { listItem, listWrapper } from "./style.css";
 import type { SelectProps } from "./type";
 
 type OptionListProps = {
@@ -23,7 +23,7 @@ const OptionList = ({
           aria-selected={selected === item}
         >
           {item}
-          {selected === item && <Check className={icon} />}
+          {selected === item && <Check />}
         </li>
       ))}
     </ul>
