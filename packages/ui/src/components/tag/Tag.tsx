@@ -1,5 +1,5 @@
 import { tag } from "./style.css";
-import type { VariantType } from "./type";
+type VariantType = "active" | "accent";
 
 const Tag = ({
   content,
