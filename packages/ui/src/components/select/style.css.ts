@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
-import { ColorVar } from "../../styles";
+import { Color, ColorVar } from "../../styles";
 import { Zindex } from "../../styles/zIndex.css";
 
 export const selectWrapper = style({
@@ -67,4 +67,10 @@ export const icon = recipe({
       },
     },
   },
+});
+
+export const checkIcon = style({
+  width: "12px",
+  height: "12px",
+  color: Color.text.default,
 });

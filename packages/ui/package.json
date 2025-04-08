@@ -17,7 +17,7 @@
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "barrel": "node generateBarrel.js"
   },
   "devDependencies": {
