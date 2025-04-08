@@ -2,8 +2,8 @@ import { useRef } from "react";
 import useImageUrlStore from "../../store/useImageUrlStore";
 import FileUpload from "../fileUpload/FileUpload";
 import ImagePreview from "./imagePreview/ImagePreview";
-import type { UrlType } from "./ImageUploader.types";
 import * as style from "./style.css";
+import type { UrlType } from "./type";
 
 const ImageUploader = () => {
   const { urlList, setUrlList } = useImageUrlStore();
