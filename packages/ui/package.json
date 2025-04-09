@@ -3,21 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "exports": {
-    "./*": {
-      "types": "./dist/*.d.ts",
-      "import": "./dist/*.mjs",
-      "default": "./dist/*.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/ui.mjs"
     },
-    "./component": "./dist/components/index.d.ts",
-    "./global.css": "./dist/global.css",
-    "./components": "./dist/components/*.js"
+    "./global.css": "./dist/global.css"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "barrel": "node generateBarrel.js"
   },
   "devDependencies": {

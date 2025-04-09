@@ -6,6 +6,6 @@
     "noEmit": false,
     "typeRoots": ["./node_modules/@types", "src/ImageUploader/types"]
   },
-  "include": ["src/**/*.tsx", "store/**/*.ts", "./src/declarations.d.ts"],
+  "include": ["src", "store"],
   "exclude": ["node_modules", "dist"]
 }
