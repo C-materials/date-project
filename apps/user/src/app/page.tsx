@@ -2,15 +2,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <main>
-        <Image
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
         <ol>
           <li>
             Get started by editing <code>src/app/page.tsx</code>.
@@ -85,6 +78,6 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
-    </div>
+    </>
   );
 }
