@@ -4,7 +4,9 @@
     "target": "ESNext",
     "outDir": "dist",
     "noEmit": false,
-    "typeRoots": ["./node_modules/@types", "src/ImageUploader/types"]
+    "typeRoots": ["./node_modules/@types", "src/ImageUploader/types"],
+    "declaration": true,
+    "declarationMap": true
   },
   "include": ["src", "store"],
   "exclude": ["node_modules", "dist"]

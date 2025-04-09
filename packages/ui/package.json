@@ -5,7 +5,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/ui.mjs"
+      "default": "./dist/ui.mjs"
     },
     "./global.css": "./dist/global.css"
   },
