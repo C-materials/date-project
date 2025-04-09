@@ -1,5 +1,4 @@
 import { style } from "@vanilla-extract/css";
-// import { Color } from "../../../../../../packages/ui/src/styles";
 
 export const header = style({
   height: "72px",
