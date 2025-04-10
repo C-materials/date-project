@@ -37,7 +37,7 @@ export default function Login() {
    * @Todo 로그인 실패 시 모달? 토스트?
    */
   return (
-    <div>
+    <>
       <Image
         src="/logo.svg"
         width={200}
@@ -84,6 +84,6 @@ export default function Login() {
           </Link>
         </div>
       </form>
-    </div>
+    </>
   );
 }

@@ -56,3 +56,20 @@ export const signupButton = style({
   lineHeight: "17px",
 });
 // ------------logout------------
+export const inputLabel = style({
+  fontSize: "14px",
+  lineHeight: "17px",
+  fontWeight: 500,
+  paddingBottom: "10px",
+  display: "inline-block",
+});
+
+export const pagination = style({
+  display: "flex",
+  justifyContent: "space-between",
+});
+
+export const pageButton = style({
+  width: "80px",
+  height: "40px",
+});
