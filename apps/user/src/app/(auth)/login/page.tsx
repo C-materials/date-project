@@ -7,12 +7,19 @@ import {
   form,
   inputWrapper,
   loginButton,
+  logo,
   signupButton,
 } from "../style.css";
 export default function Login() {
   return (
-    <>
-      <Image src="/logo.svg" width={200} height={64} alt="&DEAR" />
+    <div>
+      <Image
+        src="/logo.svg"
+        width={200}
+        height={64}
+        alt="&DEAR"
+        className={logo}
+      />
       <form className={form}>
         <div className={inputWrapper}>
           <TextInput type="tel" width="100%" placeholder="휴대폰 번호" />
@@ -32,6 +39,6 @@ export default function Login() {
           </Link>
         </div>
       </form>
-    </>
+    </div>
   );
 }

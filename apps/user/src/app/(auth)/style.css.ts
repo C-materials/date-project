@@ -5,6 +5,9 @@ export const bg = style({
   background: `linear-gradient(${ColorVar.greyBlue[9]} 0%, ${ColorVar.blue.dark[8]} 100%)`,
   height: "100dvh",
   margin: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });
 
 export const contentWrapper = style({
@@ -15,8 +18,14 @@ export const contentWrapper = style({
   width: "420px",
 });
 // ------------login------------
+export const logo = style({
+  display: "flex",
+  margin: "0 auto 52px",
+});
+
 export const form = style({
   display: "flex",
+  width: "100%",
   flexDirection: "column",
   gap: "40px",
 });
