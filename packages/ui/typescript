@@ -1,0 +1,59 @@
+Script started on Thu Apr 10 19:09:51 2025
+[1m[7m%[27m[1m[0m                                                                              ]2;yelimhong@YeliMac:~/Desktop/project/date-project/packages/ui]1;..t/packages/ui]7;file://YeliMac.local/Users/yelimhong/Desktop/project/date-project/packages/ui\[0m[27m[24m[J[39m[0m[49m[40m[39m yelimhong@YeliMac [44m[30m[30m ~/Desktop/project/date-project/packages/ui [43m[34m[30m  design/layout ± [49m[33m[39m [K[?1h=[?2004hp[1m[31mp[0m[39m[1m[31mp[0m[39m[90mnpm script[39m[10D[1m[31mp[1m[31mn[0m[39m[1m[31mp[1m[31mn[1m[31mp[0m[39m[1m[31mp[1m[31mm[0m[39m[0m[32mp[0m[32mn[0m[32mp[0m[32mm[39m[32mm[32m [39m[32mm[39m[39m [39ms[4ms[24m[4ms[39m[4mt[24m[39m [39m [39m [39m [24ms[24mt[90morybook[39m[39mo[39mr[39my[39mb[39mo[39mo[39mk[?1l>[?2004l
+]2;pnpm storybook]1;pnpm[41m[30m ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL [39m[49m [31mCommand "storybook" not found[39m
+
+Did you mean "pnpm turbo"?
+[1m[7m%[27m[1m[0m                                                                              ]2;yelimhong@YeliMac:~/Desktop/project/date-project/packages/ui]1;..t/packages/ui]7;file://YeliMac.local/Users/yelimhong/Desktop/project/date-project/packages/ui\[0m[27m[24m[J[39m[0m[49m[40m[39m [31m✘[40m[39m yelimhong@YeliMac [44m[30m[30m ~/Desktop/project/date-project/packages/ui [43m[34m[30m  design/layout ± [49m[33m[39m [K[?1h=[?2004hc[1m[31mc[0m[39m[1m[31mc[0m[39m[90md packages/ui[39m[13D[1m[31mc[1m[31md[0m[39m[0m[32mc[0m[32md[39m[32mc[32md[32m [39m[32mc[32md[39m[39m [39m.[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [10D[4m.[24m[90m./..[39m[4m.[39m[4m,[24m[39m [39m [39m [24m.[24m,.  [4m.[24m[90m./..[39m[39m.[39m/[39m.[39m.[4m.[4m.[4m/[4m.[4m.[24m[?1l>[?2004l
+]2;cd ../..]1;cd[1m[7m%[27m[1m[0m                                                                              ]2;yelimhong@YeliMac:~/Desktop/project/date-project]1;../date-project]7;file://YeliMac.local/Users/yelimhong/Desktop/project/date-project\[0m[27m[24m[J[39m[0m[49m[40m[39m yelimhong@YeliMac [44m[30m[30m ~/Desktop/project/date-project [43m[34m[30m  design/layout ± [49m[33m[39m [K[?1h=[?2004hcd ../..[K[A[70C[32mc[32md[39m [4m.[4m.[4m/[4m.[4m.[24m[A[70C[32mp[32mn[39mp[4mm[4m [4ms[4mt[4mo[24mrybook[A[64C[32mp[32mn[32mp[24m[32mm[39m [24ms[24mt[24mo[6C[?1l>[?2004l
+]2;pnpm storybook]1;pnpm
+> date-project@ storybook /Users/yelimhong/Desktop/project/date-project
+> pnpm --filter storybook dev
+
+
+> @date-project/storybook@0.2.0 dev /Users/yelimhong/Desktop/project/date-project/apps/storybook
+> storybook dev -p 6006
+
+[1m@storybook/core v8.6.4[22m[0m
+[0m
+[32minfo[0m[35m[0m Found existing addon "@storybook/addon-docs", skipping.
+[0m[32minfo[0m[35m[0m Found existing addon "@storybook/addon-docs", skipping.
+[0m[32minfo[0m[35m[0m => Starting manager..
+[0m[32minfo[0m[35m[0m => Starting preview..
+[0m[32minfo[0m[35m[0m Using tsconfig paths for react-docgen
+[0m[2m7:10:05 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because lockfile has changed
+[38;2;241;97;140m╭─────────────────────────────────────────────────────────────────────╮[39m
+[38;2;241;97;140m│[39m                                                                     [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m   [38;2;162;224;94mStorybook [1m8.6.4[22m for [1mreact-vite[22m started[39m                            [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m   [90m[4m177 ms[24m for manager and [4m632 ms[24m for preview[39m                         [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m                                                                     [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m   Local:            [36mhttp://localhost:6006/[39m                          [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m   On your network:  [36mhttp://192.168.219.103:6006/[39m                    [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m                                                                     [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m   [38;2;243;173;56mA new version ([1m8.6.7[22m) is available![39m                               [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m                                                                     [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m   [90mUpgrade now:[39m [38;2;162;224;94mnpx storybook@latest upgrade[39m                         [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m                                                                     [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m   [90mRead full changelog:[39m                                              [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m   [90m[4mhttps://github.com/storybookjs/storybook/blob/main/CHANGELOG.md[24m[39m   [38;2;241;97;140m│[39m
+[38;2;241;97;140m│[39m                                                                     [38;2;241;97;140m│[39m
+[38;2;241;97;140m╰─────────────────────────────────────────────────────────────────────╯[39m
+[2m7:10:07 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33m@vanilla-extract/recipes/createRuntimeFn[32m[39m
+[2m7:10:07 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[33mThe file does not exist at "/Users/yelimhong/Desktop/project/date-project/apps/storybook/node_modules/.cache/storybook/e32bb427adf737087a4b39f7f748149d183fe2f95231b7a3c1529f5231d4c8d3/sb-vite/deps/DocsRenderer-CFRXHY34-LUZK7R4K.js?v=e591e5f8" which is in the optimize deps directory. The dependency might be incompatible with the dep optimizer. Try adding it to `optimizeDeps.exclude`.[39m
+[2m7:10:10 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33m@vanilla-extract/sprinkles/createRuntimeSprinkles[32m[39m
+[2m7:10:10 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m7:39:42 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/Users/yelimhong/Desktop/project/date-project/packages/ui/src/components/textfield/textInput/TextInput.tsx[22m
