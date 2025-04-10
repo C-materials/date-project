@@ -1,22 +1,20 @@
+"use client";
 import "@repo/ui/global.css";
-import type { Metadata } from "next";
+import { usePathname } from "next/navigation";
 import Header from "./components/header/Header";
 import "./global.css";
-
-export const metadata: Metadata = {
-  title: "&Dear",
-  description: "Endear yourself",
-};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const isAuthPage = pathname.includes("login") || pathname.includes("signup");
   return (
     <html lang="ko">
       <body>
-        <Header />
+        {!isAuthPage && <Header />}
         {children}
       </body>
     </html>
