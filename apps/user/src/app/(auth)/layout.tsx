@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "&Dear | 로그인",
-};
+import { bg, contentWrapper } from "./style.css";
 
 export default function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main>{children}</main>;
+  return (
+    <main className={bg}>
+      <div className={contentWrapper}>{children}</div>
+    </main>
+  );
 }
