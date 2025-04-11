@@ -2,7 +2,7 @@ import type { ChangeEvent, ComponentPropsWithoutRef } from "react";
 import { useRef, useState } from "react";
 import Upload from "../../../assets/uploadIcon.svg";
 import useImageUrlStore from "../../store/useImageUrlStore";
-import Button from "../button/Button";
+import Button from "../button/ButtonExcept";
 import { notDisplay } from "../checkBox/style.css";
 import { button, icon, labelStyle, wrapper } from "./style.css";
 

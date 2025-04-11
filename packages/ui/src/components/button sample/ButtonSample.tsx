@@ -8,7 +8,7 @@ type ButtonProps = ComponentPropsWithoutRef<"button"> & {
   iconPosition?: "left" | "right";
 };
 
-export const Button = ({
+const Button = ({
   children,
   variant = "primary",
   icon,
@@ -30,3 +30,5 @@ export const Button = ({
     </button>
   );
 };
+
+export default Button;
