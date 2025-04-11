@@ -13,9 +13,15 @@ const Header = () => {
   const { user, setLogout } = useUserStore();
 
   const menuRef = useRef<HTMLDivElement | null>(null);
+
+  const handleClickLogout = () => {
+    setLogout();
+    console.log("로그아웃");
+  };
+
   const profileMenuList: ListType[] = [
     { title: "마이페이지", href: "/" },
-    { title: "로그아웃", action: setLogout },
+    { title: "로그아웃", action: handleClickLogout },
   ];
 
   useEffect(() => {
