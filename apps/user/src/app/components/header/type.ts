@@ -1,3 +1,5 @@
 export interface ListType {
-  [key: string]: string;
+  title: string;
+  href?: string;
+  action?: () => void;
 }

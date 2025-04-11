@@ -10,7 +10,7 @@ interface UserStore {
   setUser: () => void;
   setLogout: () => void;
 }
-const useStore = create<UserStore>((set) => ({
+const useUserStore = create<UserStore>((set) => ({
   user: {
     id: null,
     name: null,
@@ -19,3 +19,4 @@ const useStore = create<UserStore>((set) => ({
   setUser: () => set({ user: { id: 1, name: "홍길동", tel: "01012341234" } }),
   setLogout: () => set({ user: { id: null, name: null, tel: null } }),
 }));
+export default useUserStore;

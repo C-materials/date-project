@@ -17,14 +17,7 @@ type MenuProps = {
   list?: ListType[];
 };
 
-const ProfileMenu = ({
-  name,
-  tel,
-  list = [
-    { name: "마이 페이지", href: "/" },
-    { name: "로그아웃", href: "/" },
-  ],
-}: MenuProps) => {
+const ProfileMenu = ({ name, tel, list = [] }: MenuProps) => {
   return (
     <div className={menuWrapper}>
       <div className={infoWrapper}>
@@ -36,8 +29,8 @@ const ProfileMenu = ({
       </div>
       <ul className={listWrapper}>
         {list.map((item: ListType) => (
-          <li key={item.name} className={listItem}>
-            <Link href={item.href || "/"}>{item.name}</Link>
+          <li key={item.title} className={listItem}>
+            <Link href={item.href || "/"}>{item.title}</Link>
           </li>
         ))}
       </ul>
