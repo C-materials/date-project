@@ -31,8 +31,6 @@ export default function Login() {
   const onSubmit: SubmitHandler<Login> = (data) => console.log(data);
 
   /**
-   * @Todo 에러 메시지
-   * @Todo disabled 처리
    * @Todo submit 처리
    * @Todo 로그인 실패 시 모달? 토스트?
    */
