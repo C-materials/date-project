@@ -1,5 +1,5 @@
+import { Color, ColorVar } from "@repo/ui";
 import { style } from "@vanilla-extract/css";
-import { Color, ColorVar } from "../styles/theme.css";
 // ---------layout----------
 export const bg = style({
   background: `linear-gradient(${ColorVar.greyBlue[9]} 0%, ${ColorVar.blue.dark[8]} 100%)`,
