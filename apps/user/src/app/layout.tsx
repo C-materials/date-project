@@ -10,7 +10,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const isAuthPage = pathname.includes("login") || pathname.includes("signup");
+  const exceptPathList = ["login", "signup"];
+
+  const isAuthPage: boolean = exceptPathList.some((v) => pathname.includes(v));
   return (
     <html lang="ko">
       <body>
