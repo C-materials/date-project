@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Ref } from "react";
 import {
   info,
   infoName,
@@ -15,11 +16,12 @@ type MenuProps = {
   name: string;
   tel: string;
   list?: ListType[];
+  ref: Ref<HTMLDivElement>;
 };
 
-const ProfileMenu = ({ name, tel, list = [] }: MenuProps) => {
+const ProfileMenu = ({ name, tel, list = [], ref }: MenuProps) => {
   return (
-    <div className={menuWrapper}>
+    <div className={menuWrapper} ref={ref}>
       <div className={infoWrapper}>
         <UserProfile />
         <div className={info}>
@@ -30,7 +32,12 @@ const ProfileMenu = ({ name, tel, list = [] }: MenuProps) => {
       <ul className={listWrapper}>
         {list.map((item: ListType) => (
           <li key={item.title} className={listItem}>
-            <Link href={item.href || "/"}>{item.title}</Link>
+            {item.href && <Link href={item.href || "/"}>{item.title}</Link>}
+            {item.action && (
+              <button type="button" onClick={item.action}>
+                {item.title}
+              </button>
+            )}
           </li>
         ))}
       </ul>
