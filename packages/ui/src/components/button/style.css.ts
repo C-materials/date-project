@@ -64,10 +64,10 @@ export const buttonStyle = styleVariants({
       },
       selectors: {
         "&:not(:disabled):hover": {
-          backgroundColor: Color.outline.hover,
+          borderColor: Color.outline.hover,
         },
         "&:not(:disabled):active": {
-          backgroundColor: Color.outline.active,
+          borderColor: Color.outline.active,
         },
       },
     },
