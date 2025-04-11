@@ -48,8 +48,8 @@ export const Default: Story = {
     width: 160,
   },
   render: (args) => {
-    const [value, setValue] = useState<string>("초기 입력값");
-    const handleChange = (value: string) => {
+    const [value, setValue] = useState<string | number>("초기 입력값");
+    const handleChange = (value: string | number) => {
       setValue(value);
       console.log(value);
     };
@@ -68,8 +68,8 @@ export const Invalid: Story = {
     optionList: ["option1", "option2", "option3", "option4"],
   },
   render: (args) => {
-    const [value, setValue] = useState<string>("초기 입력값");
-    const handleChange = (value: string) => {
+    const [value, setValue] = useState<string | number>("초기 입력값");
+    const handleChange = (value: string | number) => {
       setValue(value);
       console.log(value);
     };
