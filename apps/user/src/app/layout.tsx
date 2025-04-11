@@ -1,7 +1,6 @@
 "use client";
 import "@repo/ui/global.css";
-import { usePathname } from "next/navigation";
-import Header from "./components/header/Header";
+import ClientLayout from "./_components/layout/clientLayout/ClientLayout";
 import "./global.css";
 
 export default function RootLayout({
@@ -9,15 +8,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  const exceptPathList = ["login", "signup"];
-
-  const isAuthPage: boolean = exceptPathList.some((v) => pathname.includes(v));
   return (
     <html lang="ko">
       <body>
-        {!isAuthPage && <Header />}
-        {children}
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
