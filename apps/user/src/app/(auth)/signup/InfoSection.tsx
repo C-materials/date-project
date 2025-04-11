@@ -36,12 +36,11 @@ const InfoSection = () => {
   const dayList =
     birthMonth === 2 ? febDayList : birthMonth % 2 ? shortDayList : longDayList;
 
-  const handleCloseOptions = () => {
-    setIsOpenBirthOption({
-      birthYear: false,
-      birthMonth: false,
-      birthDay: false,
-    });
+  const handleCloseOptions = (targetKey: keyof typeof isOpenBirthOption) => {
+    setIsOpenBirthOption((prev) => ({
+      ...prev,
+      [targetKey]: false,
+    }));
   };
   const handleClickInput = (name: keyof typeof isOpenBirthOption) => {
     setIsOpenBirthOption((prev) => ({
@@ -61,7 +60,7 @@ const InfoSection = () => {
         />
       </label>
 
-      <label>
+      <>
         <span className={inputLabel}>생년월일</span>
         <div className={birthWrapper}>
           <Controller
@@ -75,7 +74,7 @@ const InfoSection = () => {
                 value={field.value ?? ""}
                 onChangeValue={field.onChange}
                 isOpen={isOpenBirthOption.birthYear}
-                onClickClose={handleCloseOptions}
+                onClickClose={() => handleCloseOptions("birthYear")}
                 onMouseDown={() => handleClickInput(field.name)}
               />
             )}
@@ -91,7 +90,7 @@ const InfoSection = () => {
                 value={field.value ?? ""}
                 onChangeValue={field.onChange}
                 isOpen={isOpenBirthOption.birthMonth}
-                onClickClose={handleCloseOptions}
+                onClickClose={() => handleCloseOptions("birthMonth")}
                 onMouseDown={() => handleClickInput(field.name)}
               />
             )}
@@ -107,13 +106,13 @@ const InfoSection = () => {
                 value={field.value ?? ""}
                 onChangeValue={field.onChange}
                 isOpen={isOpenBirthOption.birthDay}
-                onClickClose={handleCloseOptions}
+                onClickClose={() => handleCloseOptions("birthDay")}
                 onMouseDown={() => handleClickInput(field.name)}
               />
             )}
           />
         </div>
-      </label>
+      </>
 
       <label>
         <span className={inputLabel}>거주지</span>
