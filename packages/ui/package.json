@@ -9,6 +9,10 @@
     },
     "./global.css": "./dist/global.css"
   },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
