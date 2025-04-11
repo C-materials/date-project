@@ -16,11 +16,11 @@ const NotApproved = () => {
         <Image src="/logo.svg" width={200} height={64} alt="&DEAR" />
       </h1>
       <div className={description}>
-        <h3 className={text}>가입해주셔서 감사합니다</h3>
-        <h4 className={subtext}>
+        <p className={text}>가입해주셔서 감사합니다</p>
+        <div className={subtext}>
           <p>가입 승인을 대기중입니다.</p>
           <p>정보를 상세하게 입력하시면 더 빠른 승인이 가능합니다.</p>
-        </h4>
+        </div>
         <div className={buttonWrapper}>
           <Button className={button} variant="primary">
             정보 입력하기
