@@ -19,7 +19,7 @@ const Select = ({
 }: SelectProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const handleClickOption = (value: string) => {
+  const handleClickOption = (value: string | number) => {
     onClickClose?.();
     onChangeValue(value);
   };
@@ -31,11 +31,7 @@ const Select = ({
       }
     };
 
-    if (isOpen) {
-      document.addEventListener("click", handleClickOutside);
-    } else {
-      document.removeEventListener("click", handleClickOutside);
-    }
+    document.addEventListener("click", handleClickOutside);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
