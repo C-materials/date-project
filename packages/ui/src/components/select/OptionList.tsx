@@ -1,5 +1,5 @@
 import Check from "../../../assets/check.svg";
-import { icon, listItem, listWrapper } from "./style.css";
+import { checkIcon, listItem, listWrapper } from "./style.css";
 import type { SelectProps } from "./type";
 
 type OptionListProps = {
@@ -19,11 +19,14 @@ const OptionList = ({
         <li
           className={listItem}
           key={index}
-          onClick={() => onClick(item)}
+          onClick={(e) => {
+            onClick(item);
+            e.stopPropagation();
+          }}
           aria-selected={selected === item}
         >
           {item}
-          {selected === item && <Check className={icon} />}
+          {selected === item && <Check className={checkIcon} />}
         </li>
       ))}
     </ul>

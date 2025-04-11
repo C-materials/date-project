@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Arrow from "../../../assets/downArrow.svg";
 import TextInput from "../textfield/textInput/TextInput";
 import OptionList from "./OptionList";
@@ -12,38 +12,36 @@ const Select = ({
   optionList,
   value,
   onChangeValue,
+  isOpen,
+  onClickClose,
+  onClickInput,
   ...props
 }: SelectProps) => {
-  const [isOpen, setIsShow] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
   const handleClickOption = (value: string) => {
+    onClickClose?.();
     onChangeValue(value);
-    setIsShow(false);
   };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
-        setIsShow(false);
+        onClickClose?.();
       }
     };
 
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [isOpen]);
 
-  const handleClickInput = () => {
-    // 토글 역할만 수행
-    setIsShow((prev) => !prev);
-  };
   return (
     <div ref={ref} className={selectWrapper}>
       <TextInput
@@ -52,7 +50,7 @@ const Select = ({
         errorMessage={errorMessage}
         value={value}
         placeholder={placeholder}
-        onClick={handleClickInput}
+        onClick={onClickInput}
         suffix={<Arrow className={icon({ isOpen, disabled })} />}
         {...props}
       />

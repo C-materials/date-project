@@ -3,19 +3,23 @@
   "version": "0.2.0",
   "private": true,
   "exports": {
-    "./*": {
-      "types": "./dist/*.d.ts",
-      "import": "./dist/*.mjs",
-      "default": "./dist/*.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/ui.mjs"
     },
     "./global.css": "./dist/global.css"
   },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "barrel": "node generateBarrel.js"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

@@ -10,13 +10,8 @@ export default defineConfig({
   build: {
     outDir: "dist",
     lib: {
-      entry: {
-        ui: "src/components/index.ts",
-        styles: "src/styles/index.ts",
-        "global.css": "src/styles/global.css.ts",
-      },
+      entry: "src/index.ts",
       formats: ["es"],
-      fileName: (format, entryName) => `${entryName}.mjs`,
     },
     rollupOptions: {
       external: [

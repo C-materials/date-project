@@ -104,7 +104,6 @@ export const textfieldWrapper = style({
   display: "flex",
   flexDirection: "column",
   gap: "4px",
-  minWidth: "160px",
 });
 
 export const innerInput = style({});

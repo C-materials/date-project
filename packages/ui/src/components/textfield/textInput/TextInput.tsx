@@ -21,7 +21,7 @@ const TextInput = ({
         placeholder={placeholder}
       />
       {suffix}
-      <span className={error}>{errorMessage}</span>
+      {errorMessage && <span className={error}>{errorMessage}</span>}
     </div>
   );
 };
