@@ -5,7 +5,7 @@ import type { SelectProps } from "./type";
 type OptionListProps = {
   list: SelectProps["optionList"];
   selected: SelectProps["value"];
-  onClick: (item: string) => void;
+  onClick: (item: string | number) => void;
 };
 
 const OptionList = ({
