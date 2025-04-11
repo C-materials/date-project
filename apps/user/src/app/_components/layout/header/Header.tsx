@@ -3,11 +3,16 @@ import { Button } from "@repo/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import useUserStore from "../../store/useUserStore";
-import ProfileMenu from "./ProfileMenu";
-import { header, itemWrapper, logoWrapper, menuItem } from "./style.css";
-import type { ListType } from "./type";
-import UserProfile from "./UserProfile";
+import useUserStore from "../../../store/useUserStore";
+import ProfileMenu from "./_shared/ProfileMenu";
+import {
+  header,
+  itemWrapper,
+  logoWrapper,
+  menuItem,
+} from "./_shared/style.css";
+import type { ListType } from "./_shared/type";
+import UserProfile from "./_shared/UserProfile";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, setLogout } = useUserStore();

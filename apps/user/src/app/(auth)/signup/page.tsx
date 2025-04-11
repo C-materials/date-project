@@ -4,13 +4,13 @@ import Image from "next/image";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
+import AccountSection from "../_shared/AccountSection";
+import InfoSection from "../_shared/InfoSection";
+import type { SignupFormField } from "../_shared/type";
 import { form, logo, pageButton, pagination } from "../style.css";
-import AccountSection from "./AccountSection";
-import InfoSection from "./InfoSection";
-import type { SignupFormField } from "./type";
 
 export default function Signup() {
-  const [part, setPart] = useState<"account" | "info">("account");
+  const [part, setPart] = useState<"account" | "info">("info");
   const method = useForm<SignupFormField>({
     mode: "onChange",
   });

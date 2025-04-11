@@ -1,5 +1,5 @@
 "use client";
-import NotApproved from "./components/notApproved/NotApproved";
+import NotApproved from "./_components/notApproved/NotApproved";
 import useUserStore from "./store/useUserStore";
 
 export default function Home() {
