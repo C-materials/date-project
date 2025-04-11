@@ -1,8 +1,9 @@
 // 생년월일 옵션 리스트
-const yearList = Array(35)
+const thisYear: number = new Date().getFullYear();
+const adultBirthYear = thisYear - 20;
+const yearList = Array(30)
   .fill(1)
-  .map((_, i) => String(1970 + i))
-  .reverse();
+  .map((_, i) => String(adultBirthYear - i));
 
 const monthList = Array(12)
   .fill(1)
