@@ -7,11 +7,11 @@ import { FormProvider, useForm } from "react-hook-form";
 import { form, logo, pageButton, pagination } from "../style.css";
 import AccountSection from "./AccountSection";
 import InfoSection from "./InfoSection";
-import type { Signup } from "./type";
+import type { SignupFormField } from "./type";
 
 export default function Signup() {
   const [part, setPart] = useState<"account" | "info">("account");
-  const method = useForm<Signup>({
+  const method = useForm<SignupFormField>({
     mode: "onChange",
   });
 
@@ -20,7 +20,7 @@ export default function Signup() {
     formState: { isValid },
   } = method;
   // 임시 핸들러
-  const onSubmit: SubmitHandler<Signup> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<SignupFormField> = (data) => console.log(data);
   const Section = (section?: "account" | "info") => {
     switch (section) {
       case "account":
@@ -58,7 +58,7 @@ export default function Signup() {
           {part === "account" ? (
             <Button
               type="button"
-              disabled={part !== "account"}
+              disabled={part !== "account" || !isValid}
               variant="secondary"
               className={pageButton}
               onClick={() => {
@@ -69,7 +69,7 @@ export default function Signup() {
             </Button>
           ) : (
             <Button
-              type="button"
+              type="submit"
               disabled={!isValid}
               variant="secondary"
               className={pageButton}

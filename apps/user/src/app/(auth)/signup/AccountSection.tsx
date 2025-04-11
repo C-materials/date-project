@@ -1,14 +1,14 @@
 import { TextInput } from "@repo/ui";
 import { useFormContext } from "react-hook-form";
 import { inputLabel, inputWrapper } from "../style.css";
-import type { Signup } from "./type";
+import type { SignupFormField } from "./type";
 
 const AccountSection = () => {
   const {
     register,
     watch,
     formState: { errors, isValid },
-  } = useFormContext<Signup>();
+  } = useFormContext<SignupFormField>();
 
   const MIN_LENGTH = 8;
 

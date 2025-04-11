@@ -34,6 +34,7 @@ export const inputWrapper = style({
   display: "flex",
   flexDirection: "column",
   gap: "16px",
+  width: "100%",
 });
 export const buttonWrapper = style({
   width: "100%",
@@ -55,7 +56,7 @@ export const signupButton = style({
   fontWeight: 400,
   lineHeight: "17px",
 });
-// ------------logout------------
+// ------------signup------------
 export const inputLabel = style({
   fontSize: "14px",
   lineHeight: "17px",
@@ -72,4 +73,16 @@ export const pagination = style({
 export const pageButton = style({
   width: "80px",
   height: "40px",
+});
+
+//------------ infoSection ------------
+export const birthWrapper = style({
+  display: "flex",
+  gap: "8px",
+  width: "100%",
+});
+
+export const genderWrapper = style({
+  display: "flex",
+  gap: "20px",
 });
