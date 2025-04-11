@@ -5,5 +5,5 @@ export type SelectProps = InputProps & {
   onChangeValue: (value: string) => void;
   isOpen?: boolean;
   onClickClose?: () => void;
-  onClickInput: () => void;
+  onClickInput?: () => void;
 };
