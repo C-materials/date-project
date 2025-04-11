@@ -41,7 +41,9 @@ const Header = () => {
   return (
     <header className={header}>
       <div className={logoWrapper}>
-        <Image src="/logo.svg" width={81} height={26} alt="&DEAR" />
+        <Link href="/">
+          <Image src="/logo.svg" width={81} height={26} alt="&DEAR" />
+        </Link>
         <ul className={itemWrapper}>
           <li className={menuItem}>
             <Link href="/">Members</Link>
