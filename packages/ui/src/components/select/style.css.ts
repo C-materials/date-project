@@ -5,7 +5,6 @@ import { Zindex } from "../../styles/zIndex.css";
 
 export const selectWrapper = style({
   position: "relative",
-  width: "fit-content",
   cursor: "pointer",
 });
 

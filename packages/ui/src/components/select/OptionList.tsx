@@ -19,7 +19,10 @@ const OptionList = ({
         <li
           className={listItem}
           key={index}
-          onClick={() => onClick(item)}
+          onClick={(e) => {
+            onClick(item);
+            e.stopPropagation();
+          }}
           aria-selected={selected === item}
         >
           {item}
