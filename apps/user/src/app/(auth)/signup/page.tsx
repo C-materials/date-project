@@ -21,16 +21,6 @@ export default function Signup() {
   } = method;
   // 임시 핸들러
   const onSubmit: SubmitHandler<SignupFormField> = (data) => console.log(data);
-  const Section = (section?: "account" | "info") => {
-    switch (section) {
-      case "account":
-        return <AccountSection />;
-      case "info":
-        return <InfoSection />;
-      default:
-        return <InfoSection />;
-    }
-  };
   return (
     <FormProvider {...method}>
       <Image
@@ -42,10 +32,9 @@ export default function Signup() {
       />
       <form className={form} onSubmit={handleSubmit(onSubmit)}>
         {/* Section 조건부 렌더링 */}
-        {Section(part)}
+        {part === "account" ? <AccountSection /> : <InfoSection />}
         <div className={pagination}>
           <Button
-            type="button"
             disabled={part === "account"}
             variant="outline"
             className={pageButton}
@@ -57,7 +46,6 @@ export default function Signup() {
           </Button>
           {part === "account" ? (
             <Button
-              type="button"
               disabled={part !== "account" || !isValid}
               variant="secondary"
               className={pageButton}
