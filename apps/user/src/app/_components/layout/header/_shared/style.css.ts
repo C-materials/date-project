@@ -1,5 +1,6 @@
 import { Color } from "@repo/ui";
 import { style } from "@vanilla-extract/css";
+import { calc } from "@vanilla-extract/css-utils";
 
 export const header = style({
   position: "fixed",
@@ -59,13 +60,14 @@ export const userProfile = style({
   justifyContent: "center",
   alignItems: "center",
 });
-
+export const relative = style({
+  position: "relative",
+});
 // ---- ProfileMenu ----
 export const menuWrapper = style({
   position: "absolute",
-  top: "79px",
-  right: "44px",
-
+  right: 0,
+  top: calc.add("100%", "28px").toString(),
   display: "flex",
   flexDirection: "column",
 
