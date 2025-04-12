@@ -6,6 +6,7 @@ type ButtonProps = ComponentPropsWithoutRef<"button"> & {
   variant: "primary" | "secondary" | "outline" | "accent";
   icon?: ReactNode;
   iconPosition?: "left" | "right";
+  className?: "string";
 };
 
 const Button = ({
@@ -15,12 +16,13 @@ const Button = ({
   iconPosition = "left",
   type = "button",
   disabled = false,
+  className,
   ...props
 }: ButtonProps) => {
   return (
     <button
       type={type}
-      className={button({ variant, disabled })}
+      className={`${button({ variant, disabled })} ${className}`}
       disabled={disabled}
       {...props}
     >

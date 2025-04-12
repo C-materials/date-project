@@ -2,7 +2,7 @@ namespace User {
   type Info = {
     id: number;
     name: string;
-    tel: string;
+    tel: number;
     approved: boolean;
     birthYear: string;
     birthMonth: string;

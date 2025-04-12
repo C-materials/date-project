@@ -67,7 +67,7 @@ export default function Login() {
             type="submit"
             className={loginButton}
             disabled={!isValid}
-            variant="secondary"
+            variant="primary"
           >
             로그인
           </Button>

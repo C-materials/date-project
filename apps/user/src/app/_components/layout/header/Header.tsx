@@ -75,7 +75,7 @@ const Header = () => {
               {isOpen && (
                 <ProfileMenu
                   name="홍길동" // 유저 정보 넘겨주기
-                  tel="010-1234-5678"
+                  tel="010-1234-5678" // 대시 추가해서 string으로 넘겨주기
                   list={profileMenuList}
                   ref={menuRef}
                 />
