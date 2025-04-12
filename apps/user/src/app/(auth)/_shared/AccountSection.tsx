@@ -1,14 +1,14 @@
 import { TextInput } from "@repo/ui";
 import { useFormContext } from "react-hook-form";
+import type { User } from "../../types/user";
 import { inputLabel, inputWrapper } from "../style.css";
-import type { SignupFormField } from "./type";
 
 const AccountSection = () => {
   const {
     register,
     watch,
     formState: { errors },
-  } = useFormContext<SignupFormField>();
+  } = useFormContext<User.FormValue>();
 
   const MIN_LENGTH = 8;
 
@@ -22,7 +22,7 @@ const AccountSection = () => {
           {...register("tel", {
             required: "휴대폰 번호를 입력해주세요.",
             pattern: {
-              value: /^010\d{8}$/,
+              value: /^010\d{7,8}$/,
               message: "010으로 시작하는 번호를 입력해주세요.",
             },
           })}

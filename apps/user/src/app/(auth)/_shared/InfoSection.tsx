@@ -2,6 +2,7 @@ import { Radio, Select, TextInput } from "@repo/ui";
 import type { MouseEvent } from "react";
 import { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
+import type { User } from "../../types/user";
 import {
   febDayList,
   longDayList,
@@ -16,7 +17,6 @@ import {
   inputLabel,
   inputWrapper,
 } from "../style.css";
-import type { SignupFormField } from "./type";
 
 const InfoSection = () => {
   const [isOpenBirthOption, setIsOpenBirthOption] = useState({
@@ -30,7 +30,7 @@ const InfoSection = () => {
     formState: { errors },
     watch,
     control,
-  } = useFormContext<SignupFormField>();
+  } = useFormContext<User.FormValue>();
 
   const birthMonth = Number(watch("birthMonth"));
   const dayList =

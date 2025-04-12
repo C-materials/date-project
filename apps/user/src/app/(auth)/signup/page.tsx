@@ -4,14 +4,14 @@ import { Button } from "@repo/ui";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
+import type { User } from "../../types/user";
 import AccountSection from "../_shared/AccountSection";
 import InfoSection from "../_shared/InfoSection";
-import type { SignupFormField } from "../_shared/type";
 import { form, logo, pageButton, pagination } from "../style.css";
 
 export default function Signup() {
   const [part, setPart] = useState<"account" | "info">("info");
-  const method = useForm<SignupFormField>({
+  const method = useForm<User.FormValue>({
     mode: "onChange",
   });
 
@@ -20,7 +20,7 @@ export default function Signup() {
     formState: { isValid },
   } = method;
   // 임시 핸들러
-  const onSubmit: SubmitHandler<SignupFormField> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<User.FormValue> = (data) => console.log(data);
   return (
     <FormProvider {...method}>
       <Logo alt="logo" className={logo} />

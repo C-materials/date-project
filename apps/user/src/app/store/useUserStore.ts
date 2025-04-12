@@ -1,28 +1,44 @@
 import { create } from "zustand";
+import type { User } from "../types/user";
 
-interface User {
-  id: number | null;
-  name: string | null;
-  tel: string | null;
-  approved: boolean;
-}
 interface UserStore {
-  user: User;
-  setUser: () => void;
+  user: User.Data;
+  setUser: (state: User.Data) => void;
   setLogout: () => void;
 }
 const useUserStore = create<UserStore>((set) => ({
   user: {
-    id: null,
-    name: null,
-    tel: null,
+    id: -1,
+    name: "",
+    tel: 0,
+    birth: new Date(),
+    address: "",
+    gender: "female",
     approved: false,
   },
-  setUser: () =>
+  setUser: (state: User.Data) =>
     set({
-      user: { id: 1, name: "홍길동", tel: "01012341234", approved: false },
+      user: {
+        id: state.id,
+        name: state.name,
+        tel: state.tel,
+        birth: state.birth,
+        address: state.address,
+        gender: state.gender,
+        approved: state.approved,
+      },
     }),
   setLogout: () =>
-    set({ user: { id: null, name: null, tel: null, approved: false } }),
+    set({
+      user: {
+        id: -1,
+        name: "",
+        tel: 0,
+        birth: new Date(),
+        address: "",
+        gender: "female",
+        approved: false,
+      },
+    }),
 }));
 export default useUserStore;

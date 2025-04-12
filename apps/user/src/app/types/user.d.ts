@@ -1,19 +1,25 @@
+export type Gender = "female" | "male";
+
 namespace User {
-  type Info = {
+  export type Info = {
     id: number;
     name: string;
     tel: number;
-    approved: boolean;
-    birthYear: string;
-    birthMonth: string;
-    birthDay: string;
-    birth: Date;
+    birthYear: number;
+    birthMonth: number;
+    birthDay: number;
     address: string;
     gender: Gender;
   };
 
-  type FormValue = {
+  export type FormValue = {
+    //회원가입 시 입력하는 정보
     password: string;
     passwordCheck: string;
-  } & Omit<Info, "id" | "approved">;
+  } & Omit<Info, "id" | "birth">;
+
+  export type Data = {
+    approved: boolean;
+    birth: Date;
+  } & Omit<Info, "birthDay" | "birthMonth" | "birthYear">;
 }
