@@ -16,7 +16,7 @@ import {
   genderWrapper,
   inputLabel,
   inputWrapper,
-} from "../style.css";
+} from "./style.css";
 
 const InfoSection = () => {
   const [isOpenBirthOption, setIsOpenBirthOption] = useState({

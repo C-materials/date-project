@@ -11,7 +11,7 @@ import {
   loginButton,
   logo,
   signupButton,
-} from "../style.css";
+} from "../_shared/style.css";
 
 type Login = {
   tel: number;

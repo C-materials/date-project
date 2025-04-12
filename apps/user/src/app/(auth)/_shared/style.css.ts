@@ -4,7 +4,6 @@ import { style } from "@vanilla-extract/css";
 export const bg = style({
   background: `linear-gradient(${ColorVar.greyBlue[9]} 0%, ${ColorVar.blue.dark[8]} 100%)`,
   height: "100dvh",
-  margin: 0,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

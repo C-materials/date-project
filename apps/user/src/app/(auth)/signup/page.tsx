@@ -7,10 +7,10 @@ import { FormProvider, useForm } from "react-hook-form";
 import type { User } from "../../types/user";
 import AccountSection from "../_shared/AccountSection";
 import InfoSection from "../_shared/InfoSection";
-import { form, logo, pageButton, pagination } from "../style.css";
+import { form, logo, pageButton, pagination } from "../_shared/style.css";
 
 export default function Signup() {
-  const [part, setPart] = useState<"account" | "info">("info");
+  const [part, setPart] = useState<"account" | "info">("account");
   const method = useForm<User.FormValue>({
     mode: "onChange",
   });
