@@ -7,7 +7,6 @@ export type SignupFormField = {
   birthYear: string;
   birthMonth: string;
   birthDay: string;
-  birth: Date;
   address: string;
   gender: Gender;
 };

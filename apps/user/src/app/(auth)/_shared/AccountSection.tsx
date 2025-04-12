@@ -7,7 +7,7 @@ const AccountSection = () => {
   const {
     register,
     watch,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useFormContext<SignupFormField>();
 
   const MIN_LENGTH = 8;
@@ -21,13 +21,9 @@ const AccountSection = () => {
           placeholder="01012345678"
           {...register("tel", {
             required: "휴대폰 번호를 입력해주세요.",
-            maxLength: {
-              value: 11,
-              message: "올바른 휴대폰 번호를 입력해주세요.",
-            },
             pattern: {
-              value: /^[0-9]+$/,
-              message: "숫자만 입력 가능합니다.",
+              value: /^010\d{8}$/,
+              message: "010으로 시작하는 번호를 입력해주세요.",
             },
           })}
           errorMessage={errors.tel?.message}

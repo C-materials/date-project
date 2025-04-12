@@ -53,7 +53,10 @@ const InfoSection = () => {
       <label>
         <span className={inputLabel}>이름</span>
         <TextInput
-          {...register("name", { required: "이름을 입력해주세요" })}
+          {...register("name", {
+            required: "이름을 입력해주세요",
+            minLength: 2,
+          })}
           width="100%"
           placeholder="실명을 입력해주세요"
           errorMessage={errors.password?.message}
@@ -66,6 +69,7 @@ const InfoSection = () => {
           <Controller
             name="birthYear"
             control={control}
+            rules={{ required: "년도를 선택해주세요" }}
             render={({ field }) => (
               <Select
                 width="88px"
@@ -76,12 +80,14 @@ const InfoSection = () => {
                 isOpen={isOpenBirthOption.birthYear}
                 onClickClose={() => handleCloseOptions("birthYear")}
                 onMouseDown={() => handleClickInput(field.name)}
+                errorMessage={errors.birthYear?.message}
               />
             )}
           />
           <Controller
             name="birthMonth"
             control={control}
+            rules={{ required: true }}
             render={({ field }) => (
               <Select
                 width="68px"
@@ -98,6 +104,7 @@ const InfoSection = () => {
           <Controller
             name="birthDay"
             control={control}
+            rules={{ required: true }}
             render={({ field }) => (
               <Select
                 width="68px"
@@ -119,6 +126,7 @@ const InfoSection = () => {
         <Controller
           name="address"
           control={control}
+          rules={{ required: true }}
           render={({ field }) => (
             <Select
               optionList={regionList}
