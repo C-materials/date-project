@@ -1,6 +1,7 @@
 "use client";
+import Logo from "@date-project/user/public/logo.svg";
+import UserIcon from "@date-project/user/public/userIcon.svg";
 import { Button } from "@repo/ui";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import useUserStore from "../../../store/useUserStore";
@@ -8,11 +9,13 @@ import ProfileMenu from "./_shared/ProfileMenu";
 import {
   header,
   itemWrapper,
+  logo,
   logoWrapper,
   menuItem,
+  userIcon,
+  userProfile,
 } from "./_shared/style.css";
 import type { ListType } from "./_shared/type";
-import UserProfile from "./_shared/UserProfile";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, setLogout } = useUserStore();
@@ -49,7 +52,7 @@ const Header = () => {
     <header className={header}>
       <div className={logoWrapper}>
         <Link href="/">
-          <Image src="/logo.svg" width={81} height={26} alt="&DEAR" />
+          <Logo alt="logo" className={logo} />
         </Link>
         <ul className={itemWrapper}>
           <li className={menuItem}>
@@ -60,8 +63,12 @@ const Header = () => {
       <div className={itemWrapper}>
         {user ? (
           <>
-            <button type="button" onClick={() => setIsOpen((prev) => !prev)}>
-              <UserProfile />
+            <button
+              className={userProfile}
+              type="button"
+              onClick={() => setIsOpen((prev) => !prev)}
+            >
+              <UserIcon className={userIcon} alt="user" />
             </button>
             {isOpen && (
               <ProfileMenu
@@ -74,8 +81,12 @@ const Header = () => {
           </>
         ) : (
           <>
-            <Button variant="outline">회원가입</Button>
-            <Button variant="primary">로그인</Button>
+            <Button variant="outline">
+              <Link href="/signup">회원가입</Link>
+            </Button>
+            <Button variant="primary">
+              <Link href="login">로그인</Link>
+            </Button>
           </>
         )}
       </div>

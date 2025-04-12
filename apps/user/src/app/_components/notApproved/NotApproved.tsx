@@ -1,9 +1,10 @@
+import Logo from "@date-project/user/public/logo.svg";
 import { Button } from "@repo/ui";
-import Image from "next/image";
 import {
   button,
   buttonWrapper,
   description,
+  logo,
   section,
   subtext,
   text,
@@ -13,7 +14,7 @@ const NotApproved = () => {
   return (
     <section className={section}>
       <h1>
-        <Image src="/logo.svg" width={200} height={64} alt="&DEAR" />
+        <Logo className={logo} />
       </h1>
       <div className={description}>
         <p className={text}>가입해주셔서 감사합니다</p>

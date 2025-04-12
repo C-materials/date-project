@@ -1,6 +1,6 @@
 "use client";
+import Logo from "@date-project/user/public/logo.svg";
 import { Button } from "@repo/ui";
-import Image from "next/image";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
@@ -23,13 +23,7 @@ export default function Signup() {
   const onSubmit: SubmitHandler<SignupFormField> = (data) => console.log(data);
   return (
     <FormProvider {...method}>
-      <Image
-        src="/logo.svg"
-        width={180}
-        height={43}
-        alt="&DEAR"
-        className={logo}
-      />
+      <Logo alt="logo" className={logo} />
       <form className={form} onSubmit={handleSubmit(onSubmit)}>
         {/* Section 조건부 렌더링 */}
         {part === "account" ? <AccountSection /> : <InfoSection />}

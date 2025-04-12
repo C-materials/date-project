@@ -1,4 +1,5 @@
 "use client";
+import "@repo/ui/global.css";
 
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";

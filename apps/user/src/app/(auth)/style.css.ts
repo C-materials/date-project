@@ -21,6 +21,8 @@ export const contentWrapper = style({
 export const logo = style({
   display: "flex",
   margin: "0 auto 52px",
+  width: "200px",
+  height: "64px",
 });
 
 export const form = style({
@@ -57,6 +59,13 @@ export const signupButton = style({
   lineHeight: "17px",
 });
 // ------------signup------------
+
+export const logoSignup = style({
+  display: "flex",
+  width: "180px",
+  height: "43px",
+});
+
 export const inputLabel = style({
   fontSize: "14px",
   lineHeight: "17px",

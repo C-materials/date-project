@@ -30,11 +30,23 @@ export const logoWrapper = style({
   alignItems: "center",
 });
 
+export const logo = style({
+  width: "81px",
+  height: "26px",
+  display: "flex",
+});
+
 export const menuItem = style({
   padding: "8px",
   fontSize: "16px",
   lineHeight: "19px",
   fontWeight: 400,
+  paddingBottom: "3px",
+});
+
+export const userIcon = style({
+  width: "28px",
+  height: "28px",
 });
 
 export const userProfile = style({

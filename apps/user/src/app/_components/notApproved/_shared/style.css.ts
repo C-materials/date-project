@@ -10,6 +10,11 @@ export const section = style({
   gap: "100px",
 });
 
+export const logo = style({
+  width: "200px",
+  height: "64px",
+});
+
 export const description = style({
   display: "flex",
   flexDirection: "column",

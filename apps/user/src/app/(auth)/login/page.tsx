@@ -1,6 +1,6 @@
 "use client";
+import Logo from "@date-project/user/public/logo.svg";
 import { Button, TextInput } from "@repo/ui";
-import Image from "next/image";
 import Link from "next/link";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
@@ -36,13 +36,7 @@ export default function Login() {
    */
   return (
     <>
-      <Image
-        src="/logo.svg"
-        width={200}
-        height={64}
-        alt="&DEAR"
-        className={logo}
-      />
+      <Logo alt="logo" className={logo} />
       <form className={form} onSubmit={handleSubmit(onSubmit)}>
         <div className={inputWrapper}>
           <TextInput
