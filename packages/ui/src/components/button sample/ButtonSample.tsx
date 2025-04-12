@@ -6,7 +6,6 @@ type ButtonProps = ComponentPropsWithoutRef<"button"> & {
   variant: "primary" | "secondary" | "outline" | "accent";
   icon?: ReactNode;
   iconPosition?: "left" | "right";
-  className?: "string";
 };
 
 const Button = ({
