@@ -1,5 +1,6 @@
 import { Color, ColorVar } from "@repo/ui";
 import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 // ---------layout----------
 export const bg = style({
   background: `linear-gradient(${ColorVar.greyBlue[9]} 0%, ${ColorVar.blue.dark[8]} 100%)`,
@@ -9,12 +10,23 @@ export const bg = style({
   justifyContent: "center",
 });
 
-export const contentWrapper = style({
-  backgroundColor: Color.bg,
-  borderRadius: "12px",
-  padding: "80px 90px",
-  margin: "0 auto",
-  width: "420px",
+export const contentWrapper = recipe({
+  base: {
+    backgroundColor: Color.bg,
+    borderRadius: "12px",
+    margin: "0 auto",
+    width: "420px",
+  },
+  variants: {
+    isLoginPage: {
+      true: {
+        padding: "80px 90px",
+      },
+      false: {
+        padding: "40px 90px",
+      },
+    },
+  },
 });
 // ------------login------------
 export const logo = style({
@@ -62,7 +74,7 @@ export const signupButton = style({
 export const logoSignup = style({
   display: "flex",
   width: "180px",
-  height: "43px",
+  height: "40px",
   margin: "0 auto 52px",
 });
 

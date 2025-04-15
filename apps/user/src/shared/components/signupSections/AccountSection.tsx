@@ -59,6 +59,17 @@ const AccountSection = () => {
           errorMessage={errors.passwordCheck?.message}
         />
       </label>
+      <label>
+        <span className={inputLabel}>가입 코드</span>
+        <TextInput
+          width="100%"
+          placeholder="공유받은 코드를 입력해 주세요"
+          {...register("referenceCode", {
+            required: "가입 코드를 입력해 주세요",
+          })}
+          errorMessage={errors.referenceCode?.message}
+        />
+      </label>
     </div>
   );
 };

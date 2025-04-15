@@ -16,6 +16,7 @@ namespace User {
     //회원가입 시 입력하는 정보
     password: string;
     passwordCheck: string;
+    referenceCode: string;
   } & Omit<Info, "id" | "birth">;
 
   type Data = {
