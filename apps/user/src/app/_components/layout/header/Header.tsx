@@ -12,7 +12,6 @@ import {
   logo,
   logoWrapper,
   menuItem,
-  relative,
   userIcon,
   userProfile,
 } from "./_shared/style.css";
@@ -64,23 +63,21 @@ const Header = () => {
       <div className={itemWrapper}>
         {user ? (
           <>
-            <div className={relative}>
-              <button
-                className={userProfile}
-                type="button"
-                onClick={() => setIsOpen((prev) => !prev)}
-              >
-                <UserIcon className={userIcon} alt="user" />
-              </button>
-              {isOpen && (
-                <ProfileMenu
-                  name="홍길동" // 유저 정보 넘겨주기
-                  tel="010-1234-5678" // 대시 추가해서 string으로 넘겨주기
-                  list={profileMenuList}
-                  ref={menuRef}
-                />
-              )}
-            </div>
+            <button
+              className={userProfile}
+              type="button"
+              onClick={() => setIsOpen((prev) => !prev)}
+            >
+              <UserIcon className={userIcon} alt="user" />
+            </button>
+            {isOpen && (
+              <ProfileMenu
+                name="홍길동" // 유저 정보 넘겨주기
+                tel="010-1234-5678" // 대시 추가해서 string으로 넘겨주기
+                list={profileMenuList}
+                ref={menuRef}
+              />
+            )}
           </>
         ) : (
           <>

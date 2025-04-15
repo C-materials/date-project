@@ -22,6 +22,8 @@ export const itemWrapper = style({
   display: "flex",
   alignItems: "center",
   gap: "12px",
+
+  position: "relative",
 });
 
 export const logoWrapper = style({
