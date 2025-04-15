@@ -24,7 +24,8 @@ export const button = recipe({
         backgroundColor: Color.primary.default,
         color: Color.text.inverse,
         ":disabled": {
-          color: Color.text.light,
+          backgroundColor: Color.primary.disabled,
+          color: Color.text.disabled,
         },
       },
       secondary: {
