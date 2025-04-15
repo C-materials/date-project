@@ -49,8 +49,8 @@ export default function Login() {
                 message: "올바른 휴대폰 번호를 입력해주세요.",
               },
               pattern: {
-                value: /^[0-9]+$/,
-                message: "숫자만 입력 가능합니다.",
+                value: /^010\d{7,8}$/,
+                message: "010으로 시작하는 번호를 입력해주세요.",
               },
             })}
             errorMessage={errors.tel?.message}
