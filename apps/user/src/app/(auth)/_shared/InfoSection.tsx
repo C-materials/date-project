@@ -63,7 +63,7 @@ const InfoSection = () => {
         />
       </label>
 
-      <>
+      <div>
         <span className={inputLabel}>생년월일</span>
         <div className={birthWrapper}>
           <Controller
@@ -119,7 +119,7 @@ const InfoSection = () => {
             )}
           />
         </div>
-      </>
+      </div>
 
       <label>
         <span className={inputLabel}>거주지</span>
