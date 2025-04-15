@@ -11,8 +11,8 @@ import {
   menuWrapper,
   userIcon,
   userProfile,
-} from "./style.css";
-import type { ListType } from "./type";
+} from "./style/style.css";
+import type { ListType } from "./type/listType";
 
 type MenuProps = {
   name: string;

@@ -63,6 +63,7 @@ export const logoSignup = style({
   display: "flex",
   width: "180px",
   height: "43px",
+  margin: "0 auto 52px",
 });
 
 export const inputLabel = style({
@@ -81,16 +82,4 @@ export const pagination = style({
 export const pageButton = style({
   width: "80px",
   height: "40px",
-});
-
-//------------ infoSection ------------
-export const birthWrapper = style({
-  display: "flex",
-  gap: "8px",
-  width: "100%",
-});
-
-export const genderWrapper = style({
-  display: "flex",
-  gap: "20px",
 });

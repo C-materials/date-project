@@ -1,6 +1,6 @@
 "use client";
-import NotApproved from "./_components/notApproved/NotApproved";
-import useUserStore from "./store/useUserStore";
+import NotApproved from "../shared/components/notApproved/NotApproved";
+import useUserStore from "../shared/stores/useUserStore";
 
 export default function Home() {
   const { user } = useUserStore();

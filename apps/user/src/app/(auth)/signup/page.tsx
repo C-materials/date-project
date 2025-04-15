@@ -4,10 +4,10 @@ import { Button } from "@repo/ui";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
-import type { User } from "../../types/user";
-import AccountSection from "../_shared/AccountSection";
-import InfoSection from "../_shared/InfoSection";
-import { form, logo, pageButton, pagination } from "../_shared/style.css";
+import AccountSection from "../../../shared/components/signupSections/AccountSection";
+import InfoSection from "../../../shared/components/signupSections/InfoSection";
+import type { User } from "../../../shared/types/user";
+import { form, logoSignup, pageButton, pagination } from "../_styles/style.css";
 
 export default function Signup() {
   const [part, setPart] = useState<"account" | "info">("account");
@@ -26,7 +26,7 @@ export default function Signup() {
   const isPartAccount = part === "account";
   return (
     <FormProvider {...method}>
-      <Logo alt="logo" className={logo} />
+      <Logo alt="logo" className={logoSignup} />
       <form className={form} onSubmit={handleSubmit(onSubmit)}>
         {/* Section 조건부 렌더링 */}
         {isPartAccount ? <AccountSection /> : <InfoSection />}

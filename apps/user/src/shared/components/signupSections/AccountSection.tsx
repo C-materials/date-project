@@ -1,7 +1,7 @@
 import { TextInput } from "@repo/ui";
 import { useFormContext } from "react-hook-form";
-import type { User } from "../../types/user";
-import { inputLabel, inputWrapper } from "./style.css";
+import type { User } from "../../../shared/types/user";
+import { inputLabel, inputWrapper } from "./style/style.css";
 
 const AccountSection = () => {
   const {

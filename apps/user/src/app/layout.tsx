@@ -1,4 +1,4 @@
-import ClientLayout from "./_components/layout/clientLayout/ClientLayout";
+import ClientLayout from "../shared/components/layouts/clientLayout/ClientLayout";
 import "./global.css";
 
 export default function RootLayout({

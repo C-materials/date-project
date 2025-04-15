@@ -4,8 +4,8 @@ import UserIcon from "@date-project/user/public/userIcon.svg";
 import { Button } from "@repo/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import useUserStore from "../../../store/useUserStore";
-import ProfileMenu from "./_shared/ProfileMenu";
+import useUserStore from "../../../stores/useUserStore";
+import ProfileMenu from "./ProfileMenu";
 import {
   header,
   itemWrapper,
@@ -14,8 +14,8 @@ import {
   menuItem,
   userIcon,
   userProfile,
-} from "./_shared/style.css";
-import type { ListType } from "./_shared/type";
+} from "./style/style.css";
+import type { ListType } from "./type/listType";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, setLogout } = useUserStore();

@@ -2,21 +2,21 @@ import { Radio, Select, TextInput } from "@repo/ui";
 import type { MouseEvent } from "react";
 import { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import type { User } from "../../types/user";
 import {
   febDayList,
   longDayList,
   monthList,
   shortDayList,
   yearList,
-} from "../../util/dateList";
-import { regionList } from "../../util/regionList";
+} from "../../../shared/libs/dateList";
+import { regionList } from "../../../shared/libs/regionList";
+import type { User } from "../../../shared/types/user";
 import {
   birthWrapper,
   genderWrapper,
   inputLabel,
   inputWrapper,
-} from "./style.css";
+} from "./style/style.css";
 
 const InfoSection = () => {
   const [isOpenBirthOption, setIsOpenBirthOption] = useState({

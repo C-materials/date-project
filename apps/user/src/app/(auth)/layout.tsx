@@ -1,4 +1,4 @@
-import { bg, contentWrapper } from "./_shared/style.css";
+import { bg, contentWrapper } from "./_styles/style.css";
 
 export default function AuthLayout({
   children,
