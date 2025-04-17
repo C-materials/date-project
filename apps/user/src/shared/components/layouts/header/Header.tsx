@@ -5,6 +5,7 @@ import { Button } from "@repo/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import useUserStore from "../../../stores/useUserStore";
+import type { ListType } from "./listType";
 import ProfileMenu from "./ProfileMenu";
 import {
   header,
@@ -14,8 +15,7 @@ import {
   menuItem,
   userIcon,
   userProfile,
-} from "./style/style.css";
-import type { ListType } from "./type/listType";
+} from "./style.css";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, setLogout } = useUserStore();
