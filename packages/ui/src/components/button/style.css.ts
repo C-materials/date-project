@@ -12,9 +12,10 @@ const base = style([
     borderRadius: "8px",
     gap: "4px",
     ":disabled": { cursor: "not-allowed" },
-    transition: "background-color 0.1s ease, border-color 0.1s ease",
-    border: "1px solid",
-    borderColor: "transparent",
+    transition: "background-color 0.1s ease, outline-color 0.1s ease",
+    outline: "1px solid",
+    outlineColor: "transparent",
+    outlineOffset: "-1px",
     fontSize: "14px",
     fontWeight: "600",
     lineHeight: "17px",
@@ -56,18 +57,18 @@ export const buttonStyle = styleVariants({
   outline: [
     base,
     {
-      borderColor: Color.border,
+      outlineColor: Color.border,
       backgroundColor: "transparent",
       ":disabled": {
-        borderColor: Color.outline.disabled,
+        outlineColor: Color.outline.disabled,
         color: Color.text.sub,
       },
       selectors: {
         "&:not(:disabled):hover": {
-          borderColor: Color.outline.hover,
+          outlineColor: Color.outline.hover,
         },
         "&:not(:disabled):active": {
-          borderColor: Color.outline.active,
+          outlineColor: Color.outline.active,
         },
       },
     },

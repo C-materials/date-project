@@ -26,7 +26,6 @@ const exceptionFileList = [
   "ImageUploader",
   "ImageInput",
   "ImagePreview",
-  "ButtonExcept",
   "OptionList",
 ];
 
