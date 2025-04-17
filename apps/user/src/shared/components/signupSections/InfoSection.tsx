@@ -8,9 +8,9 @@ import {
   monthList,
   shortDayList,
   yearList,
-} from "../../../shared/libs/dateList";
-import { regionList } from "../../../shared/libs/regionList";
-import type { User } from "../../../shared/types/user";
+} from "../../libs/dateList";
+import { regionList } from "../../libs/regionList";
+import type { User } from "../../types/user";
 import {
   birthWrapper,
   genderWrapper,

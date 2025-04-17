@@ -7,7 +7,7 @@ import {
   section,
   subtext,
   text,
-} from "./style/style.css";
+} from "./style.css";
 
 const NotApproved = () => {
   return (
