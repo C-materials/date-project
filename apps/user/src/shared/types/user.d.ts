@@ -9,7 +9,7 @@ namespace User {
     birthMonth: number;
     birthDay: number;
     mainAddress: string;
-    subAddress: string | undefined;
+    subAddress: string;
     gender: Gender;
   };
 
