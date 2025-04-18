@@ -1,4 +1,5 @@
 import { TextInput } from "@repo/ui";
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 import { errorText, limit } from "../../libs/formErrorText";
 import type { User } from "../../types/user";
@@ -8,8 +9,16 @@ const AccountSection = () => {
   const {
     register,
     watch,
+    setValue,
     formState: { errors },
   } = useFormContext<User.FormValue>();
+
+  const password = watch("password");
+  useEffect(() => {
+    if (String(password).length >= limit.password.max) {
+      setValue("password", password.slice(0, limit.password.max));
+    }
+  }, [password]);
 
   return (
     <div className={inputWrapper}>
@@ -40,7 +49,7 @@ const AccountSection = () => {
         <TextInput
           type="password"
           width="100%"
-          placeholder={errorText.password.minLength}
+          placeholder={`${limit.password.min} ~ ${limit.password.max}자 이내로 입력해주세요`}
           {...register("password", {
             required: errorText.password.minLength,
             minLength: {

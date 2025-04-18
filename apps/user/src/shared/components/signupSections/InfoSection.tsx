@@ -163,7 +163,7 @@ const InfoSection = () => {
             render={({ field }) => (
               <Select
                 optionList={mainAddress}
-                placeholder="현재 거주지"
+                placeholder="시 / 도"
                 width="100%"
                 value={field.value ?? ""}
                 onChangeValue={field.onChange}

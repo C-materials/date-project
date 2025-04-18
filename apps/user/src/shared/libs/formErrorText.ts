@@ -8,7 +8,7 @@ export const limit = {
   },
   password: {
     min: 8,
-    max: 20,
+    max: 15,
   },
   referenceCode: {
     max: 20,

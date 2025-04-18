@@ -30,7 +30,7 @@ const FileUpload = ({ disabled, onChange, ...props }: FileProps) => {
     setUrlList([
       ...urlList,
       ...filteredFiles.map((file) => ({
-        id: crypto.randomUUID(),
+        id: `${file.lastModified} + ${file.name}`,
         url: URL.createObjectURL(file),
       })),
     ]);
