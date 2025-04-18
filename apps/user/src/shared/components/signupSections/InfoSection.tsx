@@ -1,21 +1,15 @@
 import { Radio, Select, TextInput } from "@repo/ui";
-import type { MouseEvent } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import {
-  febDayList,
-  longDayList,
-  monthList,
-  shortDayList,
-  yearList,
-} from "../../libs/dateList";
+import { monthList, yearList } from "../../libs/dateList";
 import { errorText, limit } from "../../libs/formErrorText";
-import { regionList } from "../../libs/regionList";
+import { mainAddress, regionList } from "../../libs/regionList";
 import type { User } from "../../types/user";
+import getDayList from "../../utils/getDayList";
 import {
-  birthWrapper,
   genderWrapper,
   inputLabel,
+  inputsWrapper,
   inputWrapper,
 } from "./style.css";
 
@@ -25,30 +19,61 @@ const InfoSection = () => {
     birthMonth: false,
     birthDay: false,
   });
-  const [isOpenAddressOption, setIsOpenAddressOption] = useState(false);
+  const [isOpenAddressOption, setIsOpenAddressOption] = useState({
+    mainAddress: false,
+    subAddress: false,
+  });
+
   const {
     register,
     formState: { errors },
     watch,
     control,
+    setValue,
   } = useFormContext<User.FormValue>();
 
+  // 생년월일 선택 관련 로직
+  const birthYear = Number(watch("birthYear"));
   const birthMonth = Number(watch("birthMonth"));
-  const dayList =
-    birthMonth === 2 ? febDayList : birthMonth % 2 ? shortDayList : longDayList;
 
-  const handleCloseOptions = (targetKey: keyof typeof isOpenBirthOption) => {
+  const handleCloseBirthOptions = (
+    targetKey: keyof typeof isOpenBirthOption,
+  ) => {
     setIsOpenBirthOption((prev) => ({
       ...prev,
       [targetKey]: false,
     }));
   };
-  const handleClickInput = (name: keyof typeof isOpenBirthOption) => {
+  const handleClickBirthInput = (name: keyof typeof isOpenBirthOption) => {
     setIsOpenBirthOption((prev) => ({
       ...prev,
       [name]: !prev[name],
     }));
   };
+
+  // 거주지 선택 관련 로직
+  const selectedMainAddress = watch("mainAddress");
+  const hasOneOption = regionList[selectedMainAddress]?.length === 1;
+
+  const handleCloseAddressOptions = (
+    targetKey: keyof typeof isOpenAddressOption,
+  ) => {
+    setIsOpenAddressOption((prev) => ({
+      ...prev,
+      [targetKey]: false,
+    }));
+  };
+  const handleClickAddressInput = (name: keyof typeof isOpenAddressOption) => {
+    setIsOpenAddressOption((prev) => ({
+      ...prev,
+      [name]: !prev[name],
+    }));
+  };
+
+  useEffect(() => {
+    setValue("subAddress", "전체");
+  }, [selectedMainAddress]);
+
   return (
     <div className={inputWrapper}>
       <label>
@@ -67,13 +92,13 @@ const InfoSection = () => {
           })}
           width="100%"
           placeholder="실명을 입력해주세요"
-          errorMessage={errors.password?.message}
+          errorMessage={errors.name?.message}
         />
       </label>
 
       <div>
-        <span className={inputLabel}>생년월일</span>
-        <div className={birthWrapper}>
+        <label className={inputLabel}>생년월일</label>
+        <div className={inputsWrapper}>
           <Controller
             name="birthYear"
             control={control}
@@ -86,8 +111,8 @@ const InfoSection = () => {
                 value={field.value ?? ""}
                 onChangeValue={field.onChange}
                 isOpen={isOpenBirthOption.birthYear}
-                onClickClose={() => handleCloseOptions("birthYear")}
-                onMouseDown={() => handleClickInput(field.name)}
+                onClickClose={() => handleCloseBirthOptions("birthYear")}
+                onMouseDown={() => handleClickBirthInput(field.name)}
                 errorMessage={errors.birthYear?.message}
               />
             )}
@@ -104,8 +129,8 @@ const InfoSection = () => {
                 value={field.value ?? ""}
                 onChangeValue={field.onChange}
                 isOpen={isOpenBirthOption.birthMonth}
-                onClickClose={() => handleCloseOptions("birthMonth")}
-                onMouseDown={() => handleClickInput(field.name)}
+                onClickClose={() => handleCloseBirthOptions("birthMonth")}
+                onMouseDown={() => handleClickBirthInput(field.name)}
               />
             )}
           />
@@ -117,43 +142,57 @@ const InfoSection = () => {
               <Select
                 width="68px"
                 placeholder="일"
-                optionList={dayList}
+                optionList={getDayList(birthYear, birthMonth)}
                 value={field.value ?? ""}
                 onChangeValue={field.onChange}
                 isOpen={isOpenBirthOption.birthDay}
-                onClickClose={() => handleCloseOptions("birthDay")}
-                onMouseDown={() => handleClickInput(field.name)}
+                onClickClose={() => handleCloseBirthOptions("birthDay")}
+                onMouseDown={() => handleClickBirthInput(field.name)}
               />
             )}
           />
         </div>
       </div>
-
-      <label>
-        <span className={inputLabel}>거주지</span>
-        <Controller
-          name="address"
-          control={control}
-          rules={{ required: true }}
-          render={({ field }) => (
-            <Select
-              optionList={regionList}
-              placeholder="현재 거주지"
-              width="100%"
-              value={field.value ?? ""}
-              onChangeValue={field.onChange}
-              isOpen={isOpenAddressOption}
-              onClickClose={() => {
-                setIsOpenAddressOption(false);
-              }}
-              onMouseDown={(e: MouseEvent<HTMLDivElement>) => {
-                setIsOpenAddressOption((prev) => !prev);
-                e.stopPropagation();
-              }}
-            />
-          )}
-        />
-      </label>
+      <div>
+        <label className={inputLabel}>거주지</label>
+        <div className={inputsWrapper}>
+          <Controller
+            name="mainAddress"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Select
+                optionList={mainAddress}
+                placeholder="현재 거주지"
+                width="100%"
+                value={field.value ?? ""}
+                onChangeValue={field.onChange}
+                isOpen={isOpenAddressOption.mainAddress}
+                onClickClose={() => handleCloseAddressOptions("mainAddress")}
+                onMouseDown={() => handleClickAddressInput(field.name)}
+              />
+            )}
+          />
+          {/* 세부 지역은 필수 선택 아님 */}
+          <Controller
+            name="subAddress"
+            control={control}
+            render={({ field }) => (
+              <Select
+                optionList={regionList[selectedMainAddress] || []}
+                disabled={!selectedMainAddress || hasOneOption}
+                placeholder="세부 지역"
+                width="100%"
+                value={field.value}
+                onChangeValue={field.onChange}
+                isOpen={isOpenAddressOption.subAddress}
+                onClickClose={() => handleCloseAddressOptions("subAddress")}
+                onMouseDown={() => handleClickAddressInput(field.name)}
+              />
+            )}
+          />
+        </div>
+      </div>
 
       <label>
         <span className={inputLabel}>성별</span>

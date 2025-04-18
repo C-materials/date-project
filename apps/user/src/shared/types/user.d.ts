@@ -8,7 +8,8 @@ namespace User {
     birthYear: number;
     birthMonth: number;
     birthDay: number;
-    address: string;
+    mainAddress: string;
+    subAddress: string | undefined;
     gender: Gender;
   };
 

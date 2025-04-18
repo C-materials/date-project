@@ -13,9 +13,10 @@ export const inputLabel = style({
   fontWeight: 500,
   paddingBottom: "10px",
   display: "inline-block",
+  cursor: "default",
 });
 
-export const birthWrapper = style({
+export const inputsWrapper = style({
   display: "flex",
   gap: "8px",
   width: "100%",

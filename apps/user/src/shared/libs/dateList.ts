@@ -9,12 +9,21 @@ const monthList = Array(12)
   .fill(1)
   .map((_, i) => String(i + 1));
 
-const febDayList = Array(29)
+const feb28DayList = Array(28)
   .fill(1)
   .map((v, i) => String(v + i));
 
-const shortDayList = [...febDayList, "30"];
+const feb29DayList = [...feb28DayList, "29"];
+
+const shortDayList = [...feb29DayList, "30"];
 
 const longDayList = [...shortDayList, "31"];
 
-export { febDayList, longDayList, monthList, shortDayList, yearList };
+export {
+  feb28DayList,
+  feb29DayList,
+  longDayList,
+  monthList,
+  shortDayList,
+  yearList,
+};
