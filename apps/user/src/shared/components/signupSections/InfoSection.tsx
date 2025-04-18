@@ -9,6 +9,7 @@ import {
   shortDayList,
   yearList,
 } from "../../libs/dateList";
+import { errorText, limit } from "../../libs/formErrorText";
 import { regionList } from "../../libs/regionList";
 import type { User } from "../../types/user";
 import {
@@ -55,7 +56,14 @@ const InfoSection = () => {
         <TextInput
           {...register("name", {
             required: "이름을 입력해주세요",
-            minLength: 2,
+            minLength: {
+              value: limit.name.min,
+              message: errorText.name.minLength,
+            },
+            maxLength: {
+              value: limit.name.max,
+              message: errorText.name.maxLength,
+            },
           })}
           width="100%"
           placeholder="실명을 입력해주세요"

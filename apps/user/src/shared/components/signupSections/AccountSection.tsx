@@ -1,5 +1,6 @@
 import { TextInput } from "@repo/ui";
 import { useFormContext } from "react-hook-form";
+import { errorText, limit } from "../../libs/formErrorText";
 import type { User } from "../../types/user";
 import { inputLabel, inputWrapper } from "./style.css";
 
@@ -10,20 +11,23 @@ const AccountSection = () => {
     formState: { errors },
   } = useFormContext<User.FormValue>();
 
-  const MIN_LENGTH = 8;
-
   return (
     <div className={inputWrapper}>
       <label>
         <span className={inputLabel}>휴대폰 번호</span>
         <TextInput
+          type="number"
           width="100%"
           placeholder="01012345678"
           {...register("tel", {
-            required: "휴대폰 번호를 입력해주세요.",
+            required: errorText.tel.error,
             pattern: {
-              value: /^010\d{7,8}$/,
-              message: "010으로 시작하는 번호를 입력해주세요.",
+              value: /^010/,
+              message: errorText.tel.wrongStart,
+            },
+            maxLength: {
+              value: limit.tel.max,
+              message: errorText.tel.error,
             },
           })}
           errorMessage={errors.tel?.message}
@@ -34,12 +38,12 @@ const AccountSection = () => {
         <TextInput
           type="password"
           width="100%"
-          placeholder={`${MIN_LENGTH}자리 이상 입력해주세요`}
+          placeholder={errorText.password.minLength}
           {...register("password", {
-            required: "비밀번호를 입력해주세요",
+            required: errorText.password.minLength,
             minLength: {
-              value: MIN_LENGTH,
-              message: `${MIN_LENGTH}자리 이상 입력해주세요`,
+              value: limit.password.min,
+              message: errorText.password.minLength,
             },
           })}
           errorMessage={errors.password?.message}
@@ -52,9 +56,8 @@ const AccountSection = () => {
           width="100%"
           placeholder="한번 더 입력해주세요"
           {...register("passwordCheck", {
-            required: "비밀번호를 한번 더 입력해주세요",
             validate: (value) =>
-              value === watch("password") || "비밀번호가 일치하지 않습니다.",
+              value === watch("password") || errorText.password.wrongCheck,
           })}
           errorMessage={errors.passwordCheck?.message}
         />
@@ -65,7 +68,11 @@ const AccountSection = () => {
           width="100%"
           placeholder="공유받은 코드를 입력해 주세요"
           {...register("referenceCode", {
-            required: "가입 코드를 입력해 주세요",
+            required: errorText.referenceCode.wrongCode,
+            maxLength: {
+              value: limit.referenceCode.max,
+              message: errorText.referenceCode.maxLength,
+            },
           })}
           errorMessage={errors.referenceCode?.message}
         />
