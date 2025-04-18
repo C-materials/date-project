@@ -166,7 +166,10 @@ const InfoSection = () => {
                 placeholder="시 / 도"
                 width="100%"
                 value={field.value ?? ""}
-                onChangeValue={field.onChange}
+                onChangeValue={(e) => {
+                  field.onChange(e);
+                  setValue("subAddress", "전체");
+                }}
                 isOpen={isOpenAddressOption.mainAddress}
                 onClickClose={() => handleCloseAddressOptions("mainAddress")}
                 onMouseDown={() => handleClickAddressInput(field.name)}
@@ -183,7 +186,7 @@ const InfoSection = () => {
                 disabled={!selectedMainAddress || hasOneOption}
                 placeholder="세부 지역"
                 width="100%"
-                value={field.value}
+                value={field.value ?? "전체"}
                 onChangeValue={field.onChange}
                 isOpen={isOpenAddressOption.subAddress}
                 onClickClose={() => handleCloseAddressOptions("subAddress")}

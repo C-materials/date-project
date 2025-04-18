@@ -1,6 +1,6 @@
 // 온점 사용하지 않음
-const minLengthText = (min: number) => `${min}자리 이상 입력해주세요`;
-const maxLengthText = (max: number) => `최대 ${max}자리까지 입력이 가능합니다`;
+const minLengthText = (min: number) => `${min}자리 이상 입력해 주세요`;
+const maxLengthText = (max: number) => `최대 ${max}자리까지 입력해 주세요`;
 
 export const limit = {
   tel: {
@@ -11,11 +11,11 @@ export const limit = {
     max: 15,
   },
   referenceCode: {
-    max: 20,
+    max: 10,
   },
   name: {
     min: 2,
-    max: 20,
+    max: 10,
   },
 };
 

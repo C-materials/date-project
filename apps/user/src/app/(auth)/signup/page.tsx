@@ -10,9 +10,9 @@ import type { User } from "../../../shared/types/user";
 import { form, logoSignup, pageButton, pagination } from "../_styles/style.css";
 
 export default function Signup() {
-  const [part, setPart] = useState<"account" | "info">("account");
+  const [part, setPart] = useState<"account" | "info">("info");
   const method = useForm<User.FormValue>({
-    mode: "onBlur",
+    mode: "onChange",
   });
 
   const {
@@ -46,18 +46,17 @@ export default function Signup() {
           </Button>
           {isAccountPart ? (
             <Button
+              key="next"
               disabled={!isAccountPart || !isValid}
               variant="secondary"
               className={pageButton}
-              onClick={(e) => {
-                setPart("info");
-                e.preventDefault();
-              }}
+              onClick={() => setPart("info")}
             >
               다음
             </Button>
           ) : (
             <Button
+              key="submit"
               type="submit"
               disabled={!isValid}
               variant="secondary"

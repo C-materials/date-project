@@ -1,5 +1,4 @@
 import { TextInput } from "@repo/ui";
-import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 import { errorText, limit } from "../../libs/formErrorText";
 import type { User } from "../../types/user";
@@ -9,16 +8,9 @@ const AccountSection = () => {
   const {
     register,
     watch,
-    setValue,
+    trigger,
     formState: { errors },
   } = useFormContext<User.FormValue>();
-
-  const password = watch("password");
-  useEffect(() => {
-    if (String(password).length >= limit.password.max) {
-      setValue("password", password.slice(0, limit.password.max));
-    }
-  }, [password]);
 
   return (
     <div className={inputWrapper}>
@@ -31,14 +23,12 @@ const AccountSection = () => {
           {...register("tel", {
             required: errorText.tel.error,
             validate: {
-              startsWith010: (value) =>
-                String(value).startsWith("010") || errorText.tel.wrongStart,
-              lengthCheck: (value) =>
-                String(value).length === 11 || errorText.tel.error,
-            },
-            maxLength: {
-              value: limit.tel.max,
-              message: errorText.tel.error,
+              myTelNumber: (value: number) => {
+                const pattern = /^010/;
+                if (!pattern.test(String(value)))
+                  return errorText.tel.wrongStart;
+                if (String(value).length !== 11) return errorText.tel.error;
+              },
             },
           })}
           errorMessage={errors.tel?.message}
