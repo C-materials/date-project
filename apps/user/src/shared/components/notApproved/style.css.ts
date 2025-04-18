@@ -6,7 +6,7 @@ export const section = style({
   justifyContent: "center",
   alignItems: "center",
 
-  paddingTop: "190px",
+  paddingTop: "150px",
   gap: "100px",
 });
 
