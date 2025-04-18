@@ -74,6 +74,7 @@ export const Color = createGlobalTheme(":root", {
     default: ColorVar.white,
     hover: ColorVar.greyBlue[1],
     active: ColorVar.greyBlue[2],
+    disabled: ColorVar.greyBlue[9],
   },
   secondary: {
     default: ColorVar.greyBlue[8],
@@ -97,6 +98,7 @@ export const Color = createGlobalTheme(":root", {
     sub: ColorVar.grey[6],
     light: ColorVar.grey[3],
     inverse: ColorVar.grey[10],
+    disabled: ColorVar.grey[7],
   },
   border: ColorVar.greyBlue[6],
 });

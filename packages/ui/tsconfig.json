@@ -1,8 +1,12 @@
 {
   "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
+    "target": "ESNext",
     "outDir": "dist",
-    "typeRoots": ["./node_modules/@types", "src/ImageUploader/types"]
+    "noEmit": false,
+    "typeRoots": ["./node_modules/@types", "src/ImageUploader/types"],
+    "declaration": true,
+    "declarationMap": true
   },
   "include": ["src", "store"],
   "exclude": ["node_modules", "dist"]
