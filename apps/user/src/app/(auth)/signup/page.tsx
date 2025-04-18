@@ -12,7 +12,7 @@ import { form, logoSignup, pageButton, pagination } from "../_styles/style.css";
 export default function Signup() {
   const [part, setPart] = useState<"account" | "info">("account");
   const method = useForm<User.FormValue>({
-    mode: "onChange",
+    mode: "onBlur",
   });
 
   const {

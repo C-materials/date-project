@@ -21,9 +21,11 @@ const AccountSection = () => {
           placeholder="01012345678"
           {...register("tel", {
             required: errorText.tel.error,
-            pattern: {
-              value: /^010/,
-              message: errorText.tel.wrongStart,
+            validate: {
+              startsWith010: (value) =>
+                String(value).startsWith("010") || errorText.tel.wrongStart,
+              lengthCheck: (value) =>
+                String(value).length === 11 || errorText.tel.error,
             },
             maxLength: {
               value: limit.tel.max,
