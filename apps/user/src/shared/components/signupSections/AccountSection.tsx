@@ -45,6 +45,10 @@ const AccountSection = () => {
               value: limit.password.min,
               message: errorText.password.minLength,
             },
+            maxLength: {
+              value: limit.password.max,
+              message: errorText.password.maxLength,
+            },
           })}
           errorMessage={errors.password?.message}
         />
