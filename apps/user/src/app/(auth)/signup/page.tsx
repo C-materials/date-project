@@ -20,19 +20,22 @@ export default function Signup() {
     formState: { isValid },
   } = method;
 
-  // 임시 핸들러
-  const onSubmit: SubmitHandler<User.FormValue> = (data) => console.log(data);
+  const isAccountPart = part === "account";
 
-  const isPartAccount = part === "account";
+  // 임시 핸들러
+  const onSubmit: SubmitHandler<User.FormValue> = (data) => {
+    console.log(data);
+  };
+
   return (
     <FormProvider {...method}>
       <Logo alt="logo" className={logoSignup} />
       <form className={form} onSubmit={handleSubmit(onSubmit)}>
         {/* Section 조건부 렌더링 */}
-        {isPartAccount ? <AccountSection /> : <InfoSection />}
+        {isAccountPart ? <AccountSection /> : <InfoSection />}
         <div className={pagination}>
           <Button
-            disabled={isPartAccount}
+            disabled={isAccountPart}
             variant="outline"
             className={pageButton}
             onClick={() => {
@@ -41,13 +44,14 @@ export default function Signup() {
           >
             이전
           </Button>
-          {isPartAccount ? (
+          {isAccountPart ? (
             <Button
-              disabled={!isPartAccount || !isValid}
+              disabled={!isAccountPart || !isValid}
               variant="secondary"
               className={pageButton}
-              onClick={() => {
+              onClick={(e) => {
                 setPart("info");
+                e.preventDefault();
               }}
             >
               다음
