@@ -1,6 +1,7 @@
 "use client";
 import Logo from "@date-project/user/public/logo.svg";
 import { Button } from "@repo/ui";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
@@ -10,7 +11,9 @@ import type { User } from "../../../shared/types/user";
 import { form, logoSignup, pageButton, pagination } from "../_styles/style.css";
 
 export default function Signup() {
-  const [part, setPart] = useState<"account" | "info">("info");
+  const [part, setPart] = useState<"account" | "info">("account");
+  const router = useRouter();
+
   const method = useForm<User.FormValue>({
     mode: "onChange",
   });
@@ -25,8 +28,8 @@ export default function Signup() {
   // 임시 핸들러
   const onSubmit: SubmitHandler<User.FormValue> = (data) => {
     console.log(data);
+    router.push("/");
   };
-
   return (
     <FormProvider {...method}>
       <Logo alt="logo" className={logoSignup} />

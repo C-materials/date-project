@@ -8,7 +8,6 @@ const AccountSection = () => {
   const {
     register,
     watch,
-    trigger,
     formState: { errors },
   } = useFormContext<User.FormValue>();
 
