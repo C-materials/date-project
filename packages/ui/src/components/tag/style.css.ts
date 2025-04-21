@@ -1,19 +1,21 @@
 import { recipe } from "@vanilla-extract/recipes";
 import { Color } from "../../styles";
+import { textSprinkles } from "../../styles/typography.css";
 
 export const tag = recipe({
-  base: {
-    padding: "8px 12px",
-    borderRadius: "1000px",
-    height: "32px",
-    width: "fit-content",
+  base: [
+    {
+      padding: "8px 12px",
+      borderRadius: "1000px",
+      height: "32px",
+      width: "fit-content",
 
-    fontSize: "14px",
-    lineHeight: "17px",
-    fontWeight: 500,
-
-    listStyle: "none",
-  },
+      listStyle: "none",
+    },
+    textSprinkles({
+      text: "medium",
+    }),
+  ],
   variants: {
     tagStyle: {
       default: {

@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { Color, ColorVar } from "../../styles";
+import { textSprinkles } from "../../styles/typography.css";
 
 export const checkboxWrapper = recipe({
   base: {
@@ -72,11 +73,11 @@ export const checkboxInput = recipe({
 });
 
 export const checkboxLabel = recipe({
-  base: {
-    fontSize: "14px",
-    lineHeight: "17px",
-    fontWeight: 500,
-  },
+  base: [
+    textSprinkles({
+      text: "medium",
+    }),
+  ],
   variants: {
     disabled: {
       true: {

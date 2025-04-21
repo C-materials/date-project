@@ -1,5 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 import { Color, ColorVar } from "../../styles";
+import { textSprinkles } from "../../styles/typography.css";
 
 // track (배경)
 export const rangeSlider = style({
@@ -79,9 +80,11 @@ export const rangeWrapper = style({
   position: "relative",
 });
 
-export const description = style({
-  fontSize: "12px",
-  lineHeight: "14px",
-  fontWeight: "400",
-  color: Color.text.light,
-});
+export const description = style([
+  {
+    color: Color.text.light,
+  },
+  textSprinkles({
+    text: "small",
+  }),
+]);
