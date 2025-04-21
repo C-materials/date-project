@@ -1,4 +1,4 @@
-import { Color, ColorVar } from "@repo/ui";
+import { Color, ColorVar, textSprinkles } from "@repo/ui";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 // ---------layout----------
@@ -63,12 +63,14 @@ export const loginButton = style({
   height: "40px",
 });
 
-export const signupButton = style({
-  padding: "8px",
-  fontSize: "14px",
-  fontWeight: 400,
-  lineHeight: "17px",
-});
+export const signupButton = style([
+  {
+    padding: "8px",
+  },
+  textSprinkles({
+    text: "medium",
+  }),
+]);
 // ------------signup------------
 
 export const logoSignup = style({
@@ -78,13 +80,13 @@ export const logoSignup = style({
   margin: "0 auto 52px",
 });
 
-export const inputLabel = style({
-  fontSize: "14px",
-  lineHeight: "17px",
-  fontWeight: 500,
-  paddingBottom: "10px",
-  display: "inline-block",
-});
+export const inputLabel = style([
+  {
+    paddingBottom: "10px",
+    display: "inline-block",
+  },
+  textSprinkles({ text: "medium" }),
+]);
 
 export const pagination = style({
   display: "flex",
