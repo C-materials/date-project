@@ -21,7 +21,27 @@ namespace User {
   } & Omit<Info, "id" | "birth">;
 
   type Data = {
+    //전역에서 불러올 유저 정보
     approved: boolean;
     birth: Date;
   } & Omit<Info, "birthDay" | "birthMonth" | "birthYear">;
+
+  /* 마이페이지에서 입력하는 정보*/
+  type RequiredInfo = {
+    job: string;
+    religion: string;
+    height: number;
+    smoke: boolean;
+    hobby: string;
+    profileImages: string[];
+  };
+
+  type OptionalInfo = {
+    mbti: string;
+    skill: string;
+    introduce: string;
+    pet: boolean;
+    drink: string;
+    other: string[];
+  };
 }
