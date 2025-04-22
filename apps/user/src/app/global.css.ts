@@ -1,10 +1,10 @@
 import { globalStyle } from "@vanilla-extract/css";
 
 globalStyle("main", {
-  padding: "72px 40px",
+  paddingTop: "72px",
 });
 
-// input type="number" 화살표 제거;
+/* input type="number" 화살표 제거; */
 /* Chrome, Safari, Edge, Opera */
 
 globalStyle("input::-webkit-outer-spin-button", {

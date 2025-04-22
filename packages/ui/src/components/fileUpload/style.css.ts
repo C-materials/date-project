@@ -16,7 +16,7 @@ export const labelStyle = recipe({
       alignItems: "center",
       gap: "12px",
 
-      width: "300px",
+      width: "100%",
       height: "120px",
       padding: "10px",
 

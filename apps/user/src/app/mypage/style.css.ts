@@ -44,6 +44,7 @@ export const tabMenuWrapper = style({
   display: "flex",
   borderBottom: "1px solid",
   borderColor: Color.border,
+  marginBottom: "32px",
 });
 
 export const tabMenuItem = recipe({
