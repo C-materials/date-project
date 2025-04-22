@@ -36,7 +36,7 @@ const ProfileMenu = ({ name, tel, list = [], ref }: MenuProps) => {
       <ul className={listWrapper}>
         {list.map((item: ListType) => (
           <li key={item.title} className={listItem}>
-            {item.href && <Link href={item.href || "/"}>{item.title}</Link>}
+            {item.href && <Link href={item.href}>{item.title}</Link>}
             {item.action && (
               <button type="button" onClick={item.action}>
                 {item.title}
