@@ -26,6 +26,11 @@ const sprinkles = defineProperties({
       small: {
         fontSize: "12px",
         lineHeight: "14px",
+        fontWeight: FontWeight.semibold,
+      },
+      smallBold: {
+        fontSize: "12px",
+        lineHeight: "14px",
         fontWeight: FontWeight.regular,
       },
       medium: {
