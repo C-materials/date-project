@@ -49,6 +49,7 @@ const Select = ({
         placeholder={placeholder}
         onClick={onClickInput}
         suffix={<Arrow className={icon({ isOpen, disabled })} />}
+        width={width}
         {...props}
       />
       {isOpen && !disabled && (
