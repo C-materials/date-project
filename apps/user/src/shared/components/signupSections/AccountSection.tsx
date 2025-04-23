@@ -1,7 +1,6 @@
 import { TextInput } from "@repo/ui";
 import { useFormContext } from "react-hook-form";
 import { signupError, signupLimit } from "../../libs/formErrorText";
-import type { User } from "../../types/user";
 import { inputLabel, inputWrapper } from "./style.css";
 
 const AccountSection = () => {
@@ -16,16 +15,14 @@ const AccountSection = () => {
       <label>
         <span className={inputLabel}>휴대폰 번호</span>
         <TextInput
-          type="number"
           width="100%"
           placeholder="01012345678"
           {...register("tel", {
             required: signupError.tel.error,
             validate: {
-              myTelNumber: (value: number) => {
+              myTelNumber: (value: string) => {
                 const pattern = /^010/;
-                if (!pattern.test(String(value)))
-                  return signupError.tel.wrongStart;
+                if (!pattern.test(value)) return signupError.tel.wrongStart;
                 if (String(value).length !== 11) return signupError.tel.error;
               },
             },

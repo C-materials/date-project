@@ -59,3 +59,19 @@ export const tagWrapper = style({
   flexWrap: "wrap",
   gap: "8px",
 });
+
+// --------------- account -----------------
+export const inputsWrapper = style({
+  display: "flex",
+  gap: "8px",
+});
+
+export const pwWrapper = style({
+  display: "flex",
+  gap: "10px",
+});
+
+export const pwChange = style({
+  height: "40px",
+  whiteSpace: "nowrap",
+});

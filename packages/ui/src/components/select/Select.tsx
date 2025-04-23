@@ -22,7 +22,7 @@ const Select = ({
 
   const handleClickOption = (value: string | number) => {
     onClickClose?.();
-    onChangeValue(value);
+    onChangeValue?.(value);
   };
 
   useEffect(() => {

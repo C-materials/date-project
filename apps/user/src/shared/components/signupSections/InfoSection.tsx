@@ -1,10 +1,9 @@
 import { Radio, Select, TextInput } from "@repo/ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { monthList, yearList } from "../../libs/dateList";
 import { signupError, signupLimit } from "../../libs/formErrorText";
 import { mainAddress, regionList } from "../../libs/regionList";
-import type { User } from "../../types/user";
 import getDayList from "../../utils/getDayList";
 import {
   genderWrapper,
@@ -70,10 +69,6 @@ const InfoSection = () => {
     }));
   };
 
-  useEffect(() => {
-    setValue("subAddress", "전체");
-  }, [selectedMainAddress]);
-
   return (
     <div className={inputWrapper}>
       <label>
@@ -127,7 +122,10 @@ const InfoSection = () => {
                 placeholder="월"
                 optionList={monthList}
                 value={field.value ?? ""}
-                onChangeValue={field.onChange}
+                onChangeValue={(e) => {
+                  field.onChange(e);
+                  setValue("birthDay", 1);
+                }}
                 isOpen={isOpenBirthOption.birthMonth}
                 onClickClose={() => handleCloseBirthOptions("birthMonth")}
                 onMouseDown={() => handleClickBirthInput(field.name)}

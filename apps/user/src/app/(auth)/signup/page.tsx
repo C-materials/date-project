@@ -7,7 +7,6 @@ import type { SubmitHandler } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
 import AccountSection from "../../../shared/components/signupSections/AccountSection";
 import InfoSection from "../../../shared/components/signupSections/InfoSection";
-import type { User } from "../../../shared/types/user";
 import { form, logoSignup, pageButton, pagination } from "../_styles/style.css";
 
 export default function Signup() {

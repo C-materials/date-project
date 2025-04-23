@@ -1,16 +1,14 @@
-export type Gender = "female" | "male";
-
 namespace User {
   type Info = {
     id: number;
     name: string;
-    tel: number;
+    tel: string;
     birthYear: number;
     birthMonth: number;
     birthDay: number;
     mainAddress: string;
     subAddress: string;
-    gender: Gender;
+    gender: "female" | "male";
   };
 
   type FormValue = {
@@ -18,7 +16,7 @@ namespace User {
     password: string;
     passwordCheck: string;
     referenceCode: string;
-  } & Omit<Info, "id" | "birth">;
+  } & Omit<Info, "id">;
 
   type Data = {
     //전역에서 불러올 유저 정보
@@ -44,4 +42,6 @@ namespace User {
     drink: string[];
     other: string[];
   };
+
+  type AccountInfo = Omit<FormValue, "passwordCheck" | "gender">;
 }

@@ -5,7 +5,6 @@ import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { mypageError, myPageLimit } from "../../../libs/formErrorText";
 import { religionList } from "../../../libs/optionList";
-import type { User } from "../../../types/user";
 import ImagePreviewItem from "../components/imagePreview/ImagePreviewItem";
 import Label from "../components/label/Label";
 import {
