@@ -61,8 +61,11 @@ export const tabMenuItem = recipe({
       true: {
         borderBottom: "2px solid",
         borderColor: Color.primary.default,
+        color: Color.text.default,
       },
-      false: {},
+      false: {
+        color: Color.text.light,
+      },
     },
   },
 });

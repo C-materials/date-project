@@ -64,7 +64,7 @@ export const myPageLimit = {
   hobby: {
     max: 30,
   },
-  profileImages: {
+  image: {
     min: 1,
     max: 5,
     maxSize: 5,
@@ -91,10 +91,11 @@ export const mypageError = {
     error: "취미를 입력해주세요",
     maxLength: maxLengthText(myPageLimit.hobby.max),
   },
-  profileImage: {
-    maxSize: `최대 ${myPageLimit.profileImages.maxSize}MB의 이미지만 업로드할 수 있습니다`,
+  image: {
+    maxSize: `최대 ${myPageLimit.image.maxSize}MB의 이미지만 업로드할 수 있습니다`,
     wrongFormat: "허용하는 이미지 파일의 포맷이 아닙니다",
-    maxLength: `최대 ${myPageLimit.profileImages.max}개까지 업로드가 가능합니다`,
+    maxLength: `최대 ${myPageLimit.image.max}개까지 업로드가 가능합니다`,
+    minLength: `${myPageLimit.image.min}개 이상의 사진을 등록해주세요`,
   },
   skill: {
     maxLength: maxLengthText(myPageLimit.skill.max),

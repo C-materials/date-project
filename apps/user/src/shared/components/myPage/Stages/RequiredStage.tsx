@@ -1,14 +1,24 @@
 import { Button, FileUpload, Radio, Select, TextInput } from "@repo/ui";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { mypageError, myPageLimit } from "../../../libs/formErrorText";
 import type { User } from "../../../types/user";
-import Label from "../components/Label";
-import { buttonWrapper, form, radioWrapper, section } from "./style.css";
+import ImagePreviewItem from "../components/imagePreview/ImagePreviewItem";
+import Label from "../components/label/Label";
+import {
+  buttonWrapper,
+  form,
+  imageInputWrapper,
+  imageWrapper,
+  radioWrapper,
+  section,
+} from "./style.css";
+import type { ImageType } from "./type";
 
 const RequiredStage = () => {
+  const [imageUrlList, setImageUrlList] = useState<ImageType[]>([]);
   const [isOpenReligion, setIsOpenReligion] = useState(false);
 
   const religionList = ["없음", "기독교", "불교", "천주교", "기타"];
@@ -27,6 +37,7 @@ const RequiredStage = () => {
     handleSubmit,
     control,
     watch,
+    setValue,
     formState: { isValid, errors },
   } = method;
 
@@ -34,6 +45,54 @@ const RequiredStage = () => {
   const onSubmit: SubmitHandler<User.RequiredInfo> = (data) => {
     console.log(data);
   };
+
+  // 이미지
+  const LIMIT_SIZE = myPageLimit.image.max * 1024 * 1024;
+
+  const handleChangeImage = (files: FileList) => {
+    // 크기 제한
+    const sizeFiltered = Array.from(files).filter(
+      (file) => file.size <= LIMIT_SIZE,
+    );
+    if (sizeFiltered.length !== files.length) alert(mypageError.image.maxSize);
+
+    // 개수 제한
+    // 이미 최대 개수만큼 선택했을때
+    if (imageUrlList.length === myPageLimit.image.max) {
+      alert(mypageError.image.maxLength);
+      return;
+    }
+
+    let slicedFiles = sizeFiltered.slice(0, myPageLimit.image.max);
+
+    // 기존 + 새로 선택해서 개수 초과할때 => 5개까지만 추가 업로드
+    if (imageUrlList.length + sizeFiltered.length > myPageLimit.image.max) {
+      alert(mypageError.image.maxLength);
+      slicedFiles = sizeFiltered.slice(
+        0,
+        myPageLimit.image.max - imageUrlList.length,
+      );
+    }
+
+    setImageUrlList((prev) => [
+      ...prev,
+      ...slicedFiles.map((file) => ({
+        id: `${Date.now()}_${file.name}`,
+        url: URL.createObjectURL(file),
+      })),
+    ]);
+  };
+
+  useEffect(() => {
+    const urlList = imageUrlList.map((item: ImageType) => item.url);
+    setValue("images", urlList);
+  }, [imageUrlList]);
+
+  const handleDeleteImage = (targetId: string) => {
+    const newImageUrlList = imageUrlList.filter((item) => item.id !== targetId);
+    setImageUrlList(newImageUrlList);
+  };
+
   return (
     <FormProvider {...method}>
       <form className={form} onSubmit={handleSubmit(onSubmit)}>
@@ -63,7 +122,7 @@ const RequiredStage = () => {
                 <Select
                   placeholder="종교를 선택해주세요"
                   optionList={religionList}
-                  value={field.value}
+                  value={field.value || ""}
                   onChangeValue={field.onChange}
                   onClickInput={handleClickReligion}
                   onClickClose={() => setIsOpenReligion(false)}
@@ -130,18 +189,40 @@ const RequiredStage = () => {
               })}
             />
           </div>
-          <div>
+          <div className={imageInputWrapper}>
             <Label>프로필 사진 (최대 5장)</Label>
             <Controller
               name="images"
-              rules={{ required: true }}
-              render={({ field }) => <FileUpload />}
+              control={control}
+              rules={{
+                required: mypageError.image.minLength,
+              }}
+              render={({}) => (
+                <FileUpload
+                  onChange={(files: FileList) => handleChangeImage(files)}
+                  urlList={imageUrlList}
+                  acceptFormatList="image/jpg, image/png, image/jpeg, image/webp, image/heic"
+                />
+              )}
             />
-            {/* 프리뷰 아이템 */}
+
+            <div className={imageWrapper}>
+              {imageUrlList.map((item) => (
+                <ImagePreviewItem
+                  key={item.id}
+                  item={item}
+                  onClick={() => handleDeleteImage(item.id)}
+                />
+              ))}
+            </div>
           </div>
         </section>
         <div className={buttonWrapper}>
-          <Button type="button" variant="secondary">
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={() => console.log(watch())}
+          >
             미리보기
           </Button>
           <Button type="submit" variant="primary" disabled={!isValid}>

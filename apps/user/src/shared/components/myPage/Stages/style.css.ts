@@ -26,3 +26,14 @@ export const buttonWrapper = style({
   top: 0,
   right: 0,
 });
+
+export const imageInputWrapper = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+});
+
+export const imageWrapper = style({
+  display: "flex",
+  gap: "10px",
+});
