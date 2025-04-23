@@ -86,6 +86,13 @@ export const button = recipe({
       true: {
         backgroundColor: `${Color.secondary.default} !important`,
       },
+      false: {
+        selectors: {
+          [`${labelStyle()}:hover &`]: {
+            backgroundColor: Color.accent.hover,
+          },
+        },
+      },
     },
   },
 });
