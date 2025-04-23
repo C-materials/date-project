@@ -96,8 +96,8 @@ export const notDisplay = style({
 
 export const icon = recipe({
   base: {
-    width: "12px",
-    height: "12px",
+    width: "10px",
+    height: "10px",
     color: Color.bg,
     transition: "0.1s ease",
   },

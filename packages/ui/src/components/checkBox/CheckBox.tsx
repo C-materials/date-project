@@ -11,7 +11,7 @@ import type { CheckBoxProps } from "./type";
 const CheckBox = ({
   checked = false,
   label,
-  disabled,
+  disabled = false,
   onClick,
   onChange,
   ...props
