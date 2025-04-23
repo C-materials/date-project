@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { UrlType } from "../components/imageUploader/type";
+import type { UrlType } from "../components/fileUpload/type";
 
 interface ImageUrlStoreType {
   urlList: UrlType[];

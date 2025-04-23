@@ -1,68 +1,79 @@
 import type { ChangeEvent, ComponentPropsWithoutRef } from "react";
 import { useRef, useState } from "react";
 import Upload from "../../../assets/uploadIcon.svg";
-import useImageUrlStore from "../../store/useImageUrlStore";
 import Button from "../button/Button";
 import { notDisplay } from "../checkBox/style.css";
 import { button, icon, labelStyle, wrapper } from "./style.css";
 
-type FileProps = ComponentPropsWithoutRef<"input">;
-const FileUpload = ({ disabled, onChange, ...props }: FileProps) => {
-  const { setUrlList, urlList } = useImageUrlStore();
-
+type FileProps = Omit<ComponentPropsWithoutRef<"input">, "onChange"> & {
+  maxLength?: number;
+  maxSize?: number;
+  urlList: any[];
+  acceptFormatList?: string;
+  onChange: (files: any[]) => void;
+};
+const FileUpload = ({
+  disabled = false,
+  onChange,
+  maxLength = 5,
+  maxSize = 5,
+  urlList,
+  acceptFormatList = "image/jpg, image/png, image/jpeg",
+  ...props
+}: FileProps) => {
   const [isDropActive, setIsDropActive] = useState(false);
 
-  const LIMIT_SIZE = 3 * 1024 * 1024;
+  const LIMIT_SIZE = maxSize * 1024 * 1024;
 
-  //  전역상태 업데이트하는 함수
+  //  상위에서 파일 리스트 업데이트하는 함수
   const uploadFiles = (files: FileList) => {
-    if (urlList.length + files.length > 4) {
-      alert("사진은 최대 4장 등록 가능합니다.");
-      return;
+    if (urlList.length + files.length > maxLength) {
+      alert(`사진은 최대 ${maxLength}장 등록 가능합니다.`);
+      return [];
     }
     const filteredFiles = Array.from(files).filter(
       (file) => file.size < LIMIT_SIZE,
     );
     if (filteredFiles.length <= 0) {
-      alert("3MB 이하의 파일만 업로드 가능합니다");
-      return;
+      alert(`${maxSize}MB 이하의 파일만 업로드 가능합니다`);
+      return [];
     }
-    setUrlList([
-      ...urlList,
-      ...filteredFiles.map((file) => ({
-        id: `${file.lastModified} + ${file.name}`,
-        url: URL.createObjectURL(file),
-      })),
-    ]);
+
+    return filteredFiles.map((file) => ({
+      id: `${file.lastModified} + ${file.name}`,
+      url: URL.createObjectURL(file),
+    }));
   };
 
   const handleSelectFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files) return;
-    uploadFiles(files);
-    onChange?.(e);
+    const uploadedFiles = uploadFiles(files);
+    onChange?.(uploadedFiles);
   };
 
   const handleDragStart = (e: React.DragEvent) => {
+    if (disabled) return;
+
     e.preventDefault();
     setIsDropActive(true);
   };
 
   const handleDragOver = (e: React.DragEvent) => {
+    if (disabled) return;
+
     e.preventDefault();
   };
 
   const handleDrop = (e: React.DragEvent) => {
+    if (disabled) return;
+
     e.preventDefault();
     setIsDropActive(false);
 
     const files = e.dataTransfer.files;
-    uploadFiles(files);
-
-    if (onChange) {
-      const target = { files } as EventTarget & HTMLInputElement;
-      onChange({ target } as ChangeEvent<HTMLInputElement>);
-    }
+    const uploadedFiles = uploadFiles(files);
+    onChange?.(uploadedFiles);
   };
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -70,6 +81,7 @@ const FileUpload = ({ disabled, onChange, ...props }: FileProps) => {
     if (disabled) return;
     inputRef.current?.click();
   };
+
   return (
     <div
       className={labelStyle({
@@ -91,7 +103,7 @@ const FileUpload = ({ disabled, onChange, ...props }: FileProps) => {
           ref={inputRef}
           multiple
           className={notDisplay}
-          accept="image/png, image/jpeg, image/jpg"
+          accept={acceptFormatList}
           onChange={(e) => handleSelectFile(e)}
           {...props}
         />
