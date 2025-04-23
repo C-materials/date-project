@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
+// --------------- required -----------------
 export const form = style({
   display: "flex",
   justifyContent: "space-between",
@@ -27,7 +28,7 @@ export const buttonWrapper = style({
   right: 0,
 });
 
-export const imageInputWrapper = style({
+export const fieldWrapper = style({
   display: "flex",
   flexDirection: "column",
   gap: "10px",
@@ -36,4 +37,25 @@ export const imageInputWrapper = style({
 export const imageWrapper = style({
   display: "flex",
   gap: "10px",
+});
+
+// --------------- optional -----------------
+
+export const sectionWide = style({
+  width: "266px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "16px",
+});
+
+export const checkBoxWrapper = style({
+  width: "200px",
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "10px 20px",
+});
+export const tagWrapper = style({
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "8px",
 });

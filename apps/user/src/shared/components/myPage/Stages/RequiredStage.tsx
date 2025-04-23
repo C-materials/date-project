@@ -4,24 +4,26 @@ import { useEffect, useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { mypageError, myPageLimit } from "../../../libs/formErrorText";
+import { religionList } from "../../../libs/optionList";
 import type { User } from "../../../types/user";
 import ImagePreviewItem from "../components/imagePreview/ImagePreviewItem";
 import Label from "../components/label/Label";
 import {
   buttonWrapper,
+  fieldWrapper,
   form,
-  imageInputWrapper,
   imageWrapper,
   radioWrapper,
   section,
 } from "./style.css";
 import type { ImageType } from "./type";
-
+/**
+ * @todo : 입력한 정보가 있을때는 해당 데이터를 가져와야함
+ */
 const RequiredStage = () => {
   const [imageUrlList, setImageUrlList] = useState<ImageType[]>([]);
   const [isOpenReligion, setIsOpenReligion] = useState(false);
 
-  const religionList = ["없음", "기독교", "불교", "천주교", "기타"];
   const handleClickReligion = () => {
     setIsOpenReligion((prev) => !prev);
   };
@@ -159,9 +161,9 @@ const RequiredStage = () => {
             <Label>흡연 여부</Label>
             <div className={radioWrapper}>
               <Radio
-                checked={watch("smoke") === "non-smoke"}
+                checked={watch("smoke") === "nonSmoke"}
                 label="비흡연"
-                value="non-smoke"
+                value="nonSmoke"
                 {...register("smoke", { required: true })}
               ></Radio>
               <Radio
@@ -189,31 +191,34 @@ const RequiredStage = () => {
               })}
             />
           </div>
-          <div className={imageInputWrapper}>
+          <div>
             <Label>프로필 사진 (최대 5장)</Label>
-            <Controller
-              name="images"
-              control={control}
-              rules={{
-                required: mypageError.image.minLength,
-              }}
-              render={({}) => (
-                <FileUpload
-                  onChange={(files: FileList) => handleChangeImage(files)}
-                  urlList={imageUrlList}
-                  acceptFormatList="image/jpg, image/png, image/jpeg, image/webp, image/heic"
-                />
-              )}
-            />
 
-            <div className={imageWrapper}>
-              {imageUrlList.map((item) => (
-                <ImagePreviewItem
-                  key={item.id}
-                  item={item}
-                  onClick={() => handleDeleteImage(item.id)}
-                />
-              ))}
+            <div className={fieldWrapper}>
+              <Controller
+                name="images"
+                control={control}
+                rules={{
+                  required: mypageError.image.minLength,
+                }}
+                render={({}) => (
+                  <FileUpload
+                    onChange={(files: FileList) => handleChangeImage(files)}
+                    urlList={imageUrlList}
+                    acceptFormatList="image/jpg, image/png, image/jpeg, image/webp, image/heic"
+                  />
+                )}
+              />
+
+              <div className={imageWrapper}>
+                {imageUrlList.map((item) => (
+                  <ImagePreviewItem
+                    key={item.id}
+                    item={item}
+                    onClick={() => handleDeleteImage(item.id)}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>

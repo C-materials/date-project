@@ -40,8 +40,8 @@ namespace User {
     mbti: string;
     skill: string;
     introduce: string;
-    pet: boolean;
-    drink: string;
+    pet: string;
+    drink: string[];
     other: string[];
   };
 }
