@@ -7,6 +7,7 @@ import OptionalStage from "../../shared/components/myPage/stages/OptionalStage";
 import RequiredStage from "../../shared/components/myPage/stages/RequiredStage";
 import {
   description,
+  layoutMain,
   mypage,
   tabMenuItem,
   tabMenuWrapper,
@@ -47,29 +48,31 @@ export default function MyPageStage() {
   ];
 
   return (
-    <section className={mypage}>
-      <div>
-        <div className={titleWrapper}>
-          <h1 className={title}>정보 수정</h1>
-        </div>
+    <main className={layoutMain}>
+      <section className={mypage}>
+        <div>
+          <div className={titleWrapper}>
+            <h1 className={title}>정보 수정</h1>
+          </div>
 
-        <p className={description}>
-          {tabInfo.find((item) => item.param === stage)?.description || ""}
-        </p>
-      </div>
-      <div>
-        <ul className={tabMenuWrapper}>
-          {tabInfo.map((item) => (
-            <li
-              key={item.param}
-              className={tabMenuItem({ isSelected: item.param === stage })}
-            >
-              <Link href={`/mypage?stage=${item.param}`}>{item.menu}</Link>
-            </li>
-          ))}
-        </ul>
-        {tabInfo.find((item) => item.param === stage)?.component}
-      </div>
-    </section>
+          <p className={description}>
+            {tabInfo.find((item) => item.param === stage)?.description || ""}
+          </p>
+        </div>
+        <div>
+          <ul className={tabMenuWrapper}>
+            {tabInfo.map((item) => (
+              <li
+                key={item.param}
+                className={tabMenuItem({ isSelected: item.param === stage })}
+              >
+                <Link href={`/mypage?stage=${item.param}`}>{item.menu}</Link>
+              </li>
+            ))}
+          </ul>
+          {tabInfo.find((item) => item.param === stage)?.component}
+        </div>
+      </section>
+    </main>
   );
 }
