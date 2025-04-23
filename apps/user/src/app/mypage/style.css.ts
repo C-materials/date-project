@@ -8,10 +8,12 @@ export const layoutMain = style({
 });
 
 export const mypage = style({
-  paddingTop: "80px",
+  marginTop: "80px",
   display: "flex",
   flexDirection: "column",
   gap: "40px",
+
+  position: "relative",
 });
 
 export const titleWrapper = style({
@@ -24,11 +26,6 @@ export const title = style([
     heading: "xlarge",
   }),
 ]);
-export const buttonWrapper = style({
-  display: "flex",
-  gap: "8px",
-  height: "40px",
-});
 
 export const description = style([
   {

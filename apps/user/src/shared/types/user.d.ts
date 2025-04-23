@@ -31,9 +31,9 @@ namespace User {
     job: string;
     religion: string;
     height: number;
-    smoke: boolean;
+    smoke: string;
     hobby: string;
-    profileImages: string[];
+    images: string[];
   };
 
   type OptionalInfo = {

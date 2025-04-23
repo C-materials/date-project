@@ -2,7 +2,7 @@ import { Radio, Select, TextInput } from "@repo/ui";
 import { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { monthList, yearList } from "../../libs/dateList";
-import { errorText, limit } from "../../libs/formErrorText";
+import { signupError, signupLimit } from "../../libs/formErrorText";
 import { mainAddress, regionList } from "../../libs/regionList";
 import type { User } from "../../types/user";
 import getDayList from "../../utils/getDayList";
@@ -82,12 +82,12 @@ const InfoSection = () => {
           {...register("name", {
             required: "이름을 입력해주세요",
             minLength: {
-              value: limit.name.min,
-              message: errorText.name.minLength,
+              value: signupLimit.name.min,
+              message: signupError.name.minLength,
             },
             maxLength: {
-              value: limit.name.max,
-              message: errorText.name.maxLength,
+              value: signupLimit.name.max,
+              message: signupError.name.maxLength,
             },
           })}
           width="100%"
@@ -102,7 +102,7 @@ const InfoSection = () => {
           <Controller
             name="birthYear"
             control={control}
-            rules={{ required: "년도를 선택해주세요" }}
+            rules={{ required: signupError.birthYear.error }}
             render={({ field }) => (
               <Select
                 width="88px"
@@ -120,7 +120,7 @@ const InfoSection = () => {
           <Controller
             name="birthMonth"
             control={control}
-            rules={{ required: true }}
+            rules={{ required: signupError.birthMonth.error }}
             render={({ field }) => (
               <Select
                 width="68px"
@@ -131,13 +131,14 @@ const InfoSection = () => {
                 isOpen={isOpenBirthOption.birthMonth}
                 onClickClose={() => handleCloseBirthOptions("birthMonth")}
                 onMouseDown={() => handleClickBirthInput(field.name)}
+                errorMessage={errors.birthMonth?.message}
               />
             )}
           />
           <Controller
             name="birthDay"
             control={control}
-            rules={{ required: true }}
+            rules={{ required: signupError.birthDay.error }}
             render={({ field }) => (
               <Select
                 width="68px"
@@ -148,6 +149,7 @@ const InfoSection = () => {
                 isOpen={isOpenBirthOption.birthDay}
                 onClickClose={() => handleCloseBirthOptions("birthDay")}
                 onMouseDown={() => handleClickBirthInput(field.name)}
+                errorMessage={errors.birthDay?.message}
               />
             )}
           />

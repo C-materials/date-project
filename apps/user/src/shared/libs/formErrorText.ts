@@ -41,6 +41,15 @@ export const signupError = {
     minLength: minLengthText(signupLimit.name.min),
     maxLength: maxLengthText(signupLimit.name.max),
   },
+  birthYear: {
+    error: "년도를 선택해주세요",
+  },
+  birthMonth: {
+    error: "월을 선택해주세요",
+  },
+  birthDay: {
+    error: "일자를 선택해주세요",
+  },
 };
 
 /* mypage - required fields */
@@ -67,14 +76,19 @@ export const myPageLimit = {
     max: 100,
   },
 };
-export const requiredError = {
+export const mypageError = {
   job: {
+    error: "직업을 입력해주세요",
     maxLength: maxLengthText(myPageLimit.job.max),
+  },
+  religion: {
+    error: "종교를 선택해주세요",
   },
   height: {
     error: "올바른 키를 입력해주세요",
   },
   hobby: {
+    error: "취미를 입력해주세요",
     maxLength: maxLengthText(myPageLimit.hobby.max),
   },
   profileImage: {

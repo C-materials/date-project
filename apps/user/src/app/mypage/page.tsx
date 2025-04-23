@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@repo/ui";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
@@ -7,7 +6,6 @@ import AccountStage from "../../shared/components/myPage/Stages/AccountStage";
 import OptionalStage from "../../shared/components/myPage/Stages/OptionalStage";
 import RequiredStage from "../../shared/components/myPage/Stages/RequiredStage";
 import {
-  buttonWrapper,
   description,
   mypage,
   tabMenuItem,
@@ -53,14 +51,6 @@ export default function MyPageStage() {
       <div>
         <div className={titleWrapper}>
           <h1 className={title}>정보 수정</h1>
-          <div className={buttonWrapper}>
-            <Button type="button" variant="secondary">
-              미리보기
-            </Button>
-            <Button type="button" variant="primary">
-              저장하기
-            </Button>
-          </div>
         </div>
 
         <p className={description}>

@@ -1,6 +1,6 @@
 import { TextInput } from "@repo/ui";
 import { useFormContext } from "react-hook-form";
-import { errorText, limit } from "../../libs/formErrorText";
+import { signupError, signupLimit } from "../../libs/formErrorText";
 import type { User } from "../../types/user";
 import { inputLabel, inputWrapper } from "./style.css";
 
@@ -20,13 +20,13 @@ const AccountSection = () => {
           width="100%"
           placeholder="01012345678"
           {...register("tel", {
-            required: errorText.tel.error,
+            required: signupError.tel.error,
             validate: {
               myTelNumber: (value: number) => {
                 const pattern = /^010/;
                 if (!pattern.test(String(value)))
-                  return errorText.tel.wrongStart;
-                if (String(value).length !== 11) return errorText.tel.error;
+                  return signupError.tel.wrongStart;
+                if (String(value).length !== 11) return signupError.tel.error;
               },
             },
           })}
@@ -38,16 +38,16 @@ const AccountSection = () => {
         <TextInput
           type="password"
           width="100%"
-          placeholder={`${limit.password.min} ~ ${limit.password.max}자 이내로 입력해주세요`}
+          placeholder={`${signupLimit.password.min} ~ ${signupLimit.password.max}자 이내로 입력해주세요`}
           {...register("password", {
-            required: errorText.password.minLength,
+            required: signupError.password.minLength,
             minLength: {
-              value: limit.password.min,
-              message: errorText.password.minLength,
+              value: signupLimit.password.min,
+              message: signupError.password.minLength,
             },
             maxLength: {
-              value: limit.password.max,
-              message: errorText.password.maxLength,
+              value: signupLimit.password.max,
+              message: signupError.password.maxLength,
             },
           })}
           errorMessage={errors.password?.message}
@@ -61,7 +61,7 @@ const AccountSection = () => {
           placeholder="한번 더 입력해주세요"
           {...register("passwordCheck", {
             validate: (value) =>
-              value === watch("password") || errorText.password.wrongCheck,
+              value === watch("password") || signupError.password.wrongCheck,
           })}
           errorMessage={errors.passwordCheck?.message}
         />
@@ -72,10 +72,10 @@ const AccountSection = () => {
           width="100%"
           placeholder="공유받은 코드를 입력해 주세요"
           {...register("referenceCode", {
-            required: errorText.referenceCode.wrongCode,
+            required: signupError.referenceCode.wrongCode,
             maxLength: {
-              value: limit.referenceCode.max,
-              message: errorText.referenceCode.maxLength,
+              value: signupLimit.referenceCode.max,
+              message: signupError.referenceCode.maxLength,
             },
           })}
           errorMessage={errors.referenceCode?.message}
