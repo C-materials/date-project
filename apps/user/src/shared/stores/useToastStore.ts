@@ -7,29 +7,44 @@ type ToastProps = {
   width?: number;
   className?: string;
 };
-type ToastStore = {
+type Toast = {
+  id: string;
   type: ToastType;
-  isOpen: boolean;
   content: string;
-  props: ToastProps;
+  isOpen: boolean;
+  props?: ToastProps;
+};
+type ToastStore = {
+  toastList: Toast[];
   openToast: (type: ToastType, content: string, props?: ToastProps) => void;
   delay?: number;
 };
 
-const useToastStore = create<ToastStore>((set, get) => ({
-  type: "success",
-  isOpen: false,
-  content: "",
-  props: {
-    icon: true,
-  },
-  delay: 1000,
-  openToast: (type: ToastType, content: string, props?: ToastProps) => {
-    set({ type, isOpen: true, props, content });
-    setTimeout(() => {
-      set({ isOpen: false });
-    }, get().delay);
-  },
-}));
+const createToastStore = (delay: number) =>
+  create<ToastStore>((set, get) => ({
+    toastList: [],
+    delay,
+    openToast: (type: ToastType, content: string, props?: ToastProps) => {
+      const id = Math.random().toString(36).slice(2, 9);
+      const newToast: Toast = { id, type, content, props, isOpen: true };
+      set((state) => ({ toastList: [...state.toastList, newToast] }));
 
-export default useToastStore;
+      setTimeout(() => {
+        // 전달받은 delay 시간 후에 isOpen 상태만 변경
+        set((state) => ({
+          toastList: state.toastList.map((toast) =>
+            toast.id === id ? { ...toast, isOpen: false } : toast,
+          ),
+        }));
+
+        // 애니메이션이 끝난 후 토스트 배열에서 제거
+        setTimeout(() => {
+          set((state) => ({
+            toastList: state.toastList.filter((toast) => toast.id !== id),
+          }));
+        }, 300); // 애니메이션 지속 시간
+      }, get().delay);
+    },
+  }));
+
+export default createToastStore;

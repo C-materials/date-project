@@ -4,7 +4,7 @@ import { Button, TextInput } from "@repo/ui";
 import Link from "next/link";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
-import useToastStore from "../../../shared/stores/useToastStore";
+import { useToastStore } from "../../../shared/components/layouts/clientLayout/ClientLayout";
 import {
   buttonWrapper,
   form,
@@ -27,11 +27,12 @@ export default function Login() {
   } = useForm<Login>({
     mode: "onChange",
   });
-  const { openToast } = useToastStore();
+  const { openToast, toastList } = useToastStore();
   // 임시 핸들러
   const onSubmit: SubmitHandler<Login> = (data) => {
     console.log(data);
-    openToast("critical", "토스트 메시지");
+    console.log(toastList);
+    openToast("critical", "토스트 메시지", { icon: false });
   };
 
   /**
