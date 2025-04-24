@@ -65,6 +65,18 @@ function generateIndexFile(directoryPath, folder) {
         exportStatementList.push(
           `export * from "./${fileNameWithoutExtension}";`,
         );
+      } else if (isDir) {
+        const nestedIndexPath = path.join(filePath, `index.${extension}`);
+        if (fs.existsSync(nestedIndexPath)) {
+          exportStatementList.push(
+            `export * from './${fileNameWithoutExtension}';`,
+          );
+        } else {
+          exportStatementList.push(
+            `export { default as ${exportName} } from './${fileNameWithoutExtension}';`,
+          );
+        }
+        generateIndexFile(filePath, folder); // 하위 디렉토리도 재귀 처리
       }
     } else {
       // components 등 다른 폴더는 기존 방식대로 처리
