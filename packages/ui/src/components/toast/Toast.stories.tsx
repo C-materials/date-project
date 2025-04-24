@@ -11,7 +11,7 @@ const meta: Meta<typeof Toast> = {
       control: "radio",
       options: ["success", "warning", "critical"],
     },
-    children: {
+    content: {
       description: "토스트 내부 컨텐츠",
     },
     icon: {

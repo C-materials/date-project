@@ -2,21 +2,21 @@ import { useEffect, useState } from "react";
 import Error from "../../../assets/error.svg";
 import Success from "../../../assets/success.svg";
 import Warning from "../../../assets/warning.svg";
-import { iconStyle, toast } from "./style.css";
+import { iconStyle, span, toast } from "./style.css";
 type ToastType = {
   type: "success" | "warning" | "critical";
-  children: string;
+  content: string;
   icon?: boolean;
   top?: number;
   isOpen: boolean;
   width?: number;
-  className?: any;
+  className?: string;
 };
 
 const Toast = ({
   isOpen,
   type,
-  children = "Toast Text",
+  content = "Toast Text",
   icon,
   top,
   width,
@@ -32,13 +32,13 @@ const Toast = ({
   useEffect(() => {
     if (isOpen) setIsVisible(true);
 
-    let timeout: NodeJS.Timeout | null = null;
+    let displayTimeout: NodeJS.Timeout | null = null;
     if (!isOpen) {
-      timeout = setTimeout(() => setIsVisible(false), 300);
+      displayTimeout = setTimeout(() => setIsVisible(false), 300);
     }
     return () => {
-      if (timeout) {
-        clearTimeout(timeout);
+      if (displayTimeout) {
+        clearTimeout(displayTimeout);
       }
     };
   }, [isOpen]);
@@ -52,7 +52,7 @@ const Toast = ({
         style={{ top: top ?? "64px", width: width || "160px" }}
       >
         {icon && iconType[type]}
-        {children}
+        <span className={span}>{content}</span>
       </div>
     </>
   );

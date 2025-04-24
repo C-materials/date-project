@@ -17,7 +17,6 @@ export const toast = recipe({
       justifyContent: "center",
       alignItems: "center",
       gap: "4px",
-      lineHeight: "20px",
 
       transition: "opacity 0.3s ease",
 
@@ -54,4 +53,8 @@ export const toast = recipe({
 export const iconStyle = style({
   width: "20px",
   height: "20px",
+});
+
+export const span = style({
+  paddingTop: "2px",
 });
