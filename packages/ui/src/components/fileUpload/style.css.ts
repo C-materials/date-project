@@ -1,37 +1,37 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { Color, ColorVar } from "../../styles";
+import { textSprinkles } from "../../styles/typography.css";
 
 //imageInput
 export const itemWrapper = style({});
 
 export const labelStyle = recipe({
-  base: {
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "12px",
+  base: [
+    {
+      position: "relative",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "12px",
 
-    width: "300px",
-    height: "120px",
-    padding: "10px",
+      width: "300px",
+      height: "120px",
+      padding: "10px",
 
-    outline: "1px dashed",
-    outlineColor: Color.border,
-    outlineOffset: "-1px",
-    borderRadius: "4px",
+      outline: "1px dashed",
+      outlineColor: Color.border,
+      outlineOffset: "-1px",
+      borderRadius: "4px",
 
-    color: Color.text.default,
-    backgroundColor: "transparent",
+      color: Color.text.default,
+      backgroundColor: "transparent",
 
-    fontSize: "12px",
-    lineHeight: "14px",
-    fontWeight: 400,
-
-    transition: "background-color 0.1s ease",
-  },
+      transition: "background-color 0.1s ease",
+    },
+    textSprinkles({ text: "small" }),
+  ],
   variants: {
     disabled: {
       true: {
@@ -70,13 +70,17 @@ export const wrapper = style({
 });
 
 export const button = recipe({
-  base: {
-    fontSize: "12px",
-    lineHeight: "14px",
-    height: "28px",
-    borderRadius: "4px",
-    border: "none",
-  },
+  base: [
+    {
+      fontSize: "12px",
+      lineHeight: "14px",
+      height: "28px",
+      borderRadius: "4px",
+    },
+    textSprinkles({
+      text: "small",
+    }),
+  ],
   variants: {
     disabled: {
       true: {

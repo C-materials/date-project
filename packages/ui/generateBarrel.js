@@ -16,7 +16,7 @@ const isJavaScript = false;
 const extension = isJavaScript ? "js" : "ts";
 
 // (직접 수정) 처리 대상 디렉토리 목록
-const targetFolderList = ["components"];
+const targetFolderList = ["components", "styles"];
 
 // (직접 수정) 예외 파일 목록
 const exceptionFileList = [
@@ -32,11 +32,11 @@ const exceptionFileList = [
 targetFolderList.forEach((folder) => {
   const folderPath = path.join(srcFolderPath, folder);
   if (fs.existsSync(folderPath) && fs.statSync(folderPath).isDirectory()) {
-    generateIndexFile(folderPath);
+    generateIndexFile(folderPath, folder);
   }
 });
 
-function generateIndexFile(directoryPath) {
+function generateIndexFile(directoryPath, folder) {
   const indexFilePath = path.join(directoryPath, `index.${extension}`);
   const relativePath = path.relative(__dirname, indexFilePath);
 
@@ -59,24 +59,32 @@ function generateIndexFile(directoryPath) {
       (file.endsWith(`.${extension}`) || file.endsWith(`.${extension}x`)) &&
       file !== `index.${extension}`;
 
-    if (isTargetFile) {
-      exportStatementList.push(
-        `export { default as ${exportName} } from './${fileNameWithoutExtension}';`,
-      );
-    } else if (isDir) {
-      const nestedIndexPath = path.join(filePath, `index.${extension}`);
-      if (fs.existsSync(nestedIndexPath)) {
-        // 디렉토리에 index.ts(x)가 있는 경우 → export * from './folder'
+    // styles 폴더일 경우
+    if (folder === "styles") {
+      if (isTargetFile && file.endsWith(".css.ts")) {
         exportStatementList.push(
           `export * from './${fileNameWithoutExtension}';`,
         );
-      } else {
-        // index.ts(x) 없는 경우 → default export 라고 가정
+      }
+    } else {
+      // components 등 다른 폴더는 기존 방식대로 처리
+      if (isTargetFile) {
         exportStatementList.push(
           `export { default as ${exportName} } from './${fileNameWithoutExtension}';`,
         );
+      } else if (isDir) {
+        const nestedIndexPath = path.join(filePath, `index.${extension}`);
+        if (fs.existsSync(nestedIndexPath)) {
+          exportStatementList.push(
+            `export * from './${fileNameWithoutExtension}';`,
+          );
+        } else {
+          exportStatementList.push(
+            `export { default as ${exportName} } from './${fileNameWithoutExtension}';`,
+          );
+        }
+        generateIndexFile(filePath, folder); // 하위 디렉토리도 재귀 처리
       }
-      generateIndexFile(filePath); // 하위 디렉토리도 재귀 처리
     }
   });
 

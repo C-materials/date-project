@@ -3,7 +3,7 @@ import { globalStyle } from "@vanilla-extract/css";
 import * as layers from "./layers.css";
 
 /**
- * 'display' 속성만 제외한 모든 "User-Agent-StyleSheet" 스타일을 제거합니다.
+ * 'dis,lay' 속성만 제외한 모든 "User-Agent-StyleSheet" 스타일을 제거합니다.
  * - "symbol *" 부분은 Firefox에서 발생하는 SVG 스프라이트 버그를 해결하기 위한 것입니다.
  * - "html" 요소는 제외되며, 그렇지 않으면 Chrome에서 CSS 하이픈(hyphens) 속성이 망가지는 버그가 발생합니다.
  *   (관련 문제: https://github.com/elad2412/the-new-css-reset/issues/36).

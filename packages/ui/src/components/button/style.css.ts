@@ -1,12 +1,16 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 import { spacingSprinkles } from "../../styles/sprinkles.css";
 import { Color } from "../../styles/theme.css";
+import { textSprinkles } from "../../styles/typography.css";
 
 const base = style([
   spacingSprinkles({
     paddingX: "12px",
     paddingY: "8px",
     placeItems: "flexCenter",
+  }),
+  textSprinkles({
+    text: "mediumBold",
   }),
   {
     borderRadius: "8px",
@@ -16,12 +20,8 @@ const base = style([
     outline: "1px solid",
     outlineColor: "transparent",
     outlineOffset: "-1px",
-    fontSize: "14px",
-    fontWeight: "600",
-    lineHeight: "17px",
   },
 ]);
-// recipe로 바꿔보기
 export const buttonStyle = styleVariants({
   primary: [
     base,

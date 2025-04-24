@@ -48,14 +48,28 @@ export const Default: Story = {
     width: 160,
   },
   render: (args) => {
+    const [isOpen, setIsOpen] = useState(false);
     const [value, setValue] = useState<string | number>("초기 입력값");
     const handleChange = (value: string | number) => {
       setValue(value);
       console.log(value);
     };
+    const handleClick = () => {
+      setIsOpen((prev) => !prev);
+    };
+    const handleClose = () => {
+      setIsOpen(false);
+    };
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <Select {...args} value={value} onChangeValue={handleChange} />
+        <Select
+          {...args}
+          value={value}
+          onChangeValue={handleChange}
+          isOpen={isOpen}
+          onClickInput={handleClick}
+          onClickClose={handleClose}
+        />
       </div>
     );
   },
