@@ -1,3 +1,4 @@
+import { textSprinkles } from "@repo/ui";
 import { style } from "@vanilla-extract/css";
 
 export const inputWrapper = style({
@@ -7,14 +8,16 @@ export const inputWrapper = style({
   width: "100%",
 });
 
-export const inputLabel = style({
-  fontSize: "14px",
-  lineHeight: "17px",
-  fontWeight: 500,
-  paddingBottom: "10px",
-  display: "inline-block",
-  cursor: "default",
-});
+export const inputLabel = style([
+  {
+    paddingBottom: "10px",
+    display: "inline-block",
+    cursor: "default",
+  },
+  textSprinkles({
+    text: "medium",
+  }),
+]);
 
 export const inputsWrapper = style({
   display: "flex",

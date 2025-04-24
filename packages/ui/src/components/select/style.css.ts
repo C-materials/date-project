@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { Color, ColorVar } from "../../styles";
+import { textSprinkles } from "../../styles/typography.css";
 import { Zindex } from "../../styles/zIndex.css";
 
 export const selectWrapper = style({
@@ -21,21 +22,24 @@ export const listWrapper = style({
   overflow: "scroll",
 });
 
-export const listItem = style({
-  borderRadius: "4px",
-  padding: "8px",
-  cursor: "pointer",
-  width: "100%",
-  height: "32px",
-  ":hover": {
-    backgroundColor: ColorVar.greyBlue[7],
+export const listItem = style([
+  {
+    borderRadius: "4px",
+    padding: "8px",
+    cursor: "pointer",
+    width: "100%",
+    height: "32px",
+    ":hover": {
+      backgroundColor: ColorVar.greyBlue[7],
+    },
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  fontSize: "14px",
-  lineHeight: "17px",
-});
+  textSprinkles({
+    text: "medium",
+  }),
+]);
 
 export const icon = recipe({
   base: {

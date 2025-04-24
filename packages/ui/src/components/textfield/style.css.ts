@@ -1,27 +1,30 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { Color, ColorVar } from "../../styles";
+import { textSprinkles } from "../../styles/typography.css";
 
 export const common = recipe({
-  base: {
-    display: "flex",
-    alignItems: "center",
+  base: [
+    {
+      display: "flex",
+      alignItems: "center",
 
-    borderRadius: "8px",
-    padding: "8px 12px",
-    transition: "background-color 0.1s ease, outline-color 0.1s ease",
-    outlineOffset: "-1px",
+      borderRadius: "8px",
+      padding: "8px 12px",
+      transition: "background-color 0.1s ease, outline-color 0.1s ease",
+      outlineOffset: "-1px",
 
-    backgroundColor: ColorVar.greyBlue[8],
-    color: Color.text.default,
-    fontSize: "14px",
-    lineHeight: "17px",
-    fontWeight: 400,
-    outline: "1px solid transparent",
-    "::placeholder": {
-      color: Color.text.sub,
+      backgroundColor: ColorVar.greyBlue[8],
+      color: Color.text.default,
+      outline: "1px solid transparent",
+      "::placeholder": {
+        color: Color.text.sub,
+      },
     },
-  },
+    textSprinkles({
+      text: "medium",
+    }),
+  ],
   variants: {
     disabled: {
       true: {
@@ -78,17 +81,19 @@ export const common = recipe({
   ],
 });
 
-export const error = style({
-  color: Color.critical,
-  lineHeight: "12px",
-  fontSize: "10px",
-  fontWeight: 400,
-  minHeight: "12px",
-  marginLeft: "2px",
-  cursor: "default",
-  display: "block",
-  width: "fit-content",
-});
+export const error = style([
+  textSprinkles({
+    text: "2xsmall",
+  }),
+  {
+    color: Color.critical,
+    minHeight: "12px",
+    marginLeft: "2px",
+    cursor: "default",
+    display: "block",
+    width: "fit-content",
+  },
+]);
 
 export const textarea = style({
   height: "100px",

@@ -1,3 +1,4 @@
+import { textSprinkles } from "@repo/ui";
 import { style } from "@vanilla-extract/css";
 
 export const section = style({
@@ -23,22 +24,23 @@ export const description = style({
 
   gap: "60px",
 });
-export const text = style({
-  fontSize: "24px",
-  fontWeight: 500,
-  lineHeight: "29px",
-});
-export const subtext = style({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "10px",
-
-  fontSize: "20px",
-  fontWeight: 400,
-  lineHeight: "24px",
-});
+export const text = style([
+  textSprinkles({
+    heading: "medium",
+  }),
+]);
+export const subtext = style([
+  {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "10px",
+  },
+  textSprinkles({
+    text: "2xlarge",
+  }),
+]);
 export const buttonWrapper = style({
   display: "flex",
   flexDirection: "column",

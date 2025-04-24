@@ -1,4 +1,4 @@
-import { Color } from "@repo/ui";
+import { Color, textSprinkles } from "@repo/ui";
 import { style } from "@vanilla-extract/css";
 import { calc } from "@vanilla-extract/css-utils";
 
@@ -39,13 +39,15 @@ export const logo = style({
   display: "flex",
 });
 
-export const menuItem = style({
-  padding: "8px",
-  fontSize: "16px",
-  lineHeight: "19px",
-  fontWeight: 400,
-  paddingBottom: "3px",
-});
+export const menuItem = style([
+  {
+    padding: "8px",
+    paddingBottom: "3px",
+  },
+  textSprinkles({
+    text: "large",
+  }),
+]);
 
 export const userIcon = style({
   width: "28px",
@@ -90,30 +92,29 @@ export const info = style({
   justifyContent: "space-between",
 });
 
-export const infoName = style({
-  fontSize: "14px",
-  lineHeight: "17px",
-  fontWeight: 500,
-  color: Color.text.default,
-});
+export const infoName = style([
+  {
+    color: Color.text.default,
+  },
+  textSprinkles({ text: "medium" }),
+]);
 
-export const infoTel = style({
-  fontSize: "10px",
-  lineHeight: "12px",
-  fontWeight: 400,
-  color: Color.text.light,
-});
+export const infoTel = style([
+  {
+    color: Color.text.light,
+  },
+  textSprinkles({ text: "2xsmall" }),
+]);
 
-export const listWrapper = style({
-  padding: "8px",
-  display: "flex",
-  flexDirection: "column",
-  gap: "4px",
-
-  fontSize: "14px",
-  lineHeight: "17px",
-  fontWeight: 500,
-});
+export const listWrapper = style([
+  {
+    padding: "8px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "4px",
+  },
+  textSprinkles({ text: "medium" }),
+]);
 
 export const listItem = style({
   padding: "8px",

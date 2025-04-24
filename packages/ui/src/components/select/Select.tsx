@@ -15,6 +15,7 @@ const Select = ({
   isOpen,
   onClickClose,
   onClickInput,
+  width,
   ...props
 }: SelectProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -39,7 +40,7 @@ const Select = ({
   }, [isOpen]);
 
   return (
-    <div ref={ref} className={selectWrapper}>
+    <div ref={ref} className={selectWrapper} style={{ width: width }}>
       <TextInput
         readOnly
         disabled={disabled}
