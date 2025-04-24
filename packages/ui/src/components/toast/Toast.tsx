@@ -17,7 +17,7 @@ const Toast = ({
   isOpen,
   type,
   content = "Toast Text",
-  icon,
+  icon = true,
   top,
   width,
   className,

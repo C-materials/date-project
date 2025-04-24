@@ -106,12 +106,12 @@ export const loginText = style([
     display: "inline-block",
     paddingTop: "40px",
   },
-  textSprinkles({ text: "medium" }),
+  textSprinkles({ text: "small" }),
 ]);
 
 export const loginLink = style([
   {
     color: Color.accent.default,
   },
-  textSprinkles({ text: "mediumBold" }),
+  textSprinkles({ text: "smallBold" }),
 ]);

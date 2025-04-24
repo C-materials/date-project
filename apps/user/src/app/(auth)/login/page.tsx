@@ -4,6 +4,7 @@ import { Button, TextInput } from "@repo/ui";
 import Link from "next/link";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
+import useToastStore from "../../../shared/stores/useToastStore";
 import {
   buttonWrapper,
   form,
@@ -26,16 +27,19 @@ export default function Login() {
   } = useForm<Login>({
     mode: "onChange",
   });
-
+  const { openToast } = useToastStore();
   // 임시 핸들러
-  const onSubmit: SubmitHandler<Login> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Login> = (data) => {
+    console.log(data);
+    openToast("critical", "토스트 메시지");
+  };
 
   /**
    * @Todo submit 처리
    * @Todo 로그인 실패 시 모달? 토스트?
    */
   return (
-    <>
+    <div style={{ position: "relative" }}>
       <Logo alt="logo" className={logo} />
       <form className={form} onSubmit={handleSubmit(onSubmit)}>
         <div className={inputWrapper}>
@@ -76,6 +80,6 @@ export default function Login() {
           </Link>
         </div>
       </form>
-    </>
+    </div>
   );
 }

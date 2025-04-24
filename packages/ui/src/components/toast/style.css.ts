@@ -21,6 +21,8 @@ export const toast = recipe({
       transition: "opacity 0.3s ease",
 
       position: "fixed",
+      left: "50%",
+      transform: "translate(-50%, 0)",
     },
     textSprinkles({ text: "medium" }),
   ],
