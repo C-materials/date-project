@@ -39,7 +39,7 @@ export default function Login() {
    * @Todo 로그인 실패 시 모달? 토스트?
    */
   return (
-    <div style={{ position: "relative" }}>
+    <>
       <Logo alt="logo" className={logo} />
       <form className={form} onSubmit={handleSubmit(onSubmit)}>
         <div className={inputWrapper}>
@@ -80,6 +80,6 @@ export default function Login() {
           </Link>
         </div>
       </form>
-    </div>
+    </>
   );
 }
