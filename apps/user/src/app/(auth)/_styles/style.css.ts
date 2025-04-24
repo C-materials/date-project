@@ -97,3 +97,21 @@ export const pageButton = style({
   width: "80px",
   height: "40px",
 });
+
+export const loginText = style([
+  {
+    fontWeight: 400,
+    color: Color.text.default,
+
+    display: "inline-block",
+    paddingTop: "40px",
+  },
+  textSprinkles({ text: "medium" }),
+]);
+
+export const loginLink = style([
+  {
+    color: Color.accent.default,
+  },
+  textSprinkles({ text: "mediumBold" }),
+]);
