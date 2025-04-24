@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
-import { Color, textSprinkles } from "../../styles";
+import { Color, textSprinkles, Zindex } from "../../styles";
 
 export const toast = recipe({
   base: [
@@ -23,6 +23,8 @@ export const toast = recipe({
       position: "fixed",
       left: "50%",
       transform: "translate(-50%, 0)",
+
+      zIndex: Zindex.highest,
     },
     textSprinkles({ text: "medium" }),
   ],

@@ -27,7 +27,8 @@ const createToastStore = (delay: number) =>
     openToast: (type: ToastType, content: string, props?: ToastProps) => {
       const id = Math.random().toString(36).slice(2, 9);
       const newToast: Toast = { id, type, content, props, isOpen: true };
-      set((state) => ({ toastList: [...state.toastList, newToast] }));
+      if (get().toastList.length < 5)
+        set((state) => ({ toastList: [...state.toastList, newToast] }));
 
       setTimeout(() => {
         // 전달받은 delay 시간 후에 isOpen 상태만 변경
