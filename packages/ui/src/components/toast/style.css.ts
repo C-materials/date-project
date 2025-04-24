@@ -9,6 +9,7 @@ export const toast = recipe({
       outlineOffset: "-1px",
       borderRadius: "8px",
       minWidth: "240px",
+      minHeight: "44px",
       color: Color.text.default,
       padding: "12px 32px",
 

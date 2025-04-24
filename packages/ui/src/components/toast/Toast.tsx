@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import Error from "../../../assets/error.svg";
 import Success from "../../../assets/success.svg";
@@ -6,7 +5,7 @@ import Warning from "../../../assets/warning.svg";
 import { iconStyle, toast } from "./style.css";
 type ToastType = {
   type: "success" | "warning" | "critical";
-  children: ReactNode;
+  children: string;
   icon?: boolean;
   top?: number;
   isOpen: boolean;
