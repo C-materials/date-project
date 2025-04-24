@@ -8,3 +8,4 @@ export * from "./slider";
 export * from "./switch";
 export * from "./tag";
 export * from "./textfield";
+export * from "./toast";
