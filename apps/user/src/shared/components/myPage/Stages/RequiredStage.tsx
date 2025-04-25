@@ -59,12 +59,6 @@ const RequiredStage = () => {
     if (sizeFiltered.length !== files.length) alert(mypageError.image.maxSize);
 
     // 개수 제한
-    // 이미 최대 개수만큼 선택했을때
-    if (previewImageList.length > myPageLimit.image.max) {
-      alert(mypageError.image.maxLength);
-      return;
-    }
-
     let slicedFiles = sizeFiltered.slice(0, myPageLimit.image.max);
 
     // 기존 + 새로 선택해서 개수 초과할때 => 5개까지만 추가 업로드
@@ -159,7 +153,6 @@ const RequiredStage = () => {
                 validate: {
                   heightNumber: (value: number) => {
                     if (
-                      value.toString().length < 3 ||
                       (value.toString()[0] !== "1" &&
                         value.toString()[0] !== "2") ||
                       value.toString().length !== 3
