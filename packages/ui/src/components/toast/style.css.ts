@@ -25,6 +25,7 @@ export const toast = recipe({
       transform: "translate(-50%, 0)",
 
       zIndex: Zindex.highest,
+      backdropFilter: `blur(1px)`,
     },
     textSprinkles({ text: "medium" }),
   ],
@@ -57,8 +58,4 @@ export const toast = recipe({
 export const iconStyle = style({
   width: "20px",
   height: "20px",
-});
-
-export const span = style({
-  paddingTop: "2px",
 });

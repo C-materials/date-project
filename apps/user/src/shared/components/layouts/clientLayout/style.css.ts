@@ -6,10 +6,10 @@ export const toastWrapper = style({
 });
 
 export const pop = keyframes({
-  "0%": { transform: "translate(-50%,-100%)" },
+  "0%": { transform: "translate(-50%,-16px)" },
   "80%": { transform: "translate(-50%,0)" },
 });
 
 export const toastItem = style({
-  animation: `${pop} 1s`,
+  animation: `${pop} 500ms`,
 });
