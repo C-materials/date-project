@@ -36,6 +36,7 @@ const RequiredStage = () => {
     register,
     handleSubmit,
     control,
+    getValues,
     watch,
     formState: { isValid, errors },
   } = method;
@@ -80,7 +81,7 @@ const RequiredStage = () => {
     //이전에 선택한 파일까지 함께 전달받아야함
     onChange([...prevFiles, ...slicedFiles]);
   };
-  const prevFiles = watch("images") || [];
+  const prevFiles = getValues("images") || [];
 
   const handleDeleteImage = (
     targetId: string,
