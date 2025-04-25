@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   const profileMenuList: ListType[] = [
-    { title: "마이페이지", href: "/" },
+    { title: "마이페이지", href: "/mypage" },
     { title: "로그아웃", action: handleClickLogout },
   ];
 

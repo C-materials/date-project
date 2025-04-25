@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import type { User } from "../types/user";
 
 interface UserStore {
   user: User.Data;
@@ -10,7 +9,7 @@ const useUserStore = create<UserStore>((set) => ({
   user: {
     id: -1,
     name: "",
-    tel: 0,
+    tel: "",
     birth: new Date(),
     mainAddress: "",
     subAddress: "",
@@ -35,7 +34,7 @@ const useUserStore = create<UserStore>((set) => ({
       user: {
         id: -1,
         name: "",
-        tel: 0,
+        tel: "",
         birth: new Date(),
         mainAddress: "",
         subAddress: "",

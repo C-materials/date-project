@@ -14,7 +14,7 @@ type RadioProps = ComponentPropsWithoutRef<"input"> & {
 const Radio = ({
   checked = false,
   label,
-  disabled,
+  disabled = false,
   onChange,
   ...props
 }: RadioProps) => {

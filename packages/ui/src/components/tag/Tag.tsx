@@ -11,7 +11,7 @@ type TagProps = {
 };
 const Tag = ({
   content,
-  disabled,
+  disabled = false,
   checked,
   onClick,
   as,

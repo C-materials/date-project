@@ -16,7 +16,7 @@ export const labelStyle = recipe({
       alignItems: "center",
       gap: "12px",
 
-      width: "300px",
+      width: "100%",
       height: "120px",
       padding: "10px",
 
@@ -85,6 +85,13 @@ export const button = recipe({
     disabled: {
       true: {
         backgroundColor: `${Color.secondary.default} !important`,
+      },
+      false: {
+        selectors: {
+          [`${labelStyle()}:hover &`]: {
+            backgroundColor: Color.accent.hover,
+          },
+        },
       },
     },
   },

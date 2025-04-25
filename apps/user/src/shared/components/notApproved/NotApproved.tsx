@@ -1,5 +1,6 @@
 import Logo from "@date-project/user/public/logo.svg";
 import { Button } from "@repo/ui";
+import Link from "next/link";
 import {
   button,
   buttonWrapper,
@@ -23,9 +24,11 @@ const NotApproved = () => {
           <p>정보를 상세하게 입력하시면 더 빠른 승인이 가능합니다.</p>
         </div>
         <div className={buttonWrapper}>
-          <Button variant="primary" className={button}>
-            정보 입력하기
-          </Button>
+          <Link href="/mypage">
+            <Button variant="primary" className={button}>
+              정보 입력하기
+            </Button>
+          </Link>
           <Button variant="outline" className={button}>
             둘러보기
           </Button>

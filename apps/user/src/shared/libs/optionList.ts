@@ -1,0 +1,41 @@
+export const religionList = ["없음", "기독교", "불교", "천주교", "기타"];
+export const mbtiList = [
+  "ISTP",
+  "ISTJ",
+  "ISFP",
+  "ISFJ",
+  "INTP",
+  "INTJ",
+  "INFP",
+  "INFJ",
+  "ESTP",
+  "ESTJ",
+  "ESFP",
+  "ESFJ",
+  "ENTP",
+  "ENTJ",
+  "ENFP",
+  "ENFJ",
+];
+export const drinkList = ["소주", "위스키", "와인", "맥주", "하이볼", "기타"];
+
+export const othersList = [
+  "고학력자",
+  "자차보유",
+  "동물애호가",
+  "패션",
+  "운동인",
+  "여행가",
+  "집콕러",
+  "미식가",
+  "애주가",
+  "비건",
+  "연락잘됨",
+  "활발한",
+  "차분한",
+  "듬직한",
+  "털털한",
+  "롱디 가능",
+  "개인존중",
+  "가족중심",
+];

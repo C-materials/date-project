@@ -51,4 +51,5 @@ export const buttonWrapper = style({
 
 export const button = style({
   height: "40px",
+  width: "100%",
 });
