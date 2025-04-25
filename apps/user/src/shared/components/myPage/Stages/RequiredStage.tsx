@@ -153,11 +153,8 @@ const RequiredStage = () => {
                 required: mypageError.height.error,
                 validate: {
                   heightNumber: (value: number) => {
-                    if (
-                      (value.toString()[0] !== "1" &&
-                        value.toString()[0] !== "2") ||
-                      value.toString().length !== 3
-                    )
+                    const regex = /^[12]\d{2}$/;
+                    if (!regex.test(value.toString()))
                       return mypageError.height.error;
                   },
                 },
