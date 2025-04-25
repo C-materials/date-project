@@ -20,9 +20,7 @@ import type { ImageType } from "./type";
  * @todo : 입력한 정보가 있을때는 해당 데이터를 가져와야함
  */
 const RequiredStage = () => {
-  const [previewImageUrlList, setPreviewImageUrlList] = useState<ImageType[]>(
-    [],
-  );
+  const [previewImageList, setPreviewImageList] = useState<ImageType[]>([]);
   const [isOpenReligion, setIsOpenReligion] = useState(false);
 
   const handleClickReligion = () => {
@@ -62,7 +60,7 @@ const RequiredStage = () => {
 
     // 개수 제한
     // 이미 최대 개수만큼 선택했을때
-    if (previewImageUrlList.length > myPageLimit.image.max) {
+    if (previewImageList.length > myPageLimit.image.max) {
       alert(mypageError.image.maxLength);
       return;
     }
@@ -70,34 +68,39 @@ const RequiredStage = () => {
     let slicedFiles = sizeFiltered.slice(0, myPageLimit.image.max);
 
     // 기존 + 새로 선택해서 개수 초과할때 => 5개까지만 추가 업로드
-    if (
-      previewImageUrlList.length + sizeFiltered.length >
-      myPageLimit.image.max
-    ) {
+    if (previewImageList.length + sizeFiltered.length > myPageLimit.image.max) {
       alert(mypageError.image.maxLength);
       slicedFiles = sizeFiltered.slice(
         0,
-        myPageLimit.image.max - previewImageUrlList.length,
+        myPageLimit.image.max - previewImageList.length,
       );
     }
 
-    setPreviewImageUrlList((prev) => [
+    setPreviewImageList((prev) => [
       ...prev,
       ...slicedFiles.map((file) => ({
-        id: `${Date.now()}_${file.name}`,
+        id: `${Date.now()}___${file.name}`,
         url: URL.createObjectURL(file),
       })),
     ]);
     //이전에 선택한 파일까지 함께 전달받아야함
-    const prevFiles = watch("images") || [];
     onChange([...prevFiles, ...slicedFiles]);
   };
+  const prevFiles = watch("images") || [];
 
-  const handleDeleteImage = (targetId: string) => {
-    const newImageUrlList = previewImageUrlList.filter(
+  const handleDeleteImage = (
+    targetId: string,
+    onChange: (files: File[]) => void,
+  ) => {
+    const newImageUrlList = previewImageList.filter(
       (item) => item.id !== targetId,
     );
-    setPreviewImageUrlList(newImageUrlList);
+    setPreviewImageList(newImageUrlList);
+
+    const newFileList = prevFiles.filter(
+      (file) => !file.name.includes(targetId.split("___")[1] ?? ""),
+    );
+    onChange([...newFileList]);
   };
 
   return (
@@ -226,15 +229,17 @@ const RequiredStage = () => {
                       onChange={(files: FileList) => {
                         handleChangeImage(files, field.onChange);
                       }}
-                      urlList={previewImageUrlList}
+                      urlList={previewImageList}
                       acceptFormatList="image/jpg, image/png, image/jpeg, image/webp, image/heic"
                     />
                     <div className={imageWrapper}>
-                      {previewImageUrlList.map((item) => (
+                      {previewImageList.map((item) => (
                         <ImagePreviewItem
                           key={item.id}
                           item={item}
-                          onClick={() => handleDeleteImage(item.id)}
+                          onClickDelete={() =>
+                            handleDeleteImage(item.id, field.onChange)
+                          }
                         />
                       ))}
                     </div>

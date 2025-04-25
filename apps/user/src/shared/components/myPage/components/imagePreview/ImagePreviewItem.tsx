@@ -5,9 +5,9 @@ import { deleteButton, image } from "./style.css";
 
 type ItemProps = {
   item: ImageType;
-  onClick: (id: string) => void;
+  onClickDelete: (id: string) => void;
 };
-const ImagePreviewItem = ({ item, onClick }: ItemProps) => {
+const ImagePreviewItem = ({ item, onClickDelete: onClick }: ItemProps) => {
   const { id, url } = item;
 
   return (
