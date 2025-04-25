@@ -3,7 +3,6 @@ import { Button, Select, TextInput } from "@repo/ui";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
-import { signupError, signupLimit } from "../../../libs/formErrorText";
 import { mainAddress, regionList } from "../../../libs/regionList";
 import Label from "../components/label/Label";
 import {
@@ -11,7 +10,6 @@ import {
   form,
   inputsWrapper,
   pwChange,
-  pwWrapper,
   section,
 } from "./style.css";
 /**
@@ -28,12 +26,11 @@ const AccountStage = () => {
   });
 
   const {
-    register,
     handleSubmit,
     control,
     watch,
     setValue,
-    formState: { isDirty, errors },
+    formState: { isDirty },
   } = method;
 
   // 임시 핸들러
@@ -67,9 +64,8 @@ const AccountStage = () => {
     birthYear: 1995,
     birthMonth: 12,
     birthDay: 30,
-    mainAddress: "서울시",
+    mainAddress: "서울",
     subAddress: "강동구",
-    password: "123123123",
     referenceCode: "ABCDEF",
   };
 
@@ -137,8 +133,8 @@ const AccountStage = () => {
                 control={control}
                 render={({ field }) => (
                   <Select
-                    optionList={regionList[selectedMainAddress] || []}
-                    disabled={!selectedMainAddress || hasOneOption}
+                    optionList={regionList[user.mainAddress] || []}
+                    disabled={hasOneOption}
                     placeholder="세부 지역"
                     width="100%"
                     value={field.value ?? user.subAddress}
@@ -151,40 +147,20 @@ const AccountStage = () => {
               />
             </div>
           </div>
-          <div>
-            <Label>비밀번호</Label>
-            <div className={pwWrapper}>
-              <TextInput
-                type="password"
-                width="100%"
-                placeholder={`${signupLimit.password.min} ~ ${signupLimit.password.max}자 이내로 입력해주세요`}
-                value={user.password}
-                {...register("password", {
-                  required: signupError.password.minLength,
-                  minLength: {
-                    value: signupLimit.password.min,
-                    message: signupError.password.minLength,
-                  },
-                  maxLength: {
-                    value: signupLimit.password.max,
-                    message: signupError.password.maxLength,
-                  },
-                })}
-                errorMessage={errors.password?.message}
-              />
-              <Button
-                variant="primary"
-                className={pwChange}
-                // onClick={() => 모달 열기}
-              >
-                변경하기
-              </Button>
-            </div>
-          </div>
 
           <div>
             <Label>가입 코드</Label>
             <TextInput disabled width="100%" value={user.referenceCode} />
+          </div>
+          <div>
+            <Label>비밀번호</Label>
+            <Button
+              variant="primary"
+              className={pwChange}
+              // onClick={() => 모달 열기}
+            >
+              비밀번호 변경하기
+            </Button>
           </div>
         </section>
         <div className={buttonWrapper}>

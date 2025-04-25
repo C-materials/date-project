@@ -42,6 +42,17 @@ const OptionalStage = () => {
     console.log(data);
   };
 
+  const handleToggle = (
+    target: string,
+    value: string[],
+    onChange: (value: string[]) => void,
+  ) => {
+    const newValue = value.includes(target)
+      ? value.filter((v) => v !== target)
+      : [...value, target];
+    onChange(newValue);
+  };
+
   return (
     <FormProvider {...method}>
       <form className={form} onSubmit={handleSubmit(onSubmit)}>
@@ -96,20 +107,24 @@ const OptionalStage = () => {
 
           <div>
             <Label>반려동물 여부</Label>
-            <div className={radioWrapper}>
-              <Radio
-                checked={watch("pet") === "hasPet"}
-                label="있음"
-                value="hasPet"
-                {...register("pet")}
-              ></Radio>
-              <Radio
-                checked={watch("pet") === "noPet"}
-                label="없음"
-                value="noPet"
-                {...register("pet")}
-              ></Radio>
-            </div>
+            <Controller
+              name="pet"
+              control={control}
+              render={({ field }) => (
+                <div className={radioWrapper}>
+                  <Radio
+                    checked={field.value !== undefined && field.value}
+                    label="있음"
+                    onChange={() => field.onChange(true)}
+                  ></Radio>
+                  <Radio
+                    checked={field.value !== undefined && !field.value}
+                    label="없음"
+                    onChange={() => field.onChange(false)}
+                  ></Radio>
+                </div>
+              )}
+            />
           </div>
         </section>
         <section className={sectionWide}>
@@ -121,14 +136,6 @@ const OptionalStage = () => {
               defaultValue={[]}
               render={({ field }) => {
                 const value = field.value || [];
-
-                const handleToggle = (val: string) => {
-                  const newValue = value.includes(val)
-                    ? value.filter((v) => v !== val)
-                    : [...value, val];
-                  field.onChange(newValue);
-                };
-
                 return (
                   <ul className={checkBoxWrapper}>
                     {drinkList.map((item) => (
@@ -137,7 +144,9 @@ const OptionalStage = () => {
                           label={item}
                           value={item}
                           checked={value.includes(item)}
-                          onChange={() => handleToggle(item)}
+                          onChange={() =>
+                            handleToggle(item, field.value, field.onChange)
+                          }
                         />
                       </li>
                     ))}
@@ -154,14 +163,6 @@ const OptionalStage = () => {
               defaultValue={[]}
               render={({ field }) => {
                 const value = field.value || [];
-
-                const handleToggle = (val: string) => {
-                  const newValue = value.includes(val)
-                    ? value.filter((v) => v !== val)
-                    : [...value, val];
-                  field.onChange(newValue);
-                };
-
                 return (
                   <ul className={tagWrapper}>
                     {othersList.map((item) => (
@@ -170,7 +171,9 @@ const OptionalStage = () => {
                         key={item}
                         content={item}
                         checked={value.includes(item)}
-                        onClick={() => handleToggle(item)}
+                        onClick={() =>
+                          handleToggle(item, field.value, field.onChange)
+                        }
                       />
                     ))}
                   </ul>

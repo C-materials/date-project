@@ -29,19 +29,19 @@ namespace User {
     job: string;
     religion: string;
     height: number;
-    smoke: string;
+    smoke: boolean;
     hobby: string;
-    images: string[];
+    images: File[];
   };
 
   type OptionalInfo = {
     mbti: string;
     skill: string;
     introduce: string;
-    pet: string;
+    pet: boolean;
     drink: string[];
     other: string[];
   };
 
-  type AccountInfo = Omit<FormValue, "passwordCheck" | "gender">;
+  type AccountInfo = Omit<FormValue, "password" | "passwordCheck" | "gender">;
 }

@@ -1,6 +1,6 @@
 import { Button, FileUpload, Radio, Select, TextInput } from "@repo/ui";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { mypageError, myPageLimit } from "../../../libs/formErrorText";
@@ -20,7 +20,9 @@ import type { ImageType } from "./type";
  * @todo : 입력한 정보가 있을때는 해당 데이터를 가져와야함
  */
 const RequiredStage = () => {
-  const [imageUrlList, setImageUrlList] = useState<ImageType[]>([]);
+  const [previewImageUrlList, setPreviewImageUrlList] = useState<ImageType[]>(
+    [],
+  );
   const [isOpenReligion, setIsOpenReligion] = useState(false);
 
   const handleClickReligion = () => {
@@ -28,7 +30,6 @@ const RequiredStage = () => {
   };
 
   //react hook form
-
   const method = useForm<User.RequiredInfo>({
     mode: "onChange",
   });
@@ -38,7 +39,6 @@ const RequiredStage = () => {
     handleSubmit,
     control,
     watch,
-    setValue,
     formState: { isValid, errors },
   } = method;
 
@@ -50,7 +50,10 @@ const RequiredStage = () => {
   // 이미지
   const LIMIT_SIZE = myPageLimit.image.max * 1024 * 1024;
 
-  const handleChangeImage = (files: FileList) => {
+  const handleChangeImage = (
+    files: FileList,
+    onChange: (newFileList: File[]) => void,
+  ) => {
     // 크기 제한
     const sizeFiltered = Array.from(files).filter(
       (file) => file.size <= LIMIT_SIZE,
@@ -59,7 +62,7 @@ const RequiredStage = () => {
 
     // 개수 제한
     // 이미 최대 개수만큼 선택했을때
-    if (imageUrlList.length === myPageLimit.image.max) {
+    if (previewImageUrlList.length > myPageLimit.image.max) {
       alert(mypageError.image.maxLength);
       return;
     }
@@ -67,31 +70,34 @@ const RequiredStage = () => {
     let slicedFiles = sizeFiltered.slice(0, myPageLimit.image.max);
 
     // 기존 + 새로 선택해서 개수 초과할때 => 5개까지만 추가 업로드
-    if (imageUrlList.length + sizeFiltered.length > myPageLimit.image.max) {
+    if (
+      previewImageUrlList.length + sizeFiltered.length >
+      myPageLimit.image.max
+    ) {
       alert(mypageError.image.maxLength);
       slicedFiles = sizeFiltered.slice(
         0,
-        myPageLimit.image.max - imageUrlList.length,
+        myPageLimit.image.max - previewImageUrlList.length,
       );
     }
 
-    setImageUrlList((prev) => [
+    setPreviewImageUrlList((prev) => [
       ...prev,
       ...slicedFiles.map((file) => ({
         id: `${Date.now()}_${file.name}`,
         url: URL.createObjectURL(file),
       })),
     ]);
+    //이전에 선택한 파일까지 함께 전달받아야함
+    const prevFiles = watch("images") || [];
+    onChange([...prevFiles, ...slicedFiles]);
   };
 
-  useEffect(() => {
-    const urlList = imageUrlList.map((item: ImageType) => item.url);
-    setValue("images", urlList);
-  }, [imageUrlList]);
-
   const handleDeleteImage = (targetId: string) => {
-    const newImageUrlList = imageUrlList.filter((item) => item.id !== targetId);
-    setImageUrlList(newImageUrlList);
+    const newImageUrlList = previewImageUrlList.filter(
+      (item) => item.id !== targetId,
+    );
+    setPreviewImageUrlList(newImageUrlList);
   };
 
   return (
@@ -109,6 +115,10 @@ const RequiredStage = () => {
                 maxLength: {
                   value: myPageLimit.job.max,
                   message: mypageError.job.maxLength,
+                },
+                validate: {
+                  trim: (value: string) =>
+                    value.trim().length > 0 ? true : mypageError.job.error,
                 },
               })}
             />
@@ -148,7 +158,8 @@ const RequiredStage = () => {
                     if (
                       value.toString().length < 3 ||
                       (value.toString()[0] !== "1" &&
-                        value.toString()[0] !== "2")
+                        value.toString()[0] !== "2") ||
+                      value.toString().length !== 3
                     )
                       return mypageError.height.error;
                   },
@@ -158,20 +169,25 @@ const RequiredStage = () => {
           </div>
           <div>
             <Label>흡연 여부</Label>
-            <div className={radioWrapper}>
-              <Radio
-                checked={watch("smoke") === "nonSmoke"}
-                label="비흡연"
-                value="nonSmoke"
-                {...register("smoke", { required: true })}
-              ></Radio>
-              <Radio
-                checked={watch("smoke") === "smoke"}
-                label="흡연"
-                value="smoke"
-                {...register("smoke", { required: true })}
-              ></Radio>
-            </div>
+            <Controller
+              name="smoke"
+              rules={{ required: true }}
+              control={control}
+              render={({ field }) => (
+                <div className={radioWrapper}>
+                  <Radio
+                    checked={field.value !== undefined && !field.value}
+                    label="비흡연"
+                    onChange={() => field.onChange(false)}
+                  ></Radio>
+                  <Radio
+                    checked={field.value !== undefined && field.value}
+                    label="흡연"
+                    onChange={() => field.onChange(true)}
+                  ></Radio>
+                </div>
+              )}
+            />
           </div>
         </section>
         <section className={section}>
@@ -187,6 +203,10 @@ const RequiredStage = () => {
                   value: myPageLimit.hobby.max,
                   message: mypageError.hobby.maxLength,
                 },
+                validate: {
+                  trim: (value: string) =>
+                    value.trim().length > 0 ? true : mypageError.job.error,
+                },
               })}
             />
           </div>
@@ -200,24 +220,27 @@ const RequiredStage = () => {
                 rules={{
                   required: mypageError.image.minLength,
                 }}
-                render={({}) => (
-                  <FileUpload
-                    onChange={(files: FileList) => handleChangeImage(files)}
-                    urlList={imageUrlList}
-                    acceptFormatList="image/jpg, image/png, image/jpeg, image/webp, image/heic"
-                  />
+                render={({ field }) => (
+                  <>
+                    <FileUpload
+                      onChange={(files: FileList) => {
+                        handleChangeImage(files, field.onChange);
+                      }}
+                      urlList={previewImageUrlList}
+                      acceptFormatList="image/jpg, image/png, image/jpeg, image/webp, image/heic"
+                    />
+                    <div className={imageWrapper}>
+                      {previewImageUrlList.map((item) => (
+                        <ImagePreviewItem
+                          key={item.id}
+                          item={item}
+                          onClick={() => handleDeleteImage(item.id)}
+                        />
+                      ))}
+                    </div>
+                  </>
                 )}
               />
-
-              <div className={imageWrapper}>
-                {imageUrlList.map((item) => (
-                  <ImagePreviewItem
-                    key={item.id}
-                    item={item}
-                    onClick={() => handleDeleteImage(item.id)}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </section>

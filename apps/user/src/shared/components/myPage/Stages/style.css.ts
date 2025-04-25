@@ -66,11 +66,6 @@ export const inputsWrapper = style({
   gap: "8px",
 });
 
-export const pwWrapper = style({
-  display: "flex",
-  gap: "10px",
-});
-
 export const pwChange = style({
   height: "40px",
   whiteSpace: "nowrap",
