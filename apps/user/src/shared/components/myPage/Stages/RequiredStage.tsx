@@ -1,5 +1,6 @@
 import { Button, FileUpload, Radio, Select, TextInput } from "@repo/ui";
 
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
@@ -40,6 +41,7 @@ const RequiredStage = () => {
     control,
     getValues,
     watch,
+    setValue,
     formState: { isValid, errors },
   } = method;
 
@@ -98,6 +100,25 @@ const RequiredStage = () => {
       (file) => !file.name.includes(targetId.split("___")[1] ?? ""),
     );
     onChange([...newFileList]);
+  };
+
+  const handleDragEnd = (result: any) => {
+    if (!result.destination) return;
+    const startIndex = result.source.index;
+    const endIndex = result.destination.index;
+
+    // File 순서 재정렬 -> 폼 데이터
+    let list = watch("images");
+    const splicedItem = list.splice(startIndex, 1);
+    list.splice(endIndex, 0, ...splicedItem);
+    setValue("images", list);
+
+    // preview 순서 재정렬
+    const reorderedPreviewList = previewImageList;
+    const movedItem = reorderedPreviewList.splice(startIndex, 1);
+    reorderedPreviewList.splice(endIndex, 0, ...movedItem);
+
+    setPreviewImageList(reorderedPreviewList);
   };
 
   return (
@@ -231,17 +252,44 @@ const RequiredStage = () => {
                       urlList={previewImageList}
                       acceptFormatList="image/jpg, image/png, image/jpeg, image/webp, image/heic"
                     />
-                    <div className={imageWrapper}>
-                      {previewImageList.map((item) => (
-                        <ImagePreviewItem
-                          key={item.id}
-                          item={item}
-                          onClickDelete={() =>
-                            handleDeleteImage(item.id, field.onChange)
-                          }
-                        />
-                      ))}
-                    </div>
+                    <DragDropContext onDragEnd={handleDragEnd}>
+                      <Droppable droppableId="droppable" direction="horizontal">
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            className={imageWrapper}
+                            {...provided.droppableProps}
+                          >
+                            {previewImageList.map((item, index) => (
+                              <Draggable
+                                key={item.id}
+                                draggableId={item.id}
+                                index={index}
+                              >
+                                {(provided) => (
+                                  <div
+                                    ref={provided.innerRef}
+                                    {...provided.dragHandleProps}
+                                    {...provided.draggableProps}
+                                  >
+                                    <ImagePreviewItem
+                                      item={item}
+                                      onClickDelete={() =>
+                                        handleDeleteImage(
+                                          item.id,
+                                          field.onChange,
+                                        )
+                                      }
+                                    />
+                                  </div>
+                                )}
+                              </Draggable>
+                            ))}
+                            {provided.placeholder}
+                          </div>
+                        )}
+                      </Droppable>
+                    </DragDropContext>
                   </>
                 )}
               />
