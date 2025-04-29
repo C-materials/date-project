@@ -10,94 +10,129 @@ export const FontWeight = createGlobalTheme(":root", {
   extrabold: "800",
 });
 
+// Font Size
+export const FontSizeVar = createGlobalTheme(":root", {
+  // Text
+  "2xsmall": "10px",
+  xsmall: "11px",
+  small: "12px",
+  medium: "14px",
+  large: "16px",
+  xlarge: "18px",
+  "2xlarge": "20px",
+  // Heading
+  headingMedium: "24px",
+  headingLarge: "28px",
+  headingXlarge: "32px",
+  heading2xlarge: "36px",
+  heading3xlarge: "40px",
+});
+// Line Height
+export const LineHeightVar = createGlobalTheme(":root", {
+  // Text
+  "2xsmall": "13px",
+  xsmall: "14px",
+  small: "15px",
+  medium: "18px",
+  large: "21px",
+  xlarge: "21px",
+  "2xlarge": "24px",
+  // Heading
+  headingMedium: "29px",
+  headingLarge: "34px",
+  headingXlarge: "39px",
+  heading2xlarge: "44px",
+  heading3xlarge: "50px",
+});
+
 const sprinkles = defineProperties({
   properties: {
     text: {
       "2xsmall": {
-        fontSize: "10px",
-        lineHeight: "12px",
+        fontSize: FontSizeVar["2xsmall"],
+        lineHeight: LineHeightVar["2xsmall"],
         fontWeight: FontWeight.regular,
       },
       xsmall: {
-        fontSize: "11px",
-        lineHeight: "13px",
+        fontSize: FontSizeVar.xsmall,
+        lineHeight: LineHeightVar.xsmall,
         fontWeight: FontWeight.regular,
       },
       small: {
-        fontSize: "12px",
-        lineHeight: "14px",
+        fontSize: FontSizeVar.small,
+        lineHeight: LineHeightVar.small,
         fontWeight: FontWeight.semibold,
       },
       smallBold: {
-        fontSize: "12px",
-        lineHeight: "14px",
+        fontSize: FontSizeVar.small,
+        lineHeight: LineHeightVar.small,
         fontWeight: FontWeight.regular,
       },
       medium: {
-        fontSize: "14px",
-        lineHeight: "17px",
+        fontSize: FontSizeVar.medium,
+        lineHeight: LineHeightVar.medium,
         fontWeight: FontWeight.regular,
       },
       mediumBold: {
-        fontSize: "14px",
-        lineHeight: "17px",
+        fontSize: FontSizeVar.medium,
+        lineHeight: LineHeightVar.medium,
         fontWeight: FontWeight.semibold,
       },
       large: {
-        fontSize: "16px",
-        lineHeight: "19px",
+        fontSize: FontSizeVar.large,
+        lineHeight: LineHeightVar.large,
         fontWeight: FontWeight.regular,
       },
       largeBold: {
-        fontSize: "16px",
-        lineHeight: "19px",
+        fontSize: FontSizeVar.large,
+        lineHeight: LineHeightVar.large,
         fontWeight: FontWeight.semibold,
       },
       xlarge: {
-        fontSize: "18px",
-        lineHeight: "21px",
+        fontSize: FontSizeVar.xlarge,
+        lineHeight: LineHeightVar.xlarge,
         fontWeight: FontWeight.regular,
       },
       xlargeBold: {
-        fontSize: "18px",
-        lineHeight: "21px",
+        fontSize: FontSizeVar.xlarge,
+        lineHeight: LineHeightVar.xlarge,
         fontWeight: FontWeight.semibold,
       },
       "2xlarge": {
-        fontSize: "20px",
-        lineHeight: "24px",
+        fontSize: FontSizeVar["2xlarge"],
+        lineHeight: LineHeightVar["2xlarge"],
         fontWeight: FontWeight.regular,
       },
       "2xlargeBold": {
-        fontSize: "20px",
-        lineHeight: "24px",
+        fontSize: FontSizeVar["2xlarge"],
+        lineHeight: LineHeightVar["2xlarge"],
         fontWeight: FontWeight.semibold,
       },
     },
     heading: {
       medium: {
-        fontSize: "24px",
-        lineHeight: "29px",
+        fontSize: FontSizeVar.headingMedium,
+        lineHeight: LineHeightVar.headingMedium,
         fontWeight: FontWeight.bold,
       },
       large: {
-        fontSize: "28px",
-        lineHeight: "33px",
+        fontSize: FontSizeVar.headingLarge,
+        lineHeight: LineHeightVar.headingLarge,
         fontWeight: FontWeight.bold,
       },
       xlarge: {
-        fontSize: "32px",
-        lineHeight: "38px",
+        fontSize: FontSizeVar.headingXlarge,
+        lineHeight: LineHeightVar.headingXlarge,
         fontWeight: FontWeight.bold,
       },
       "2xlarge": {
-        fontSize: "36px",
-        lineHeight: "43px",
+        fontSize: FontSizeVar.heading2xlarge,
+        lineHeight: LineHeightVar.heading2xlarge,
         fontWeight: FontWeight.bold,
       },
       "3xlarge": {
-        fontSize: "40px",
-        lineHeight: "48px",
+        fontSize: FontSizeVar.heading3xlarge,
+        lineHeight: LineHeightVar.heading3xlarge,
         fontWeight: FontWeight.bold,
       },
     },
