@@ -9,6 +9,7 @@ import { religionList } from "../../../libs/optionList";
 import CountText from "../components/countText/CountText";
 import ImagePreviewItem from "../components/imagePreview/ImagePreviewItem";
 import Label from "../components/label/Label";
+import ToolTip from "../components/toolTip/ToolTip";
 import {
   buttonWrapper,
   countWrapper,
@@ -235,7 +236,6 @@ const RequiredStage = () => {
           </div>
           <div>
             <Label>프로필 사진 (최대 5장)</Label>
-
             <div className={fieldWrapper}>
               <Controller
                 name="images"
@@ -286,6 +286,7 @@ const RequiredStage = () => {
                               </Draggable>
                             ))}
                             {provided.placeholder}
+                            <ToolTip content="대표 이미지" />
                           </div>
                         )}
                       </Droppable>

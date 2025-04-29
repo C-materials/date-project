@@ -37,12 +37,14 @@ export const fieldWrapper = style({
 export const imageWrapper = style({
   display: "flex",
   gap: "10px",
+  position: "relative",
 });
 
 export const countWrapper = style({
   display: "flex",
   justifyContent: "space-between",
 });
+
 // --------------- optional -----------------
 
 export const sectionWide = style({
