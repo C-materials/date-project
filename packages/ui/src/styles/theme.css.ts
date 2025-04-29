@@ -100,6 +100,7 @@ export const Color = createGlobalTheme(":root", {
     light: ColorVar.grey[3],
     inverse: ColorVar.grey[10],
     disabled: ColorVar.grey[7],
+    accent: ColorVar.blue.dark[1],
   },
   border: ColorVar.greyBlue[6],
 });
