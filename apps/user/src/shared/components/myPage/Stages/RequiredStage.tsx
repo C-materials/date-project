@@ -191,7 +191,7 @@ const RequiredStage = () => {
             <div className={countWrapper}>
               <Label>취미</Label>
               <CountText
-                count={watch("hobby").length || 0}
+                count={watch("hobby")?.length}
                 limit={myPageLimit.hobby.max}
               />
             </div>
