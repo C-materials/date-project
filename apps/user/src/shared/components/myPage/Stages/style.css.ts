@@ -39,6 +39,10 @@ export const imageWrapper = style({
   gap: "10px",
 });
 
+export const countWrapper = style({
+  display: "flex",
+  justifyContent: "space-between",
+});
 // --------------- optional -----------------
 
 export const sectionWide = style({

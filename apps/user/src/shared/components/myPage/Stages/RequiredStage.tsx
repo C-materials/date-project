@@ -5,10 +5,12 @@ import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { mypageError, myPageLimit } from "../../../libs/formErrorText";
 import { religionList } from "../../../libs/optionList";
+import CountText from "../components/countText/CountText";
 import ImagePreviewItem from "../components/imagePreview/ImagePreviewItem";
 import Label from "../components/label/Label";
 import {
   buttonWrapper,
+  countWrapper,
   fieldWrapper,
   form,
   imageWrapper,
@@ -186,7 +188,13 @@ const RequiredStage = () => {
         </section>
         <section className={section}>
           <div>
-            <Label>취미</Label>
+            <div className={countWrapper}>
+              <Label>취미</Label>
+              <CountText
+                count={watch("hobby").length || 0}
+                limit={myPageLimit.hobby.max}
+              />
+            </div>
             <TextInput
               placeholder="자유롭게 입력해주세요"
               width="100%"
