@@ -111,7 +111,8 @@ export const loginText = style([
 
 export const loginLink = style([
   {
-    color: Color.accent.default,
+    color: ColorVar.blue.light[8],
+    textDecoration: "underline",
   },
   textSprinkles({ text: "smallBold" }),
 ]);

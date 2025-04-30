@@ -67,9 +67,10 @@ export const ColorVar = createGlobalTheme(":root", {
 });
 export const Color = createGlobalTheme(":root", {
   bg: ColorVar.grey[10],
-  success: ColorVar.green,
-  warning: ColorVar.yellow,
-  critical: ColorVar.red,
+  success: { default: ColorVar.green, toast: "rgba(19, 88, 23, 0.7)" },
+  warning: { default: ColorVar.yellow, toast: "rgba(127, 95, 7, 0.7)" },
+  critical: { default: ColorVar.red, toast: "rgba(146, 25, 25, 0.7)" },
+
   primary: {
     default: ColorVar.white,
     hover: ColorVar.greyBlue[1],
@@ -99,6 +100,7 @@ export const Color = createGlobalTheme(":root", {
     light: ColorVar.grey[3],
     inverse: ColorVar.grey[10],
     disabled: ColorVar.grey[7],
+    accent: ColorVar.blue.dark[1],
   },
   border: ColorVar.greyBlue[6],
 });

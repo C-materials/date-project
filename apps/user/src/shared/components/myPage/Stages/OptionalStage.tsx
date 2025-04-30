@@ -1,14 +1,24 @@
-import { Button, CheckBox, Radio, Select, Tag, TextInput } from "@repo/ui";
+import {
+  Button,
+  CheckBox,
+  Radio,
+  Select,
+  Tag,
+  Textarea,
+  TextInput,
+} from "@repo/ui";
 
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { mypageError, myPageLimit } from "../../../libs/formErrorText";
 import { drinkList, mbtiList, othersList } from "../../../libs/optionList";
+import CountText from "../components/countText/CountText";
 import Label from "../components/label/Label";
 import {
   buttonWrapper,
   checkBoxWrapper,
+  countWrapper,
   form,
   radioWrapper,
   section,
@@ -77,7 +87,13 @@ const OptionalStage = () => {
             />
           </div>
           <div>
-            <Label>특기</Label>
+            <div className={countWrapper}>
+              <Label>특기</Label>
+              <CountText
+                count={watch("skill")?.length}
+                limit={myPageLimit.skill.max}
+              />
+            </div>
             <TextInput
               placeholder="특기를 입력해주세요"
               width="100%"
@@ -91,10 +107,15 @@ const OptionalStage = () => {
             />
           </div>
           <div>
-            <Label>자기소개</Label>
-            <TextInput
+            <div className={countWrapper}>
+              <Label>자기소개</Label>
+              <CountText
+                count={watch("introduce")?.length}
+                limit={myPageLimit.introduce.max}
+              />
+            </div>
+            <Textarea
               placeholder="간단한 자기소개를 입력해주세요"
-              width="100%"
               errorMessage={errors.introduce?.message}
               {...register("introduce", {
                 maxLength: {

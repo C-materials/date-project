@@ -18,7 +18,7 @@ const Textarea = ({
         {...props}
         placeholder={placeholder}
       />
-      <span className={error}>{errorMessage}</span>
+      {errorMessage && <span className={error}>{errorMessage}</span>}
     </div>
   );
 };

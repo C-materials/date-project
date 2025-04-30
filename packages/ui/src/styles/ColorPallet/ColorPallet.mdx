@@ -10,23 +10,25 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/blocks";
       default: "#FFFFFF",
       hover: "#EBEBEB",
       active: "#D2D5D6",
+      disabled: "#1F242A",
     }}
   />
   <ColorItem
     title="Color.secondary"
     colors={{
       default: "#1F242A",
-      hover: "#333A41",
-      active: "#767676",
+      hover: "#434e59",
+      active: "#545f6a",
+      disabled: "",
     }}
   />
   <ColorItem
     title="Color.accent"
     colors={{
       default: "#0062D2",
-      hover: "#0053B2",
+      hover: "#004a9e",
       active: "#003775",
-      disabled: "#002249",
+      disabled: "#002C5E",
     }}
   />
   <ColorItem
@@ -43,17 +45,28 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/blocks";
     colors={{
       default: "#FFFFFF",
       sub: "#767676",
-      light: "#B1B5B8",
+      light: "#c1c1c1",
       inverse: "#121212",
+      disabled: "#5d5d5d",
+      accent: "#006DEF",
     }}
   />
   <ColorItem
     title="Color"
     colors={{
       "Color.bg": "#121212",
-      "Color.success": "#00CD0E",
-      "Color.warning": "#FFD000",
-      "Color.critical": "#D90000",
+      "Color.border": "#545F6A",
+    }}
+  />
+  <ColorItem
+    title="Color"
+    colors={{
+      "success.default": "#00CD0E",
+      "success.toast": "rgba(19, 88, 23, 0.7)",
+      "warning.default": "#FFD000",
+      "warning.toast": "rgba(127, 95, 7, 0.7)",
+      "critical.default": "#D90000",
+      "critical.toast": "rgba(146, 25, 25, 0.7)",
     }}
   />
 </ColorPalette>
@@ -121,14 +134,5 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/blocks";
       10: "#001732",
     }}
   />
-  <ColorItem
-    title="ColorVar"
-    colors={{
-      "ColorVar.white": "#FFFFFF",
-      "ColorVar.transparent": "transparent",
-      "ColorVar.green": "#00CD0E",
-      "ColorVar.yellow": "#FFD000",
-      "ColorVar.red": "#D90000",
-    }}
-  />
+
 </ColorPalette>

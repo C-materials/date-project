@@ -2,9 +2,9 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
-import AccountStage from "../../shared/components/myPage/stages/AccountStage";
-import OptionalStage from "../../shared/components/myPage/stages/OptionalStage";
-import RequiredStage from "../../shared/components/myPage/stages/RequiredStage";
+import AccountStage from "../../shared/components/myPage/Stages/AccountStage";
+import OptionalStage from "../../shared/components/myPage/Stages/OptionalStage";
+import RequiredStage from "../../shared/components/myPage/Stages/RequiredStage";
 import {
   description,
   layoutMain,
