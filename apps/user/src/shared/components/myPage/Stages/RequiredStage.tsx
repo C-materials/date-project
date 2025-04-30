@@ -127,6 +127,25 @@ const RequiredStage = () => {
       <form className={form} onSubmit={handleSubmit(onSubmit)}>
         <section className={section}>
           <div>
+            <Label>닉네임</Label>
+            <TextInput
+              placeholder="닉네임을 입력해주세요"
+              width="100%"
+              errorMessage={errors.job?.message}
+              {...register("nickname", {
+                required: mypageError.nickname.error,
+                maxLength: {
+                  value: myPageLimit.nickname.max,
+                  message: mypageError.nickname.maxLength,
+                },
+                validate: {
+                  trim: (value: string) =>
+                    value.trim().length > 0 ? true : mypageError.nickname.error,
+                },
+              })}
+            />
+          </div>
+          <div>
             <Label>직업</Label>
             <TextInput
               placeholder="직업을 입력해주세요"
@@ -287,7 +306,7 @@ const RequiredStage = () => {
                             ))}
                             {provided.placeholder}
                             {previewImageList.length > 0 && (
-                              <ToolTip content="대표 이미지" />
+                              <ToolTip content="main" />
                             )}
                           </div>
                         )}

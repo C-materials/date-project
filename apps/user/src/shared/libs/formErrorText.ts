@@ -75,6 +75,9 @@ export const myPageLimit = {
   introduce: {
     max: 100,
   },
+  nickname: {
+    max: 15,
+  },
 };
 export const mypageError = {
   job: {
@@ -103,5 +106,9 @@ export const mypageError = {
 
   introduce: {
     maxLength: maxLengthText(myPageLimit.introduce.max),
+  },
+  nickname: {
+    error: "닉네임을 입력해주세요",
+    maxLength: maxLengthText(myPageLimit.nickname.max),
   },
 };

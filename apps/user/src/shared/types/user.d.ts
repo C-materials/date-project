@@ -26,6 +26,7 @@ namespace User {
 
   /* 마이페이지에서 입력하는 정보*/
   type RequiredInfo = {
+    nickname: string;
     job: string;
     religion: string;
     height: number;

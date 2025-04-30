@@ -7,11 +7,13 @@ export const tooltipWrapper = style([
     color: Color.text.default,
     backgroundColor: ColorVar.greyBlue[9],
     borderRadius: "4px",
-    padding: "12px 8px",
 
     position: "absolute",
     top: calc.add("100%", "15px"),
-    left: "-25px",
+    left: 0,
+    width: "40px",
+    height: "20px",
+    textAlign: "center",
 
     "::after": {
       content: "",
@@ -26,5 +28,5 @@ export const tooltipWrapper = style([
       transform: "translateX(-50%)",
     },
   },
-  textSprinkles({ text: "medium" }),
+  textSprinkles({ text: "small" }),
 ]);
