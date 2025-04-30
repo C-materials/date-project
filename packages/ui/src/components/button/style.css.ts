@@ -8,7 +8,7 @@ export const button = recipe({
     {
       padding: "8px 12px",
       minHeight: "40px",
-      display: "inline-flex",
+      display: "flex",
       justifyContent: "center",
       alignItems: "center",
       borderRadius: "8px",
