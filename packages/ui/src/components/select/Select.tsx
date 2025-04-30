@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Arrow from "../../../assets/downArrow.svg";
 import TextInput from "../textfield/textInput/TextInput";
 import OptionList from "./OptionList";
@@ -12,23 +12,21 @@ const Select = ({
   optionList,
   value,
   onChangeValue,
-  isOpen,
-  onClickClose,
-  onClickInput,
   width,
   ...props
 }: SelectProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClickOption = (value: string | number) => {
-    onClickClose?.();
+    setIsOpen(false);
     onChangeValue?.(value);
   };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
-        onClickClose?.();
+        setIsOpen(false);
       }
     };
 
@@ -47,7 +45,7 @@ const Select = ({
         errorMessage={errorMessage}
         value={value}
         placeholder={placeholder}
-        onClick={onClickInput}
+        onClick={() => setIsOpen(true)}
         suffix={<Arrow className={icon({ isOpen, disabled })} />}
         width={width}
         {...props}

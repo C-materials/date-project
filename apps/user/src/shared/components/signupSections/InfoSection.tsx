@@ -1,5 +1,4 @@
 import { Radio, Select, TextInput } from "@repo/ui";
-import { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { monthList, yearList } from "../../libs/dateList";
 import { signupError, signupLimit } from "../../libs/formErrorText";
@@ -13,16 +12,6 @@ import {
 } from "./style.css";
 
 const InfoSection = () => {
-  const [isOpenBirthOption, setIsOpenBirthOption] = useState({
-    birthYear: false,
-    birthMonth: false,
-    birthDay: false,
-  });
-  const [isOpenAddressOption, setIsOpenAddressOption] = useState({
-    mainAddress: false,
-    subAddress: false,
-  });
-
   const {
     register,
     formState: { errors },
@@ -35,39 +24,9 @@ const InfoSection = () => {
   const birthYear = Number(watch("birthYear"));
   const birthMonth = Number(watch("birthMonth"));
 
-  const handleCloseBirthOptions = (
-    targetKey: keyof typeof isOpenBirthOption,
-  ) => {
-    setIsOpenBirthOption((prev) => ({
-      ...prev,
-      [targetKey]: false,
-    }));
-  };
-  const handleClickBirthInput = (name: keyof typeof isOpenBirthOption) => {
-    setIsOpenBirthOption((prev) => ({
-      ...prev,
-      [name]: !prev[name],
-    }));
-  };
-
   // 거주지 선택 관련 로직
   const selectedMainAddress = watch("mainAddress");
   const hasOneOption = regionList[selectedMainAddress]?.length === 1;
-
-  const handleCloseAddressOptions = (
-    targetKey: keyof typeof isOpenAddressOption,
-  ) => {
-    setIsOpenAddressOption((prev) => ({
-      ...prev,
-      [targetKey]: false,
-    }));
-  };
-  const handleClickAddressInput = (name: keyof typeof isOpenAddressOption) => {
-    setIsOpenAddressOption((prev) => ({
-      ...prev,
-      [name]: !prev[name],
-    }));
-  };
 
   return (
     <div className={inputWrapper}>
@@ -105,9 +64,6 @@ const InfoSection = () => {
                 optionList={yearList}
                 value={field.value ?? ""}
                 onChangeValue={field.onChange}
-                isOpen={isOpenBirthOption.birthYear}
-                onClickClose={() => handleCloseBirthOptions("birthYear")}
-                onMouseDown={() => handleClickBirthInput(field.name)}
                 errorMessage={errors.birthYear?.message}
               />
             )}
@@ -126,9 +82,6 @@ const InfoSection = () => {
                   field.onChange(e);
                   setValue("birthDay", 1);
                 }}
-                isOpen={isOpenBirthOption.birthMonth}
-                onClickClose={() => handleCloseBirthOptions("birthMonth")}
-                onMouseDown={() => handleClickBirthInput(field.name)}
                 errorMessage={errors.birthMonth?.message}
               />
             )}
@@ -144,9 +97,6 @@ const InfoSection = () => {
                 optionList={getDayList(birthYear, birthMonth)}
                 value={field.value ?? ""}
                 onChangeValue={field.onChange}
-                isOpen={isOpenBirthOption.birthDay}
-                onClickClose={() => handleCloseBirthOptions("birthDay")}
-                onMouseDown={() => handleClickBirthInput(field.name)}
                 errorMessage={errors.birthDay?.message}
               />
             )}
@@ -170,9 +120,6 @@ const InfoSection = () => {
                   field.onChange(e);
                   setValue("subAddress", "전체");
                 }}
-                isOpen={isOpenAddressOption.mainAddress}
-                onClickClose={() => handleCloseAddressOptions("mainAddress")}
-                onMouseDown={() => handleClickAddressInput(field.name)}
               />
             )}
           />
@@ -188,9 +135,6 @@ const InfoSection = () => {
                 width="100%"
                 value={field.value ?? "전체"}
                 onChangeValue={field.onChange}
-                isOpen={isOpenAddressOption.subAddress}
-                onClickClose={() => handleCloseAddressOptions("subAddress")}
-                onMouseDown={() => handleClickAddressInput(field.name)}
               />
             )}
           />

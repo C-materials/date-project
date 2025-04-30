@@ -1,6 +1,5 @@
 import { Button, Select, TextInput } from "@repo/ui";
 
-import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { mainAddress, regionList } from "../../../libs/regionList";
@@ -16,11 +15,6 @@ import {
  * @todo : 입력한 정보가 있을때는 해당 데이터를 가져와야함
  */
 const AccountStage = () => {
-  const [isOpenAddressOption, setIsOpenAddressOption] = useState({
-    mainAddress: false,
-    subAddress: false,
-  });
-
   const method = useForm<User.AccountInfo>({
     mode: "onChange",
   });
@@ -41,21 +35,6 @@ const AccountStage = () => {
   // 거주지 선택 관련 로직
   const selectedMainAddress = watch("mainAddress");
   const hasOneOption = regionList[selectedMainAddress]?.length === 1;
-
-  const handleCloseAddressOptions = (
-    targetKey: keyof typeof isOpenAddressOption,
-  ) => {
-    setIsOpenAddressOption((prev) => ({
-      ...prev,
-      [targetKey]: false,
-    }));
-  };
-  const handleClickAddressInput = (name: keyof typeof isOpenAddressOption) => {
-    setIsOpenAddressOption((prev) => ({
-      ...prev,
-      [name]: !prev[name],
-    }));
-  };
 
   // 더미 데이터
   const user: User.AccountInfo = {
@@ -120,11 +99,6 @@ const AccountStage = () => {
                       field.onChange(e);
                       setValue("subAddress", "전체");
                     }}
-                    isOpen={isOpenAddressOption.mainAddress}
-                    onClickClose={() =>
-                      handleCloseAddressOptions("mainAddress")
-                    }
-                    onMouseDown={() => handleClickAddressInput(field.name)}
                   />
                 )}
               />
@@ -139,9 +113,6 @@ const AccountStage = () => {
                     width="100%"
                     value={field.value ?? user.subAddress}
                     onChangeValue={field.onChange}
-                    isOpen={isOpenAddressOption.subAddress}
-                    onClickClose={() => handleCloseAddressOptions("subAddress")}
-                    onMouseDown={() => handleClickAddressInput(field.name)}
                   />
                 )}
               />

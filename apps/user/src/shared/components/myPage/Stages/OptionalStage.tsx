@@ -1,6 +1,5 @@
 import { Button, CheckBox, Radio, Select, Tag, TextInput } from "@repo/ui";
 
-import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { mypageError, myPageLimit } from "../../../libs/formErrorText";
@@ -19,12 +18,6 @@ import {
  * @todo : 입력한 정보가 있을때는 해당 데이터를 가져와야함
  */
 const OptionalStage = () => {
-  const [isOpenMBTI, setIsOpenMBTI] = useState(false);
-
-  const handleClickMBTI = () => {
-    setIsOpenMBTI((prev) => !prev);
-  };
-
   const method = useForm<User.OptionalInfo>({
     mode: "onChange",
   });
@@ -68,9 +61,6 @@ const OptionalStage = () => {
                   optionList={mbtiList}
                   value={field.value || ""}
                   onChangeValue={field.onChange}
-                  onClickInput={handleClickMBTI}
-                  onClickClose={() => setIsOpenMBTI(false)}
-                  isOpen={isOpenMBTI}
                   width="100%"
                 />
               )}

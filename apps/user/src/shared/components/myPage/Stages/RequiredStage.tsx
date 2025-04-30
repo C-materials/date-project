@@ -21,11 +21,6 @@ import type { ImageType } from "./type";
  */
 const RequiredStage = () => {
   const [previewImageList, setPreviewImageList] = useState<ImageType[]>([]);
-  const [isOpenReligion, setIsOpenReligion] = useState(false);
-
-  const handleClickReligion = () => {
-    setIsOpenReligion((prev) => !prev);
-  };
 
   //react hook form
   const method = useForm<User.RequiredInfo>({
@@ -133,9 +128,6 @@ const RequiredStage = () => {
                   optionList={religionList}
                   value={field.value || ""}
                   onChangeValue={field.onChange}
-                  onClickInput={handleClickReligion}
-                  onClickClose={() => setIsOpenReligion(false)}
-                  isOpen={isOpenReligion}
                   width="100%"
                   errorMessage={errors.religion?.message}
                 />

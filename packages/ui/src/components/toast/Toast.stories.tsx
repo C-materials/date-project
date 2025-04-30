@@ -44,7 +44,7 @@ export const Default: Story = {
   args: {
     type: "success",
     icon: true,
-    top: 64,
+    top: 20,
     width: 240,
     isOpen: true,
   },
