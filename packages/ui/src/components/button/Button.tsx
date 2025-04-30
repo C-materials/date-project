@@ -1,30 +1,43 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import { buttonStyle } from "./style.css";
-
+import LoadingSpinner from "../../../assets/loading.svg";
+import { button, icon, loadingSpinner } from "./style.css";
 export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   children: ReactNode;
   variant: "primary" | "secondary" | "outline" | "accent";
-  icon?: ReactNode;
-  iconPosition?: "left" | "right";
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
+  isLoading?: boolean;
 }
 const Button = ({
   variant = "primary",
   type = "button",
-  iconPosition = "left",
   className,
-  icon,
+  leftIcon,
+  rightIcon,
   children,
+  isLoading = false,
+  disabled = false,
   ...args
 }: ButtonProps) => {
+  if (isLoading) disabled = true;
   return (
     <button
       type={type}
-      className={`${buttonStyle[variant]} ${className || ""}`}
+      className={`${button({ variant, disabled, isLoading })} ${className || ""}`}
       {...args}
     >
-      {iconPosition === "left" && icon}
+      {leftIcon && leftIcon}
       {children}
-      {iconPosition === "right" && icon}
+      {rightIcon && rightIcon}
+      {isLoading && (
+        <span className={loadingSpinner}>
+          <LoadingSpinner
+            className={icon({ variant })}
+            width={20}
+            height={20}
+          />
+        </span>
+      )}
     </button>
   );
 };

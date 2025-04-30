@@ -12,16 +12,18 @@ const meta: Meta<typeof Button> = {
       options: ["primary", "secondary", "outline", "accent"],
       control: { type: "radio" },
     },
-    icon: {
-      description: "(optional) 버튼 아이콘",
+    leftIcon: {
+      description: "(optional) 버튼 좌측 아이콘",
     },
-    iconPosition: {
-      description: "버튼 아이콘 위치 설정",
-      options: ["left", "right"],
-      control: { type: "radio" },
+
+    rightIcon: {
+      description: "(optional) 버튼 우측 아이콘",
     },
     disabled: {
       description: "버튼 비활성화 여부",
+      control: { type: "boolean" },
+    },
+    isLoading: {
       control: { type: "boolean" },
     },
   },
@@ -33,7 +35,6 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     variant: "primary",
-    iconPosition: "left",
     disabled: false,
     children: "Button",
   },
@@ -49,10 +50,27 @@ export const Default: Story = {
 export const withIcon: Story = {
   args: {
     variant: "primary",
-    iconPosition: "left",
     disabled: false,
     children: "Button",
-    icon: <FiUserPlus />,
+    leftIcon: <FiUserPlus />,
+    rightIcon: <FiUserPlus />,
+    isLoading: false,
+  },
+  render: (args) => {
+    return (
+      <div className={story}>
+        <Button type="button" {...args} />
+      </div>
+    );
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    variant: "primary",
+    disabled: false,
+    children: "Button",
+    isLoading: true,
   },
   render: (args) => {
     return (
