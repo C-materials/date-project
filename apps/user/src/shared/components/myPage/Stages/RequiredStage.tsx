@@ -286,7 +286,9 @@ const RequiredStage = () => {
                               </Draggable>
                             ))}
                             {provided.placeholder}
-                            <ToolTip content="대표 이미지" />
+                            {previewImageList.length > 0 && (
+                              <ToolTip content="대표 이미지" />
+                            )}
                           </div>
                         )}
                       </Droppable>
