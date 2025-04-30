@@ -1,14 +1,18 @@
 import { Button, FileUpload, Radio, Select, TextInput } from "@repo/ui";
 
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { mypageError, myPageLimit } from "../../../libs/formErrorText";
 import { religionList } from "../../../libs/optionList";
+import CountText from "../components/countText/CountText";
 import ImagePreviewItem from "../components/imagePreview/ImagePreviewItem";
 import Label from "../components/label/Label";
+import ToolTip from "../components/toolTip/ToolTip";
 import {
   buttonWrapper,
+  countWrapper,
   fieldWrapper,
   form,
   imageWrapper,
@@ -33,6 +37,7 @@ const RequiredStage = () => {
     control,
     getValues,
     watch,
+    setValue,
     formState: { isValid, errors },
   } = method;
 
@@ -91,6 +96,25 @@ const RequiredStage = () => {
       (file) => !file.name.includes(targetId.split("___")[1] ?? ""),
     );
     onChange([...newFileList]);
+  };
+
+  const handleDragEnd = (result: any) => {
+    if (!result.destination) return;
+    const startIndex = result.source.index;
+    const endIndex = result.destination.index;
+
+    // File 순서 재정렬 -> 폼 데이터
+    let list = watch("images");
+    const splicedItem = list.splice(startIndex, 1);
+    list.splice(endIndex, 0, ...splicedItem);
+    setValue("images", list);
+
+    // preview 순서 재정렬
+    const reorderedPreviewList = previewImageList;
+    const movedItem = reorderedPreviewList.splice(startIndex, 1);
+    reorderedPreviewList.splice(endIndex, 0, ...movedItem);
+
+    setPreviewImageList(reorderedPreviewList);
   };
 
   return (
@@ -178,7 +202,13 @@ const RequiredStage = () => {
         </section>
         <section className={section}>
           <div>
-            <Label>취미</Label>
+            <div className={countWrapper}>
+              <Label>취미</Label>
+              <CountText
+                count={watch("hobby")?.length}
+                limit={myPageLimit.hobby.max}
+              />
+            </div>
             <TextInput
               placeholder="자유롭게 입력해주세요"
               width="100%"
@@ -198,7 +228,6 @@ const RequiredStage = () => {
           </div>
           <div>
             <Label>프로필 사진 (최대 5장)</Label>
-
             <div className={fieldWrapper}>
               <Controller
                 name="images"
@@ -215,17 +244,45 @@ const RequiredStage = () => {
                       urlList={previewImageList}
                       acceptFormatList="image/jpg, image/png, image/jpeg, image/webp, image/heic"
                     />
-                    <div className={imageWrapper}>
-                      {previewImageList.map((item) => (
-                        <ImagePreviewItem
-                          key={item.id}
-                          item={item}
-                          onClickDelete={() =>
-                            handleDeleteImage(item.id, field.onChange)
-                          }
-                        />
-                      ))}
-                    </div>
+                    <DragDropContext onDragEnd={handleDragEnd}>
+                      <Droppable droppableId="droppable" direction="horizontal">
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            className={imageWrapper}
+                            {...provided.droppableProps}
+                          >
+                            {previewImageList.map((item, index) => (
+                              <Draggable
+                                key={item.id}
+                                draggableId={item.id}
+                                index={index}
+                              >
+                                {(provided) => (
+                                  <div
+                                    ref={provided.innerRef}
+                                    {...provided.dragHandleProps}
+                                    {...provided.draggableProps}
+                                  >
+                                    <ImagePreviewItem
+                                      item={item}
+                                      onClickDelete={() =>
+                                        handleDeleteImage(
+                                          item.id,
+                                          field.onChange,
+                                        )
+                                      }
+                                    />
+                                  </div>
+                                )}
+                              </Draggable>
+                            ))}
+                            {provided.placeholder}
+                            <ToolTip content="대표 이미지" />
+                          </div>
+                        )}
+                      </Droppable>
+                    </DragDropContext>
                   </>
                 )}
               />
