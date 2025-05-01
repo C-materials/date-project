@@ -9,20 +9,24 @@ export const tooltipWrapper = style([
     borderRadius: "4px",
 
     position: "absolute",
-    top: calc.add("100%", "15px"),
+    top: calc.add("100%", "10px"),
     left: 0,
     width: "40px",
     height: "20px",
     textAlign: "center",
 
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
     "::after": {
       content: "",
-      borderBottom: "8px solid",
-      borderColor: ColorVar.greyBlue[9],
+      borderBottom: `8px solid ${ColorVar.greyBlue[9]}`,
       borderLeft: "7px solid transparent",
       borderRight: "7px solid transparent",
       height: 0,
       left: "50%",
+      top: "-5px",
       bottom: "100%",
       position: "absolute",
       transform: "translateX(-50%)",
