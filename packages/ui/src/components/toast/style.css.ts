@@ -32,16 +32,16 @@ export const toast = recipe({
   variants: {
     type: {
       success: {
-        outlineColor: Color.success,
-        backgroundColor: "rgba(19, 88, 23, 0.7)",
+        outlineColor: Color.success.default,
+        backgroundColor: Color.success.toast,
       },
       warning: {
-        outlineColor: Color.warning,
-        backgroundColor: "rgba(127, 95, 7, 0.7)",
+        outlineColor: Color.warning.default,
+        backgroundColor: Color.warning.toast,
       },
       critical: {
-        outlineColor: Color.critical,
-        backgroundColor: "rgba(146, 25, 25, 0.7)",
+        outlineColor: Color.critical.default,
+        backgroundColor: Color.critical.toast,
       },
     },
     isOpen: {

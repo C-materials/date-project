@@ -35,7 +35,7 @@ export const common = recipe({
     },
     invalid: {
       true: {
-        outlineColor: Color.critical,
+        outlineColor: Color.critical.default,
       },
     },
   },
@@ -52,7 +52,7 @@ export const common = recipe({
       variants: { disabled: true, invalid: true },
       style: {
         ":hover": {
-          outlineColor: Color.critical,
+          outlineColor: Color.critical.default,
         },
       },
     },
@@ -60,7 +60,7 @@ export const common = recipe({
       variants: { disabled: false, invalid: true },
       style: {
         ":hover": {
-          outlineColor: Color.critical,
+          outlineColor: Color.critical.default,
         },
         ":focus": {
           outlineColor: Color.primary.active,
@@ -86,7 +86,7 @@ export const error = style([
     text: "2xsmall",
   }),
   {
-    color: Color.critical,
+    color: Color.critical.default,
     minHeight: "12px",
     marginLeft: "2px",
     cursor: "default",
