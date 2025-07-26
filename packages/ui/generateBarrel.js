@@ -27,6 +27,8 @@ const exceptionFileList = [
   "ImageInput",
   "ImagePreview",
   "OptionList",
+  "ColorPallet",
+  "ColorPallet.mdx",
 ];
 
 targetFolderList.forEach((folder) => {
