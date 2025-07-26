@@ -9,7 +9,12 @@ export interface WrapperProp {
   onClose?: () => void;
   closeButton: boolean;
 }
-
+/**
+ * @param children
+ * @param isMobile
+ * @param onClose
+ * @param closeButton
+ */
 const DialogWrapper = forwardRef<HTMLDivElement, WrapperProp>(
   ({ children, isMobile, onClose, closeButton }, ref) => {
     return (

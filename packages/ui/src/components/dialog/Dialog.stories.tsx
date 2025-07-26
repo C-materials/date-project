@@ -8,7 +8,17 @@ const meta: Meta<typeof Dialog> = {
   title: "UI/Dialog",
   argTypes: {
     isMobile: {
-      description: "모바일 여부에 따라 wrapper 크기 적용",
+      description: "모바일 여부에 따라 dialog width 적용",
+      control: "boolean",
+    },
+    show: {
+      description: "show",
+    },
+    onClose: {
+      description: "onClose",
+    },
+    closeButton: {
+      description: "상단 dialog 닫힘 버튼 여부",
       control: "boolean",
     },
   },
@@ -22,15 +32,32 @@ export const Default: Story = {
   args: {
     isMobile: false,
     closeButton: true,
-  },
+    headerTitle: "Dialog Title",
+    headerDescription: "description",
+    content: "body content",
+    footer: (
+      <>
+        <Button variant="outline">button</Button>
+        <Button variant="primary">button</Button>
+      </>
+    ),
+  } as any,
   render: (args) => {
-    const { isMobile, closeButton } = args;
+    // storybook test를 위해 any 처리
+    const {
+      isMobile,
+      closeButton,
+      headerTitle,
+      headerDescription,
+      content,
+      footer,
+    } = args as any;
     const [show, setShow] = useState(false);
     return (
       <>
         <div id="global-dialog"></div>
         <div style={{ padding: "40px" }}>
-          <Button variant="outline" onClick={() => setShow((prev) => !prev)}>
+          <Button variant="primary" onClick={() => setShow((prev) => !prev)}>
             Click!
           </Button>
           <Dialog
@@ -39,24 +66,14 @@ export const Default: Story = {
             isMobile={isMobile}
             closeButton={closeButton}
           >
-            <Dialog.Header title="Dialog Title" description="description" />
+            <Dialog.Header
+              title={headerTitle}
+              description={headerDescription}
+            />
             <Dialog.Content>
-              <div>body content</div>
+              <div>{content}</div>
             </Dialog.Content>
-            <Dialog.Footer>
-              <Button
-                variant="outline"
-                onClick={() => console.log("button1 clicked")}
-              >
-                button
-              </Button>
-              <Button
-                variant="primary"
-                onClick={() => console.log("button2 clicked")}
-              >
-                button
-              </Button>
-            </Dialog.Footer>
+            <Dialog.Footer>{footer}</Dialog.Footer>
           </Dialog>
         </div>
       </>

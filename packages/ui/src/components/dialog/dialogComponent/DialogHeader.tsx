@@ -4,6 +4,11 @@ export interface Props {
   description?: string;
   title: string;
 }
+
+/**
+ * @param title : title
+ * @param description : subtitle
+ */
 const DialogHeader = ({ description, title }: Props) => {
   return (
     <div className={dialogHeader}>

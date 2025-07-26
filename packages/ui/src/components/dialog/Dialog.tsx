@@ -23,7 +23,13 @@ interface DialogProps {
   closeButton?: boolean;
 }
 const Dialog = (props: DialogProps & DialogComposition) => {
-  const { children, show, isMobile, onClose, closeButton } = props;
+  const {
+    children,
+    show,
+    isMobile = false,
+    onClose,
+    closeButton = true,
+  } = props;
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
 
