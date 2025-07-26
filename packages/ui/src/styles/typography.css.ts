@@ -61,7 +61,7 @@ const sprinkles = defineProperties({
       small: {
         fontSize: FontSizeVar.small,
         lineHeight: LineHeightVar.small,
-        fontWeight: FontWeight.regular,
+        fontWeight: FontWeight.semibold,
       },
       smallBold: {
         fontSize: FontSizeVar.small,
