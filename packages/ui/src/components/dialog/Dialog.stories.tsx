@@ -11,7 +11,7 @@ const meta: Meta<typeof Dialog> = {
       description: "모바일 여부에 따라 dialog width 적용",
       control: "boolean",
     },
-    show: {
+    isOpen: {
       description: "show",
     },
     onClose: {
@@ -34,7 +34,6 @@ export const Default: Story = {
     closeButton: true,
     headerTitle: "Dialog Title",
     headerDescription: "description",
-    content: "body content",
     footer: (
       <>
         <Button variant="outline">button</Button>
@@ -44,24 +43,17 @@ export const Default: Story = {
   } as any,
   render: (args) => {
     // storybook test를 위해 any 처리
-    const {
-      isMobile,
-      closeButton,
-      headerTitle,
-      headerDescription,
-      content,
-      footer,
-    } = args as any;
+    const { isMobile, closeButton, headerTitle, headerDescription, footer } =
+      args as any;
     const [show, setShow] = useState(false);
     return (
       <>
-        <div id="global-dialog"></div>
         <div style={{ padding: "40px" }}>
           <Button variant="primary" onClick={() => setShow((prev) => !prev)}>
             Click!
           </Button>
           <Dialog
-            show={show}
+            isOpen={show}
             onClose={() => setShow(false)}
             isMobile={isMobile}
             closeButton={closeButton}
@@ -71,7 +63,7 @@ export const Default: Story = {
               description={headerDescription}
             />
             <Dialog.Content>
-              <div>{content}</div>
+              <div>content is here</div>
             </Dialog.Content>
             <Dialog.Footer>{footer}</Dialog.Footer>
           </Dialog>

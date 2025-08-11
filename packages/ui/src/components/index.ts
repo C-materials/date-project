@@ -3,6 +3,7 @@ export * from "./button sample";
 export * from "./checkBox";
 export * from "./dialog";
 export * from "./fileUpload";
+export * from "./portal";
 export * from "./radio";
 export * from "./select";
 export * from "./slider";

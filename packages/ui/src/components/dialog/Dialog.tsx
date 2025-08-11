@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { useEffect, useRef, useState } from "react";
-import ReactDOM from "react-dom";
+import { useEffect, useRef } from "react";
+import { Portal } from "../portal";
 import {
   Background,
   DialogFooter,
@@ -9,29 +9,22 @@ import {
 } from "./dialogComponent";
 import DialogContent from "./dialogComponent/DialogBody";
 
-interface DialogComposition {
-  Header?: ReactNode;
-  Content?: ReactNode;
-  Footer?: ReactNode;
-}
-
-interface DialogProps {
+type DialogType = {
   children: ReactNode;
-  show: boolean;
+  isOpen: boolean;
   isMobile?: boolean;
   onClose?: () => void;
   closeButton?: boolean;
-}
-const Dialog = (props: DialogProps & DialogComposition) => {
+};
+const Dialog = (props: DialogType) => {
   const {
     children,
-    show,
+    isOpen: show,
     isMobile = false,
     onClose,
     closeButton = true,
   } = props;
   const dialogRef = useRef<HTMLDivElement | null>(null);
-  const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
 
   // 바깥쪽 클릭 감지
   useEffect(() => {
@@ -55,40 +48,10 @@ const Dialog = (props: DialogProps & DialogComposition) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (!show) {
-      setModalRoot(null);
-      return;
-    }
+  if (!show) return null;
 
-    // add dom for modal portal
-    let root = document.getElementById("modal-root");
-    if (!root) {
-      root = document.createElement("div");
-      root.id = "modal-root";
-      root.style.position = "fixed";
-      root.style.top = "0";
-      root.style.left = "0";
-      root.style.width = "100%";
-      root.style.height = "100vh";
-
-      document.body.appendChild(root);
-    }
-
-    setModalRoot(root);
-
-    return () => {
-      if (root && root.parentNode) {
-        root.parentNode.removeChild(root);
-      }
-      setModalRoot(null);
-    };
-  }, [show]);
-
-  if (!show || !modalRoot) return null;
-
-  return ReactDOM.createPortal(
-    <>
+  return (
+    <Portal>
       <Dialog.Wrapper
         isMobile={isMobile}
         onClose={onClose}
@@ -98,8 +61,7 @@ const Dialog = (props: DialogProps & DialogComposition) => {
         {children}
       </Dialog.Wrapper>
       <Dialog.Background onClick={onClose} />
-    </>,
-    modalRoot,
+    </Portal>
   );
 };
 
