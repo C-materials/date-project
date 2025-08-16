@@ -20,6 +20,7 @@ export const dialogBackground = style({
 // wrapper
 export const dialogWrapper = recipe({
   base: {
+    position: "relative",
     backgroundColor: Color.bg,
     borderRadius: "8px",
     outline: "1px solid",
