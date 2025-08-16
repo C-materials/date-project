@@ -4,6 +4,7 @@ import UserIcon from "@date-project/user/public/userIcon.svg";
 import { Button } from "@repo/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import useUserStore from "../../../stores/useUserStore";
 import type { ListType } from "./listType";
 import ProfileMenu from "./ProfileMenu";
@@ -18,6 +19,8 @@ import {
 } from "./style.css";
 const Header = () => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+  const [headerDOM, setHeaderDOM] = useState<HTMLElement | null>(null);
+
   const { user, setLogout } = useUserStore();
 
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -48,6 +51,9 @@ const Header = () => {
     };
   }, [isOpenDropdown]);
 
+  useEffect(() => {
+    setHeaderDOM(document.getElementById("main"));
+  }, []);
   return (
     <header className={header}>
       <div className={logoWrapper}>
@@ -70,15 +76,17 @@ const Header = () => {
             >
               <UserIcon className={userIcon} alt="user" />
             </button>
-            {isOpenDropdown && (
-              <ProfileMenu
-                name="홍길동" // 유저 정보 넘겨주기
-                tel="010-1234-5678" // 대시 추가해서 string으로 넘겨주기
-                list={profileMenuList}
-                ref={menuRef}
-                onClose={() => setIsOpenDropdown(false)}
-              />
-            )}
+            {isOpenDropdown &&
+              createPortal(
+                <ProfileMenu
+                  name="홍길동" // 유저 정보 넘겨주기
+                  tel="010-1234-5678" // 대시 추가해서 string으로 넘겨주기
+                  list={profileMenuList}
+                  ref={menuRef}
+                  onClose={() => setIsOpenDropdown(false)}
+                />,
+                headerDOM || document.body,
+              )}
           </>
         ) : (
           <>

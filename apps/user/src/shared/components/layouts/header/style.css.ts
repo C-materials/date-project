@@ -1,6 +1,5 @@
 import { Color, textSprinkles, Zindex } from "@repo/ui";
 import { style } from "@vanilla-extract/css";
-import { calc } from "@vanilla-extract/css-utils";
 
 export const header = style({
   position: "fixed",
@@ -69,9 +68,10 @@ export const relative = style({
 });
 // ---- ProfileMenu ----
 export const menuWrapper = style({
-  position: "absolute",
-  right: 0,
-  top: calc.add("100%", "28px").toString(),
+  position: "fixed",
+  top: "80px",
+  right: "32px",
+
   display: "flex",
   flexDirection: "column",
 

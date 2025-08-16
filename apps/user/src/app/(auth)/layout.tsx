@@ -10,7 +10,7 @@ export default function AuthLayout({
   const pathName = usePathname();
   const isLoginPage = pathName.includes("login");
   return (
-    <main className={bg}>
+    <main className={bg} id="main">
       <div className={contentWrapper({ isLoginPage })}>{children}</div>
     </main>
   );
