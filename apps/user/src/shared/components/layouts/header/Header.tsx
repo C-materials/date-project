@@ -17,7 +17,7 @@ import {
   userProfile,
 } from "./style.css";
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const { user, setLogout } = useUserStore();
 
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -38,7 +38,7 @@ const Header = () => {
         menuRef.current &&
         !menuRef.current.contains(e.target as HTMLElement)
       ) {
-        setIsOpen(false);
+        setIsOpenDropdown(false);
       }
     };
 
@@ -46,7 +46,7 @@ const Header = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpenDropdown]);
 
   return (
     <header className={header}>
@@ -66,16 +66,17 @@ const Header = () => {
             <button
               className={userProfile}
               type="button"
-              onClick={() => setIsOpen((prev) => !prev)}
+              onClick={() => setIsOpenDropdown((prev) => !prev)}
             >
               <UserIcon className={userIcon} alt="user" />
             </button>
-            {isOpen && (
+            {isOpenDropdown && (
               <ProfileMenu
                 name="홍길동" // 유저 정보 넘겨주기
                 tel="010-1234-5678" // 대시 추가해서 string으로 넘겨주기
                 list={profileMenuList}
                 ref={menuRef}
+                onClose={() => setIsOpenDropdown(false)}
               />
             )}
           </>

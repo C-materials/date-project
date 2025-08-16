@@ -19,9 +19,10 @@ type MenuProps = {
   tel: string;
   list?: ListType[];
   ref: Ref<HTMLDivElement>;
+  onClose: () => void;
 };
 
-const ProfileMenu = ({ name, tel, list = [], ref }: MenuProps) => {
+const ProfileMenu = ({ name, tel, list = [], ref, onClose }: MenuProps) => {
   return (
     <div className={menuWrapper} ref={ref}>
       <div className={infoWrapper}>
@@ -35,7 +36,7 @@ const ProfileMenu = ({ name, tel, list = [], ref }: MenuProps) => {
       </div>
       <ul className={listWrapper}>
         {list.map((item: ListType) => (
-          <li key={item.title} className={listItem}>
+          <li key={item.title} className={listItem} onClick={onClose}>
             {item.href && <Link href={item.href}>{item.title}</Link>}
             {item.action && (
               <button type="button" onClick={item.action}>
