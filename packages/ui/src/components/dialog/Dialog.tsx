@@ -6,7 +6,7 @@ import DialogContent from "./dialogComponent/DialogBody";
 
 type DialogType = {
   children: ReactNode;
-  isOpen: boolean;
+  isOpen?: boolean;
   isMobile?: boolean;
   onClose?: () => void;
   closeButton?: boolean;
@@ -14,7 +14,7 @@ type DialogType = {
 const Dialog = (props: DialogType) => {
   const {
     children,
-    isOpen: show,
+    isOpen,
     isMobile = false,
     onClose,
     closeButton = true,
@@ -43,7 +43,7 @@ const Dialog = (props: DialogType) => {
     };
   }, []);
 
-  if (!show) return null;
+  if (!isOpen) return null;
 
   return (
     <Portal>

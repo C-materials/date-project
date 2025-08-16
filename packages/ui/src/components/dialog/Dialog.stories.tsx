@@ -34,27 +34,21 @@ export const Default: Story = {
     closeButton: true,
     headerTitle: "Dialog Title",
     headerDescription: "description",
-    footer: (
-      <>
-        <Button variant="outline">button</Button>
-        <Button variant="primary">button</Button>
-      </>
-    ),
   } as any,
   render: (args) => {
     // storybook test를 위해 any 처리
     const { isMobile, closeButton, headerTitle, headerDescription, footer } =
       args as any;
-    const [show, setShow] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     return (
       <>
         <div style={{ padding: "40px" }}>
-          <Button variant="primary" onClick={() => setShow((prev) => !prev)}>
+          <Button variant="primary" onClick={() => setIsOpen((prev) => !prev)}>
             Click!
           </Button>
           <Dialog
-            isOpen={show}
-            onClose={() => setShow(false)}
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
             isMobile={isMobile}
             closeButton={closeButton}
           >
@@ -65,7 +59,10 @@ export const Default: Story = {
             <Dialog.Content>
               <div>content is here</div>
             </Dialog.Content>
-            <Dialog.Footer>{footer}</Dialog.Footer>
+            <Dialog.Footer>
+              <Button variant="outline">button</Button>
+              <Button variant="primary">button</Button>
+            </Dialog.Footer>
           </Dialog>
         </div>
       </>
