@@ -18,7 +18,7 @@ const meta: Meta<typeof Dialog> = {
       description: "onClose",
     },
     closeButton: {
-      description: "상단 dialog 닫힘 버튼 여부",
+      description: "상단 dialog 닫힘 버튼 표시 여부",
       control: "boolean",
     },
   },

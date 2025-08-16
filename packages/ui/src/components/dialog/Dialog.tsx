@@ -1,12 +1,7 @@
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 import { Portal } from "../portal";
-import {
-  Background,
-  DialogFooter,
-  DialogHeader,
-  DialogWrapper,
-} from "./dialogComponent";
+import { DialogFooter, DialogHeader, DialogWrapper } from "./dialogComponent";
 import DialogContent from "./dialogComponent/DialogBody";
 
 type DialogType = {
@@ -60,12 +55,10 @@ const Dialog = (props: DialogType) => {
       >
         {children}
       </Dialog.Wrapper>
-      <Dialog.Background onClick={onClose} />
     </Portal>
   );
 };
 
-Dialog.Background = Background;
 Dialog.Wrapper = DialogWrapper;
 Dialog.Header = DialogHeader;
 Dialog.Content = DialogContent;

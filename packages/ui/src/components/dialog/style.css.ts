@@ -4,26 +4,22 @@ import { Color, ColorVar, textSprinkles, Zindex } from "../../styles";
 
 // background
 export const dialogBackground = style({
-  background: ColorVar.greyBlue[10],
-  opacity: "0.5",
-  width: "100vw",
-  height: "100vh",
+  position: "fixed",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+
+  background: ColorVar.greyBlue["10alpha50"],
+  width: "100dvw",
+  height: "100dvh",
   padding: "24px",
   zIndex: Zindex.modalBackground,
-  display: "block",
-  content: '""',
-
-  position: "absolute",
   inset: 0,
 });
 
 // wrapper
 export const dialogWrapper = recipe({
   base: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
     backgroundColor: Color.bg,
     borderRadius: "8px",
     outline: "1px solid",
@@ -35,7 +31,7 @@ export const dialogWrapper = recipe({
   variants: {
     isMobile: {
       true: {
-        width: "90%",
+        width: "100%",
       },
       false: {
         width: "420px",
