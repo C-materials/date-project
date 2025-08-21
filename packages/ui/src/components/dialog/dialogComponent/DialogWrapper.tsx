@@ -8,12 +8,12 @@ import {
   dialogWrapper,
 } from "../style.css";
 
-export interface WrapperProp {
+export type WrapperProp = {
   children: ReactNode;
   isMobile?: boolean;
   onClose?: () => void;
   closeButton: boolean;
-}
+};
 /**
  * @param children
  * @param isMobile

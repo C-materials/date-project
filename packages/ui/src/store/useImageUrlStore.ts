@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import type { ImageType } from "../components/fileUpload/type";
 
-interface ImageUrlStoreType {
+type ImageUrlStoreType = {
   urlList: ImageType[];
   setUrlList: (newUrl: ImageType[]) => void;
   deleteUrl: (id: ImageType["id"]) => void;
-}
+};
 const useImageUrlStore = create<ImageUrlStoreType>((set) => ({
   urlList: [],
   setUrlList: (newUrl) =>
