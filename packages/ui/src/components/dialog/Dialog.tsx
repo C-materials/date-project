@@ -47,19 +47,18 @@ const Dialog = (props: DialogType) => {
 
   return (
     <Portal>
-      <Dialog.Wrapper
+      <DialogWrapper
         isMobile={isMobile}
         onClose={onClose}
-        closeButton={closeButton || false}
+        closeButton={closeButton}
         ref={dialogRef}
       >
         {children}
-      </Dialog.Wrapper>
+      </DialogWrapper>
     </Portal>
   );
 };
 
-Dialog.Wrapper = DialogWrapper;
 Dialog.Header = DialogHeader;
 Dialog.Content = DialogContent;
 Dialog.Footer = DialogFooter;

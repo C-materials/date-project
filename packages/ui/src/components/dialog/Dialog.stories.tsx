@@ -34,6 +34,12 @@ export const Default: Story = {
     closeButton: true,
     headerTitle: "Dialog Title",
     headerDescription: "description",
+    footer: (
+      <>
+        <Button variant="outline">button</Button>
+        <Button variant="primary">button</Button>
+      </>
+    ),
   } as any,
   render: (args) => {
     // storybook test를 위해 any 처리
@@ -52,17 +58,14 @@ export const Default: Story = {
             isMobile={isMobile}
             closeButton={closeButton}
           >
-            <Dialog.Header
-              title={headerTitle}
-              description={headerDescription}
-            />
+            <Dialog.Header description={headerDescription}>
+              {headerTitle}
+            </Dialog.Header>
+            {headerTitle}
             <Dialog.Content>
               <div>content is here</div>
             </Dialog.Content>
-            <Dialog.Footer>
-              <Button variant="outline">button</Button>
-              <Button variant="primary">button</Button>
-            </Dialog.Footer>
+            <Dialog.Footer>{footer}</Dialog.Footer>
           </Dialog>
         </div>
       </>
