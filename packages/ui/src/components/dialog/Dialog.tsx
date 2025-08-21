@@ -37,11 +37,15 @@ const Dialog = (props: DialogType) => {
 
   // 스크롤 방지
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, []);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
