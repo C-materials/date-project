@@ -1,10 +1,10 @@
 import { create } from "zustand";
 
-interface UserStore {
+type UserStore = {
   user: User.Data;
   setUser: (state: User.Data) => void;
   setLogout: () => void;
-}
+};
 const useUserStore = create<UserStore>((set) => ({
   user: {
     id: -1,

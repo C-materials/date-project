@@ -37,6 +37,7 @@ export const ColorVar = createGlobalTheme(":root", {
     8: "#333A41",
     9: "#1F242A",
     10: "#111115",
+    "10alpha50": "#11111580",
   },
   blue: {
     light: {
