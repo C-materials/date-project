@@ -61,7 +61,6 @@ export const Default: Story = {
             <Dialog.Header description={headerDescription}>
               {headerTitle}
             </Dialog.Header>
-            {headerTitle}
             <Dialog.Content>
               <div>content is here</div>
             </Dialog.Content>
