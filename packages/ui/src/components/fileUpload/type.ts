@@ -1,4 +1,4 @@
-export interface ImageType {
+export type ImageType = {
   id: string;
   url: string;
-}
+};
