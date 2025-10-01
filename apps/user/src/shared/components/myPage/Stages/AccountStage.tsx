@@ -1,10 +1,12 @@
 import { Button, Select, TextInput } from "@repo/ui";
 
+import type { MouseEvent } from "react";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { mainAddress, regionList } from "../../../libs/regionList";
 import Label from "../components/label/Label";
+import ResetPasswordDialog from "../components/resetPasswordDialog/ResetPasswordDialog";
 import {
   buttonWrapper,
   form,
@@ -16,6 +18,8 @@ import {
  * @todo : 입력한 정보가 있을때는 해당 데이터를 가져와야함
  */
 const AccountStage = () => {
+  const [isOpenResetPasswordDialog, setIsOpenResetPasswordDialog] =
+    useState(false);
   const [isOpenAddressOption, setIsOpenAddressOption] = useState({
     mainAddress: false,
     subAddress: false,
@@ -67,6 +71,10 @@ const AccountStage = () => {
     mainAddress: "서울",
     subAddress: "강동구",
     referenceCode: "ABCDEF",
+  };
+
+  const handleOpenResetPassword = (e: MouseEvent) => {
+    setIsOpenResetPasswordDialog(true);
   };
 
   return (
@@ -157,7 +165,7 @@ const AccountStage = () => {
             <Button
               variant="primary"
               className={pwChange}
-              // onClick={() => 모달 열기}
+              onClick={handleOpenResetPassword}
             >
               비밀번호 변경하기
             </Button>
@@ -176,6 +184,13 @@ const AccountStage = () => {
           </Button>
         </div>
       </form>
+      {isOpenResetPasswordDialog && (
+        <ResetPasswordDialog
+          isOpen={isOpenResetPasswordDialog}
+          onClose={() => setIsOpenResetPasswordDialog(false)}
+          isMobile={false}
+        />
+      )}
     </FormProvider>
   );
 };

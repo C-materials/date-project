@@ -45,4 +45,11 @@ namespace User {
   };
 
   type AccountInfo = Omit<FormValue, "password" | "passwordCheck" | "gender">;
+
+  // 비밀번호 변경 시 제출 폼
+  type ResetPasswordForm = {
+    prevPassword: string;
+    newPassword: string;
+    newPasswordConfirm: string;
+  };
 }

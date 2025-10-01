@@ -112,3 +112,14 @@ export const mypageError = {
     maxLength: maxLengthText(myPageLimit.nickname.max),
   },
 };
+export const resetPasswordError = {
+  prevPassword: {
+    error: "비밀번호가 일치하지 않습니다",
+  },
+  password: {
+    require: "비밀번호를 입력해주세요",
+    minLength: minLengthText(signupLimit.password.min),
+    maxLength: maxLengthText(signupLimit.password.max),
+    wrongCheck: "비밀번호가 일치하지 않습니다",
+  },
+};
