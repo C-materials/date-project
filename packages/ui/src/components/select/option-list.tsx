@@ -8,11 +8,7 @@ type OptionListProps = {
   onClick: (item: string | number) => void;
 };
 
-const OptionList = ({
-  list = ["option", "option", "option"],
-  onClick,
-  selected,
-}: OptionListProps) => {
+const OptionList = ({ list = [], onClick, selected }: OptionListProps) => {
   return (
     <ul className={listWrapper}>
       {list.map((item, index) => (

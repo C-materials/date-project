@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 import { Portal } from "../portal";
-import { DialogFooter, DialogHeader, DialogWrapper } from "./dialogComponent";
-import DialogContent from "./dialogComponent/DialogBody";
+import { DialogFooter, DialogHeader, DialogWrapper } from "./dialog-component";
+import DialogContent from "./dialog-component/dialog-body";
 
 type DialogType = {
   children: ReactNode;

@@ -1,4 +1,4 @@
-import type { CheckBoxProps } from "../checkBox/type";
+import type { CheckBoxProps } from "../checkbox/type";
 import { switchStyle, toggle } from "./style.css";
 
 const Switch = ({ checked, disabled, onChange, ...props }: CheckBoxProps) => {

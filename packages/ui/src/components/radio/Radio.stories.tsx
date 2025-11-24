@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import type { ChangeEvent } from "react";
 import { useState } from "react";
 import { Color } from "../../styles/theme.css";
-import Radio from "./Radio";
+import Radio from "./radio";
 
 const meta: Meta<typeof Radio> = {
   component: Radio,

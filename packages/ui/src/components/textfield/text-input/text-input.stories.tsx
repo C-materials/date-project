@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import type { ChangeEvent } from "react";
 import { useState } from "react";
 import { Color } from "../../../styles";
-import TextInput from "./TextInput";
+import TextInput from "./text-input";
 
 const meta: Meta<typeof TextInput> = {
   component: TextInput,

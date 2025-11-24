@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { story } from "../../styles/storyStyle.css";
-import FileUpload from "./FileUpload";
+import FileUpload from "./file-upload";
 
 const meta: Meta<typeof FileUpload> = {
   component: FileUpload,

@@ -1,8 +1,8 @@
 import type { ChangeEvent, ComponentPropsWithoutRef } from "react";
 import { useRef, useState } from "react";
 import Upload from "../../../assets/uploadIcon.svg";
-import Button from "../button/Button";
-import { notDisplay } from "../checkBox/style.css";
+import Button from "../button/button";
+import { notDisplay } from "../checkbox/style.css";
 import { button, icon, labelStyle, wrapper } from "./style.css";
 import type { ImageType } from "./type";
 
