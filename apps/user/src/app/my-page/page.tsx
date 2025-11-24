@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { ROUTES } from "../../shared/types/route.enum";
 import AccountStage from "./components/stages/account-stage";
 import OptionalStage from "./components/stages/optional-stage";
 import RequiredStage from "./components/stages/required-stage";
@@ -61,7 +62,9 @@ export default function MyPageStage() {
                 key={item.param}
                 className={tabMenuItem({ isSelected: item.param === stage })}
               >
-                <Link href={`/mypage?stage=${item.param}`}>{item.menu}</Link>
+                <Link href={`${ROUTES.MY_PAGE}?stage=${item.param}`}>
+                  {item.menu}
+                </Link>
               </li>
             ))}
           </ul>

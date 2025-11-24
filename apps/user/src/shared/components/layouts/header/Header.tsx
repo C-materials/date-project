@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import useUserStore from "../../../stores/use-user-store";
 import type { ListType } from "../../../types/list";
+import { ROUTES } from "../../../types/route.enum";
 import ProfileMenu from "./profile-menu";
 import {
   header,
@@ -31,7 +32,7 @@ const Header = () => {
   };
 
   const profileMenuList: ListType[] = [
-    { title: "마이페이지", href: "/mypage" },
+    { title: "마이페이지", href: ROUTES.MY_PAGE },
     { title: "로그아웃", action: handleClickLogout },
   ];
 
