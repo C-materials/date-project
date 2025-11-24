@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import AccountStage from "../../shared/components/myPage/Stages/AccountStage";
-import OptionalStage from "../../shared/components/myPage/Stages/OptionalStage";
-import RequiredStage from "../../shared/components/myPage/Stages/RequiredStage";
+import AccountStage from "./components/stages/account-stage";
+import OptionalStage from "./components/stages/optional-stage";
+import RequiredStage from "./components/stages/required-stage";
 import {
   description,
   layoutMain,

@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { bg, contentWrapper } from "./_styles/style.css";
+import { bg, contentWrapper } from "./style.css";
 
 export default function AuthLayout({
   children,

@@ -3,7 +3,7 @@ import {
   feb29DayList,
   longDayList,
   shortDayList,
-} from "../libs/dateList";
+} from "../constants/date-list";
 
 const getDayList = (year: number, month: number) => {
   // 윤년 필터

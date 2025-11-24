@@ -4,9 +4,12 @@ import type { MouseEvent } from "react";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
-import { mainAddress, regionList } from "../../../libs/regionList";
-import Label from "../components/label/Label";
-import ResetPasswordDialog from "../components/resetPasswordDialog/ResetPasswordDialog";
+import ResetPasswordDialog from "../../../../shared/components/dialogs/reset-password-dialog/reset-password-dialog";
+import {
+  mainAddress,
+  regionList,
+} from "../../../../shared/constants/region-list";
+import Label from "../label/label";
 import {
   buttonWrapper,
   form,

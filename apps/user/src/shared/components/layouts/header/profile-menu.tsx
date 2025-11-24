@@ -1,7 +1,7 @@
 import UserIcon from "@date-project/user/public/userIcon.svg";
 import Link from "next/link";
 import type { Ref } from "react";
-import type { ListType } from "./listType";
+import type { ListType } from "../../../types/list";
 import {
   info,
   infoName,

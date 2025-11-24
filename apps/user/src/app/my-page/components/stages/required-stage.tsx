@@ -4,12 +4,16 @@ import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
-import { mypageError, myPageLimit } from "../../../libs/formErrorText";
-import { religionList } from "../../../libs/optionList";
-import CountText from "../components/countText/CountText";
-import ImagePreviewItem from "../components/imagePreview/ImagePreviewItem";
-import Label from "../components/label/Label";
-import ToolTip from "../components/toolTip/ToolTip";
+
+import ToolTip from "../../../../shared/components/tooltip/tooltip";
+import {
+  mypageError,
+  myPageLimit,
+} from "../../../../shared/constants/form-error-message";
+import { religionList } from "../../../../shared/constants/option-list";
+import CountText from "../count-text/count-text";
+import ImagePreviewItem from "../image-preview/image-preview-item";
+import Label from "../label/label";
 import {
   buttonWrapper,
   countWrapper,

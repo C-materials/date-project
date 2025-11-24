@@ -11,10 +11,17 @@ import {
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, FormProvider, useForm } from "react-hook-form";
-import { mypageError, myPageLimit } from "../../../libs/formErrorText";
-import { drinkList, mbtiList, othersList } from "../../../libs/optionList";
-import CountText from "../components/countText/CountText";
-import Label from "../components/label/Label";
+import {
+  mypageError,
+  myPageLimit,
+} from "../../../../shared/constants/form-error-message";
+import {
+  drinkList,
+  mbtiList,
+  othersList,
+} from "../../../../shared/constants/option-list";
+import CountText from "../count-text/count-text";
+import Label from "../label/label";
 import {
   buttonWrapper,
   checkBoxWrapper,

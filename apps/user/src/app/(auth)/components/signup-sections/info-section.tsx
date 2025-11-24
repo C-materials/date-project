@@ -1,10 +1,16 @@
 import { Radio, Select, TextInput } from "@repo/ui";
 import { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import { monthList, yearList } from "../../libs/dateList";
-import { signupError, signupLimit } from "../../libs/formErrorText";
-import { mainAddress, regionList } from "../../libs/regionList";
-import getDayList from "../../utils/getDayList";
+import { monthList, yearList } from "../../../../shared/constants/date-list";
+import {
+  signupError,
+  signupLimit,
+} from "../../../../shared/constants/form-error-message";
+import {
+  mainAddress,
+  regionList,
+} from "../../../../shared/constants/region-list";
+import getDayList from "../../../../shared/utils/getDayList";
 import {
   genderWrapper,
   inputLabel,

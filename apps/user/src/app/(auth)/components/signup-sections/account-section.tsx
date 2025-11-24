@@ -1,6 +1,9 @@
 import { TextInput } from "@repo/ui";
 import { useFormContext } from "react-hook-form";
-import { signupError, signupLimit } from "../../libs/formErrorText";
+import {
+  signupError,
+  signupLimit,
+} from "../../../../shared/constants/form-error-message";
 import { inputLabel, inputWrapper } from "./style.css";
 
 const AccountSection = () => {

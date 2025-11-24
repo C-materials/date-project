@@ -1,11 +1,11 @@
 import { Button, Dialog, TextInput } from "@repo/ui";
 import type { SubmitHandler } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
+import Label from "../../../../app/my-page/components/label/label";
 import {
   resetPasswordError,
   signupLimit,
-} from "../../../../libs/formErrorText";
-import Label from "../label/Label";
+} from "../../../constants/form-error-message";
 import { content } from "./style.css";
 
 type DialogProp = {

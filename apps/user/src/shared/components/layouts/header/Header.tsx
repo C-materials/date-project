@@ -5,9 +5,9 @@ import { Button } from "@repo/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import useUserStore from "../../../stores/useUserStore";
-import type { ListType } from "./listType";
-import ProfileMenu from "./ProfileMenu";
+import useUserStore from "../../../stores/use-user-store";
+import type { ListType } from "../../../types/list";
+import ProfileMenu from "./profile-menu";
 import {
   header,
   itemWrapper,

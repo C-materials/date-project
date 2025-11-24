@@ -4,7 +4,7 @@ import { Button, TextInput } from "@repo/ui";
 import Link from "next/link";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
-import { useToastStore } from "../../../shared/components/layouts/clientLayout/ClientLayout";
+import { useToastStore } from "../../../shared/components/layouts/client-layout/client-layout";
 import {
   buttonWrapper,
   form,
@@ -12,7 +12,7 @@ import {
   loginButton,
   logo,
   signupButton,
-} from "../_styles/style.css";
+} from "./style.css";
 
 type Login = {
   tel: number;

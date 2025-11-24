@@ -1,7 +1,7 @@
 import Exit from "@date-project/user/public/exit.svg";
 import Image from "next/image";
-import type { ImageType } from "../../Stages/type";
-import { deleteButton, image } from "./style.css";
+import { deleteButton, image } from "../image-preview/style.css";
+import type { ImageType } from "../stages/type";
 
 type ItemProps = {
   item: ImageType;

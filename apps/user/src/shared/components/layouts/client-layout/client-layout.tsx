@@ -4,8 +4,8 @@ import "@repo/ui/global.css";
 import { Toast } from "@repo/ui";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
-import createToastStore from "../../../stores/useToastStore";
-import Header from "../header/Header";
+import createToastStore from "../../../stores/use-toast-store";
+import Header from "../header/header";
 import { toastItem, toastWrapper } from "./style.css";
 
 export const useToastStore = createToastStore(2000);
