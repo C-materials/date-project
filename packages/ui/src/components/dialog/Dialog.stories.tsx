@@ -11,6 +11,10 @@ const meta: Meta<typeof Dialog> = {
       description: "모바일 여부에 따라 dialog width 적용",
       control: "boolean",
     },
+    small: {
+      description: "width size",
+      control: "boolean",
+    },
     isOpen: {
       description: "show",
     },
@@ -31,6 +35,7 @@ type Story = StoryObj<typeof Dialog>;
 export const Default: Story = {
   args: {
     isMobile: false,
+    small: false,
     closeButton: true,
     headerTitle: "Dialog Title",
     headerDescription: "description",
@@ -43,8 +48,14 @@ export const Default: Story = {
   } as any,
   render: (args) => {
     // storybook test를 위해 any 처리
-    const { isMobile, closeButton, headerTitle, headerDescription, footer } =
-      args as any;
+    const {
+      isMobile,
+      closeButton,
+      headerTitle,
+      headerDescription,
+      footer,
+      small,
+    } = args as any;
     const [isOpen, setIsOpen] = useState(false);
     return (
       <>
@@ -53,6 +64,7 @@ export const Default: Story = {
             Click!
           </Button>
           <Dialog
+            small={small}
             isOpen={isOpen}
             onClose={() => setIsOpen(false)}
             isMobile={isMobile}

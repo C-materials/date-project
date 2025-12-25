@@ -20,6 +20,7 @@ const base = style([
     outline: "1px solid",
     outlineColor: "transparent",
     outlineOffset: "-1px",
+    minHeight: "40px",
   },
 ]);
 export const buttonStyle = styleVariants({

@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import { forwardRef } from "react";
 import Close from "../../../../assets/close.svg";
 import {
@@ -7,13 +6,9 @@ import {
   dialogChildren,
   dialogWrapper,
 } from "../style.css";
+import type { DialogType } from "../type";
 
-export type WrapperProp = {
-  children: ReactNode;
-  isMobile?: boolean;
-  onClose?: () => void;
-  closeButton: boolean;
-};
+export type WrapperProp = Omit<DialogType, "isOpen">;
 /**
  * @param children
  * @param isMobile
@@ -21,11 +16,11 @@ export type WrapperProp = {
  * @param closeButton
  */
 const DialogWrapper = forwardRef<HTMLDivElement, WrapperProp>(
-  ({ children, isMobile, onClose, closeButton }, ref) => {
+  ({ children, isMobile, onClose, closeButton, small }, ref) => {
     return (
       <div className={dialogBackground} onClick={onClose}>
         <div
-          className={dialogWrapper({ isMobile })}
+          className={dialogWrapper({ isMobile, small })}
           ref={ref}
           onClick={(e) => e.stopPropagation()}
         >

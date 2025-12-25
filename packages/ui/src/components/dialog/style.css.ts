@@ -34,11 +34,26 @@ export const dialogWrapper = recipe({
       true: {
         width: "100%",
       },
-      false: {
+    },
+    small: {
+      true: {},
+      false: {},
+    },
+  },
+  compoundVariants: [
+    {
+      variants: { isMobile: false, small: false },
+      style: {
         width: "420px",
       },
     },
-  },
+    {
+      variants: { isMobile: false, small: true },
+      style: {
+        width: "288px",
+      },
+    },
+  ],
 });
 
 export const dialogChildren = style({
