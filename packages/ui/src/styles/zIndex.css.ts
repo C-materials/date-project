@@ -1,7 +1,7 @@
 import { createGlobalTheme } from "@vanilla-extract/css";
 
 // z-index 토큰화
-export const Zindex = createGlobalTheme(":root", {
+export const zIndex = createGlobalTheme(":root", {
   base: "0", // 기본 배경
   content: "10", // 주요 콘텐츠 (예: 카드, 섹션)
   dropdown: "20", // 드롭다운, 툴팁 등
@@ -14,4 +14,4 @@ export const Zindex = createGlobalTheme(":root", {
   highest: "90", // 최상위 요소 (예: 긴급 경고)
 });
 
-export type Zindex = typeof Zindex;
+export type zIndex = typeof zIndex;

@@ -1,4 +1,4 @@
-import { Color, textSprinkles, Zindex } from "@repo/ui";
+import { Color, textSprinkles, zIndex } from "@repo/ui";
 import { style } from "@vanilla-extract/css";
 
 export const header = style({
@@ -79,7 +79,7 @@ export const menuWrapper = style({
   borderRadius: "8px",
   backgroundColor: Color.secondary.default,
 
-  zIndex: Zindex.dropdown,
+  zIndex: zIndex.dropdown,
 });
 
 export const infoWrapper = style({
