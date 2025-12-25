@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
 
-export type CheckBoxProps = ComponentPropsWithoutRef<"input"> & {
+export type CheckboxProps = ComponentPropsWithoutRef<"input"> & {
   label?: string;
 };

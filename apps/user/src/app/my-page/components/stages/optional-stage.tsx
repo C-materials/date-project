@@ -1,6 +1,6 @@
 import {
   Button,
-  CheckBox,
+  Checkbox,
   Radio,
   Select,
   Tag,
@@ -168,7 +168,7 @@ const OptionalStage = () => {
                   <ul className={checkBoxWrapper}>
                     {drinkList.map((item) => (
                       <li key={item}>
-                        <CheckBox
+                        <Checkbox
                           label={item}
                           value={item}
                           checked={value.includes(item)}
