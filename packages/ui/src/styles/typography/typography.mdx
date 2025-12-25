@@ -1,0 +1,231 @@
+import { Meta, Typeset } from "@storybook/blocks";
+
+<Meta title="Typography" />
+
+# Typography
+
+## variant (font-size/line-height/font-weight)
+
+export const typography = {
+  type: {
+    primary: "Pretendard",
+  },
+  weight: {
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+    extrabold: 800,
+  },
+  size: {
+    text_2xsmall: 10,
+    text_xsmall: 11,
+    text_small: 12,
+    text_medium: 14,
+    text_large: 16,
+    text_xlarge: 18,
+    text_2xlarge: 20,
+
+    heading_medium: 24,
+    heading_large: 28,
+    heading_xlarge: 32,
+    heading_2xlarge: 36,
+    heading_3xlarge: 40,
+
+},
+lineHeight: {
+text_2xsmall: 13,
+text_xsmall: 14,
+text_small: 15,
+text_medium: 18,
+text_large: 21,
+text_xlarge: 21,
+text_2xlarge: 24,
+
+heading_medium: 29,
+heading_large: 34,
+heading_xlarge: 39,
+heading_2xlarge: 44,
+heading_3xlarge: 50,
+},
+};
+
+export const SampleText = "variant (font-size/line-height/font-weight)";
+
+<Typeset
+  fontSizes={[typography.size.text_2xsmall]}
+  fontWeight={typography.weight.regular}
+  sampleText="text-2xsmall (10/13/400)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.text_2xsmall}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_xsmall]}
+  fontWeight={typography.weight.regular}
+  sampleText="text-xsmall (11/14/400)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.text_xsmall}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_small]}
+  fontWeight={typography.weight.regular}
+  sampleText="text-small (12/15/400)"
+  fontFamily={typography.type.primary}
+  style={{ lineHeight: `${typography.lineHeight.text_small}px`, color: "#000" }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_small]}
+  fontWeight={typography.weight.semibold}
+  sampleText="text-small-bold (12/15/600)"
+  fontFamily={typography.type.primary}
+  style={{ lineHeight: `${typography.lineHeight.text_small}px`, color: "#000" }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_medium]}
+  fontWeight={typography.weight.regular}
+  sampleText="text-medium (14/18/400)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.text_medium}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_medium]}
+  fontWeight={typography.weight.semibold}
+  sampleText="text-medium-bold (14/18/600)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.text_medium}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_large]}
+  fontWeight={typography.weight.regular}
+  sampleText="text-large (16/21/400)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.text_large}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_large]}
+  fontWeight={typography.weight.semibold}
+  sampleText="text-large-bold (16/21/600)"
+  fontFamily={typography.type.primary}
+  style={{ lineHeight: `${typography.lineHeight.text_large}px`, color: "#000" }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_xlarge]}
+  fontWeight={typography.weight.regular}
+  sampleText="text-xlarge (18/21/400)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.text_xlarge}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_xlarge]}
+  fontWeight={typography.weight.semibold}
+  sampleText="text-xlarge-bold (18/21/600)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.text_xlarge}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_2xlarge]}
+  fontWeight={typography.weight.regular}
+  sampleText="text-2xlarge (20/24/400)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.text_2xlarge}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.text_2xlarge]}
+  fontWeight={typography.weight.semibold}
+  sampleText="text-2xlarge-bold (20/24/600)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.text_2xlarge}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.heading_medium]}
+  fontWeight={typography.weight.medium}
+  sampleText="heading-medium (24/29/700)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.heading_medium}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.heading_large]}
+  fontWeight={typography.weight.bold}
+  sampleText="heading-large (28/34/700)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.heading_large}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.heading_xlarge]}
+  fontWeight={typography.weight.bold}
+  sampleText="heading-xlarge (32/39/700)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.heading_xlarge}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.heading_2xlarge]}
+  fontWeight={typography.weight.bold}
+  sampleText="heading-2xlarge (36/44/700)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.heading_2xlarge}px`,
+    color: "#000",
+  }}
+/>
+
+<Typeset
+  fontSizes={[typography.size.heading_3xlarge]}
+  fontWeight={typography.weight.bold}
+  sampleText="heading-3xlarge (40/50/700)"
+  fontFamily={typography.type.primary}
+  style={{
+    lineHeight: `${typography.lineHeight.heading_3xlarge}px`,
+    color: "#000",
+  }}
+/>
