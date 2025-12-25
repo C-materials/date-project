@@ -68,9 +68,16 @@ export default function MyPageStage() {
               </li>
             ))}
           </ul>
-          {stage === "required" && <RequiredStage />}
-          {stage === "optional" && <OptionalStage />}
-          {stage === "account" && <AccountStage />}
+          {(() => {
+            switch (stage) {
+              case "optional":
+                return <OptionalStage />;
+              case "account":
+                return <AccountStage />;
+              default:
+                return <RequiredStage />;
+            }
+          })()}
         </div>
       </section>
     </main>

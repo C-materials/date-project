@@ -1,10 +1,9 @@
 "use client";
 import Logo from "@date-project/user/public/logo.svg";
 import UserIcon from "@date-project/user/public/userIcon.svg";
-import { Button } from "@repo/ui";
+import { Button, Portal } from "@repo/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 import useUserStore from "../../../stores/use-user-store";
 import type { ListType } from "../../../types/list";
 import { ROUTES } from "../../../types/route.enum";
@@ -20,6 +19,7 @@ import {
 } from "./style.css";
 const Header = () => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+
   const [headerDOM, setHeaderDOM] = useState<HTMLElement | null>(null);
 
   const { user, setLogout } = useUserStore();
@@ -77,17 +77,17 @@ const Header = () => {
             >
               <UserIcon className={userIcon} alt="user" />
             </button>
-            {isOpenDropdown &&
-              createPortal(
+            {isOpenDropdown && (
+              <Portal container={headerDOM || document.body}>
                 <ProfileMenu
                   name="홍길동" // 유저 정보 넘겨주기
                   tel="010-1234-5678" // 대시 추가해서 string으로 넘겨주기
                   list={profileMenuList}
                   ref={menuRef}
                   onClose={() => setIsOpenDropdown(false)}
-                />,
-                headerDOM || document.body,
-              )}
+                />
+              </Portal>
+            )}
           </>
         ) : (
           <>
