@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
-import AccountSection from "../../../shared/components/signupSections/AccountSection";
-import InfoSection from "../../../shared/components/signupSections/InfoSection";
+import AccountSection from "../components/signup-sections/account-section";
+import InfoSection from "../components/signup-sections/info-section";
 import {
   form,
   loginLink,
@@ -15,7 +15,7 @@ import {
   logoSignup,
   pageButton,
   pagination,
-} from "../_styles/style.css";
+} from "./style.css";
 
 export default function Signup() {
   const [part, setPart] = useState<"account" | "info">("account");

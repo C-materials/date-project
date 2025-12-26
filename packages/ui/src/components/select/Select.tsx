@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import Arrow from "../../../assets/downArrow.svg";
-import TextInput from "../textfield/textInput/TextInput";
-import OptionList from "./OptionList";
+import TextInput from "../textfield/text-input/text-input";
+import OptionList from "./option-list";
 import { icon, selectWrapper } from "./style.css";
 import type { SelectProps } from "./type";
 

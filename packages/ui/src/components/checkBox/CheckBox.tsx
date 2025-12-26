@@ -6,16 +6,16 @@ import {
   icon,
   notDisplay,
 } from "./style.css";
-import type { CheckBoxProps } from "./type";
+import type { CheckboxProps } from "./type";
 
-const CheckBox = ({
+const Checkbox = ({
   checked = false,
   label,
   disabled = false,
   onClick,
   onChange,
   ...props
-}: CheckBoxProps) => {
+}: CheckboxProps) => {
   return (
     <label className={checkboxWrapper({ disabled })}>
       <div className={checkboxInput({ disabled, checked })}>
@@ -35,4 +35,4 @@ const CheckBox = ({
   );
 };
 
-export default CheckBox;
+export default Checkbox;

@@ -1,12 +1,13 @@
 "use client";
 import Logo from "@date-project/user/public/logo.svg";
 import UserIcon from "@date-project/user/public/userIcon.svg";
-import { Button } from "@repo/ui";
+import { Button, Portal } from "@repo/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import useUserStore from "../../../stores/useUserStore";
-import type { ListType } from "./listType";
-import ProfileMenu from "./ProfileMenu";
+import useUserStore from "../../../stores/use-user-store";
+import type { ListType } from "../../../types/list";
+import { ROUTES } from "../../../types/route.enum";
+import ProfileMenu from "./profile-menu";
 import {
   header,
   itemWrapper,
@@ -17,7 +18,10 @@ import {
   userProfile,
 } from "./style.css";
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+
+  const [headerDOM, setHeaderDOM] = useState<HTMLElement | null>(null);
+
   const { user, setLogout } = useUserStore();
 
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -28,7 +32,7 @@ const Header = () => {
   };
 
   const profileMenuList: ListType[] = [
-    { title: "마이페이지", href: "/mypage" },
+    { title: "마이페이지", href: ROUTES.MY_PAGE },
     { title: "로그아웃", action: handleClickLogout },
   ];
 
@@ -38,7 +42,7 @@ const Header = () => {
         menuRef.current &&
         !menuRef.current.contains(e.target as HTMLElement)
       ) {
-        setIsOpen(false);
+        setIsOpenDropdown(false);
       }
     };
 
@@ -46,8 +50,11 @@ const Header = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpenDropdown]);
 
+  useEffect(() => {
+    setHeaderDOM(document.getElementById("main"));
+  }, []);
   return (
     <header className={header}>
       <div className={logoWrapper}>
@@ -66,17 +73,20 @@ const Header = () => {
             <button
               className={userProfile}
               type="button"
-              onClick={() => setIsOpen((prev) => !prev)}
+              onClick={() => setIsOpenDropdown((prev) => !prev)}
             >
               <UserIcon className={userIcon} alt="user" />
             </button>
-            {isOpen && (
-              <ProfileMenu
-                name="홍길동" // 유저 정보 넘겨주기
-                tel="010-1234-5678" // 대시 추가해서 string으로 넘겨주기
-                list={profileMenuList}
-                ref={menuRef}
-              />
+            {isOpenDropdown && (
+              <Portal container={headerDOM || document.body}>
+                <ProfileMenu
+                  name="홍길동" // 유저 정보 넘겨주기
+                  tel="010-1234-5678" // 대시 추가해서 string으로 넘겨주기
+                  list={profileMenuList}
+                  ref={menuRef}
+                  onClose={() => setIsOpenDropdown(false)}
+                />
+              </Portal>
             )}
           </>
         ) : (

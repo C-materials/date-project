@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import ClientLayout from "../shared/components/layouts/clientLayout/ClientLayout";
+import ClientLayout from "../shared/components/layouts/client-layout/client-layout";
 import "./global.css";
 
 export default function RootLayout({

@@ -1,4 +1,4 @@
-import type { InputProps } from "../textfield/textInput/type";
+import type { InputProps } from "../textfield/text-input/type";
 
 export type SelectProps = InputProps & {
   optionList?: string[] | number[];

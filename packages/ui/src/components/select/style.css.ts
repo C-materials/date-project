@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { Color, ColorVar } from "../../styles";
 import { textSprinkles } from "../../styles/typography.css";
-import { Zindex } from "../../styles/zIndex.css";
+import { zIndex } from "../../styles/zIndex.css";
 
 export const selectWrapper = style({
   position: "relative",
@@ -18,7 +18,7 @@ export const listWrapper = style({
   padding: "4px",
   position: "absolute",
   top: "44px",
-  zIndex: Zindex.dropdown,
+  zIndex: zIndex.dropdown,
   overflow: "scroll",
 });
 

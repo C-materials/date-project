@@ -3,6 +3,10 @@ import { globalStyle } from "@vanilla-extract/css";
 globalStyle("main", {
   paddingTop: "72px",
 });
+globalStyle("body", {
+  WebkitFontSmoothing: "antialiased",
+  MozOsxFontSmoothing: "grayscale",
+});
 
 /* input type="number" 화살표 제거; */
 /* Chrome, Safari, Edge, Opera */

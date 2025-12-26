@@ -26,6 +26,7 @@ namespace User {
 
   /* 마이페이지에서 입력하는 정보*/
   type RequiredInfo = {
+    nickname: string;
     job: string;
     religion: string;
     height: number;
@@ -44,4 +45,11 @@ namespace User {
   };
 
   type AccountInfo = Omit<FormValue, "password" | "passwordCheck" | "gender">;
+
+  // 비밀번호 변경 시 제출 폼
+  type ResetPasswordForm = {
+    prevPassword: string;
+    newPassword: string;
+    newPasswordConfirm: string;
+  };
 }

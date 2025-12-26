@@ -2,11 +2,11 @@ import type { Meta, StoryObj } from "@storybook/react";
 import type { ChangeEvent } from "react";
 import { useState } from "react";
 import { Color } from "../../styles/theme.css";
-import CheckBox from "./CheckBox";
+import Checkbox from "./checkbox";
 
-const meta: Meta<typeof CheckBox> = {
-  component: CheckBox,
-  title: "UI/Input/CheckBox",
+const meta: Meta<typeof Checkbox> = {
+  component: Checkbox,
+  title: "UI/Input/Checkbox",
   argTypes: {
     disabled: {
       description: "체크박스 체크 여부",
@@ -31,7 +31,7 @@ const meta: Meta<typeof CheckBox> = {
 
 export default meta;
 
-type Story = StoryObj<typeof CheckBox>;
+type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
   args: {
@@ -47,7 +47,7 @@ export const Default: Story = {
     };
     return (
       <div style={{ padding: "40px", background: Color.bg }}>
-        <CheckBox {...args} checked={isChecked} onChange={handleChange} />
+        <Checkbox {...args} checked={isChecked} onChange={handleChange} />
       </div>
     );
   },

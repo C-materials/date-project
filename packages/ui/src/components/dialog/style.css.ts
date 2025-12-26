@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
-import { Color, ColorVar, textSprinkles, Zindex } from "../../styles";
+import { Color, ColorVar, textSprinkles, zIndex } from "../../styles";
 
 // background
 export const dialogBackground = style({
@@ -13,7 +13,7 @@ export const dialogBackground = style({
   width: "100dvw",
   height: "100dvh",
   padding: "24px",
-  zIndex: Zindex.modalBackground,
+  zIndex: zIndex.modalBackground,
   inset: 0,
 });
 
@@ -27,18 +27,33 @@ export const dialogWrapper = recipe({
     outlineOffset: "-1px",
     outlineColor: Color.border,
     padding: "24px",
-    zIndex: Zindex.modal,
+    zIndex: zIndex.modal,
   },
   variants: {
     isMobile: {
       true: {
         width: "100%",
       },
-      false: {
+    },
+    small: {
+      true: {},
+      false: {},
+    },
+  },
+  compoundVariants: [
+    {
+      variants: { isMobile: false, small: false },
+      style: {
         width: "420px",
       },
     },
-  },
+    {
+      variants: { isMobile: false, small: true },
+      style: {
+        width: "288px",
+      },
+    },
+  ],
 });
 
 export const dialogChildren = style({
@@ -51,7 +66,7 @@ export const closeButtonStyle = style({
   position: "absolute",
   top: "12px",
   right: "12px",
-  zIndex: Zindex.overlay,
+  zIndex: zIndex.overlay,
   width: "16px",
   height: "16px",
 });

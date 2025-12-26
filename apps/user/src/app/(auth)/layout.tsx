@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { bg, contentWrapper } from "./_styles/style.css";
+import { bg, contentWrapper } from "./style.css";
 
 export default function AuthLayout({
   children,
@@ -10,7 +10,7 @@ export default function AuthLayout({
   const pathName = usePathname();
   const isLoginPage = pathName.includes("login");
   return (
-    <main className={bg}>
+    <main className={bg} id="main">
       <div className={contentWrapper({ isLoginPage })}>{children}</div>
     </main>
   );

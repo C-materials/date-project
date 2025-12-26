@@ -1,16 +1,9 @@
-import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 import { Portal } from "../portal";
-import { DialogFooter, DialogHeader, DialogWrapper } from "./dialogComponent";
-import DialogContent from "./dialogComponent/DialogBody";
+import { DialogFooter, DialogHeader, DialogWrapper } from "./dialog-component";
+import DialogContent from "./dialog-component/dialog-body";
+import type { DialogType } from "./type";
 
-type DialogType = {
-  children: ReactNode;
-  isOpen?: boolean;
-  isMobile?: boolean;
-  onClose?: () => void;
-  closeButton?: boolean;
-};
 const Dialog = (props: DialogType) => {
   const {
     children,
@@ -18,6 +11,7 @@ const Dialog = (props: DialogType) => {
     isMobile = false,
     onClose,
     closeButton = true,
+    small = false,
   } = props;
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
@@ -52,6 +46,7 @@ const Dialog = (props: DialogType) => {
   return (
     <Portal>
       <DialogWrapper
+        small={small}
         isMobile={isMobile}
         onClose={onClose}
         closeButton={closeButton}

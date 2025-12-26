@@ -4,7 +4,7 @@ import {
   checkboxLabel,
   checkboxWrapper,
   notDisplay,
-} from "../checkBox/style.css";
+} from "../checkbox/style.css";
 import { icon, radioInput } from "./style.css";
 
 type RadioProps = ComponentPropsWithoutRef<"input"> & {
